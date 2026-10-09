@@ -10,7 +10,7 @@ variant, epochs = sys.argv[1], float(sys.argv[2])
 if epochs != 4 and not re.search(r'_e\d+', variant):
     variant = f'{variant}_e{int(epochs)}'  # 4 epoch이 아니면 저장 이름에 epoch을 붙여 기존 모델을 덮어쓰지 않게 함 (예: grid_e20)
 north = is_north(variant); torch.manual_seed(parse_tag(variant)[2])  # 시드: 초기화 + 데이터 순서
-dark_train = is_dark_train(variant)  # 학습 UAV 영상의 50%를 L1~L3 중 하나로 어둡게 (희윤 P2Bv2와 같은 비율)
+dark_train = is_dark_train(variant)  # 학습 UAV 영상의 50%를 어둡게: simple = L1~L3 단순 합성, phys = 물리 카메라 모델
 from diag.diag_modules import darken
 os.makedirs(OUTD, exist_ok=True)
 LOG = f'{OUTD}/train_{variant}.txt'; open(LOG, 'w').close()
@@ -38,7 +38,8 @@ class DS(Dataset):
         u = cv2.cvtColor(cv2.imread(r.target_path), cv2.COLOR_BGR2RGB)
         if north: u = unrotate(u, float(r.theta))
         if dark_train and np.random.rand() < 0.5:
-            u = darken(u, ['L1', 'L2', 'L3'][np.random.randint(3)], np.random.default_rng())
+            rng = np.random.default_rng()
+            u = phys_dark(u, rng) if dark_train == 'phys' else darken(u, ['L1', 'L2', 'L3'][np.random.randint(3)], rng)
         return (to_tensor(u), torch.tensor([tid[r[c]] for c in tcols]),
                 torch.tensor([r.x_norm, r.y_norm], dtype=torch.float32), torch.tensor([r.x_cosa, r.y_sina], dtype=torch.float32))
 

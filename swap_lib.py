@@ -44,13 +44,27 @@ def parse_tag(tag):
     seed = 0
     if '_s' in tag and tag.rsplit('_s', 1)[1].isdigit():
         tag, seed = tag.rsplit('_s', 1)[0], int(tag.rsplit('_s', 1)[1])
-    base = tag[:-5] if tag.endswith('_dark') else tag
+    base = re.sub(r'_(dark|phys)$', '', tag)
     g = int(base[4:]) if base.startswith('grid') and base[4:].isdigit() else 4
     return base, g, seed
 
 
 def is_dark_train(tag):
-    return '_dark' in tag
+    """저조도 학습 방식: '_dark' = 단순 합성(darken), '_phys' = 희윤님 물리 카메라 모델(capture). 없으면 None."""
+    return 'phys' if '_phys' in tag else ('simple' if '_dark' in tag else None)
+
+
+LIGHT_MIN, LIGHT_MAX, STRATEGIES = 1 / 400, 1 / 8, ['iso', 'exposure', 'auto']  # 희윤님 lowlight_train과 같은 분포
+
+
+def phys_dark(rgb, rng, light=None, strategy=None):
+    """희윤님 diag_lowlight.capture()로 저조도 영상을 만든다. light/strategy를 안 주면 학습용 분포에서 뽑는다."""
+    from diag.diag_lowlight import capture
+    if light is None:
+        light = float(np.exp(rng.uniform(np.log(LIGHT_MIN), np.log(LIGHT_MAX))))
+    if strategy is None:
+        strategy = STRATEGIES[int(rng.integers(3))]
+    return capture(rgb, light, strategy, rng)
 
 
 def is_north(tag):

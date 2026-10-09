@@ -30,7 +30,7 @@ Bearing-UAV의 CSMG 모듈을 **Grid Pooling**(특징 지도를 4×4 칸으로 �
 | **A** | 시드를 바꿔 다시 학습해도 Grid가 CSMG보다 나은가? | **김재홍** |
 | **B** | Grid를 오래(20 epoch) 학습하면 원래 Bearing(100 epoch)보다도 유의하게 나은가? | **김재홍** |
 | C | 격자 칸 수(1×1, 2×2, 8×8)에 따라 성능이 어떻게 달라지는가? | 이준 |
-| D | 어두운 영상을 섞어 학습하면 어두운 조건의 성능이 좋아지는가? | 이준 |
+| D | 물리 카메라 모델로 만든 저조도 영상을 섞어 학습하면 어두운 조건의 성능이 좋아지는가? | 이준 |
 
 ### 공통 규칙
 1. **학습 설정은 바꾸지 않습니다.** 코드 기본값(batch 64, AdamW 3e-4, 90K 전체)을 그대로 사용하고, 명령어의 **tag**와 **epoch 수**만 바꿉니다.
@@ -113,15 +113,22 @@ python run.py eval grid grid_e20
 ## 실험 C, D (이준)
 
 ```
-python run.py train grid1 4      # C: 1×1 (전역 평균)
-python run.py train grid2 4      # C: 2×2
-python run.py train grid8 4      # C: 8×8
+# C: 격자 칸 수
+python run.py train grid1 4      # 1×1 (전역 평균)
+python run.py train grid2 4      # 2×2
+python run.py train grid8 4      # 8×8
 python run.py eval grid1 grid2 grid grid8
 
-python run.py train grid_dark 4  # D: 학습 드론 영상의 50%를 어둡게
-python run.py train csmg_dark 4  # D: 대조군
-python run.py eval --l2 grid csmg grid_dark csmg_dark
+# D: 저조도 학습 (학습 드론 영상의 50%를 물리 카메라 모델로 어둡게)
+python run.py train grid_phys 4
+python run.py train csmg_phys 4  # 대조군
+python run.py eval --phys iso_64 grid csmg grid_phys csmg_phys
+python run.py eval --phys auto_256 grid csmg grid_phys csmg_phys
 ```
+
+- 저조도 영상은 **주희윤님의 물리 카메라 모델**(`diag/diag_lowlight.py`의 `capture()`)로 만듭니다. 센서 신호로 되돌린 뒤 노출·게인에 따른 광자 노이즈, 읽기 노이즈, 장노출 모션 블러, 12비트 변환을 거칩니다.
+- 학습 시 빛의 양과 방식은 희윤님 `lowlight_train` 데이터셋과 같은 분포입니다(빛 1/400~1/8 로그 균등, iso/exposure/auto 균등). 데이터셋을 내려받지 않고 학습 중에 바로 만듭니다.
+- 평가 조건 표기(`iso_64` = iso 방식, 빛 1/64)는 희윤님 `lowlight_eval`의 9조건(iso/exposure/auto × 1/16, 1/64, 1/256)과 같습니다.
 
 ---
 
@@ -142,7 +149,8 @@ python run.py eval --l2 grid csmg grid_dark csmg_dark
 | `grid` | 4×4 Grid Pooling (제안 방법) |
 | `gridN` | N×N Grid (`grid1`, `grid2`, `grid8`). 출력 크기 1024 유지 (채널 = 1024 / N²) |
 | `grid_north` | 나침반 방향으로 북쪽 정렬 후 4×4 Grid |
-| `_dark` | 학습 드론 영상의 50%를 L1~L3 중 하나로 어둡게 |
+| `_phys` | 학습 드론 영상의 50%를 물리 카메라 모델로 어둡게 (희윤님 `capture()`) |
+| `_dark` | 학습 드론 영상의 50%를 단순 합성(L1~L3)으로 어둡게 (이전 방식) |
 | `_sK` | 학습 시드 K (예: `grid_s1`). 없으면 시드 0 |
 | `_eN` | N epoch 학습 (4가 아니면 자동으로 붙음, 예: `grid_e20`) |
 
@@ -152,7 +160,7 @@ python run.py eval --l2 grid csmg grid_dark csmg_dark
 | `python setup_local.py [설치위치]` | 환경 설치 (원 저장소, 가중치, 데이터셋) |
 | `python run.py check` | 설치 확인과 속도 측정 |
 | `python run.py train <tag> <epoch>` | 학습. 결과는 `bearing/out/<tag>.pth`, `train_<tag>.txt` |
-| `python run.py eval [--l2] <tag> ...` | 미학습 도시 3곳(NY 96, Paris 32, London 32궤적) 1 km 항법 평가. 공개 가중치가 자동으로 포함됩니다. `--l2`는 어두운 조건 |
+| `python run.py eval [--l2 \| --phys <방식>_<d>] <tag> ...` | 미학습 도시 3곳(NY 96, Paris 32, London 32궤적) 1 km 항법 평가. 공개 가중치가 자동으로 포함됩니다. `--l2`는 단순 합성 어두움, `--phys iso_64`는 물리 카메라 모델(iso, 빛 1/64) |
 
 ### 파일 구성
 | 파일 | 내용 |
@@ -163,9 +171,10 @@ python run.py eval --l2 grid csmg grid_dark csmg_dark
 | `eval_swap.py` | NY 주간·L2, Tokyo 평가 (32궤적) |
 | `setup_local.py`, `run.py` | 설치와 실행 |
 | `models/` | 기존 모델 `grid.pth`, `csmg.pth` (시드 0, 비교 대상) |
-| `diag/` | **주희윤님의 코드** (항법 시뮬레이터, 진단). 수정하지 않습니다 |
+| `diag/` | **주희윤님의 코드** (항법 시뮬레이터, 진단, 저조도 카메라 모델). 수정하지 않습니다 |
 | `legacy/` | 이전 Colab 전용 진단 스크립트 (참고용) |
 
 ### 출처
 - 원 논문 코드: https://github.com/liukejia121/bearinguav
 - 데이터와 가중치: Hugging Face `HaoyZhou/bearinguav`
+- 저조도 카메라 모델: 주희윤님 `gmldbs3014/bearing-uav-lowlight`의 `code/diag_lowlight.py`
