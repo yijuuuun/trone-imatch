@@ -81,14 +81,14 @@ def evaluate():
 
 m.train(); m.backbone.eval(); ep = 0; done = False
 while not done:
-    ep += 1; run = 0.
+    ep += 1; run = 0.; nrun = 0
     for x, ti, xy, cs in tr:
         x, ti, xy, cs = x.to(DEV, non_blocking=True), ti.to(DEV), xy.to(DEV), cs.to(DEV)
         with torch.autocast(DT, dtype=torch.float16, enabled=AMP_ALL):
             pos, dr = forward(x, ti)
             loss = wpos * crit(pos.float(), xy) + (wdir * crit(dr.float(), cs) if wdir else 0.)
         opt.zero_grad(set_to_none=True); scaler.scale(loss).backward(); scaler.step(opt); scaler.update()
-        step += 1; run += float(loss.detach())
+        step += 1; run += float(loss.detach()); nrun += 1
         if step == 1:
             total = int(epochs * len(tr)); log(f'총 {total} 스텝 ({epochs} epoch)')
         if step == 50:
@@ -96,7 +96,7 @@ while not done:
         if total:
             for g in opt.param_groups: g['lr'] = 1e-6 + 0.5 * (3e-4 - 1e-6) * (1 + np.cos(np.pi * min(step / total, 1)))
         if step % 500 == 0:
-            log(f'step {step} ep {ep} loss {run/500:.4f} {(time.time()-t0)/60:.1f}min'); run = 0.
+            log(f'step {step} ep {ep} loss {run/max(nrun, 1):.4f} {(time.time()-t0)/60:.1f}min'); run = 0.; nrun = 0
         if total and step >= total:
             done = True; break
     mle, med = evaluate()
