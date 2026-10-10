@@ -1,6 +1,7 @@
 # 궤적 수를 늘린 비교: NY 96궤적 + 다른 낯선 도시(Paris, London) 32궤적. 사용: python3 eval_more.py [--l2] <tag> ... (기본 csmg grid)
 # --l2: UAV 영상만 L2로 어둡게 (단순 합성, 노이즈 시드 0, 이전 L2 평가와 같은 방식)
 # --phys <strategy>_<d>: 희윤님 물리 카메라 모델, 빛 1/d (예: --phys iso_64, --phys auto_256). 희윤님 평가셋의 9조건과 같은 표기
+# --phys clean_1: 빛은 그대로, 노이즈 없이 카메라 처리(리샘플, 색 변환, 톤 커브)만 거침
 import sys
 from swap_lib import *
 from diag.diag_modules import UNSEEN
@@ -18,6 +19,9 @@ class DarkWrap:
         if self.lvl == 'L2':
             return self.loc([darken(c, self.lvl, self.rng) for c in crops], headings, blocks)
         st, d = self.lvl.split('_')
+        if st == 'clean':  # 카메라 처리만 (빛 1, 노이즈 없음): 처리 과정 자체의 영향 확인용
+            from diag.diag_lowlight import capture
+            return self.loc([capture(c, 1.0, 'iso', self.rng, noise=False) for c in crops], headings, blocks)
         return self.loc([phys_dark(c, self.rng, 1 / float(d), st) for c in crops], headings, blocks)
 
 OUT = f'{OUTD}/eval_more_' + ('' if COND == '주간' else COND + '_') + '_'.join(TAGS) + '.txt'
