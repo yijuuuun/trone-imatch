@@ -10,7 +10,7 @@ import sys
 import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-REPO, TAG, ASSET = 'yijuuuun/trone-grid-pooling', 'data-v1', 'im_t1_3d_1000.zip'
+REPO, TAG, ASSET = 'yijuuuun/trone-imatch', 'data-v1', 'im_t1_3d_1000.zip'
 DATA = os.path.join(ROOT, 'data')
 ZIP, OUT = os.path.join(DATA, ASSET), os.path.join(DATA, 'im_t1_3d_1000')
 

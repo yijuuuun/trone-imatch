@@ -4,7 +4,7 @@ Trone 팀 졸업프로젝트 · 작성 이준 · 2026-10-16
 
 > **방향 전환 (2026-10-15 교수님 피드백 이후):** 이제 이 저장소의 주 방향은 **이미지 매칭 기반 재설계**다. 문제는 결국 "특징 매칭이 안 되는 것"이므로, CSMG 교체(Grid Pooling)가 아니라 검증된 이미지 매칭 파이프라인으로 위치·heading을 구한다. 계획 전체는 [docs/01_재설계계획.md](docs/01_재설계계획.md), 계기는 [docs/00_교수님_피드백.md](docs/00_교수님_피드백.md).
 >
-> 이전 방향인 Grid Pooling(CSMG 교체) 코드·모델·결과·문서는 main에서 뺐다. 태그 [`grid-pooling-final`](https://github.com/yijuuuun/trone-grid-pooling/tree/grid-pooling-final/grid_pooling)에 그대로 있다 (`git checkout grid-pooling-final`).
+> 이전 방향인 Grid Pooling(CSMG 교체) 코드·모델·결과·문서는 main에서 뺐다. 태그 [`grid-pooling-final`](https://github.com/yijuuuun/trone-imatch/tree/grid-pooling-final/grid_pooling)에 그대로 있다 (`git checkout grid-pooling-final`).
 
 드론 영상 1장과 지도 블록(2×2 타일)을 받아 **위치와 heading**을 구한다. 학습 없이, 공개 이미지 매처(LoMa)로 대응점을 찾고 기하 계산으로 답한다.
 
@@ -39,7 +39,7 @@ Trone 팀 졸업프로젝트 · 작성 이준 · 2026-10-16
 ## 폴더 구조
 
 ```
-trone-grid-pooling/
+trone-imatch/
 ├── imatch/                 파이프라인 코드 (위 표)
 ├── scripts/
 │   ├── run.py              매칭 실행 → 샘플별 CSV
