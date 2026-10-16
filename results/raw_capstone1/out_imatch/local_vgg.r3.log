@@ -1,0 +1,23 @@
+/Users/kimyijun/Desktop/종설/capstone1/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/kimyijun/Desktop/종설/capstone1/cvphr/utils/utils_transform.py:8: FutureWarning: In the future `np.bool` will be defined as the corresponding NumPy scalar.
+  if not hasattr(np, "bool"):
+/Users/kimyijun/Desktop/종설/capstone1/.venv/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/Users/kimyijun/Desktop/종설/capstone1/.venv/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+|TIPS| Now You are loading model PARCASGM_v5a.
+Model Class: <class 'cvphr.models.posaglreg.models.PARCASGM_v5a'>
+Model Kwargs: {'backbone_name': 'vgg16', 'feature_dim': 256, 'coord_enc_dims': [16, 64, 256], 'regressor_dims': [1024, 256, 64], 'reduction_ratio': 1, 'num_clusters': 4, 'freeze_backbone': True, 'partial_unfreeze': False, 'add_patch_coord': True}
+  vgg-mnn s1 20/200 samples, 8.77 s/sample
+  vgg-mnn s1 40/200 samples, 9.79 s/sample
+  vgg-mnn s1 60/200 samples, 9.32 s/sample
+  vgg-mnn s1 80/200 samples, 9.17 s/sample
+  vgg-mnn s1 100/200 samples, 10.00 s/sample
+  vgg-mnn s1 120/200 samples, 8.86 s/sample
+  vgg-mnn s1 140/200 samples, 8.55 s/sample
+  vgg-mnn s1 160/200 samples, 8.62 s/sample
+  vgg-mnn s1 180/200 samples, 8.44 s/sample
+  vgg-mnn s1 200/200 samples, 9.02 s/sample
+{'matcher': 'vgg-mnn', 'scale': 1.0, 'set': '3d_ho37bc', 'n': 100, 'found': 100.0, 'MLE': 40.43, 'medLE': 18.35, 'LSR10': 41.0, 'MHE': 47.6, 'medHE': 21.88, 'inl_med': 8.0, 'good_inl': 5.3, 'good_match': 1.9, 'sec_per_sample': 9.552}
+{'matcher': 'vgg-mnn', 'scale': 1.0, 'set': '3d_ho38bc', 'n': 100, 'found': 100.0, 'MLE': 11.89, 'medLE': 3.38, 'LSR10': 81.0, 'MHE': 16.36, 'medHE': 0.82, 'inl_med': 54.0, 'good_inl': 20.0, 'good_match': 8.5, 'sec_per_sample': 9.32}

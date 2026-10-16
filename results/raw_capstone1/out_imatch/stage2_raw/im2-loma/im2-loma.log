@@ -1,0 +1,149 @@
+[{"stream_name":"stdout","time":4.753424927,"data":"     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.0/45.0 kB 2.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":8.349869371,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 32.9/32.9 MB 61.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":8.373810145,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 167.1/167.1 kB 9.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":8.401938608,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 225.3/225.3 kB 11.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":8.438232687,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 51.0/51.0 kB 2.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":8.467186542,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 47.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":8.536766411,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 849.3/849.3 kB 36.0 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":8.577027123,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.6/61.6 kB 3.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":8.605972527,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 56.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":8.662708347,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 818.2/818.2 kB 37.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.309732288,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 554.6/554.6 MB 3.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":19.839503186,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 553.1/553.1 MB 3.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":21.483295052,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 170.1/170.1 MB 11.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":23.711060843,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.0/216.0 MB 9.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":24.215693469,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.4/60.4 MB 34.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":32.971462075,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 423.1/423.1 MB 1.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":34.344293338,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.7/10.7 MB 7.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":35.22741211,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.2/90.2 MB 22.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":35.274996351,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 55.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":37.389941873,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.1/214.1 MB 9.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":37.424743552,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 44.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":37.936685293,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.5/59.5 MB 34.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":39.784558634,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 200.9/200.9 MB 9.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":41.117396516,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 145.9/145.9 MB 13.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":41.160131552,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 148.0/148.0 kB 8.0 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":41.271680505,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.4/7.4 MB 72.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":41.311694085,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 41.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":41.346671628,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 750.4/750.4 kB 28.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":41.450252199,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 94.0 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":43.971352885,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 248.0/248.0 MB 7.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":46.429542854,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.6/56.6 kB 18.9 kB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":46.452998298,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 93.8/93.8 kB 5.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":48.305696359,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 170.9/170.9 MB 11.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":48.660482106,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.5/42.5 MB 50.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":48.682443295,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.6/155.6 kB 8.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stderr","time":174.434412111,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":174.434452242,"data":"libcuml-cu12 26.2.0 requires cuda-toolkit[cublas,cufft,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":174.434456839,"data":"cuml-cu12 26.2.0 requires cuda-toolkit[cublas,cufft,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":174.434461468,"data":"cudf-cu12 26.2.1 requires cuda-toolkit[nvcc,nvrtc]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":174.434465886,"data":"cuda-python 12.9.7 requires cuda-bindings~=12.9.7, but you have cuda-bindings 13.4.4 which is incompatible.\n"}
+,{"stream_name":"stderr","time":174.434469863,"data":"libcuvs-cu12 26.2.0 requires cuda-toolkit[cublas,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":174.43447434,"data":"libraft-cu12 26.2.0 requires cuda-toolkit[cublas,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":251.635907293,"data":"data ['3d_ho37bc', '3d_ho38bc', 'samples.csv'] 2000\n"}
+,{"stream_name":"stderr","time":263.330517805,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":263.768359645,"data":"Downloading: \"https://github.com/Parskatt/dad/releases/download/v0.1.0/dad.pth\" to /root/.cache/torch/hub/checkpoints/dad.pth\n"}
+,{"stream_name":"stderr","time":263.999914764,"data":"\r  0%|          | 0.00/24.9M [00:00\u003c?, ?B/s]\r100%|██████████| 24.9M/24.9M [00:00\u003c00:00, 279MB/s]\n"}
+,{"stream_name":"stdout","time":268.000451637,"data":"Downloading: \"https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth\" to /root/.cache/torch/hub/checkpoints/dinov2_vitl14_pretrain.pth\n"}
+,{"stream_name":"stderr","time":270.797453861,"data":"\r  0%|          | 0.00/1.13G [00:00\u003c?, ?B/s]\r  1%|          | 13.1M/1.13G [00:00\u003c00:09, 132MB/s]\r  5%|▍         | 53.5M/1.13G [00:00\u003c00:03, 301MB/s]\r  9%|▊         | 99.8M/1.13G [00:00\u003c00:02, 384MB/s]\r 13%|█▎        | 147M/1.13G [00:00\u003c00:02, 428MB/s] \r 17%|█▋        | 194M/1.13G [00:00\u003c00:02, 450MB/s]\r 21%|██        | 241M/1.13G [00:00\u003c00:02, 464MB/s]\r 25%|██▍       | 285M/1.13G [00:00\u003c00:02, 411MB/s]\r 29%|██▊       | 333M/1.13G [00:00\u003c00:01, 438MB/s]\r 33%|███▎      | 380M/1.13G [00:00\u003c00:01, 456MB/s]\r 37%|███▋      | 428M/1.13G [00:01\u003c00:01, 467MB/s]\r 41%|████      | 475M/1.13G [00:01\u003c00:01, 474MB/s]\r 45%|████▌     | 523M/1.13G [00:01\u003c00:01, 484MB/s]\r 49%|████▉     | 569M/1.13G [00:01\u003c00:01, 484MB/s]\r 53%|█████▎    | 617M/1.13G [00:01\u003c00:01, 489MB/s]\r 57%|█████▋    | 664M/1.13G [00:01\u003c00:01, 488MB/s]\r 61%|██████    | 711M/1.13G [00:01\u003c00:00, 490MB/s]\r 65%|██████▌   | 758M/1.13G [00:01\u003c00:00, 487MB/s]\r 69%|██████▉   | 804M/1.13G [00:01\u003c00:00, 486MB/s]\r 73%|███████▎  | 851M/1.13G [00:01\u003c00:00, 486MB/s]\r 77%|███████▋  | 897M/1.13G [00:02\u003c00:00, 485MB/s]\r 81%|████████▏ | 944M/1.13G [00:02\u003c00:00, 481MB/s]\r 85%|████████▌ | 990M/1.13G [00:02\u003c00:00, 433MB/s]\r 89%|████████▉ | 1.01G/1.13G [00:02\u003c00:00, 430MB/s]\r 92%|█████████▏| 1.05G/1.13G [00:02\u003c00:00, 392MB/s]\r 96%|█████████▌| 1.09G/1.13G [00:02\u003c00:00, 384MB/s]\r100%|█████████▉| 1.13G/1.13G [00:02\u003c00:00, 408MB/s]\r100%|██████████| 1.13G/1.13G [00:02\u003c00:00, 442MB/s]\n"}
+,{"stream_name":"stdout","time":276.930080802,"data":"Downloading: \"https://github.com/davnords/storage/releases/download/loma/loma_B.pt\" to /root/.cache/torch/hub/checkpoints/loma_B.pt\n"}
+,{"stream_name":"stderr","time":279.815557832,"data":"\r  0%|          | 0.00/723M [00:00\u003c?, ?B/s]\r  4%|▍         | 30.1M/723M [00:00\u003c00:02, 314MB/s]\r  8%|▊         | 61.4M/723M [00:00\u003c00:02, 322MB/s]\r 13%|█▎        | 92.1M/723M [00:00\u003c00:04, 164MB/s]\r 18%|█▊        | 130M/723M [00:00\u003c00:02, 223MB/s] \r 22%|██▏       | 161M/723M [00:00\u003c00:02, 248MB/s]\r 28%|██▊       | 201M/723M [00:00\u003c00:01, 294MB/s]\r 32%|███▏      | 233M/723M [00:00\u003c00:01, 275MB/s]\r 38%|███▊      | 271M/723M [00:01\u003c00:01, 308MB/s]\r 42%|████▏     | 304M/723M [00:01\u003c00:01, 282MB/s]\r 47%|████▋     | 340M/723M [00:01\u003c00:01, 306MB/s]\r 52%|█████▏    | 373M/723M [00:01\u003c00:01, 316MB/s]\r 56%|█████▌    | 405M/723M [00:01\u003c00:01, 272MB/s]\r 61%|██████    | 441M/723M [00:01\u003c00:00, 298MB/s]\r 65%|██████▌   | 471M/723M [00:01\u003c00:00, 267MB/s]\r 69%|██████▉   | 498M/723M [00:02\u003c00:01, 220MB/s]\r 72%|███████▏  | 522M/723M [00:02\u003c00:00, 226MB/s]\r 76%|███████▋  | 553M/723M [00:02\u003c00:00, 251MB/s]\r 80%|████████  | 579M/723M [00:02\u003c00:00, 254MB/s]\r 84%|████████▎ | 604M/723M [00:02\u003c00:00, 241MB/s]\r 90%|████████▉ | 650M/723M [00:02\u003c00:00, 303MB/s]\r 95%|█████████▍| 683M/723M [00:02\u003c00:00, 315MB/s]\r100%|██████████| 723M/723M [00:02\u003c00:00, 343MB/s]\r100%|██████████| 723M/723M [00:02\u003c00:00, 276MB/s]\n"}
+,{"stream_name":"stdout","time":326.7835931,"data":"  loma s1 20/1800 samples, 2.23 s/sample\n"}
+,{"stream_name":"stdout","time":372.264144792,"data":"  loma s1 40/1800 samples, 2.32 s/sample\n"}
+,{"stream_name":"stdout","time":418.344233977,"data":"  loma s1 60/1800 samples, 2.27 s/sample\n"}
+,{"stream_name":"stdout","time":464.242276788,"data":"  loma s1 80/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":510.126146962,"data":"  loma s1 100/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":556.061633398,"data":"  loma s1 120/1800 samples, 2.27 s/sample\n"}
+,{"stream_name":"stdout","time":602.063382595,"data":"  loma s1 140/1800 samples, 2.33 s/sample\n"}
+,{"stream_name":"stdout","time":647.982559256,"data":"  loma s1 160/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":693.962451903,"data":"  loma s1 180/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":739.838692446,"data":"  loma s1 200/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":785.674333705,"data":"  loma s1 220/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":831.6046012,"data":"  loma s1 240/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":877.50314996,"data":"  loma s1 260/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":923.466154198,"data":"  loma s1 280/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":969.387175414,"data":"  loma s1 300/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":1015.362545668,"data":"  loma s1 320/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":1061.297397325,"data":"  loma s1 340/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":1107.180178295,"data":"  loma s1 360/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":1153.115570538,"data":"  loma s1 380/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":1198.974093185,"data":"  loma s1 400/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":1244.911836763,"data":"  loma s1 420/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":1290.843211229,"data":"  loma s1 440/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":1336.790060843,"data":"  loma s1 460/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":1382.592486025,"data":"  loma s1 480/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":1428.517801663,"data":"  loma s1 500/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":1474.439711062,"data":"  loma s1 520/1800 samples, 2.31 s/sample\n"}
+,{"stream_name":"stdout","time":1520.211370544,"data":"  loma s1 540/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":1566.120938883,"data":"  loma s1 560/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":1611.940370303,"data":"  loma s1 580/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":1657.727551302,"data":"  loma s1 600/1800 samples, 2.27 s/sample\n"}
+,{"stream_name":"stdout","time":1703.614739643,"data":"  loma s1 620/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":1749.667493529,"data":"  loma s1 640/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":1795.73536811,"data":"  loma s1 660/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":1842.076433891,"data":"  loma s1 680/1800 samples, 2.34 s/sample\n"}
+,{"stream_name":"stdout","time":1888.510101671,"data":"  loma s1 700/1800 samples, 2.31 s/sample\n"}
+,{"stream_name":"stdout","time":1934.677124851,"data":"  loma s1 720/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":1980.85331308,"data":"  loma s1 740/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":2027.26543965,"data":"  loma s1 760/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":2073.291423039,"data":"  loma s1 780/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":2119.134529556,"data":"  loma s1 800/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":2165.040367809,"data":"  loma s1 820/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":2210.751971915,"data":"  loma s1 840/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":2257.142707017,"data":"  loma s1 860/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":2303.677157542,"data":"  loma s1 880/1800 samples, 2.32 s/sample\n"}
+,{"stream_name":"stdout","time":2349.945903172,"data":"  loma s1 900/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":2395.976056129,"data":"  loma s1 920/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":2442.015402182,"data":"  loma s1 940/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":2488.143247278,"data":"  loma s1 960/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":2534.425053059,"data":"  loma s1 980/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":2580.845514118,"data":"  loma s1 1000/1800 samples, 2.33 s/sample\n"}
+,{"stream_name":"stdout","time":2627.371986691,"data":"  loma s1 1020/1800 samples, 2.32 s/sample\n"}
+,{"stream_name":"stdout","time":2673.555644432,"data":"  loma s1 1040/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":2719.967451318,"data":"  loma s1 1060/1800 samples, 2.31 s/sample\n"}
+,{"stream_name":"stdout","time":2766.405467951,"data":"  loma s1 1080/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":2812.70259294,"data":"  loma s1 1100/1800 samples, 2.32 s/sample\n"}
+,{"stream_name":"stdout","time":2859.06244597,"data":"  loma s1 1120/1800 samples, 2.33 s/sample\n"}
+,{"stream_name":"stdout","time":2905.840140092,"data":"  loma s1 1140/1800 samples, 2.35 s/sample\n"}
+,{"stream_name":"stdout","time":2952.498503742,"data":"  loma s1 1160/1800 samples, 2.32 s/sample\n"}
+,{"stream_name":"stdout","time":2999.087924914,"data":"  loma s1 1180/1800 samples, 2.32 s/sample\n"}
+,{"stream_name":"stdout","time":3045.790931803,"data":"  loma s1 1200/1800 samples, 2.34 s/sample\n"}
+,{"stream_name":"stdout","time":3092.145425042,"data":"  loma s1 1220/1800 samples, 2.33 s/sample\n"}
+,{"stream_name":"stdout","time":3138.297424203,"data":"  loma s1 1240/1800 samples, 2.31 s/sample\n"}
+,{"stream_name":"stdout","time":3184.308677684,"data":"  loma s1 1260/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":3230.208811363,"data":"  loma s1 1280/1800 samples, 2.32 s/sample\n"}
+,{"stream_name":"stdout","time":3276.289717255,"data":"  loma s1 1300/1800 samples, 2.34 s/sample\n"}
+,{"stream_name":"stdout","time":3322.704714645,"data":"  loma s1 1320/1800 samples, 2.35 s/sample\n"}
+,{"stream_name":"stdout","time":3369.083400974,"data":"  loma s1 1340/1800 samples, 2.31 s/sample\n"}
+,{"stream_name":"stdout","time":3415.415439632,"data":"  loma s1 1360/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":3461.76842585,"data":"  loma s1 1380/1800 samples, 2.34 s/sample\n"}
+,{"stream_name":"stdout","time":3507.89125381,"data":"  loma s1 1400/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":3553.84727766,"data":"  loma s1 1420/1800 samples, 2.27 s/sample\n"}
+,{"stream_name":"stdout","time":3599.952809589,"data":"  loma s1 1440/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":3646.00060689,"data":"  loma s1 1460/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":3691.93495521,"data":"  loma s1 1480/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":3737.86826908,"data":"  loma s1 1500/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":3783.84126654,"data":"  loma s1 1520/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":3829.858689228,"data":"  loma s1 1540/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":3875.732045752,"data":"  loma s1 1560/1800 samples, 2.28 s/sample\n"}
+,{"stream_name":"stdout","time":3921.666950295,"data":"  loma s1 1580/1800 samples, 2.27 s/sample\n"}
+,{"stream_name":"stdout","time":3967.599680497,"data":"  loma s1 1600/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":4013.562513065,"data":"  loma s1 1620/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":4059.56553036,"data":"  loma s1 1640/1800 samples, 2.32 s/sample\n"}
+,{"stream_name":"stdout","time":4105.572606542,"data":"  loma s1 1660/1800 samples, 2.27 s/sample\n"}
+,{"stream_name":"stdout","time":4151.536943494,"data":"  loma s1 1680/1800 samples, 2.31 s/sample\n"}
+,{"stream_name":"stdout","time":4197.669460418,"data":"  loma s1 1700/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":4243.538962636,"data":"  loma s1 1720/1800 samples, 2.33 s/sample\n"}
+,{"stream_name":"stdout","time":4289.443454375,"data":"  loma s1 1740/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":4335.41505439,"data":"  loma s1 1760/1800 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":4381.297079759,"data":"  loma s1 1780/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":4427.328562229,"data":"  loma s1 1800/1800 samples, 2.30 s/sample\n"}
+,{"stream_name":"stdout","time":4427.658162681,"data":"{'matcher': 'loma', 'scale': 1.0, 'set': '3d_ho37bc', 'n': 900, 'found': 100.0, 'MLE': 13.2, 'medLE': 5.73, 'LSR10': 73.0, 'MHE': 13.56, 'medHE': 1.5, 'inl_med': 57.0, 'good_inl': 11.5, 'good_match': 9.4, 'sec_per_sample': 2.302}\n"}
+,{"stream_name":"stdout","time":4427.659313231,"data":"{'matcher': 'loma', 'scale': 1.0, 'set': '3d_ho38bc', 'n': 900, 'found': 100.0, 'MLE': 4.03, 'medLE': 3.06, 'LSR10': 96.8, 'MHE': 3.7, 'medHE': 0.19, 'inl_med': 293.0, 'good_inl': 20.8, 'good_match': 19.4, 'sec_per_sample': 2.293}\n"}
+,{"stream_name":"stderr","time":4432.857550749,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":4432.857591862,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":4433.098039414,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":4433.098063778,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":4433.918244419,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":4434.876686177,"data":"[NbConvertApp] Writing 345620 bytes to __results__.html\n"}
+]

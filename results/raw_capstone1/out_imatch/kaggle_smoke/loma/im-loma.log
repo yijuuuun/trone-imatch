@@ -1,0 +1,81 @@
+[{"stream_name":"stdout","time":5.056034348,"data":"     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.0/45.0 kB 2.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":9.083593422,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 32.9/32.9 MB 68.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":9.117769292,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 167.1/167.1 kB 9.0 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":9.150902088,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 225.3/225.3 kB 13.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":9.203971653,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 51.0/51.0 kB 2.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":9.243618221,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 47.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":9.30648263,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 849.3/849.3 kB 41.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":9.336729741,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.6/61.6 kB 3.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":9.374707505,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 57.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":9.458756025,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 818.2/818.2 kB 38.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":18.818833723,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 554.6/554.6 MB 2.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":35.213935467,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 553.1/553.1 MB 3.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":41.400844086,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 170.1/170.1 MB 7.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":50.796764332,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.0/216.0 MB 7.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":53.331791547,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.4/60.4 MB 15.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":77.769016376,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 423.1/423.1 MB 3.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":78.714058359,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.7/10.7 MB 11.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":82.646123364,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.2/90.2 MB 14.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":82.736840252,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 29.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":90.645802847,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.1/214.1 MB 4.0 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":90.705115779,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 27.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":92.012891147,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.5/59.5 MB 24.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":96.381786255,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 200.9/200.9 MB 8.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":100.374312796,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 145.9/145.9 MB 11.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":100.403835195,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 148.0/148.0 kB 9.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":100.594020424,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.4/7.4 MB 42.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":100.653100315,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 33.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":100.696711176,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 750.4/750.4 kB 26.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":100.892133256,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 43.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":105.788433717,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 248.0/248.0 MB 7.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":105.819536368,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.6/56.6 kB 2.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":105.84971944,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 93.8/93.8 kB 5.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":108.959529178,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 170.9/170.9 MB 10.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":110.057437345,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.5/42.5 MB 16.0 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":110.088170329,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.6/155.6 kB 9.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stderr","time":236.916722892,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":236.916777244,"data":"libcuml-cu12 26.2.0 requires cuda-toolkit[cublas,cufft,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":236.916781514,"data":"cuml-cu12 26.2.0 requires cuda-toolkit[cublas,cufft,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":236.916784007,"data":"cudf-cu12 26.2.1 requires cuda-toolkit[nvcc,nvrtc]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":236.916786514,"data":"cuda-python 12.9.7 requires cuda-bindings~=12.9.7, but you have cuda-bindings 13.4.4 which is incompatible.\n"}
+,{"stream_name":"stderr","time":236.916788839,"data":"libcuvs-cu12 26.2.0 requires cuda-toolkit[cublas,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":236.916791171,"data":"libraft-cu12 26.2.0 requires cuda-toolkit[cublas,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":259.236469435,"data":"data ['2d_ho37bc', '2d_ho38bc', '3d_ho37bc', '3d_ho38bc', 'samples.csv'] 200\n"}
+,{"stream_name":"stderr","time":273.427471147,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":274.078282235,"data":"Downloading: \"https://github.com/Parskatt/dad/releases/download/v0.1.0/dad.pth\" to /root/.cache/torch/hub/checkpoints/dad.pth\n"}
+,{"stream_name":"stderr","time":274.485217001,"data":"\r  0%|          | 0.00/24.9M [00:00\u003c?, ?B/s]\r 40%|████      | 10.0M/24.9M [00:00\u003c00:00, 97.0MB/s]\r100%|██████████| 24.9M/24.9M [00:00\u003c00:00, 197MB/s] \n"}
+,{"stream_name":"stdout","time":278.560832979,"data":"Downloading: \"https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth\" to /root/.cache/torch/hub/checkpoints/dinov2_vitl14_pretrain.pth\n"}
+,{"stream_name":"stderr","time":282.058895647,"data":"\r  0%|          | 0.00/1.13G [00:00\u003c?, ?B/s]\r  1%|▏         | 15.0M/1.13G [00:00\u003c00:07, 157MB/s]\r  5%|▍         | 52.9M/1.13G [00:00\u003c00:03, 298MB/s]\r  8%|▊         | 89.5M/1.13G [00:00\u003c00:03, 337MB/s]\r 11%|█         | 125M/1.13G [00:00\u003c00:03, 350MB/s] \r 14%|█▍        | 160M/1.13G [00:00\u003c00:02, 356MB/s]\r 17%|█▋        | 196M/1.13G [00:00\u003c00:02, 364MB/s]\r 20%|█▉        | 232M/1.13G [00:00\u003c00:02, 366MB/s]\r 23%|██▎       | 267M/1.13G [00:00\u003c00:02, 368MB/s]\r 26%|██▌       | 304M/1.13G [00:00\u003c00:02, 373MB/s]\r 29%|██▉       | 340M/1.13G [00:01\u003c00:02, 373MB/s]\r 32%|███▏      | 375M/1.13G [00:01\u003c00:02, 367MB/s]\r 35%|███▌      | 412M/1.13G [00:01\u003c00:02, 370MB/s]\r 39%|███▊      | 448M/1.13G [00:01\u003c00:02, 373MB/s]\r 42%|████▏     | 483M/1.13G [00:01\u003c00:01, 372MB/s]\r 45%|████▍     | 519M/1.13G [00:01\u003c00:01, 372MB/s]\r 48%|████▊     | 555M/1.13G [00:01\u003c00:01, 374MB/s]\r 51%|█████     | 591M/1.13G [00:01\u003c00:01, 373MB/s]\r 54%|█████▍    | 627M/1.13G [00:01\u003c00:01, 374MB/s]\r 57%|█████▋    | 662M/1.13G [00:01\u003c00:01, 373MB/s]\r 60%|██████    | 699M/1.13G [00:02\u003c00:01, 375MB/s]\r 63%|██████▎   | 735M/1.13G [00:02\u003c00:01, 377MB/s]\r 67%|██████▋   | 772M/1.13G [00:02\u003c00:01, 380MB/s]\r 70%|██████▉   | 809M/1.13G [00:02\u003c00:00, 379MB/s]\r 73%|███████▎  | 845M/1.13G [00:02\u003c00:00, 381MB/s]\r 76%|███████▌  | 882M/1.13G [00:02\u003c00:00, 380MB/s]\r 79%|███████▉  | 918M/1.13G [00:02\u003c00:00, 377MB/s]\r 82%|████████▏ | 954M/1.13G [00:02\u003c00:00, 375MB/s]\r 85%|████████▌ | 990M/1.13G [00:02\u003c00:00, 374MB/s]\r 88%|████████▊ | 1.00G/1.13G [00:02\u003c00:00, 371MB/s]\r 91%|█████████▏| 1.04G/1.13G [00:03\u003c00:00, 372MB/s]\r 94%|█████████▍| 1.07G/1.13G [00:03\u003c00:00, 371MB/s]\r 98%|█████████▊| 1.11G/1.13G [00:03\u003c00:00, 371MB/s]\r100%|██████████| 1.13G/1.13G [00:03\u003c00:00, 368MB/s]\n"}
+,{"stream_name":"stdout","time":288.306795205,"data":"Downloading: \"https://github.com/davnords/storage/releases/download/loma/loma_B.pt\" to /root/.cache/torch/hub/checkpoints/loma_B.pt\n"}
+,{"stream_name":"stderr","time":293.685108272,"data":"\r  0%|          | 0.00/723M [00:00\u003c?, ?B/s]\r  1%|▏         | 9.12M/723M [00:00\u003c00:08, 90.8MB/s]\r  5%|▌         | 39.1M/723M [00:00\u003c00:03, 219MB/s] \r  9%|▉         | 67.2M/723M [00:00\u003c00:02, 253MB/s]\r 13%|█▎        | 95.2M/723M [00:00\u003c00:02, 269MB/s]\r 17%|█▋        | 121M/723M [00:01\u003c00:07, 79.2MB/s]\r 23%|██▎       | 165M/723M [00:01\u003c00:04, 129MB/s] \r 27%|██▋       | 194M/723M [00:01\u003c00:03, 156MB/s]\r 31%|███       | 222M/723M [00:01\u003c00:02, 182MB/s]\r 35%|███▍      | 251M/723M [00:01\u003c00:02, 208MB/s]\r 39%|███▉      | 280M/723M [00:01\u003c00:02, 229MB/s]\r 43%|████▎     | 309M/723M [00:01\u003c00:01, 247MB/s]\r 47%|████▋     | 338M/723M [00:01\u003c00:01, 254MB/s]\r 51%|█████     | 366M/723M [00:02\u003c00:01, 238MB/s]\r 54%|█████▍    | 391M/723M [00:02\u003c00:01, 206MB/s]\r 57%|█████▋    | 413M/723M [00:02\u003c00:01, 191MB/s]\r 60%|█████▉    | 433M/723M [00:02\u003c00:01, 181MB/s]\r 63%|██████▎   | 452M/723M [00:02\u003c00:01, 175MB/s]\r 65%|██████▍   | 469M/723M [00:02\u003c00:01, 168MB/s]\r 67%|██████▋   | 486M/723M [00:02\u003c00:01, 148MB/s]\r 69%|██████▉   | 501M/723M [00:03\u003c00:01, 138MB/s]\r 71%|███████   | 514M/723M [00:03\u003c00:01, 132MB/s]\r 73%|███████▎  | 527M/723M [00:03\u003c00:01, 128MB/s]\r 75%|███████▍  | 539M/723M [00:03\u003c00:01, 125MB/s]\r 76%|███████▋  | 551M/723M [00:03\u003c00:01, 121MB/s]\r 78%|███████▊  | 563M/723M [00:03\u003c00:01, 120MB/s]\r 79%|███████▉  | 574M/723M [00:03\u003c00:01, 118MB/s]\r 81%|████████  | 586M/723M [00:03\u003c00:01, 118MB/s]\r 83%|████████▎ | 598M/723M [00:03\u003c00:01, 119MB/s]\r 84%|████████▍ | 610M/723M [00:04\u003c00:00, 120MB/s]\r 86%|████████▌ | 621M/723M [00:04\u003c00:00, 120MB/s]\r 88%|████████▊ | 633M/723M [00:04\u003c00:00, 121MB/s]\r 89%|████████▉ | 645M/723M [00:04\u003c00:00, 121MB/s]\r 91%|█████████ | 656M/723M [00:04\u003c00:00, 121MB/s]\r 92%|█████████▏| 668M/723M [00:04\u003c00:00, 121MB/s]\r 94%|█████████▍| 680M/723M [00:04\u003c00:00, 122MB/s]\r 96%|█████████▌| 692M/723M [00:04\u003c00:00, 123MB/s]\r 97%|█████████▋| 704M/723M [00:04\u003c00:00, 107MB/s]\r 99%|█████████▉| 714M/723M [00:05\u003c00:00, 89.2MB/s]\r100%|██████████| 723M/723M [00:05\u003c00:00, 146MB/s] \n"}
+,{"stream_name":"stdout","time":340.868102345,"data":"  loma s1 20/200 samples, 2.23 s/sample\n"}
+,{"stream_name":"stdout","time":386.42384796,"data":"  loma s1 40/200 samples, 2.29 s/sample\n"}
+,{"stream_name":"stdout","time":432.854134051,"data":"  loma s1 60/200 samples, 2.33 s/sample\n"}
+,{"stream_name":"stdout","time":480.223877738,"data":"  loma s1 80/200 samples, 2.38 s/sample\n"}
+,{"stream_name":"stdout","time":528.163807951,"data":"  loma s1 100/200 samples, 2.39 s/sample\n"}
+,{"stream_name":"stdout","time":576.524080169,"data":"  loma s1 120/200 samples, 2.40 s/sample\n"}
+,{"stream_name":"stdout","time":625.146547901,"data":"  loma s1 140/200 samples, 2.41 s/sample\n"}
+,{"stream_name":"stdout","time":673.866695799,"data":"  loma s1 160/200 samples, 2.42 s/sample\n"}
+,{"stream_name":"stdout","time":722.623511209,"data":"  loma s1 180/200 samples, 2.45 s/sample\n"}
+,{"stream_name":"stdout","time":771.560970305,"data":"  loma s1 200/200 samples, 2.44 s/sample\n"}
+,{"stream_name":"stdout","time":771.621880641,"data":"{'matcher': 'loma', 'scale': 1.0, 'set': '3d_ho37bc', 'n': 100, 'found': 100.0, 'MLE': 9.73, 'medLE': 4.77, 'LSR10': 79.0, 'MHE': 7.88, 'medHE': 1.12, 'inl_med': 62.0, 'good_inl': 11.6, 'good_match': 8.9, 'sec_per_sample': 2.428}\n"}
+,{"stream_name":"stdout","time":771.622913059,"data":"{'matcher': 'loma', 'scale': 1.0, 'set': '3d_ho38bc', 'n': 100, 'found': 100.0, 'MLE': 3.99, 'medLE': 2.87, 'LSR10': 95.0, 'MHE': 4.7, 'medHE': 0.19, 'inl_med': 295.0, 'good_inl': 23.5, 'good_match': 20.6, 'sec_per_sample': 2.332}\n"}
+,{"stream_name":"stdout","time":939.510410877,"data":"  loma s2 20/200 samples, 8.41 s/sample\n"}
+,{"stream_name":"stdout","time":1106.998453176,"data":"  loma s2 40/200 samples, 8.39 s/sample\n"}
+,{"stream_name":"stdout","time":1274.938023403,"data":"  loma s2 60/200 samples, 8.37 s/sample\n"}
+,{"stream_name":"stdout","time":1442.91869606,"data":"  loma s2 80/200 samples, 8.43 s/sample\n"}
+,{"stream_name":"stdout","time":1610.763712604,"data":"  loma s2 100/200 samples, 8.39 s/sample\n"}
+,{"stream_name":"stdout","time":1778.577622007,"data":"  loma s2 120/200 samples, 8.35 s/sample\n"}
+,{"stream_name":"stdout","time":1946.394659957,"data":"  loma s2 140/200 samples, 8.36 s/sample\n"}
+,{"stream_name":"stdout","time":2114.315935633,"data":"  loma s2 160/200 samples, 8.38 s/sample\n"}
+,{"stream_name":"stdout","time":2281.587029242,"data":"  loma s2 180/200 samples, 8.35 s/sample\n"}
+,{"stream_name":"stdout","time":2451.898085795,"data":"  loma s2 200/200 samples, 8.61 s/sample\n"}
+,{"stream_name":"stdout","time":2451.939580277,"data":"{'matcher': 'loma', 'scale': 2.0, 'set': '3d_ho37bc', 'n': 100, 'found': 100.0, 'MLE': 14.55, 'medLE': 4.23, 'LSR10': 77.0, 'MHE': 17.12, 'medHE': 1.18, 'inl_med': 30.0, 'good_inl': 12.5, 'good_match': 9.4, 'sec_per_sample': 8.402}\n"}
+,{"stream_name":"stdout","time":2451.940569907,"data":"{'matcher': 'loma', 'scale': 2.0, 'set': '3d_ho38bc', 'n': 100, 'found': 100.0, 'MLE': 6.41, 'medLE': 2.85, 'LSR10': 94.0, 'MHE': 4.9, 'medHE': 0.13, 'inl_med': 178.5, 'good_inl': 22.4, 'good_match': 20.1, 'sec_per_sample': 8.381}\n"}
+,{"stream_name":"stderr","time":2456.860410939,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2456.860438081,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2457.106262057,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2457.106291971,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2457.899185193,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2458.854052811,"data":"[NbConvertApp] Writing 342486 bytes to __results__.html\n"}
+]

@@ -1,0 +1,77 @@
+[{"stream_name":"stdout","time":5.307783836,"data":"     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.0/45.0 kB 2.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":12.492638036,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 32.9/32.9 MB 9.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":12.518168211,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 167.1/167.1 kB 9.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":12.549612731,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 225.3/225.3 kB 9.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":12.601379504,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 51.0/51.0 kB 2.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":12.642677702,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 33.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":12.704937763,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 849.3/849.3 kB 29.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":12.731149634,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.6/61.6 kB 3.0 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":12.860053801,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 55.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":12.934553343,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 818.2/818.2 kB 34.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":20.152217581,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 554.6/554.6 MB 3.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":26.793251268,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 553.1/553.1 MB 3.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":28.54593346,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 170.1/170.1 MB 11.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":31.079011552,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.0/216.0 MB 8.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":32.998032315,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.4/60.4 MB 6.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":41.670877484,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 423.1/423.1 MB 1.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":41.834945517,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.7/10.7 MB 68.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":44.033234627,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.2/90.2 MB 6.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":44.085139921,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 53.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":46.508242202,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.1/214.1 MB 8.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":46.566970394,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 28.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":47.360660172,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.5/59.5 MB 29.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":50.086769731,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 200.9/200.9 MB 9.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":51.94829896,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 145.9/145.9 MB 12.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":51.975389981,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 148.0/148.0 kB 7.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":52.082564618,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.4/7.4 MB 76.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":52.124286148,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 43.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":52.158303214,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 750.4/750.4 kB 30.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":52.315726604,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 60.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":57.325997813,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 248.0/248.0 MB 3.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":57.353177031,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.6/56.6 kB 2.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":57.379357501,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 93.8/93.8 kB 4.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":61.747740056,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 170.9/170.9 MB 3.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":62.197781043,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.5/42.5 MB 47.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":62.223724406,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.6/155.6 kB 8.8 MB/s eta 0:00:00\n"}
+,{"stream_name":"stderr","time":189.303716175,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":189.30376161,"data":"libcuml-cu12 26.2.0 requires cuda-toolkit[cublas,cufft,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":189.303769693,"data":"cuml-cu12 26.2.0 requires cuda-toolkit[cublas,cufft,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":189.303772278,"data":"cudf-cu12 26.2.1 requires cuda-toolkit[nvcc,nvrtc]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":189.303774706,"data":"cuda-python 12.9.7 requires cuda-bindings~=12.9.7, but you have cuda-bindings 13.4.4 which is incompatible.\n"}
+,{"stream_name":"stderr","time":189.303777158,"data":"libcuvs-cu12 26.2.0 requires cuda-toolkit[cublas,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":189.303779581,"data":"libraft-cu12 26.2.0 requires cuda-toolkit[cublas,curand,cusolver,cusparse]==12.*, but you have cuda-toolkit 13.0.3.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":195.261746916,"data":"data ['2d_ho37bc', '2d_ho38bc', '3d_ho37bc', '3d_ho38bc', 'samples.csv'] 200\n"}
+,{"stream_name":"stderr","time":208.447315851,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":210.246637188,"data":"Downloading: \"https://github.com/cvg/LightGlue/releases/download/v0.1_arxiv/sift_lightglue.pth\" to /root/.cache/torch/hub/checkpoints/sift_lightglue_v0-1_arxiv.pth\n"}
+,{"stream_name":"stderr","time":211.267087604,"data":"\r  0%|          | 0.00/45.4M [00:00\u003c?, ?B/s]\r 22%|██▏       | 10.1M/45.4M [00:00\u003c00:00, 83.4MB/s]\r 44%|████▍     | 20.1M/45.4M [00:00\u003c00:00, 92.0MB/s]\r 66%|██████▋   | 30.1M/45.4M [00:00\u003c00:00, 96.6MB/s]\r 88%|████████▊ | 40.1M/45.4M [00:00\u003c00:00, 58.8MB/s]\r100%|██████████| 45.4M/45.4M [00:00\u003c00:00, 74.6MB/s]\n"}
+,{"stream_name":"stdout","time":325.873582631,"data":"  sift-lightglue s1 20/200 samples, 5.65 s/sample\n"}
+,{"stream_name":"stdout","time":436.82368831,"data":"  sift-lightglue s1 40/200 samples, 5.66 s/sample\n"}
+,{"stream_name":"stdout","time":548.885751136,"data":"  sift-lightglue s1 60/200 samples, 5.56 s/sample\n"}
+,{"stream_name":"stdout","time":662.65815607,"data":"  sift-lightglue s1 80/200 samples, 5.54 s/sample\n"}
+,{"stream_name":"stdout","time":773.926207269,"data":"  sift-lightglue s1 100/200 samples, 5.50 s/sample\n"}
+,{"stream_name":"stdout","time":877.993540124,"data":"  sift-lightglue s1 120/200 samples, 5.16 s/sample\n"}
+,{"stream_name":"stdout","time":983.211328568,"data":"  sift-lightglue s1 140/200 samples, 5.20 s/sample\n"}
+,{"stream_name":"stdout","time":1090.5454776,"data":"  sift-lightglue s1 160/200 samples, 5.36 s/sample\n"}
+,{"stream_name":"stdout","time":1196.228108399,"data":"  sift-lightglue s1 180/200 samples, 5.20 s/sample\n"}
+,{"stream_name":"stdout","time":1301.133963385,"data":"  sift-lightglue s1 200/200 samples, 5.23 s/sample\n"}
+,{"stream_name":"stdout","time":1301.191719664,"data":"{'matcher': 'sift-lightglue', 'scale': 1.0, 'set': '3d_ho37bc', 'n': 100, 'found': 99.0, 'MLE': 34.46, 'medLE': 23.57, 'LSR10': 40.0, 'MHE': 48.65, 'medHE': 13.85, 'inl_med': 13.5, 'good_inl': 3.1, 'good_match': 3.7, 'sec_per_sample': 5.266}\n"}
+,{"stream_name":"stdout","time":1301.192736245,"data":"{'matcher': 'sift-lightglue', 'scale': 1.0, 'set': '3d_ho38bc', 'n': 100, 'found': 100.0, 'MLE': 6.57, 'medLE': 2.94, 'LSR10': 92.0, 'MHE': 9.61, 'medHE': 0.2, 'inl_med': 188.5, 'good_inl': 23.2, 'good_match': 21.8, 'sec_per_sample': 5.616}\n"}
+,{"stream_name":"stdout","time":1415.9167602,"data":"  sift-lightglue s2 20/200 samples, 5.71 s/sample\n"}
+,{"stream_name":"stdout","time":1531.43481241,"data":"  sift-lightglue s2 40/200 samples, 6.09 s/sample\n"}
+,{"stream_name":"stdout","time":1650.313743971,"data":"  sift-lightglue s2 60/200 samples, 5.87 s/sample\n"}
+,{"stream_name":"stdout","time":1766.530459378,"data":"  sift-lightglue s2 80/200 samples, 5.85 s/sample\n"}
+,{"stream_name":"stdout","time":1881.984143133,"data":"  sift-lightglue s2 100/200 samples, 5.75 s/sample\n"}
+,{"stream_name":"stdout","time":1989.271688284,"data":"  sift-lightglue s2 120/200 samples, 5.28 s/sample\n"}
+,{"stream_name":"stdout","time":2095.420379242,"data":"  sift-lightglue s2 140/200 samples, 5.15 s/sample\n"}
+,{"stream_name":"stdout","time":2200.418161673,"data":"  sift-lightglue s2 160/200 samples, 5.33 s/sample\n"}
+,{"stream_name":"stdout","time":2307.489535105,"data":"  sift-lightglue s2 180/200 samples, 5.70 s/sample\n"}
+,{"stream_name":"stdout","time":2418.653664589,"data":"  sift-lightglue s2 200/200 samples, 5.32 s/sample\n"}
+,{"stream_name":"stdout","time":2418.693883726,"data":"{'matcher': 'sift-lightglue', 'scale': 2.0, 'set': '3d_ho37bc', 'n': 100, 'found': 100.0, 'MLE': 39.91, 'medLE': 18.08, 'LSR10': 40.0, 'MHE': 47.67, 'medHE': 24.56, 'inl_med': 8.0, 'good_inl': 4.8, 'good_match': 4.3, 'sec_per_sample': 5.358}\n"}
+,{"stream_name":"stdout","time":2418.694915054,"data":"{'matcher': 'sift-lightglue', 'scale': 2.0, 'set': '3d_ho38bc', 'n': 100, 'found': 100.0, 'MLE': 5.02, 'medLE': 2.94, 'LSR10': 92.0, 'MHE': 8.59, 'medHE': 0.18, 'inl_med': 120.5, 'good_inl': 22.5, 'good_match': 21.4, 'sec_per_sample': 5.798}\n"}
+,{"stream_name":"stderr","time":2423.886476389,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2423.886505327,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2424.134563394,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2424.134596277,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2424.975982782,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2425.983630793,"data":"[NbConvertApp] Writing 342496 bytes to __results__.html\n"}
+]

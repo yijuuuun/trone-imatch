@@ -1,0 +1,3 @@
+matcher,scale,set,n,found,MLE,medLE,LSR10,MHE,medHE,inl_med,good_inl,good_match,sec_per_sample
+loma,1.0,3d_ho37bc,900,100.0,13.2,5.73,73.0,13.56,1.5,57.0,11.5,9.4,2.302
+loma,1.0,3d_ho38bc,900,100.0,4.03,3.06,96.8,3.7,0.19,293.0,20.8,19.4,2.293
