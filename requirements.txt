@@ -1,0 +1,6 @@
+numpy
+pandas
+scipy
+opencv-python>=4.5.5   # USAC_MAGSAC
+torch                  # GPU 매처용
+vismatch               # LoMa, RoMa v2, SIFT-LightGlue

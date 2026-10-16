@@ -1,5 +1,7 @@
+data/*
+!data/README.md
+outputs/
+kaggle_kernels/
 __pycache__/
 *.pyc
-bearing_paths.txt
-out_long/
 .DS_Store
