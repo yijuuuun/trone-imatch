@@ -10,8 +10,13 @@ data/im_t1_3d_1000/
 ```
 
 ## 받는 법
-1. **zip 파일**: 이준에게 `im_t1_3d_1000.zip`을 받아 `unzip im_t1_3d_1000.zip -d data/im_t1_3d_1000`
-2. **Kaggle 데이터셋**: `yijuniverse/im-t1-3d-1000` (비공개, 이준에게 공유 요청). 자기 계정으로 쓰려면 zip을 새 Kaggle 데이터셋으로 올리고 `build_kernel.py --dataset`에 그 이름을 넣는다.
+```bash
+gh auth login                     # 처음 한 번 (저장소가 비공개라 필요)
+python scripts/download_data.py   # Release data-v1에서 받아 data/im_t1_3d_1000/ 에 푼다
+```
+브라우저로 받으려면 저장소의 Releases → `data-v1` → `im_t1_3d_1000.zip`을 받아 `data/`에 두고 위 스크립트를 실행한다.
+
+Kaggle에서 돌리려면 이 zip을 자기 Kaggle 데이터셋으로 올리고 `build_kernel.py --dataset`에 그 이름을 넣는다.
 
 ## 처음부터 다시 만들기 (보통은 필요 없음)
 capstone1 저장소와 Bearing-UAV-90K 원본이 있어야 한다.

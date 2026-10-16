@@ -45,6 +45,8 @@ trone-grid-pooling/
 │   ├── run.py              매칭 실행 → 샘플별 CSV
 │   ├── evaluate.py         기준선·LoMa와 짝지어 비교 → 표
 │   ├── subset_angles.py    다시 안 돌리고 방향 수만 줄인 결과 만들기
+│   ├── ensemble.py         두 매처 조합
+│   ├── download_data.py    샘플 데이터 받기
 │   ├── kaggle/build_kernel.py   Kaggle GPU용 커널 만들기
 │   └── export_from_capstone1.py 원 데이터셋에서 샘플 뽑기 (capstone1 저장소 필요, 보통은 안 씀)
 ├── data/                   샘플 데이터 (git에 안 올림, data/README.md)
@@ -57,7 +59,7 @@ trone-grid-pooling/
 
 ```bash
 pip install -r requirements.txt
-# 데이터: data/README.md 대로 data/im_t1_3d_1000/ 에 풀기 (zip은 이준에게 받기)
+python scripts/download_data.py      # 샘플 데이터 340 MB (GitHub Release, gh auth login 필요)
 
 # 1) 설치 확인 (CPU, 몇 초): OpenCV SIFT로 5샘플
 python scripts/run.py --data data/im_t1_3d_1000 --out outputs/check --matchers cv-sift --n 5 --device cpu
