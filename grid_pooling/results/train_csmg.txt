@@ -1,0 +1,20 @@
+device=mps variant=csmg north=False samples=90000 unique_tiles=3600 epochs=4.0
+tile feature cache (3600, 512, 32, 32) 3.77 GB
+학습 파라미터: 전체 9.499 M, 교체 모듈 1.314 M
+총 5340 스텝 (4.0 epoch)
+6562 ms/step
+step 500 ep 1 loss 0.1678 44.3min
+step 1000 ep 1 loss 0.0850 91.9min
+epoch 1 끝 (step 1335) val 위치오차 평균 11.26 m, 중앙값 10.59 m
+step 1500 ep 2 loss 0.0113 136.1min
+step 2000 ep 2 loss 0.0308 160.4min
+step 2500 ep 2 loss 0.0265 184.9min
+epoch 2 끝 (step 2670) val 위치오차 평균 8.77 m, 중앙값 8.05 m
+step 3000 ep 3 loss 0.0127 220.1min
+step 3500 ep 3 loss 0.0181 246.2min
+step 4000 ep 3 loss 0.0169 270.7min
+epoch 3 끝 (step 4005) val 위치오차 평균 7.90 m, 중앙값 7.32 m
+step 4500 ep 4 loss 0.0139 304.6min
+step 5000 ep 4 loss 0.0136 327.7min
+epoch 4 끝 (step 5340) val 위치오차 평균 7.68 m, 중앙값 7.11 m
+# done 351.8min

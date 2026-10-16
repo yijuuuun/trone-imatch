@@ -1,0 +1,20 @@
+device=mps variant=grid16 north=False dark_train=None samples=90000 unique_tiles=3600 epochs=4.0
+tile feature cache (3600, 512, 32, 32) 3.77 GB
+학습 파라미터: 전체 9.501 M, 교체 모듈 0.002 M
+총 5340 스텝 (4.0 epoch)
+1102 ms/step
+step 500 ep 1 loss 0.1764 8.6min
+step 1000 ep 1 loss 0.1669 17.1min
+epoch 1 끝 (step 1335) val 위치오차 평균 24.39 m, 중앙값 25.42 m
+step 1500 ep 2 loss 0.1639 26.8min
+step 2000 ep 2 loss 0.1603 35.3min
+step 2500 ep 2 loss 0.1560 44.0min
+epoch 2 끝 (step 2670) val 위치오차 평균 23.28 m, 중앙값 23.84 m
+step 3000 ep 3 loss 0.1497 54.0min
+step 3500 ep 3 loss 0.1481 62.4min
+step 4000 ep 3 loss 0.1450 70.8min
+epoch 3 끝 (step 4005) val 위치오차 평균 22.53 m, 중앙값 22.79 m
+step 4500 ep 4 loss 0.1410 80.6min
+step 5000 ep 4 loss 0.1396 89.0min
+epoch 4 끝 (step 5340) val 위치오차 평균 22.28 m, 중앙값 22.38 m
+# done 96.0min

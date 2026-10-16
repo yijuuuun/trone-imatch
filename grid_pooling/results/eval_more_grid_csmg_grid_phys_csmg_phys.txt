@@ -1,0 +1,17 @@
+# 모델	도시(궤적)	성공	CI95	McNemar	조건=주간
+공개 가중치	NY(96)	31/96 (32.3%)	[np.float64(23.8), np.float64(42.2)]
+grid	NY(96)	40/96 (41.7%)	[np.float64(32.3), np.float64(51.7)]	vs 공개 가중치 +23/-14 p=0.188
+csmg	NY(96)	23/96 (24.0%)	[np.float64(16.5), np.float64(33.4)]	vs 공개 가중치 +10/-18 p=0.185	vs grid +11/-28 p=0.0095
+grid_phys	NY(96)	42/96 (43.8%)	[np.float64(34.3), np.float64(53.7)]	vs 공개 가중치 +24/-13 p=0.0989	vs grid +9/-7 p=0.804	vs csmg +32/-13 p=0.0066
+csmg_phys	NY(96)	31/96 (32.3%)	[np.float64(23.8), np.float64(42.2)]	vs 공개 가중치 +14/-14 p=1	vs grid +13/-22 p=0.175	vs csmg +18/-10 p=0.185	vs grid_phys +12/-23 p=0.0895
+공개 가중치	Paris(32)	12/32 (37.5%)	[np.float64(22.9), np.float64(54.7)]
+grid	Paris(32)	14/32 (43.8%)	[np.float64(28.2), np.float64(60.7)]	vs 공개 가중치 +6/-4 p=0.754
+csmg	Paris(32)	7/32 (21.9%)	[np.float64(11.0), np.float64(38.8)]	vs 공개 가중치 +2/-7 p=0.18	vs grid +3/-10 p=0.0923
+grid_phys	Paris(32)	15/32 (46.9%)	[np.float64(30.9), np.float64(63.6)]	vs 공개 가중치 +8/-5 p=0.581	vs grid +5/-4 p=1	vs csmg +12/-4 p=0.0768
+csmg_phys	Paris(32)	7/32 (21.9%)	[np.float64(11.0), np.float64(38.8)]	vs 공개 가중치 +1/-6 p=0.125	vs grid +0/-7 p=0.0156	vs csmg +4/-4 p=1	vs grid_phys +1/-9 p=0.0215
+공개 가중치	London(32)	9/32 (28.1%)	[np.float64(15.6), np.float64(45.4)]
+grid	London(32)	12/32 (37.5%)	[np.float64(22.9), np.float64(54.7)]	vs 공개 가중치 +7/-4 p=0.549
+csmg	London(32)	7/32 (21.9%)	[np.float64(11.0), np.float64(38.8)]	vs 공개 가중치 +2/-4 p=0.688	vs grid +3/-8 p=0.227
+grid_phys	London(32)	12/32 (37.5%)	[np.float64(22.9), np.float64(54.7)]	vs 공개 가중치 +6/-3 p=0.508	vs grid +3/-3 p=1	vs csmg +6/-1 p=0.125
+csmg_phys	London(32)	7/32 (21.9%)	[np.float64(11.0), np.float64(38.8)]	vs 공개 가중치 +2/-4 p=0.688	vs grid +3/-8 p=0.227	vs csmg +3/-3 p=1	vs grid_phys +1/-6 p=0.125
+# done

@@ -21,9 +21,13 @@ DT = 'cuda' if DEV == 'cuda' else ('mps' if DEV == 'mps' else 'cpu')  # autocast
 class GridPool(nn.Module):
     """CSMG 대체: 1x1 conv(512->64) + 4x4 격자 평균 풀링 -> 64*16 = 1024 (CSMG 출력과 같은 크기).
     클러스터로 뭉뚱그리지 않고 칸별로 따로 요약해 '어디에 무엇이 있는지'를 남긴다."""
-    def __init__(self, cin=512, c=64, g=4):
+    def __init__(self, cin=512, c=64, g=4, hidden=0):
         super().__init__()
-        self.proj = nn.Sequential(nn.Conv2d(cin, c, 1), nn.BatchNorm2d(c), nn.ReLU(inplace=True))
+        if hidden:  # 교란 변수 분리용: 1x1 conv를 두 층(512->hidden->c)으로 해서 파라미터 수만 바꾼다
+            self.proj = nn.Sequential(nn.Conv2d(cin, hidden, 1), nn.BatchNorm2d(hidden), nn.ReLU(inplace=True),
+                                      nn.Conv2d(hidden, c, 1), nn.BatchNorm2d(c), nn.ReLU(inplace=True))
+        else:
+            self.proj = nn.Sequential(nn.Conv2d(cin, c, 1), nn.BatchNorm2d(c), nn.ReLU(inplace=True))
         self.g = g
     def forward(self, x):
         y = F.adaptive_avg_pool2d(self.proj(x), self.g)        # [B,64,4,4]
@@ -40,6 +44,7 @@ def unrotate(rgb, a):
 def parse_tag(tag):
     """'csmg', 'grid', 'grid_north', 'grid8', 'grid_s1', 'grid_dark', 'grid_dark_s1' ... -> (base, 격자 크기 g, 시드).
     gridN은 N×N 격자 (출력 1024 유지: 채널 = 1024 / N²). _dark는 저조도 사본 학습. _sK는 학습 시드 K (기본 0)."""
+    tag = re.sub(r'_h\d+', '', tag)  # _hN: GridPool 은닉 채널 (hidden_of 참고)
     tag = re.sub(r'_e\d+', '', tag)  # _eN: 학습 epoch 표시 (저장 이름 구분용, 모델 구조와 무관)
     seed = 0
     if '_s' in tag and tag.rsplit('_s', 1)[1].isdigit():
@@ -47,6 +52,12 @@ def parse_tag(tag):
     base = re.sub(r'_(dark|phys)$', '', tag)
     g = int(base[4:]) if base.startswith('grid') and base[4:].isdigit() else 4
     return base, g, seed
+
+
+def hidden_of(tag):
+    """'_hN'이 있으면 GridPool의 1x1 conv를 512->N->c 두 층으로 만든다 (파라미터 수만 조절). 없으면 0."""
+    h = re.search(r'_h(\d+)', tag)
+    return int(h.group(1)) if h else 0
 
 
 def is_dark_train(tag):
@@ -82,7 +93,7 @@ def build(tag, init='fresh'):
         m.load_state_dict(sd, strict=False)
     if base.startswith('grid'):
         assert 1024 % (g * g) == 0, g
-        torch.manual_seed(seed); m.csmg = GridPool(c=1024 // (g * g), g=g).to(DEV)
+        torch.manual_seed(seed); m.csmg = GridPool(c=1024 // (g * g), g=g, hidden=hidden_of(tag)).to(DEV)
     for p in m.backbone.parameters(): p.requires_grad = False
     m.backbone.eval()
     return m

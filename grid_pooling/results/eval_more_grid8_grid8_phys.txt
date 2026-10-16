@@ -1,0 +1,11 @@
+# 모델	도시(궤적)	성공	CI95	McNemar	조건=주간
+공개 가중치	NY(96)	31/96 (32.3%)	[np.float64(23.8), np.float64(42.2)]
+grid8	NY(96)	45/96 (46.9%)	[np.float64(37.2), np.float64(56.8)]	vs 공개 가중치 +25/-11 p=0.0288
+grid8_phys	NY(96)	53/96 (55.2%)	[np.float64(45.3), np.float64(64.8)]	vs 공개 가중치 +30/-8 p=0.0005	vs grid8 +10/-2 p=0.0386
+공개 가중치	Paris(32)	12/32 (37.5%)	[np.float64(22.9), np.float64(54.7)]
+grid8	Paris(32)	19/32 (59.4%)	[np.float64(42.3), np.float64(74.5)]	vs 공개 가중치 +12/-5 p=0.143
+grid8_phys	Paris(32)	20/32 (62.5%)	[np.float64(45.3), np.float64(77.1)]	vs 공개 가중치 +12/-4 p=0.0768	vs grid8 +3/-2 p=1
+공개 가중치	London(32)	9/32 (28.1%)	[np.float64(15.6), np.float64(45.4)]
+grid8	London(32)	21/32 (65.6%)	[np.float64(48.3), np.float64(79.6)]	vs 공개 가중치 +13/-1 p=0.0018
+grid8_phys	London(32)	19/32 (59.4%)	[np.float64(42.3), np.float64(74.5)]	vs 공개 가중치 +12/-2 p=0.0129	vs grid8 +2/-4 p=0.688
+# done
