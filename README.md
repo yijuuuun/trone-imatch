@@ -4,7 +4,7 @@ Trone 팀 졸업프로젝트 · 작성 이준 · 2026-10-16
 
 > **방향 전환 (2026-10-15 교수님 피드백 이후):** 이제 이 저장소의 주 방향은 **이미지 매칭 기반 재설계**다. 문제는 결국 "특징 매칭이 안 되는 것"이므로, CSMG 교체(Grid Pooling)가 아니라 검증된 이미지 매칭 파이프라인으로 위치·heading을 구한다. 계획 전체는 [docs/01_재설계계획.md](docs/01_재설계계획.md), 계기는 [docs/00_교수님_피드백.md](docs/00_교수님_피드백.md).
 >
-> 이전 방향인 Grid Pooling 코드와 결과는 [grid_pooling/](grid_pooling/)에 그대로 있다 (명령어는 `cd grid_pooling` 후 기존과 같다).
+> 이전 방향인 Grid Pooling(CSMG 교체) 코드·모델·결과·문서는 main에서 뺐다. 태그 [`grid-pooling-final`](https://github.com/yijuuuun/trone-grid-pooling/tree/grid-pooling-final/grid_pooling)에 그대로 있다 (`git checkout grid-pooling-final`).
 
 드론 영상 1장과 지도 블록(2×2 타일)을 받아 **위치와 heading**을 구한다. 학습 없이, 공개 이미지 매처(LoMa)로 대응점을 찾고 기하 계산으로 답한다.
 
@@ -50,15 +50,14 @@ trone-grid-pooling/
 ├── data/                   샘플 데이터 (git에 안 올림, data/README.md)
 ├── results/                지금까지의 결과 CSV와 요약
 ├── experiments/README.md   팀원이 돌릴 실험 목록
-├── docs/                   교수님 피드백, 계획서, 실험 기록, 기여 추천안
-└── grid_pooling/           이전 방향 (CSMG → Grid Pooling) 코드·모델·README
+└── docs/                   교수님 피드백, 계획서, 실험 기록, 기여 추천안 (archive/: 이전 정리 문서)
 ```
 
 ## 시작하기
 
 ```bash
 pip install -r requirements.txt
-# 데이터: data/README.md 대로 data/im_t1_3d_1000/ 에 풀기
+# 데이터: data/README.md 대로 data/im_t1_3d_1000/ 에 풀기 (zip은 이준에게 받기)
 
 # 1) 설치 확인 (CPU, 몇 초): OpenCV SIFT로 5샘플
 python scripts/run.py --data data/im_t1_3d_1000 --out outputs/check --matchers cv-sift --n 5 --device cpu
