@@ -27,6 +27,7 @@ def main(argv=None):
     ap.add_argument('--matchers', default='cv-sift', help='쉼표로 여러 개: loma,romav2,sift-lightglue,cv-sift')
     ap.add_argument('--scales', default='1', help='영상 확대 배율, 쉼표로 여러 개')
     ap.add_argument('--angles', type=int, default=8, help='회전 탐색 방향 수 (1 = 탐색 없음)')
+    ap.add_argument('--angle-offset', type=float, default=0.0, help='모든 방향에 더할 각도. 예: 8방향 + 22.5 = 기존 8방향 사이')
     ap.add_argument('--sets', default='', help='3d_ho38bc(SF), 3d_ho37bc(Singapore). 비우면 전부')
     ap.add_argument('--n', type=int, default=0, help='k < n 샘플만 (0 = 전부)')
     ap.add_argument('--kmin', type=int, default=0, help='k >= kmin 샘플만')
@@ -40,7 +41,7 @@ def main(argv=None):
     if a.sets: df = df[df.set.isin(a.sets.split(','))]
     if a.n: df = df[df.k < a.n]
     if a.kmin: df = df[df.k >= a.kmin]
-    angles = list(np.arange(0, 360, 360 / a.angles))
+    angles = list(np.arange(0, 360, 360 / a.angles) + a.angle_offset)
     summ = []
     for mname in a.matchers.split(','):
         try:
