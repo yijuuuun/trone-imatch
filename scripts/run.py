@@ -27,6 +27,8 @@ def main(argv=None):
     ap.add_argument('--matchers', default='cv-sift', help='쉼표로 여러 개: loma,romav2,sift-lightglue,cv-sift')
     ap.add_argument('--scales', default='1', help='영상 확대 배율, 쉼표로 여러 개')
     ap.add_argument('--angles', type=int, default=8, help='회전 탐색 방향 수 (1 = 탐색 없음)')
+    ap.add_argument('--oracle-rot', action='store_true',
+                    help='정답 heading 한 방향만 돌려 매칭 (회전을 완벽히 맞췄을 때의 상한 실험용, 실제 방법 아님)')
     ap.add_argument('--angle-offset', type=float, default=0.0, help='모든 방향에 더할 각도. 예: 8방향 + 22.5 = 기존 8방향 사이')
     ap.add_argument('--sets', default='', help='3d_ho38bc(SF), 3d_ho37bc(Singapore). 비우면 전부')
     ap.add_argument('--n', type=int, default=0, help='k < n 샘플만 (0 = 전부)')
@@ -55,7 +57,8 @@ def main(argv=None):
                 rd = lambda f: cv2.cvtColor(cv2.imread(os.path.join(d, f)), cv2.COLOR_BGR2RGB)
                 try:
                     recs, best = localize(matcher, rd(f'k{s.k:03d}_uav.jpg'), rd(f'k{s.k:03d}_block.jpg'),
-                                          (s.x_norm, s.y_norm, s.theta), scale, angles)
+                                          (s.x_norm, s.y_norm, s.theta), scale,
+                                          [s.theta % 360] if a.oracle_rot else angles)
                 except Exception as e:
                     print('RUN FAIL', mname, scale, s.set, s.k, repr(e)[:200], flush=True); recs, best = [], None
                 for r in recs: per_angle.append(dict(matcher=mname, scale=scale, set=s.set, k=s.k, **r))
