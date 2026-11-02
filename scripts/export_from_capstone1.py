@@ -15,11 +15,12 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--n', type=int, default=100)
 ap.add_argument('--out', required=True)
 ap.add_argument('--views', default='2d,3d')
+ap.add_argument('--cities', default='38bc,37bc', help='시험 도시 38bc(SF), 37bc(Singapore). 학습 도시는 34bc, 36bc')
 a = ap.parse_args()
 
 recs = []
 for view in a.views.split(','):
-    for ho in ['38bc', '37bc']:
+    for ho in a.cities.split(','):
         rows, df = heldout_rows(view, ho, SIZES['full']['t1'])  # same draw as harness T1; its prefix is unbiased
         rows = rows[:a.n]
         S = load_rows(df, rows)
