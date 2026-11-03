@@ -1,0 +1,1 @@
+set,k,sample_id,city,experiment_name,matcher,scale,magsac_threshold,threshold_frame,effective_resized_threshold_px,gt_x,gt_y,gt_theta,pred_x,pred_y,pred_theta,angle,n_inl,n_match,position_error_m,success_10m,pipeline_failure,status,dataset_preprocessing_verified,err_m,head_err,sec,runtime_sec,matcher_sec,gpu_peak_allocated_mib,gpu_peak_reserved_mib,tag,head_err_recomputed

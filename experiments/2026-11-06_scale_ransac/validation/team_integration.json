@@ -1,0 +1,51 @@
+{
+  "date_kst": "2026-11-03",
+  "repository": "yijuuuun/trone-imatch",
+  "default_branch": "main",
+  "base_commit": "3a77ff40c313961e39c8fd88cff490e5a40ca3ec",
+  "branch": "experiment/gpu03-e3-e4",
+  "team_assignment_document": "docs/04_팀분담_일정.md",
+  "original_snapshot": "a109f06 (independent local root; preserved, not merged)",
+  "integration_method": "Separate clone of team main; selected experiment files; reviewed scoped lazy-import patch",
+  "source_files_verified_against_measured_final_run": 25,
+  "source_fingerprint": "5de8317e823e5184abb715fbe3e3deed5c17b7a767791e166bea14b87702072b",
+  "source_fingerprint_matches_measured_run": true,
+  "protocol_tests_passed": 14,
+  "protocol_tests_skipped": 0,
+  "preexisting_standalone_test_suite_found": false,
+  "preexisting_cpu_runner_smoke": {
+    "matcher": "cv-sift",
+    "device": "cpu",
+    "k": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n": 5,
+    "passed": true,
+    "output_retained": false
+  },
+  "preexisting_evaluation_and_cli_checks_passed": true,
+  "python_compile_checks_passed": true,
+  "recomputed_final_analysis_byte_identical": [
+    "comparison.csv",
+    "paired_differences.csv",
+    "baseline_failure_tags.csv",
+    "baseline_failure_tag_counts.csv"
+  ],
+  "retained_original_artifact_hashes_verified": 93,
+  "README_success_pct_verified": {
+    "baseline": 74.22,
+    "e3_scale1p5": 71.89,
+    "e3_scale2": 69.56,
+    "e4_magsac3": 74.22,
+    "e4_magsac8": 74.67
+  },
+  "large_or_forbidden_binary_files_found": 0,
+  "credential_pattern_matches": 0,
+  "GPU_experiments_rerun_for_submission": false,
+  "team_documents_other_experiments_and_historical_results_modified": false,
+  "push_and_pull_request": "Await explicit user approval after local commit and final diff review"
+}

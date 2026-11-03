@@ -1,0 +1,12 @@
+{
+  "condition": {
+    "name": "e4_magsac3",
+    "scale": 1.0,
+    "magsac_threshold": 3.0
+  },
+  "n": 5,
+  "warmup_sec": 0.1817217159550637,
+  "wall_sec": 1.0834289079066366,
+  "gpu_peak_allocated_mib": 2802.4326171875,
+  "gpu_peak_reserved_mib": 15568.0
+}

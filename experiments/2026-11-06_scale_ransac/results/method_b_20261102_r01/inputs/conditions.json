@@ -1,0 +1,43 @@
+{
+  "protocol_version": 2,
+  "dataset_policy": "method_b_reconstructed_fresh_baseline",
+  "historical_pixel_identity_required": false,
+  "decision_rule": "Choose the unique non-duplicate condition with highest tune success count; ties use lower mean error then lower mean runtime. Keep baseline if no success-count gain. Confirm selected candidate on final with positive success gain and Holm4 p<0.05; otherwise retain baseline. All four comparisons are predeclared; no retuning on final.",
+  "city": "Singapore",
+  "set": "3d_ho37bc",
+  "matcher": "loma",
+  "angles": [
+    0.0
+  ],
+  "batch_size": 1,
+  "seed": 20261102,
+  "success_rule": "position_error_m < 10 (existing team rule)",
+  "threshold_frame": "original block pixels before scale; normalize both point sets before MAGSAC",
+  "conditions": [
+    {
+      "name": "baseline",
+      "scale": 1.0,
+      "magsac_threshold": 3.0
+    },
+    {
+      "name": "e3_scale1p5",
+      "scale": 1.5,
+      "magsac_threshold": 3.0
+    },
+    {
+      "name": "e3_scale2",
+      "scale": 2.0,
+      "magsac_threshold": 3.0
+    },
+    {
+      "name": "e4_magsac3",
+      "scale": 1.0,
+      "magsac_threshold": 3.0
+    },
+    {
+      "name": "e4_magsac8",
+      "scale": 1.0,
+      "magsac_threshold": 8.0
+    }
+  ]
+}

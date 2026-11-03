@@ -1,0 +1,42 @@
+{
+  "architecture": "LoMa-B",
+  "cache": "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints",
+  "weights": [
+    {
+      "name": "LoMa-B",
+      "filename": "loma_B.pt",
+      "url": "https://github.com/davnords/storage/releases/download/loma/loma_B.pt",
+      "source": "https://github.com/davnords/LoMa/blob/9105854833f55d18194d0505d913f0a74b194ef0/src/loma/loma.py",
+      "path": "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/loma_B.pt",
+      "exists": true,
+      "downloaded_this_call": true,
+      "bytes": 757888113,
+      "observed_sha256": "3a38824391e22b33bb3e10377c7736243fd8a2fbf1561446e7e133e497c35758"
+    },
+    {
+      "name": "DaD",
+      "filename": "dad.pth",
+      "url": "https://github.com/Parskatt/dad/releases/download/v0.1.0/dad.pth",
+      "source": "https://github.com/davnords/LoMa/blob/9105854833f55d18194d0505d913f0a74b194ef0/src/loma/detector/dad.py",
+      "path": "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/dad.pth",
+      "exists": true,
+      "downloaded_this_call": true,
+      "bytes": 26075286,
+      "observed_sha256": "7d827844649faf5213ba97e7adb43e16b936dd3d11ab2d0fc0d602c67fae781f"
+    },
+    {
+      "name": "DINOv2 ViT-L/14",
+      "filename": "dinov2_vitl14_pretrain.pth",
+      "url": "https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth",
+      "source": "https://github.com/davnords/LoMa/blob/9105854833f55d18194d0505d913f0a74b194ef0/src/loma/descriptor/dedode.py",
+      "path": "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/dinov2_vitl14_pretrain.pth",
+      "exists": true,
+      "downloaded_this_call": true,
+      "bytes": 1217586395,
+      "observed_sha256": "d5383ea8f4877b2472eb973e0fd72d557c7da5d3611bd527ceeb1d7162cbf428"
+    }
+  ],
+  "compatibility_validated": false,
+  "note": "Presence/hash alone do not establish compatibility. Offline model initialization must pass state_dict checks.",
+  "all_present": true
+}

@@ -1,0 +1,124 @@
+{
+  "source_fingerprint": "32c1947c490c51999897f7a4fd07dacd95a6f1dd04b9dc9f699a9c1ac680da20",
+  "source_hashes": {
+    "experiments/2026-11-06_scale_ransac/analyze.py": "ffe1e20c5f265ebe5f7961d3fa32293561e8fb92825494ef0ec4b7df5d2e7c50",
+    "experiments/2026-11-06_scale_ransac/audit_existing.py": "16bfb1d470f7e33b4e57e359f361db6cc54d0f2faee6974953d12f59c65ab311",
+    "experiments/2026-11-06_scale_ransac/check_assets.py": "8b97fb6f63de49bec6294ce805b92039e83d658e2643bfc832cbbd0417535bc6",
+    "experiments/2026-11-06_scale_ransac/common.py": "99128e0f2da34f86c64ddd63fafc8269f0bce2c00ba87621d655ce8f6b7ff74b",
+    "experiments/2026-11-06_scale_ransac/evaluate_existing.py": "cc0bddbe0fc5278dc2eefe2231319267a8cc7033f69d044d7fc113ee07504169",
+    "experiments/2026-11-06_scale_ransac/freeze.py": "44cb32b6b503a05cba46c0d510a7f0e0d39f8d20d013c5161b10539621522b1f",
+    "experiments/2026-11-06_scale_ransac/launch_tmux.py": "9a2a839235426d452e75a40c471ad2a70248b29bb07c206e0e29570b0806fda7",
+    "experiments/2026-11-06_scale_ransac/preflight.py": "109abd74ff3d0d9c1c9d3de9c18ebf47981ee092139205de239d8d26baee65e5",
+    "experiments/2026-11-06_scale_ransac/prepare_weights.py": "8fe4d716bdc60f7c039667de71f1791523a7e7aaba600bb5bfcf77877b706389",
+    "experiments/2026-11-06_scale_ransac/reconstruct_singapore.py": "a11e01cd63f0dea9d6b5ed4e7a8578430dc8c41c2f38ff3f690d7f48c459020a",
+    "experiments/2026-11-06_scale_ransac/resource_plan.py": "be10ef542c3b6cf3e76ee4b2a57f0bb958dcec43206ec98f4a9159c134f2b413",
+    "experiments/2026-11-06_scale_ransac/run_experiments.py": "88db61005f69e77cb722b744a41f544f41d8f4fe17d51987ece8f1644ff6dc39",
+    "experiments/2026-11-06_scale_ransac/seal_method_b.py": "2eff4cc43c0fa4379ccbca0a752d452d1a60513bd932828771ceb293f4739904",
+    "experiments/2026-11-06_scale_ransac/test_protocol.py": "449db310abec4e337735be3a88bbd471eb5fc26669ed47b082d250dcb61da24a",
+    "experiments/2026-11-06_scale_ransac/conditions.json": "be3f97643e9ef8d0978ae52771be2bd7c97101b326f402cbf38a89381b837f56",
+    "experiments/2026-11-06_scale_ransac/official_weights.json": "73052998782f05df1f7bdafa149a9356f1e2ab113ef4229fef6f2d17224507f9",
+    "experiments/2026-11-06_scale_ransac/requirements-loma-runtime.txt": "0e43041d59d9f887d9d50b67081b197ee60b5a97b1e638633a6e18eaeaa833c2",
+    "experiments/2026-11-06_scale_ransac/method_b_dataset.json": "271806b360bb5898eaf021e91838bc7bd9cd69e64928b06ec26991e66199f2d3",
+    "imatch/__init__.py": "281b3a0b055b7c7ee9094878bbb6e13674d421834bb6b3984c5555dae87768ad",
+    "imatch/geometry.py": "d47adabb6aeb3970fde119258b5467ca7e2a5e5a15df6414f93730e82b8edceb",
+    "imatch/matchers.py": "f57cb3501e4e600335e9ebedadbd38e47b03285db82a3a882d85ef77bcec8b88",
+    "imatch/metrics.py": "1145eb05de81994c941e04c5732ff787c08f91cde1bb4525cb194c5181377a51",
+    "imatch/pipeline.py": "fa1734093acb23febc1a5c5665c51853bb71c0bca536751259a4f361deb22365",
+    "scripts/evaluate.py": "062cd1658cd0f677206aca9a49290921914c376e6bd04ba27cedfdb5158372e8",
+    "requirements.txt": "d2af6c09d8bfb325ce4d0423ee5d331bff16f16fccef7aedd462165e4635637a"
+  },
+  "weights": {
+    "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/dad.pth": "7d827844649faf5213ba97e7adb43e16b936dd3d11ab2d0fc0d602c67fae781f",
+    "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/dinov2_vitl14_pretrain.pth": "d5383ea8f4877b2472eb973e0fd72d557c7da5d3611bd527ceeb1d7162cbf428",
+    "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/loma_B.pt": "3a38824391e22b33bb3e10377c7736243fd8a2fbf1561446e7e133e497c35758"
+  },
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scipy": "1.15.3",
+    "torch": "2.8.0+cu126",
+    "opencv-python": "4.12.0.88",
+    "opencv-python-headless": null,
+    "vismatch": "1.4.0"
+  },
+  "backend_source_sha256": "e611c52df5bbc78fd8cbd95b4ddd424dd739bceb038b275f23955f7d5d06b2be",
+  "base_matcher_source_sha256": "220913be8e21d956ade889ef8fbb5e183fa29bec7f9a90d9348f92d7d3bb2155",
+  "samples_csv_sha256": "107e663238ec699a346b0362d777f4639e65e14a15e5c834d18d7acc9edb7bd5",
+  "image_sha256": {
+    "3d_ho37bc/k000_uav.jpg": "5c8d751d3e41c77120c22056de18eaae3effc4063bbae36c47ed27d03ac1b087",
+    "3d_ho37bc/k000_block.jpg": "cd05fb71faa04e2b12164bcb6750a38f12df492f6648d2425ff59d0ca0068b5e",
+    "3d_ho37bc/k001_uav.jpg": "0344ce23b032a86ec5219cedf30349c81a67d242a024305d1d2ae562f406b463",
+    "3d_ho37bc/k001_block.jpg": "162d9744653c07a880cf95ce7d90998b80bb9d2b440dbb82bc261af70f9d10c9",
+    "3d_ho37bc/k002_uav.jpg": "d5b15791ee1de8c1f2fd1e3fb9ff182ac4120ee7cc84cf2bdfd3bc203c552d80",
+    "3d_ho37bc/k002_block.jpg": "6694add83684494d06c616b919a342ff28c3a3435f2c057841320954d23e0526",
+    "3d_ho37bc/k003_uav.jpg": "853c030caab259b73510d09f811f1df79f7cd5fd0079cd4eec94b6f07b115dfc",
+    "3d_ho37bc/k003_block.jpg": "778971982cca626e3becc46429e4157265ce3aca364b87f9cdd58a85eadd7864",
+    "3d_ho37bc/k004_uav.jpg": "64ad14608abed2d4736969f4b908e27e9a951ca850c7a839889266056e1db2cb",
+    "3d_ho37bc/k004_block.jpg": "6c8a6e6d83f5a7a72489a811f6d0006e40571af385bb14c2978e905515843a93"
+  },
+  "protocol": {
+    "protocol_version": 2,
+    "dataset_policy": "method_b_reconstructed_fresh_baseline",
+    "historical_pixel_identity_required": false,
+    "decision_rule": "Choose the unique non-duplicate condition with highest tune success count; ties use lower mean error then lower mean runtime. Keep baseline if no success-count gain. Confirm selected candidate on final with positive success gain and Holm4 p<0.05; otherwise retain baseline. All four comparisons are predeclared; no retuning on final.",
+    "city": "Singapore",
+    "set": "3d_ho37bc",
+    "matcher": "loma",
+    "angles": [
+      0.0
+    ],
+    "batch_size": 1,
+    "seed": 20261102,
+    "success_rule": "position_error_m < 10 (existing team rule)",
+    "threshold_frame": "original block pixels before scale; normalize both point sets before MAGSAC",
+    "conditions": [
+      {
+        "name": "baseline",
+        "scale": 1.0,
+        "magsac_threshold": 3.0
+      },
+      {
+        "name": "e3_scale1p5",
+        "scale": 1.5,
+        "magsac_threshold": 3.0
+      },
+      {
+        "name": "e3_scale2",
+        "scale": 2.0,
+        "magsac_threshold": 3.0
+      },
+      {
+        "name": "e4_magsac3",
+        "scale": 1.0,
+        "magsac_threshold": 3.0
+      },
+      {
+        "name": "e4_magsac8",
+        "scale": 1.0,
+        "magsac_threshold": 8.0
+      }
+    ]
+  },
+  "split": "smoke",
+  "gpu_name": "NVIDIA RTX A6000",
+  "gpu_total_mib": 48539.4375,
+  "argv": [
+    "/home/gpu_03/trone-imatch-e3-e4/experiments/2026-11-06_scale_ransac/run_experiments.py",
+    "--data",
+    "/home/gpu_03/trone-imatch-e3-e4/data/im_t1_3d_1000_reconstructed",
+    "--out",
+    "/home/gpu_03/trone-imatch-e3-e4/experiments/2026-11-06_scale_ransac/runs/method_b_20261102_r01/smoke",
+    "--split",
+    "smoke",
+    "--gpu",
+    "0",
+    "--torch-home",
+    "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch"
+  ],
+  "utc_start": "2026-11-02T14:40:32.115702+00:00",
+  "dataset_export_provenance_sha256": "b4d71421b5ac8f4cb95ddd8cc4d3ce8a79133e0a7ee133154e0278efffc4a79f",
+  "dataset_preprocessing_verified": false,
+  "dataset_limitation": "Original load_rows code and exported image hashes unavailable. Raw identities/GT are verified; original pixel preprocessing is not certified.",
+  "dataset_policy": "method_b_reconstructed_fresh_baseline",
+  "dataset_seal_sha256": "271806b360bb5898eaf021e91838bc7bd9cd69e64928b06ec26991e66199f2d3"
+}

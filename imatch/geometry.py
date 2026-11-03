@@ -4,7 +4,6 @@
 - 드론 영상 256 px, 지도 블록 512 px (2x2 타일). 블록 중심이 (0, 0), 1단위 = 128 px = 32 m.
 - 정답 변환: block_px = C + R(theta) (uav_px - 128),  R(t) = [[cos t, sin t], [-sin t, cos t]]
 """
-import cv2
 import numpy as np
 
 BLOCK_CENTER = 256.0
@@ -26,6 +25,7 @@ def rot(a):
 
 def turn(img, a):
     """영상을 a도 돌린다 (반시계, cv2 규칙). 빈 모서리는 검은색."""
+    import cv2
     h, w = img.shape[:2]
     return cv2.warpAffine(img, cv2.getRotationMatrix2D((w / 2, h / 2), a, 1), (w, h), flags=cv2.INTER_LINEAR,
                           borderMode=cv2.BORDER_CONSTANT, borderValue=0)
@@ -38,6 +38,7 @@ def wrap(d):
 
 def magsac(p0, p1):
     """대응점 → (p0, p1, 호모그래피 H, inlier 마스크). 점이 4개 미만이면 H = None."""
+    import cv2
     if len(p0) < 4:
         return p0, p1, None, np.zeros(len(p0), bool)
     H, mask = cv2.findHomography(p0, p1, cv2.USAC_MAGSAC, RANSAC_PX, maxIters=2000, confidence=0.995)

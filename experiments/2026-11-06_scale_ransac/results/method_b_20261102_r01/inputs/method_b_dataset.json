@@ -1,0 +1,51 @@
+{
+  "mode": "method_b_reconstructed_fresh_baseline",
+  "dataset_root": "/home/gpu_03/trone-imatch-e3-e4/data/im_t1_3d_1000_reconstructed",
+  "n": 1000,
+  "kmin": 0,
+  "kmax": 999,
+  "source_identity_verified": true,
+  "historical_pixel_identity_verified": false,
+  "within_protocol_preprocessing_fixed": true,
+  "manifest_hashes": {
+    "samples.csv": "107e663238ec699a346b0362d777f4639e65e14a15e5c834d18d7acc9edb7bd5",
+    "source_mapping.csv": "376559cecb9810045b4f843df2d22903a97ef13d129ea69732ff8bf949744c42",
+    "export_provenance.json": "b4d71421b5ac8f4cb95ddd8cc4d3ce8a79133e0a7ee133154e0278efffc4a79f"
+  },
+  "image_hashes_digest": "7b8c9713611fd92da22a53aaa3f32f8ade8b6922c0a04d7e4072738c0ed9bc2f",
+  "source_zip_sha256": "02779d6d2290d14eae5848a5be94d29b2c1c7339b003b31700d1f78f8c962431",
+  "preprocessing": {
+    "decode": "OpenCV RGB uint8",
+    "source_size_px": [
+      256,
+      256
+    ],
+    "uav_size_px": [
+      256,
+      256
+    ],
+    "block_size_px": [
+      512,
+      512
+    ],
+    "block_layout": [
+      [
+        "p1",
+        "p2"
+      ],
+      [
+        "p3",
+        "p4"
+      ]
+    ],
+    "jpeg_quality": 97,
+    "resize_at_reconstruction": null,
+    "crop_at_reconstruction": null,
+    "interpolation_at_reconstruction": null,
+    "augmentation": null,
+    "opencv_version": "4.12.0"
+  },
+  "coordinates": "Block center (0,0); 128 px/unit; 32 m/unit; original 512px map block",
+  "evaluation": "Ground-truth block T1; clipped [-1,1], missing pose=center; success error<10m",
+  "historical_reference": "72.9% is a different prior protocol and is not a paired baseline here"
+}

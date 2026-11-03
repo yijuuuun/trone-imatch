@@ -1,0 +1,12 @@
+{
+  "condition": {
+    "name": "baseline",
+    "scale": 1.0,
+    "magsac_threshold": 3.0
+  },
+  "n": 100,
+  "warmup_sec": 0.599438345991075,
+  "wall_sec": 18.62242305104155,
+  "gpu_peak_allocated_mib": 2802.4326171875,
+  "gpu_peak_reserved_mib": 4354.0
+}

@@ -1,0 +1,12 @@
+{
+  "condition": {
+    "name": "e4_magsac8",
+    "scale": 1.0,
+    "magsac_threshold": 8.0
+  },
+  "n": 5,
+  "warmup_sec": 0.18066350801382214,
+  "wall_sec": 1.069109414005652,
+  "gpu_peak_allocated_mib": 2802.4326171875,
+  "gpu_peak_reserved_mib": 15568.0
+}

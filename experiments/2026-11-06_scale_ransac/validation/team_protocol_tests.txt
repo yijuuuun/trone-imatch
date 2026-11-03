@@ -1,0 +1,21 @@
+test_adapter_normalizes_points_before_magsac (__main__.ProtocolTests.test_adapter_normalizes_points_before_magsac) ... ok
+test_asset_audit_rejects_metadata_without_images (__main__.ProtocolTests.test_asset_audit_rejects_metadata_without_images) ... ok
+test_cli_dry_run_and_final_gate (__main__.ProtocolTests.test_cli_dry_run_and_final_gate) ... ok
+test_end_to_end_report_and_missing_duplicate_gt_guards (__main__.ProtocolTests.test_end_to_end_report_and_missing_duplicate_gt_guards) ... ok
+test_freeze_requires_completed_development_analysis_and_identity (__main__.ProtocolTests.test_freeze_requires_completed_development_analysis_and_identity) ... ok
+test_gpu_guard_rejects_busy_device (__main__.ProtocolTests.test_gpu_guard_rejects_busy_device) ... ok
+test_new_baseline_failure_tags_priority_and_success (__main__.ProtocolTests.test_new_baseline_failure_tags_priority_and_success) ... ok
+test_opencv_receives_actual_threshold (__main__.ProtocolTests.test_opencv_receives_actual_threshold) ... ok
+test_paired_recovery_regression_and_exact_p (__main__.ProtocolTests.test_paired_recovery_regression_and_exact_p) ... ok
+test_real_magsac_and_threshold_parameter (__main__.ProtocolTests.test_real_magsac_and_threshold_parameter) ... ok
+test_scale_homography_returns_identical_base_pose (__main__.ProtocolTests.test_scale_homography_returns_identical_base_pose) ... ok
+test_team_fallback_clip_and_strict_success_boundary (__main__.ProtocolTests.test_team_fallback_clip_and_strict_success_boundary) ... ok
+test_validate_sample_coverage (__main__.ProtocolTests.test_validate_sample_coverage) ... ok
+test_weight_listing_does_not_create_cache_or_claim_compatibility (__main__.ProtocolTests.test_weight_listing_does_not_create_cache_or_claim_compatibility) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 3.896s
+
+OK
+/tmp/tmpxx1zzdri/analysis/REPORT.md
+/tmp/tmpn1gtx05v/analysis/REPORT.md

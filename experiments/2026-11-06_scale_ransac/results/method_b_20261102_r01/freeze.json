@@ -1,0 +1,74 @@
+{
+  "utc_frozen": "2026-11-02T14:46:34.155581+00:00",
+  "candidate": "e3_scale1p5",
+  "reason": "Predeclared tune-only ranking: scale1.5 has 79/100 successes vs fresh baseline77, scale2=78, MAGSAC8=78. Recovery/regression=4/2, McNemar p=0.6875 (not significant). Freeze scale1.5 as exploratory candidate. Confirm only if positive final gain and Holm4 p<0.05; otherwise retain baseline. No retuning on final.",
+  "source_fingerprint": "5de8317e823e5184abb715fbe3e3deed5c17b7a767791e166bea14b87702072b",
+  "protocol": {
+    "protocol_version": 2,
+    "dataset_policy": "method_b_reconstructed_fresh_baseline",
+    "historical_pixel_identity_required": false,
+    "decision_rule": "Choose the unique non-duplicate condition with highest tune success count; ties use lower mean error then lower mean runtime. Keep baseline if no success-count gain. Confirm selected candidate on final with positive success gain and Holm4 p<0.05; otherwise retain baseline. All four comparisons are predeclared; no retuning on final.",
+    "city": "Singapore",
+    "set": "3d_ho37bc",
+    "matcher": "loma",
+    "angles": [
+      0.0
+    ],
+    "batch_size": 1,
+    "seed": 20261102,
+    "success_rule": "position_error_m < 10 (existing team rule)",
+    "threshold_frame": "original block pixels before scale; normalize both point sets before MAGSAC",
+    "conditions": [
+      {
+        "name": "baseline",
+        "scale": 1.0,
+        "magsac_threshold": 3.0
+      },
+      {
+        "name": "e3_scale1p5",
+        "scale": 1.5,
+        "magsac_threshold": 3.0
+      },
+      {
+        "name": "e3_scale2",
+        "scale": 2.0,
+        "magsac_threshold": 3.0
+      },
+      {
+        "name": "e4_magsac3",
+        "scale": 1.0,
+        "magsac_threshold": 3.0
+      },
+      {
+        "name": "e4_magsac8",
+        "scale": 1.0,
+        "magsac_threshold": 8.0
+      }
+    ]
+  },
+  "execution_identity": {
+    "source_fingerprint": "5de8317e823e5184abb715fbe3e3deed5c17b7a767791e166bea14b87702072b",
+    "weights": {
+      "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/dad.pth": "7d827844649faf5213ba97e7adb43e16b936dd3d11ab2d0fc0d602c67fae781f",
+      "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/dinov2_vitl14_pretrain.pth": "d5383ea8f4877b2472eb973e0fd72d557c7da5d3611bd527ceeb1d7162cbf428",
+      "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/loma_B.pt": "3a38824391e22b33bb3e10377c7736243fd8a2fbf1561446e7e133e497c35758"
+    },
+    "packages": {
+      "numpy": "2.2.6",
+      "pandas": "2.2.3",
+      "scipy": "1.15.3",
+      "torch": "2.8.0+cu126",
+      "opencv-python": "4.12.0.88",
+      "opencv-python-headless": null,
+      "vismatch": "1.4.0"
+    },
+    "backend_source_sha256": "e611c52df5bbc78fd8cbd95b4ddd424dd739bceb038b275f23955f7d5d06b2be",
+    "base_matcher_source_sha256": "220913be8e21d956ade889ef8fbb5e183fa29bec7f9a90d9348f92d7d3bb2155",
+    "samples_csv_sha256": "107e663238ec699a346b0362d777f4639e65e14a15e5c834d18d7acc9edb7bd5",
+    "gpu_name": "NVIDIA RTX A6000",
+    "gpu_total_mib": 48539.4375
+  },
+  "tune_run_provenance_sha256": "713eb36abd69d7d4e37210bdfdb026acf6ad8d775cdef076da048bd8dc308c27",
+  "tune_report_sha256": "a1156770cad2ae48297c60858d7e4d2f44392d7b3aa554f9ccbbdbd2f29688da",
+  "rule": "Compare all five predeclared conditions once on final; do not tune based on final outcomes."
+}

@@ -1,0 +1,52 @@
+{
+  "zip_entries": 273653,
+  "zip_total_uncompressed_bytes": 6453417724,
+  "zip_top_levels": {
+    "Bearing_UAV_90K/": 1,
+    "Bearing_UAV_90K/c1_254k_37bc_b15_s1_v3d": 3,
+    "Bearing_UAV_90K/c4m_254k_96bc_b15_s1": 3,
+    "Bearing_UAV_90K/c4m_254k_96bc_b15_s100": 3,
+    "Bearing_UAV_90K/c4m_254k_96bc_b15_s100_v3d": 3,
+    "Bearing_UAV_90K/c4m_254k_96bc_b15_s1_v3d": 3,
+    "Bearing_UAV_90K/citya": 68404,
+    "Bearing_UAV_90K/cityb": 68404,
+    "Bearing_UAV_90K/cityc": 68404,
+    "Bearing_UAV_90K/cityd": 68404,
+    "Bearing_UAV_90K/city_rsi": 21
+  },
+  "prepared_eval_files_present": false,
+  "metadata_member": "Bearing_UAV_90K/c4m_254k_96bc_b15_s100_v3d/metadata/metadata.csv",
+  "metadata_sha256": "f5e3f1ac3943793da33e7dffee4ff81b3eab05c1a32a5c057c3b79767052c3fa",
+  "metadata_rows": 90000,
+  "metadata_city_counts": {
+    "Bearing_UAV_90K/citya": 22500,
+    "Bearing_UAV_90K/cityb": 22500,
+    "Bearing_UAV_90K/cityc": 22500,
+    "Bearing_UAV_90K/cityd": 22500
+  },
+  "historical_manifest": "/home/gpu_03/trone-imatch-e3-e4/results/raw_capstone1/out_imatch/samples_1000.csv",
+  "historical_manifest_sha256": "8ee903d89a32f5c63876457af3b3a0528b082ac8ccd4bd6a0b57bd19cab4a044",
+  "set": "3d_ho37bc",
+  "n": 1000,
+  "kmin": 0,
+  "kmax": 999,
+  "historical_gt_max_abs_difference": 0.0,
+  "existing_baseline_row_checks": [
+    "B1_원모델",
+    "B2",
+    "CorrMatchNet"
+  ],
+  "stage1_prefix_n_verified": 100,
+  "source_identity_verified": true,
+  "selected_unique_source_images": 1892,
+  "selected_image_bytes": 58307058,
+  "original_load_rows_available": false,
+  "original_prepared_image_hashes_available": false,
+  "preprocessing_verified": false,
+  "eligible_for_final_evaluation": false,
+  "known_export_steps": "RGB images; block=[[p1,p2],[p3,p4]]; cv2 JPEG quality=97; no resize/augmentation added",
+  "limitation": "Original load_rows code and exported image hashes unavailable. Raw identities/GT are verified; original pixel preprocessing is not certified.",
+  "zip_path": "/home/gpu_03/trone-imatch-e3-e4/data/Bearing_UAV_90K.zip",
+  "zip_bytes": 6344501973,
+  "zip_sha256": "02779d6d2290d14eae5848a5be94d29b2c1c7339b003b31700d1f78f8c962431"
+}

@@ -1,0 +1,2 @@
+utc,gpu_uuid,memory_used_mib,memory_free_mib,utilization_pct,query_status
+2026-11-02T14:40:38.394967+00:00,GPU-dc28486c-e082-94cc-2fe8-4dacdaa072a9, 15943, 32597, 100,0

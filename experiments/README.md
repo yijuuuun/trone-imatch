@@ -27,3 +27,7 @@
 
 ## 새 매처 추가하기
 `imatch/matchers.py`에 `__call__(uav_rgb, block_rgb)`이 `magsac(p0, p1)` 결과를 돌려주는 클래스를 만들고 `get_matcher()`에 이름을 넣는다. 나머지(회전 탐색, 위치 계산, 평가)는 그대로 쓴다.
+
+## 김재홍 E3·E4 완료 (방법 B, 2026-11-03)
+
+[Singapore Scale·MAGSAC++ 평가](2026-11-06_scale_ransac/README.md): k=100~999, 조건당 900개, 위치 오차 <10m. 새 Baseline 74.22%, Scale1.5 71.89%, Scale2 69.56%, MAGSAC3 74.22%, MAGSAC8 74.67%. Scale1·MAGSAC3 유지. 재구성 입력의 새 Baseline에 대한 비교이며 과거 72.9%와 직접 비교하지 않는다.

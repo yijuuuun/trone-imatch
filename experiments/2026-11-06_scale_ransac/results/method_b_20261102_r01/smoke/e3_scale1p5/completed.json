@@ -1,0 +1,12 @@
+{
+  "condition": {
+    "name": "e3_scale1p5",
+    "scale": 1.5,
+    "magsac_threshold": 3.0
+  },
+  "n": 5,
+  "warmup_sec": 0.3461492629721761,
+  "wall_sec": 1.816104890895076,
+  "gpu_peak_allocated_mib": 5278.22265625,
+  "gpu_peak_reserved_mib": 8414.0
+}
