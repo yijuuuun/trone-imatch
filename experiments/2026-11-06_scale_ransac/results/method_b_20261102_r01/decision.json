@@ -1,0 +1,12 @@
+{
+  "selected_from_tune": "e3_scale1p5",
+  "final_n": 900,
+  "final_success_delta_pp": -2.333333333333332,
+  "final_mcnemar_p": 0.0438752935870152,
+  "final_mcnemar_p_holm4": 0.1316258807610456,
+  "adopt_candidate": false,
+  "meeting_setting": "baseline: LoMa-B, one direction, scale=1, MAGSAC=3 base px",
+  "reason": "Frozen scale1.5 candidate did not improve final success and did not meet Holm4 p<0.05. Scale2 significantly worsened success; MAGSAC8 had no significant success gain. Do not switch candidates using final results.",
+  "historical_72p9_is_reference_only": true,
+  "historical_pixel_identity_verified": false
+}

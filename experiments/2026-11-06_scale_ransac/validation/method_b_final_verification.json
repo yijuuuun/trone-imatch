@@ -1,0 +1,14 @@
+{
+  "frozen_source_config_unchanged": true,
+  "all_dataset_hashes_unchanged": true,
+  "smoke_measured_inferences": 25,
+  "tune_measured_inferences": 500,
+  "final_measured_inferences": 4500,
+  "coverage_and_duplicate_checks": true,
+  "baseline_magsac3_identical_all_splits": true,
+  "archive_files_checksum_verified": 122,
+  "tests_passed_before_execution": 14,
+  "tests_skipped": 0,
+  "new_result_selected_from_final": false,
+  "original_pixel_identity_claimed": false
+}

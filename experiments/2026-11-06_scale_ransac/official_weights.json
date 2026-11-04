@@ -1,0 +1,27 @@
+{
+  "architecture": "LoMa-B",
+  "vismatch_version": "1.4.0",
+  "vismatch_wheel_sha256": "f78784e0a5540e68459ebcea577340b97788b5f2816d080458f8ef21f05117cc",
+  "loma_source_commit": "9105854833f55d18194d0505d913f0a74b194ef0",
+  "compatibility_status": "official source URLs verified; local model/state_dict compatibility untested because weights and CUDA runtime environment are missing",
+  "weights": [
+    {
+      "name": "LoMa-B",
+      "filename": "loma_B.pt",
+      "url": "https://github.com/davnords/storage/releases/download/loma/loma_B.pt",
+      "source": "https://github.com/davnords/LoMa/blob/9105854833f55d18194d0505d913f0a74b194ef0/src/loma/loma.py"
+    },
+    {
+      "name": "DaD",
+      "filename": "dad.pth",
+      "url": "https://github.com/Parskatt/dad/releases/download/v0.1.0/dad.pth",
+      "source": "https://github.com/davnords/LoMa/blob/9105854833f55d18194d0505d913f0a74b194ef0/src/loma/detector/dad.py"
+    },
+    {
+      "name": "DINOv2 ViT-L/14",
+      "filename": "dinov2_vitl14_pretrain.pth",
+      "url": "https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth",
+      "source": "https://github.com/davnords/LoMa/blob/9105854833f55d18194d0505d913f0a74b194ef0/src/loma/descriptor/dedode.py"
+    }
+  ]
+}

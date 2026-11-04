@@ -1,0 +1,30 @@
+
+## /home/gpu_03/trone-imatch-team/experiments/2026-11-06_scale_ransac/results/method_b_20261102_r01/final/baseline/samples.csv
+
+| 도시 | n | 10 m 이내 | 평균 오차 | 중앙값 | 실패 | heading 중앙값 | 1장당 s | vs B1 원모델 (나만 / 걔만) | vs B2 | vs CorrMatchNet | vs LoMa 8방향 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Singapore | 900 | 74.2% | 10.63 m | 5.54 m | 15% | 1.8° | 0.18 | 559 / 28, p = 2.4e-129 | 158 / 47, p = 3.1e-15 | 166 / 63, p = 7e-12 | 41 / 52, p = 0.3 |
+
+## /home/gpu_03/trone-imatch-team/experiments/2026-11-06_scale_ransac/results/method_b_20261102_r01/final/e3_scale1p5/samples.csv
+
+| 도시 | n | 10 m 이내 | 평균 오차 | 중앙값 | 실패 | heading 중앙값 | 1장당 s | vs B1 원모델 (나만 / 걔만) | vs B2 | vs CorrMatchNet | vs LoMa 8방향 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Singapore | 900 | 71.9% | 11.37 m | 5.68 m | 17% | 1.7° | 0.29 | 539 / 29, p = 9e-123 | 142 / 52, p = 7.6e-11 | 152 / 70, p = 3.8e-08 | 43 / 75, p = 0.0041 |
+
+## /home/gpu_03/trone-imatch-team/experiments/2026-11-06_scale_ransac/results/method_b_20261102_r01/final/e3_scale2/samples.csv
+
+| 도시 | n | 10 m 이내 | 평균 오차 | 중앙값 | 실패 | heading 중앙값 | 1장당 s | vs B1 원모델 (나만 / 걔만) | vs B2 | vs CorrMatchNet | vs LoMa 8방향 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Singapore | 900 | 69.6% | 12.78 m | 5.97 m | 19% | 2.2° | 0.45 | 520 / 31, p = 1.4e-115 | 142 / 73, p = 2.9e-06 | 147 / 86, p = 7.8e-05 | 48 / 101, p = 1.7e-05 |
+
+## /home/gpu_03/trone-imatch-team/experiments/2026-11-06_scale_ransac/results/method_b_20261102_r01/final/e4_magsac3/samples.csv
+
+| 도시 | n | 10 m 이내 | 평균 오차 | 중앙값 | 실패 | heading 중앙값 | 1장당 s | vs B1 원모델 (나만 / 걔만) | vs B2 | vs CorrMatchNet | vs LoMa 8방향 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Singapore | 900 | 74.2% | 10.63 m | 5.54 m | 15% | 1.8° | 0.18 | 559 / 28, p = 2.4e-129 | 158 / 47, p = 3.1e-15 | 166 / 63, p = 7e-12 | 41 / 52, p = 0.3 |
+
+## /home/gpu_03/trone-imatch-team/experiments/2026-11-06_scale_ransac/results/method_b_20261102_r01/final/e4_magsac8/samples.csv
+
+| 도시 | n | 10 m 이내 | 평균 오차 | 중앙값 | 실패 | heading 중앙값 | 1장당 s | vs B1 원모델 (나만 / 걔만) | vs B2 | vs CorrMatchNet | vs LoMa 8방향 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Singapore | 900 | 74.7% | 10.69 m | 5.67 m | 15% | 1.9° | 0.18 | 558 / 23, p = 2.5e-134 | 156 / 41, p = 5.4e-17 | 165 / 58, p = 4.4e-13 | 42 / 49, p = 0.53 |

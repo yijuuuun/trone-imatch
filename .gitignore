@@ -4,4 +4,7 @@ outputs/
 kaggle_kernels/
 __pycache__/
 *.pyc
+.venv-e3-e4/
+.cache/e3-e4/
+/experiments/2026-11-06_scale_ransac/runs/
 .DS_Store

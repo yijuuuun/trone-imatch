@@ -5,5 +5,12 @@
   pipeline.py  ①~⑤ 한 샘플 처리 (회전 탐색 포함)
   metrics.py   팀 공통 평가 규칙
 """
-from .matchers import get_matcher
-from .pipeline import localize
+def __getattr__(name):
+    # CPU evaluation should not require GPU/image-processing dependencies.
+    if name == 'get_matcher':
+        from .matchers import get_matcher
+        return get_matcher
+    if name == 'localize':
+        from .pipeline import localize
+        return localize
+    raise AttributeError(name)

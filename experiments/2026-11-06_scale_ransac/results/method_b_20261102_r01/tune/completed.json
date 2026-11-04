@@ -1,0 +1,12 @@
+{
+  "split": "tune",
+  "n_per_condition": 100,
+  "conditions": [
+    "baseline",
+    "e3_scale1p5",
+    "e3_scale2",
+    "e4_magsac3",
+    "e4_magsac8"
+  ],
+  "wall_sec": 130.7831977820024
+}

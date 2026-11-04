@@ -1,0 +1,40 @@
+{
+  "split": "final",
+  "runs": [
+    {
+      "path": "/home/gpu_03/trone-imatch-e3-e4/experiments/2026-11-06_scale_ransac/runs/method_b_20261102_r01/final",
+      "split": "final",
+      "provenance_sha256": "124f684202b35b6101844498a826f6c0b0e6a4d96668dea1b486e38f05c9f3b2",
+      "dataset_limitation": "Original load_rows code and exported image hashes unavailable. Raw identities/GT are verified; original pixel preprocessing is not certified."
+    }
+  ],
+  "identity": {
+    "source_fingerprint": "5de8317e823e5184abb715fbe3e3deed5c17b7a767791e166bea14b87702072b",
+    "weights": {
+      "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/dad.pth": "7d827844649faf5213ba97e7adb43e16b936dd3d11ab2d0fc0d602c67fae781f",
+      "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/dinov2_vitl14_pretrain.pth": "d5383ea8f4877b2472eb973e0fd72d557c7da5d3611bd527ceeb1d7162cbf428",
+      "/home/gpu_03/trone-imatch-e3-e4/.cache/e3-e4/torch/hub/checkpoints/loma_B.pt": "3a38824391e22b33bb3e10377c7736243fd8a2fbf1561446e7e133e497c35758"
+    },
+    "packages": {
+      "numpy": "2.2.6",
+      "pandas": "2.2.3",
+      "scipy": "1.15.3",
+      "torch": "2.8.0+cu126",
+      "opencv-python": "4.12.0.88",
+      "opencv-python-headless": null,
+      "vismatch": "1.4.0"
+    },
+    "backend_source_sha256": "e611c52df5bbc78fd8cbd95b4ddd424dd739bceb038b275f23955f7d5d06b2be",
+    "base_matcher_source_sha256": "220913be8e21d956ade889ef8fbb5e183fa29bec7f9a90d9348f92d7d3bb2155",
+    "samples_csv_sha256": "107e663238ec699a346b0362d777f4639e65e14a15e5c834d18d7acc9edb7bd5",
+    "gpu_name": "NVIDIA RTX A6000",
+    "gpu_total_mib": 48539.4375
+  },
+  "bootstrap_repetitions": 10000,
+  "seed": 20261102,
+  "baseline_e4_3_geometry_identical": true,
+  "failure_tags_sha256": "93efe3020d4c70446beee821f6f65ed000f334b08c815e02bf24b6020c254e51",
+  "primary_family": "4 candidate McNemar tests on all_singapore; Holm correction includes duplicate E4-A",
+  "tag_and_continuous_tests": "exploratory; unadjusted, do not claim confirmatory significance",
+  "source_of_tags": "fresh baseline failures recalculated per split; historical 8-direction tags reference only"
+}

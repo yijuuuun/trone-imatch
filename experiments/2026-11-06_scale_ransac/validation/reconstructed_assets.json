@@ -1,0 +1,15 @@
+{
+  "data_root": "/home/gpu_03/trone-imatch-e3-e4/data/im_t1_3d_1000_reconstructed",
+  "set": "3d_ho37bc",
+  "expected_k": "0..999",
+  "samples_csv_exists": true,
+  "ready": true,
+  "issues": [],
+  "singapore_rows": 1000,
+  "missing_image_count": 0,
+  "missing_image_examples": [],
+  "invalid_images": [],
+  "historical_gt_mismatch_k": [],
+  "uav_pattern": "data/im_t1_3d_1000_reconstructed/3d_ho37bc/k###_uav.jpg",
+  "satellite_block_pattern": "data/im_t1_3d_1000_reconstructed/3d_ho37bc/k###_block.jpg"
+}

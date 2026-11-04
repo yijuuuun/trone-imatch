@@ -1,0 +1,53 @@
+{
+  "smoke_provenance_sha256": "492374ff52317c08e20a66c62a547da8c5ab5996aacb9d8eb5c3d97e1af2e34f",
+  "conditions": [
+    {
+      "condition": "baseline",
+      "mean_inference_sec": 0.1742757969768718,
+      "observed_peak_allocated_mib": 2802.4326171875,
+      "observed_peak_reserved_mib": 4354.0,
+      "estimated_tune_inference_sec": 17.42757969768718,
+      "estimated_final_inference_sec": 156.8482172791846,
+      "measured_warmup_sec": 0.8022605699952692
+    },
+    {
+      "condition": "e3_scale1p5",
+      "mean_inference_sec": 0.29007598240859805,
+      "observed_peak_allocated_mib": 5278.22265625,
+      "observed_peak_reserved_mib": 8414.0,
+      "estimated_tune_inference_sec": 29.007598240859807,
+      "estimated_final_inference_sec": 261.06838416773826,
+      "measured_warmup_sec": 0.3461492629721761
+    },
+    {
+      "condition": "e3_scale2",
+      "mean_inference_sec": 0.4481946346117184,
+      "observed_peak_allocated_mib": 8705.5751953125,
+      "observed_peak_reserved_mib": 15568.0,
+      "estimated_tune_inference_sec": 44.819463461171836,
+      "estimated_final_inference_sec": 403.3751711505465,
+      "measured_warmup_sec": 0.457941303960979
+    },
+    {
+      "condition": "e4_magsac3",
+      "mean_inference_sec": 0.17637545743491498,
+      "observed_peak_allocated_mib": 2802.4326171875,
+      "observed_peak_reserved_mib": 15568.0,
+      "estimated_tune_inference_sec": 17.637545743491497,
+      "estimated_final_inference_sec": 158.73791169142348,
+      "measured_warmup_sec": 0.1817217159550637
+    },
+    {
+      "condition": "e4_magsac8",
+      "mean_inference_sec": 0.17372329838108266,
+      "observed_peak_allocated_mib": 2802.4326171875,
+      "observed_peak_reserved_mib": 15568.0,
+      "estimated_tune_inference_sec": 17.372329838108268,
+      "estimated_final_inference_sec": 156.35096854297439,
+      "measured_warmup_sec": 0.18066350801382214
+    }
+  ],
+  "estimated_tune_sec_excluding_setup_io": 128.2332533422159,
+  "estimated_final_sec_excluding_setup_io": 1138.3493891927646,
+  "caveat": "5 smoke samples cannot guarantee peak VRAM or runtime of all samples. Reserve headroom; batch=1; one GPU; conditions sequential. Setup, image IO, hashing and process initialization excluded."
+}
