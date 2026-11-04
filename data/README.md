@@ -18,6 +18,13 @@ python scripts/download_data.py   # Release data-v1에서 받아 data/im_t1_3d_1
 
 Kaggle에서 돌리려면 이 zip을 자기 Kaggle 데이터셋으로 올리고 `build_kernel.py --dataset`에 그 이름을 넣는다.
 
+## 후보 블록 실험용 파일 (`run.py --block-radius`, `run_nav.py`)
+capstone1 저장소의 Bearing_UAV-90K가 있으면 한 번만 만들면 된다.
+```bash
+python scripts/export_block_index.py --capstone1 ../bearinguav
+```
+`data/im_t1_3d_1000/`에 `block_index.csv`(set, k, block_x, block_y)와 `maps/3d_ho38bc.jpg`, `maps/3d_ho37bc.jpg`(도시 지도, 장당 약 4 MB)가 생긴다. Kaggle에는 zip 하나가 아니라 이 폴더째 `kaggle datasets create -p data/im_t1_3d_1000 --dir-mode zip`으로 올린다. 커널이 압축 안 된 `samples.csv`를 찾기 때문이다.
+
 ## 처음부터 다시 만들기 (보통은 필요 없음)
 capstone1 저장소와 Bearing-UAV-90K 원본이 있어야 한다.
 ```bash
