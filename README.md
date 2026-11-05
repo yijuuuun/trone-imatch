@@ -46,6 +46,9 @@ trone-imatch/
 │   ├── evaluate.py         기준선·LoMa와 짝지어 비교 → 표
 │   ├── subset_angles.py    다시 안 돌리고 방향 수만 줄인 결과 만들기
 │   ├── ensemble.py         두 매처 조합
+│   ├── select_block.py     후보 블록 중 고르기 (run.py --block-radius 결과에서)
+│   ├── run_nav.py          1 km 항법 (2D 크롭, 3D 렌더 입력)
+│   ├── export_block_index.py 후보 블록용 파일 만들기 (capstone1 데이터 필요)
 │   ├── download_data.py    샘플 데이터 받기
 │   ├── kaggle/build_kernel.py   Kaggle GPU용 커널 만들기
 │   └── export_from_capstone1.py 원 데이터셋에서 샘플 뽑기 (capstone1 저장소 필요, 보통은 안 씀)
@@ -76,6 +79,8 @@ kaggle kernels push -p kaggle_kernels/loma-1dir --accelerator NvidiaTeslaT4
 ```
 
 GPU에서 LoMa는 방향 1개당 약 0.29 s, 1,000샘플 × 2도시 × 8방향이 약 1.3시간(T4)이다.
+
+GTX 1650에서는 LoMa가 오류 없이 짝 0개를 돌려준다(fp16에서 NaN). `LOMA_FP32=1`을 붙이면 쌍당 약 1.9 s로 돌아간다. 보고용 숫자는 T4 기본 설정으로 낸다.
 
 ## 데이터와 평가 조건
 

@@ -2,6 +2,11 @@
 
   python scripts/run.py --data data/im_t1_3d_1000 --out outputs/loma_8dir --matchers loma --angles 8
   python scripts/run.py --data data/im_t1_3d_1000 --out outputs/sift_test --matchers cv-sift --n 5 --device cpu
+  python scripts/run.py --data data/im_t1_3d_1000 --out outputs/blk3 --matchers loma --angles 1 --block-radius 1
+
+--block-radius 1이면 주변 3x3 후보 블록을 모두 매칭한다 (scripts/export_block_index.py로 만든 파일이 필요).
+이때 샘플별 CSV에는 정답 블록의 결과만 들어가고, 후보별 결과는 _angles.csv의 dx, dy 열로 남는다.
+후보 중 고르는 일은 scripts/select_block.py가 한다.
 
 출력 (--out 폴더)
   <matcher><tag>_s<scale>.csv          샘플당 1행: 추정 위치·heading, 오차, inlier 수, 시간
@@ -18,6 +23,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from imatch import geometry, get_matcher, localize  # noqa: E402
+from imatch.blocks import UNITS_PER_BLOCK, crop_block, neighbors  # noqa: E402
 
 
 def main(argv=None):
@@ -35,6 +41,7 @@ def main(argv=None):
     ap.add_argument('--kmin', type=int, default=0, help='k >= kmin 샘플만')
     ap.add_argument('--device', default='cuda')
     ap.add_argument('--ransac-px', type=float, default=3.0)
+    ap.add_argument('--block-radius', type=int, default=0, help='0 = 정답 블록만, 1 = 주변 3x3 후보 블록')
     ap.add_argument('--tag', default='', help='출력 파일 이름 뒤에 붙일 말. 예: --tag=-1dir')
     a = ap.parse_args(argv)
     geometry.set_ransac_px(a.ransac_px)
@@ -43,6 +50,10 @@ def main(argv=None):
     if a.sets: df = df[df.set.isin(a.sets.split(','))]
     if a.n: df = df[df.k < a.n]
     if a.kmin: df = df[df.k >= a.kmin]
+    if a.block_radius:
+        df = df.merge(pd.read_csv(os.path.join(a.data, 'block_index.csv')), on=['set', 'k'])
+        city = {st: cv2.cvtColor(cv2.imread(os.path.join(a.data, 'maps', f'{st}.jpg')), cv2.COLOR_BGR2RGB)
+                for st in df.set.unique()}
     angles = list(np.arange(0, 360, 360 / a.angles) + a.angle_offset)
     summ = []
     for mname in a.matchers.split(','):
@@ -55,13 +66,22 @@ def main(argv=None):
             for s in df.itertuples():
                 d = os.path.join(a.data, s.set)
                 rd = lambda f: cv2.cvtColor(cv2.imread(os.path.join(d, f)), cv2.COLOR_BGR2RGB)
+                recs, best = [], None
                 try:
-                    recs, best = localize(matcher, rd(f'k{s.k:03d}_uav.jpg'), rd(f'k{s.k:03d}_block.jpg'),
-                                          (s.x_norm, s.y_norm, s.theta), scale,
-                                          [s.theta % 360] if a.oracle_rot else angles)
+                    uav = rd(f'k{s.k:03d}_uav.jpg')
+                    # 후보 블록은 정답 블록까지 모두 지도에서 같은 방식으로 자른다
+                    cands = [(dx, dy, crop_block(city[s.set], s.block_x + dx, s.block_y + dy))
+                             for dx, dy in neighbors(s.block_x, s.block_y, a.block_radius)] if a.block_radius \
+                        else [(0, 0, rd(f'k{s.k:03d}_block.jpg'))]
+                    for dx, dy, block in cands:
+                        gt = (s.x_norm - UNITS_PER_BLOCK * dx, s.y_norm - UNITS_PER_BLOCK * dy, s.theta)
+                        cand_recs, cand_best = localize(matcher, uav, block, gt, scale,
+                                                        [s.theta % 360] if a.oracle_rot else angles)
+                        where = dict(dx=dx, dy=dy) if a.block_radius else {}
+                        for r in cand_recs: per_angle.append(dict(matcher=mname, scale=scale, set=s.set, k=s.k, **where, **r))
+                        if dx == 0 and dy == 0: recs, best = cand_recs, cand_best
                 except Exception as e:
                     print('RUN FAIL', mname, scale, s.set, s.k, repr(e)[:200], flush=True); recs, best = [], None
-                for r in recs: per_angle.append(dict(matcher=mname, scale=scale, set=s.set, k=s.k, **r))
                 row = dict(matcher=mname, scale=scale, set=s.set, k=s.k, gt_x=s.x_norm, gt_y=s.y_norm, gt_theta=s.theta,
                            sec=sum(r['sec'] for r in recs))
                 if best:
