@@ -27,6 +27,11 @@ class VisMatch:
         else:
             from vismatch import get_matcher
             self.m = get_matcher(name, device=device)
+        if name.startswith('loma') and os.environ.get('LOMA_FP32'):
+            # GTX 1650은 fp16에서 키포인트가 전부 NaN이 되어 오류 없이 짝 0개가 나온다. LOMA_FP32=1로 fp32를 쓴다.
+            # T4 결과(fp16)와 조금 다를 수 있으니 보고용 숫자는 T4 기본 설정으로 낸다
+            from vismatch.utils import force_float32
+            force_float32(self.m.matcher)
         if name == 'romav2':
             # 기본 'precise' 설정은 T4(bf16 없음)에서 메모리 부족으로 멈췄다. 우리 영상은 256 / 512 px라
             # 'base' 설정(640 px, 단방향, fp32)을 쓴다.
