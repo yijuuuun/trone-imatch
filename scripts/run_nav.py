@@ -5,6 +5,7 @@
 
 --frames 3d: 가장 가까운 3D 렌더 (imatch/nav.py Nearest3D). 2d: 지도 크롭, 동작 확인용.
 --oracle: 정답 위치로 블록을 고른다. 블록 선택을 고쳤을 때 도달할 수 있는 상한이다.
+학습 도시(규칙을 정하는 곳): --data data/im_train_3d_500 --sets 3d_ho34bc,3d_ho36bc --n-traj 32 --seed 7
 출력 (--out 폴더): <도시>_<frames>_<matcher><tag>_steps.csv (걸음별 기록), 표는 stdout.
 """
 import argparse
@@ -20,7 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from imatch import get_matcher  # noqa: E402
 from imatch.nav import Crop2D, MatchLoc, Nearest3D, make_traj, nav_run  # noqa: E402
 
-CITY = {'3d_ho38bc': 'SF', '3d_ho37bc': 'Singapore'}
+CITY = {'3d_ho38bc': 'SF', '3d_ho37bc': 'Singapore', '3d_ho34bc': 'Tokyo', '3d_ho36bc': 'Taipei'}
 
 
 def main():

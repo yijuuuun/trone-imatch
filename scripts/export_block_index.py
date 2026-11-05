@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from imatch.blocks import crop_block  # noqa: E402
 
 META = 'Bearing_UAV_90K/c4m_254k_96bc_b15_s100_v3d/metadata/metadata.csv'
-MAP_PREFIX = {'3d_ho38bc': '37.755', '3d_ho37bc': '1.289'}  # city_rsi 파일 이름의 위도
+MAP_PREFIX = {'3d_ho38bc': '37.755', '3d_ho37bc': '1.289', '3d_ho34bc': '35.670', '3d_ho36bc': '25.030'}  # city_rsi 파일 이름의 위도
 
 
 def main():
