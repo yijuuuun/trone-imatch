@@ -8,6 +8,7 @@ imatch/ 패키지와 scripts/run.py를 run.py 안에 base64 문자열로 넣는�
   kaggle kernels output <kaggle아이디>/loma-1dir -p outputs/loma-1dir --file-pattern 'out/.*'
 
 --dataset: data/im_t1_3d_1000.zip을 올린 Kaggle 데이터셋 (data/README.md 참고).
+--script run_nav: 1 km 항법. 데이터셋은 scripts/kaggle/pack_nav.py로 만든다.
 """
 import argparse
 import base64
@@ -47,8 +48,16 @@ else: DATA_DIR = DATA
 print('data', DATA_DIR, sorted(os.listdir(DATA_DIR)), flush=True)
 
 sys.path.insert(0, SRC)
-from scripts.run import main
-main(['--data', DATA_DIR, '--out', '/kaggle/working/out'] + ARGS)
+if SCRIPT == 'run_nav':
+    # 항법: 지도(maps/)가 있는 폴더가 --data, Bearing_UAV_90K가 있는 폴더가 --capstone1
+    DATA_DIR = os.path.dirname(glob.glob(DATA + '/**/maps', recursive=True)[0])
+    CAP = os.path.dirname(glob.glob(DATA + '/**/Bearing_UAV_90K', recursive=True)[0])
+    from scripts.run_nav import main
+    sys.argv = ['run_nav', '--data', DATA_DIR, '--capstone1', CAP, '--out', '/kaggle/working/out'] + ARGS
+    main()
+else:
+    from scripts.run import main
+    main(['--data', DATA_DIR, '--out', '/kaggle/working/out'] + ARGS)
 shutil.rmtree(DATA, ignore_errors=True)  # 출력 용량을 작게
 '''
 
@@ -58,13 +67,14 @@ def main():
     ap.add_argument('--user', required=True); ap.add_argument('--dataset', required=True)
     ap.add_argument('--slug', required=True); ap.add_argument('--args', default='--matchers loma --angles 8')
     ap.add_argument('--out', default=os.path.join(ROOT, 'kaggle_kernels'))
+    ap.add_argument('--script', default='run', choices=['run', 'run_nav'], help='run_nav: 1 km 항법 (데이터셋에 maps/와 Bearing_UAV_90K 필요)')
     a = ap.parse_args()
     files = {os.path.relpath(p, ROOT): base64.b64encode(open(p, 'rb').read()).decode()
-             for p in sorted(glob.glob(os.path.join(ROOT, 'imatch', '*.py'))) + [os.path.join(ROOT, 'scripts', 'run.py')]}
+             for p in sorted(glob.glob(os.path.join(ROOT, 'imatch', '*.py'))) + [os.path.join(ROOT, 'scripts', f) for f in ('run.py', 'run_nav.py')]}
     files['scripts/__init__.py'] = ''
     d = os.path.join(a.out, a.slug); os.makedirs(d, exist_ok=True)
     with open(os.path.join(d, 'run.py'), 'w', encoding='utf-8') as f:
-        f.write(f'FILES = {files!r}\nARGS = {shlex.split(a.args)!r}\n' + LAUNCHER)
+        f.write(f'FILES = {files!r}\nARGS = {shlex.split(a.args)!r}\nSCRIPT = {a.script!r}\n' + LAUNCHER)
     json.dump({'id': f'{a.user}/{a.slug}', 'title': a.slug, 'code_file': 'run.py', 'language': 'python',
                'kernel_type': 'script', 'is_private': True, 'enable_gpu': True, 'enable_internet': True,
                'dataset_sources': [a.dataset], 'competition_sources': [], 'kernel_sources': []},
