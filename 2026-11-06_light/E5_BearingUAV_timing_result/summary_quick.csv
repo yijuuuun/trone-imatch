@@ -1,0 +1,4 @@
+tag,method,ckpt,view,holdout,size,T6_params_M,T6_trainable_params_M,T6_ms_full_forward,T6_ms_cached_tiles,json
+E5_T6_run1,model,Bearing_UAV/cross_view,3d,37bc(Singapore),quick,17.13,9.5,79.86,16.45,diag/out/harness/E5_T6_run1_3d_ho37bc_quick.json
+E5_T6_run2,model,Bearing_UAV/cross_view,3d,37bc(Singapore),quick,17.13,9.5,79.81,16.52,diag/out/harness/E5_T6_run2_3d_ho37bc_quick.json
+E5_T6_run3,model,Bearing_UAV/cross_view,3d,37bc(Singapore),quick,17.13,9.5,80.1,16.54,diag/out/harness/E5_T6_run3_3d_ho37bc_quick.json
