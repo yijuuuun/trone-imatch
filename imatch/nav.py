@@ -6,6 +6,7 @@
   렌더는 도시당 22,500장이고 궤적까지 거리 중앙값 3.0 m, 최대 약 11 m. heading은 렌더마다 무작위라
   비행 방향과 맞지 않는다. 오차는 렌더의 실제 위치로 잰다.
 """
+import hashlib
 import os
 import re
 
@@ -70,26 +71,64 @@ class MatchLoc:
 
     추정이 없으면 블록 중심을 답한다 (imatch/metrics.py 규칙과 같음). 나침반은 쓰지 않으므로 headings는 무시한다.
     걸음별 기록은 self.last에 남고, nav_run의 log에 들어간다.
+    같은 (영상, 블록)은 다시 매칭하지 않는다 (self.cache). R0~R4를 한 프로세스에서 돌리면 겹치는 걸음을 아낀다.
     """
     def __init__(self, matcher, city, scale=1.0, angles=(0.0,)):
-        self.matcher, self.city, self.scale, self.angles, self.last = matcher, city, scale, angles, []
+        self.matcher, self.city, self.scale, self.angles, self.last, self.cache = matcher, city, scale, angles, [], {}
 
     def __call__(self, crops, headings, blocks):
         out, self.last = [], []
         for crop, (bx, by) in zip(crops, blocks):
-            recs, best = localize(self.matcher, crop, crop_block(self.city, bx, by), (0.0, 0.0, 0.0), self.scale, self.angles)
-            self.last.append(dict(n_inl=best['n_inl'] if best else 0, found=int(best is not None), sec=sum(r['sec'] for r in recs)))
-            out.append((best['px'], best['py']) if best else (0.0, 0.0))
+            key = (hashlib.md5(crop.tobytes()).hexdigest(), bx, by)
+            if key not in self.cache:
+                recs, best = localize(self.matcher, crop, crop_block(self.city, bx, by), (0.0, 0.0, 0.0), self.scale, self.angles)
+                self.cache[key] = ((best['px'], best['py']) if best else (0.0, 0.0),
+                                   dict(n_inl=best['n_inl'] if best else 0, found=int(best is not None), sec=sum(r['sec'] for r in recs)))
+            xy, rec = self.cache[key]
+            out.append(xy); self.last.append(rec)
         return np.array(out)
 
 
-def nav_run(loc, frames, starts, goals, decode_px=128, oracle_block=False, step_m=15., arrive_m=20., n_block=15, log=None):
-    """(성공 여부, 종료 이유, 궤적별 걸음 오차 중앙값 m). log: 걸음마다 기록을 덧붙일 목록."""
+class NoMatch:
+    """매칭하지 않는 기준선. 항상 블록 중심을 답하고 inlier 0을 돌려준다.
+
+    reject_inl = 0이면 "항상 중앙", reject_inl > 0이면 모든 걸음이 "모름"이라 추측 항법만으로 난다.
+    """
+    def __call__(self, crops, headings, blocks):
+        self.last = [dict(n_inl=0, found=0, sec=0.0) for _ in crops]
+        return np.zeros((len(crops), 2))
+
+
+ODO = {'none': None, 'vio': dict(bias_deg=3.0, head_deg=2.0, scale=0.05)}
+"""이동 오차 (추측 항법이 공짜로 맞지 않게).
+
+시뮬레이션의 드론은 명령한 대로 정확히 움직이므로, 오차가 없으면 영상을 안 쓰고 추측 항법만 해도 100% 도착한다.
+'vio': 궤적마다 heading 치우침 N(0, 3°), 걸음마다 heading N(0, 2°), 걸음 길이 N(1, 5%).
+1 km에서 heading 3° 치우침만으로 옆으로 약 52 m 밀린다. 드론은 이 오차를 모르고 명령한 이동량으로 추측한다.
+"""
+
+
+def nav_run(loc, frames, starts, goals, decode_px=128, oracle_block=False, step_m=15., arrive_m=20., n_block=15, log=None,
+            odo=None, seed=0, reject_inl=0, gate_m=0., recover=None):
+    """(성공 여부, 종료 이유, 궤적별 걸음 오차 중앙값 m). log: 걸음마다 기록을 덧붙일 목록.
+
+    복구 (docs/04 R0~R4). 기본값이면 R0이고 예전 결과와 같다.
+    odo: ODO의 값. 실제 이동에 오차를 넣는다. 같은 seed면 모든 R에서 같은 오차가 나온다.
+    reject_inl: 고른 답의 inlier가 이보다 작으면 "모름" (R1, 15).
+    gate_m: 추정이 추측 위치(직전 위치 + 명령 이동량)에서 이보다 멀면 "모름" (R2).
+    recover: "모름"일 때 부르는 함수 recover(i, crop, guess_px, streak) → 지도 px 위치 또는 None (R3, R4 자리).
+             None을 돌려주거나 recover가 없으면 추측 위치를 쓴다. streak = 이 궤적의 연속 "모름" 걸음 수 (이번 걸음 포함).
+    """
     n = len(starts); dist_m = np.linalg.norm(goals[0] - starts[0]) / PX
     r = starts.copy(); nom = r.copy()
     alive = np.ones(n, bool); success = np.zeros(n, bool); reason = np.array(['timeout'] * n, dtype=object)
-    heading = np.full(n, 90.0); err = [[] for _ in range(n)]
-    for t in range(int(3 * dist_m / step_m)):
+    heading = np.full(n, 90.0); err = [[] for _ in range(n)]; streak = np.zeros(n, int)
+    T = int(3 * dist_m / step_m)
+    rng = np.random.default_rng(seed + 1)
+    bias = rng.normal(0, odo['bias_deg'], n) if odo else np.zeros(n)
+    dh = rng.normal(0, odo['head_deg'], (n, T)) if odo else np.zeros((n, T))
+    ds = rng.normal(0, odo['scale'], (n, T)) if odo else np.zeros((n, T))
+    for t in range(T):
         idx = np.where(alive)[0]
         if len(idx) == 0:
             break
@@ -102,17 +141,30 @@ def nav_run(loc, frames, starts, goals, decode_px=128, oracle_block=False, step_
             crop, fx, fy = frames(r[i, 0], r[i, 1], heading[i])
             crops.append(crop); real.append(np.array([fx, fy]))
         pos = loc(crops, heading[idx], blocks)
+        last = getattr(loc, 'last', None) or [{} for _ in idx]
         for j, i in enumerate(idx):
-            p = cen[j] + pos[j] * decode_px
+            raw = cen[j] + pos[j] * decode_px
+            guess = nom[i].copy()  # 드론이 아는 것만으로 추측한 이번 위치 (복사: 아래에서 nom[i]를 고친다)
+            n_inl = last[j].get('n_inl', np.inf)
+            unknown = (reject_inl > 0 and n_inl < reject_inl) or (gate_m > 0 and np.linalg.norm(raw - guess) / PX > gate_m)
+            streak[i] = streak[i] + 1 if unknown else 0
+            p, how = raw, 'match'
+            if unknown:
+                q = recover(i, crops[j], guess, streak[i]) if recover else None
+                p, how = (np.asarray(q, float), 'recover') if q is not None else (guess, 'guess')
+                if q is not None: streak[i] = 0
             err[i].append(float(np.linalg.norm(p - real[j]) / PX))
             if log is not None:
                 log.append(dict(traj=int(i), step=t, real_x=float(real[j][0]), real_y=float(real[j][1]), est_x=float(p[0]),
                                 est_y=float(p[1]), block_x=blocks[j][0], block_y=blocks[j][1], err_m=err[i][-1],
                                 outside_block=int(np.abs(real[j] - cen[j]).max() > 128),
-                                **(loc.last[j] if getattr(loc, 'last', None) else {})))
+                                raw_err_m=float(np.linalg.norm(raw - real[j]) / PX), unknown=int(unknown), used=how,
+                                **last[j]))
             d = goals[i] - p; u = d / max(np.linalg.norm(d), 1e-6)
             heading[i] = np.degrees(np.arctan2(-u[1], u[0]))
-            r[i] = r[i] + u * step_m * PX; nom[i] = p + u * step_m * PX
+            a = np.radians(bias[i] + dh[i, t]); c, s_ = np.cos(a), np.sin(a)
+            move = np.array([c * u[0] - s_ * u[1], s_ * u[0] + c * u[1]]) * (1 + ds[i, t])
+            r[i] = r[i] + move * step_m * PX; nom[i] = p + u * step_m * PX
             real_d = np.linalg.norm(r[i] - goals[i]) / PX; pred_d = np.linalg.norm(p - goals[i]) / PX
             if real_d < arrive_m or pred_d < arrive_m:
                 alive[i] = False; success[i] = real_d < 2 * arrive_m
