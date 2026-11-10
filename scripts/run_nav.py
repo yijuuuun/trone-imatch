@@ -11,6 +11,7 @@
 --variants: 복구 단계를 쉼표로 여러 개 (docs/04 R0~R4). 한 프로세스에서 돌려 매칭 캐시를 같이 쓴다.
   r0 복구 없음 · r1 inlier < 15이면 모름 → 추측 항법 · r2g30 r1 + 추측 위치와 30 m 넘게 차이나면 모름
   r3g30 r2g30 + 모름이면 주변 5블록 재탐색 · r4g30n3 r3g30 + 3걸음 연속 모름이면 3×3 (imatch/nav.py Research)
+  r4g30n5w20 r4g30n5 + 3×3에서만 inlier >= 20
   center 매칭 없이 항상 블록 중심 · dr 매칭 없이 추측 항법만
   출력 파일은 <도시>_<frames>_<matcher><tag>-<variant>_steps.csv (걸음별)과 _traj.csv (궤적별 성공, 종료 이유)
   r3·r4의 걸음 기록에는 재탐색 열(rec_*)이 붙고, sec는 재탐색 시간을 포함한다 (rec_sec가 그중 재탐색)
@@ -57,11 +58,12 @@ def main():
         starts, goals = make_traj(a.n_traj, a.dist, a.seed)
         match = MatchLoc(matcher, city, angles=angles)
         for v in (a.variants.split(',') if a.variants else ['']):
-            m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+))?|center|dr|)', v)
+            m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+)(?:w(\d+))?)?|center|dr|)', v)
             if not m or (m.group(2) == '4') != bool(m.group(4)): sys.exit(f'모르는 variant: {v}')
             loc = NoMatch() if v in ('center', 'dr') else match
             kw = dict(reject_inl=15 if v.startswith(('r1', 'r2', 'r3', 'r4')) or v == 'dr' else 0, gate_m=float(m.group(3) or 0))
-            rec = Research(match, gate_m=kw['gate_m'], wide_after=int(m.group(4) or 0)) if m.group(2) in ('3', '4') else None
+            rec = (Research(match, gate_m=kw['gate_m'], wide_after=int(m.group(4) or 0), wide_inl=int(m.group(5) or 0))
+                   if m.group(2) in ('3', '4') else None)
             log, t0, n0 = [], time.time(), len(match.cache)
             ok, reason, med = nav_run(loc, frames, starts, goals, oracle_block=a.oracle, log=log,
                                       odo=ODO[a.odo], seed=a.seed, recover=rec, **kw)
