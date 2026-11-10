@@ -1,0 +1,8 @@
+comparison,reference,changed,n,scene_n,success_to_success,success_to_failure,failure_to_success,failure_to_failure,loss_k,gain_k,success_delta_pp,paired_scene_bootstrap_ci95_low_pp,paired_scene_bootstrap_ci95_high_pp,mcnemar_exact_two_sided_p,scope
+FP32 8→FP32 4,F0,F2,20,19,14,0,0,6,,,0,0.0,0.0,1.0,independent Oracle T1; operational success includes rejection as failure
+FP32 8→FP16 4,F0,F3,20,19,13,1,0,6,4,,-5,-15.789473684210526,0.0,1.0,independent Oracle T1; operational success includes rejection as failure
+Mild→Mild Gamma,E_mild,E_mild_gamma,20,19,14,0,0,6,,,0,0.0,0.0,1.0,independent Oracle T1; operational success includes rejection as failure
+Mild→Mild CLAHE,E_mild,E_mild_clahe,20,19,14,0,0,6,,,0,0.0,0.0,1.0,independent Oracle T1; operational success includes rejection as failure
+Severe→Severe Gamma,E_severe,E_severe_gamma,20,19,10,2,1,7,1;2,13,-5,-21.05263157894737,10.526315789473685,1.0,independent Oracle T1; operational success includes rejection as failure
+Severe→Severe CLAHE,E_severe,E_severe_clahe,20,19,11,1,1,7,2,13,0,-15.0,15.0,1.0,independent Oracle T1; operational success includes rejection as failure
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,20,19,11,1,1,7,2,13,0,-15.0,15.0,1.0,independent Oracle T1; operational success includes rejection as failure

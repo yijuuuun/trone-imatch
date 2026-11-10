@@ -1,0 +1,43 @@
+{
+  "validation_scope": "Export packaging, not a new full benchmark",
+  "syntax": "all exported Python AST parsed",
+  "imports": "PASS all imports 10",
+  "lowlight_parity": "PASS 240 original/export image-transform cases: exact byte parity",
+  "source_files_preserved": 1333,
+  "changed_originals": [],
+  "external_workspace_setup": "passed; official source and all three weight hashes checked",
+  "dev100_restoration": "passed; all original source-image and reconstructed JPEG hashes match; no k>=100 restored",
+  "GPU": {
+    "model_parameters": 341523567,
+    "strict_loading": true,
+    "NAT_original_first_pair": {
+      "matches": 1511,
+      "inliers": 1013,
+      "valid_H": true,
+      "exact_reference_count_parity": true
+    },
+    "F_FP16_4_first_pair": {
+      "matches": 280,
+      "inliers": 53,
+      "exact_reference_count_parity": true
+    },
+    "GT_metadata_max_discrepancy_px": 3.1107276754482882e-09,
+    "note": "Packaging smoke only, not appended to frozen research results; first-call latency not a benchmark."
+  },
+  "CSV_rows": {
+    "configs/dev100/samples.csv": 100,
+    "configs/dev100/source_mapping.csv": 100,
+    "results/meeting/adoption_decisions.csv": 8,
+    "results/meeting/paired_transition_samples.csv": 140,
+    "results/meeting/paired_transition_summary.csv": 7,
+    "results/meeting/uncertainty_reference.csv": 3,
+    "results/pilot20/geometry_distribution.csv": 6,
+    "results/pilot20/heading_ablation.csv": 2,
+    "results/pilot20/latency_breakdown.csv": 30,
+    "results/pilot20/matching_geometry_comparison.csv": 6,
+    "results/pilot20/paired_samples.csv": 120,
+    "results/pilot20/precision_comparison.csv": 4,
+    "results/pilot20/resolution_comparison.csv": 3,
+    "results/pilot20/samples.csv": 120
+  }
+}

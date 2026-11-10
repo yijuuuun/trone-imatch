@@ -1,0 +1,51 @@
+[
+  {
+    "original_relative_path": "standalone/lowlight.py",
+    "original_sha256": "8f5ada00939d57b04860b224ff5bf88bbcb26d729cd960bcc94c13cc2c93acc7",
+    "export_path": "src/lowlight.py",
+    "export_sha256": "8f5ada00939d57b04860b224ff5bf88bbcb26d729cd960bcc94c13cc2c93acc7",
+    "adaptation": "path portability, dev-only restoration and branch-selective analysis where applicable; inference/scoring math unchanged; trailing whitespace normalized"
+  },
+  {
+    "original_relative_path": "standalone/loma_backend.py",
+    "original_sha256": "9deb02a907b7dd8e43dfd7374e6e358da7f31b650f45f6756990db6289421fff",
+    "export_path": "src/loma_backend.py",
+    "export_sha256": "8ce85ed1902ce0534e8275c76c0dc31c2ffce58eabe7f68651e464d5e751b3ec",
+    "adaptation": "path portability, dev-only restoration and branch-selective analysis where applicable; inference/scoring math unchanged; trailing whitespace normalized"
+  },
+  {
+    "original_relative_path": "standalone/smoke_gpu.py",
+    "original_sha256": "6c347e36183e5af028f62e6d90a36ef9391d1e05ad69cd4f67213cd46d5c0764",
+    "export_path": "src/smoke_gpu.py",
+    "export_sha256": "6c347e36183e5af028f62e6d90a36ef9391d1e05ad69cd4f67213cd46d5c0764",
+    "adaptation": "path portability, dev-only restoration and branch-selective analysis where applicable; inference/scoring math unchanged; trailing whitespace normalized"
+  },
+  {
+    "original_relative_path": "standalone/pilot_matrix.py",
+    "original_sha256": "c3c0c404fa2691db699a1ff23122fccc91609f05e1222924c9d458d62fa7edf8",
+    "export_path": "src/pilot_matrix.py",
+    "export_sha256": "cd8063f51932eacf2e1d62b5517af4ec1660ddc152aa3384bb3e8470b1da2217",
+    "adaptation": "path portability, dev-only restoration and branch-selective analysis where applicable; inference/scoring math unchanged; trailing whitespace normalized"
+  },
+  {
+    "original_relative_path": "standalone/analyze_pilot.py",
+    "original_sha256": "4d306cd9e0faf56e12ff68c7dc0620d67b7bb7360f3887e88500aa9fd3d7538f",
+    "export_path": "src/analyze_pilot.py",
+    "export_sha256": "cd99e8b9650eeb92bc7a8619f6e0526bf553588e78de7dea3c451c9b20233a0c",
+    "adaptation": "path portability, dev-only restoration and branch-selective analysis where applicable; inference/scoring math unchanged; trailing whitespace normalized"
+  },
+  {
+    "original_relative_path": "archive_reference/tools/restore_singapore.py",
+    "original_sha256": "4e367b978ad38b4abeb7f6d569e11f8c79ec6efe6e20fe01812d87969036624b",
+    "export_path": "src/restore_singapore.py",
+    "export_sha256": "8c8b05f9948f58108f7b41e199909f32fa74adc13dee7067d16e064bac74a5ad",
+    "adaptation": "path portability, dev-only restoration and branch-selective analysis where applicable; inference/scoring math unchanged; trailing whitespace normalized"
+  },
+  {
+    "original_relative_path": "prepare_dev.py",
+    "original_sha256": "65c1dca3e09e87a0e4cddbba577ad390ab22f40ea9242ff274dabea2fb5bc45c",
+    "export_path": "src/prepare_dev.py",
+    "export_sha256": "6bc71b7971a323bd387252c6c91aa0375c37c3e3bc38cb4192d8aad3aa48e5c5",
+    "adaptation": "path portability, dev-only restoration and branch-selective analysis where applicable; inference/scoring math unchanged; trailing whitespace normalized"
+  }
+]

@@ -1,0 +1,3 @@
+comparison,n,scene_n,same_angle_pct,homography_validity_changed_n,rejection_changed_n,mean_matches_delta,mean_inliers_delta,mean_center_shift_m,max_center_shift_m,mean_homography_probe_rms_px,mean_correspondence_jaccard_2px_pct,success_delta_pp,success_delta_scene_bootstrap_ci95_low_pp,success_delta_scene_bootstrap_ci95_high_pp,successful_to_failed_n,failed_to_successful_n,speedup
+4_vs_8_fp32,20,19,75.0,0,0,4.9,-0.4,12.808456597385751,233.95494276498746,110.18554799093135,79.42418118888449,0.0,0.0,0.0,0,0,1.9637441189266736
+4_vs_8_fp16,20,19,85.0,0,0,-2.15,-0.35,4.656231806766326,67.67145669449758,1160.4341284225773,86.7072757843977,0.0,0.0,0.0,0,0,2.0053775638874343

@@ -1,0 +1,141 @@
+comparison,reference,changed,k,reference_success,changed_success,reference_error_m,changed_error_m,reference_inliers,changed_inliers,reference_rejected,changed_rejected
+FP32 8→FP32 4,F0,F2,0,True,True,3.4912358514678816,3.4912358514678816,53,53,False,False
+FP32 8→FP32 4,F0,F2,1,True,True,3.250838434276939,3.250838434276939,55,55,False,False
+FP32 8→FP32 4,F0,F2,2,True,True,2.6967596815379133,2.6967596815379133,25,25,False,False
+FP32 8→FP32 4,F0,F2,3,True,True,6.854610126373401,6.854610126373401,139,139,False,False
+FP32 8→FP32 4,F0,F2,4,True,True,9.313705280091133,9.322438940299953,20,16,False,False
+FP32 8→FP32 4,F0,F2,5,False,False,18.237857525835384,18.237857525835384,13,13,True,True
+FP32 8→FP32 4,F0,F2,6,True,True,6.518846161457579,6.518846161457579,127,127,False,False
+FP32 8→FP32 4,F0,F2,7,False,False,27.474618505701105,27.474618505701105,7,7,True,True
+FP32 8→FP32 4,F0,F2,8,False,False,35.3197845475225,15.825019035089548,6,6,True,True
+FP32 8→FP32 4,F0,F2,9,True,True,6.298451856518149,6.365585509071649,82,79,False,False
+FP32 8→FP32 4,F0,F2,10,False,False,11.171439011150376,11.171439011150376,40,40,False,False
+FP32 8→FP32 4,F0,F2,11,True,True,0.358697591125454,0.358697591125454,63,63,False,False
+FP32 8→FP32 4,F0,F2,12,True,True,5.987730956933929,5.987730956933929,87,87,False,False
+FP32 8→FP32 4,F0,F2,13,True,True,5.130010532893556,5.130010532893556,30,30,False,False
+FP32 8→FP32 4,F0,F2,14,True,True,7.019151389360455,7.019151389360455,98,98,False,False
+FP32 8→FP32 4,F0,F2,15,True,True,2.909038498759379,2.8123625513867605,145,144,False,False
+FP32 8→FP32 4,F0,F2,16,True,True,2.0939816495820933,2.0939816495820933,85,85,False,False
+FP32 8→FP32 4,F0,F2,17,False,False,56.18664100867137,56.18664100867137,18,18,False,False
+FP32 8→FP32 4,F0,F2,18,True,True,5.152668931602015,5.152668931602015,92,92,False,False
+FP32 8→FP32 4,F0,F2,19,False,False,205.92468886728707,35.812227222636345,6,6,True,True
+FP32 8→FP16 4,F0,F3,0,True,True,3.4912358514678816,3.3757631683965412,53,53,False,False
+FP32 8→FP16 4,F0,F3,1,True,True,3.250838434276939,3.664332580898955,55,52,False,False
+FP32 8→FP16 4,F0,F3,2,True,True,2.6967596815379133,3.424686233651851,25,23,False,False
+FP32 8→FP16 4,F0,F3,3,True,True,6.854610126373401,6.8463870614935995,139,140,False,False
+FP32 8→FP16 4,F0,F3,4,True,False,9.313705280091133,10.648879645681326,20,20,False,False
+FP32 8→FP16 4,F0,F3,5,False,False,18.237857525835384,17.913754429912608,13,12,True,True
+FP32 8→FP16 4,F0,F3,6,True,True,6.518846161457579,6.435440235236403,127,133,False,False
+FP32 8→FP16 4,F0,F3,7,False,False,27.474618505701105,24.880750338404276,7,7,True,True
+FP32 8→FP16 4,F0,F3,8,False,False,35.3197845475225,12.590866132425598,6,7,True,True
+FP32 8→FP16 4,F0,F3,9,True,True,6.298451856518149,6.272766844144243,82,83,False,False
+FP32 8→FP16 4,F0,F3,10,False,False,11.171439011150376,11.256910637735986,40,38,False,False
+FP32 8→FP16 4,F0,F3,11,True,True,0.358697591125454,0.5036832597014452,63,60,False,False
+FP32 8→FP16 4,F0,F3,12,True,True,5.987730956933929,6.06156082667167,87,90,False,False
+FP32 8→FP16 4,F0,F3,13,True,True,5.130010532893556,5.487541382040772,30,29,False,False
+FP32 8→FP16 4,F0,F3,14,True,True,7.019151389360455,5.478175070596368,98,94,False,False
+FP32 8→FP16 4,F0,F3,15,True,True,2.909038498759379,2.8420219307348664,145,152,False,False
+FP32 8→FP16 4,F0,F3,16,True,True,2.0939816495820933,1.839883452913304,85,73,False,False
+FP32 8→FP16 4,F0,F3,17,False,False,56.18664100867137,60.65971068508777,18,15,False,False
+FP32 8→FP16 4,F0,F3,18,True,True,5.152668931602015,4.997905179445859,92,93,False,False
+FP32 8→FP16 4,F0,F3,19,False,False,205.92468886728707,0.905541328769379,6,7,True,True
+Mild→Mild Gamma,E_mild,E_mild_gamma,0,True,True,3.50941448785125,3.3270419816735317,56,58,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,1,True,True,4.039752815324751,4.354316821792751,48,43,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,2,True,True,1.470262878454625,2.699696670984705,25,20,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,3,True,True,6.583942438190863,6.570523105435905,127,122,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,4,True,True,9.267942867746985,7.961942302925525,28,21,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,5,False,False,5.970062715290043,10.540789163780717,13,12,True,True
+Mild→Mild Gamma,E_mild,E_mild_gamma,6,True,True,6.4772447974778675,6.464371311031095,127,133,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,7,False,False,75.89181004268009,70.39810694865592,10,10,True,True
+Mild→Mild Gamma,E_mild,E_mild_gamma,8,False,False,22.542122149812634,7.192043026095096,8,8,True,True
+Mild→Mild Gamma,E_mild,E_mild_gamma,9,True,True,5.996340492286398,6.087466016156502,87,93,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,10,False,False,11.165117198913341,11.067124330241056,43,44,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,11,True,True,0.16058753233629328,0.28451937756063844,63,65,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,12,True,True,6.217471148662897,6.601232053108053,95,97,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,13,True,True,4.053476646446367,2.956700040972903,29,26,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,14,True,True,6.404314914891692,6.207952679522911,118,115,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,15,True,True,2.8448578114735126,2.832483871284696,169,180,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,16,True,True,1.9718089444197635,2.3143840070879977,81,82,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,17,False,False,59.435929486923435,57.67620920689343,23,23,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,18,True,True,4.938755826591915,4.750853678578382,93,87,False,False
+Mild→Mild Gamma,E_mild,E_mild_gamma,19,False,False,11.254366133805522,67.05233420859531,9,8,True,True
+Mild→Mild CLAHE,E_mild,E_mild_clahe,0,True,True,3.50941448785125,3.4765292175479448,56,51,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,1,True,True,4.039752815324751,3.896728205844755,48,42,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,2,True,True,1.470262878454625,1.4877365823431856,25,28,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,3,True,True,6.583942438190863,6.838889496889294,127,130,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,4,True,True,9.267942867746985,4.43180983045668,28,20,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,5,False,False,5.970062715290043,61.26930787691944,13,7,True,True
+Mild→Mild CLAHE,E_mild,E_mild_clahe,6,True,True,6.4772447974778675,6.456108573679979,127,105,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,7,False,False,75.89181004268009,58.81104613084504,10,8,True,True
+Mild→Mild CLAHE,E_mild,E_mild_clahe,8,False,False,22.542122149812634,33.09501609695666,8,8,True,True
+Mild→Mild CLAHE,E_mild,E_mild_clahe,9,True,True,5.996340492286398,5.9046641890090905,87,91,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,10,False,False,11.165117198913341,11.074869735632328,43,38,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,11,True,True,0.16058753233629328,0.18601470395603126,63,81,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,12,True,True,6.217471148662897,6.654481775438522,95,93,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,13,True,True,4.053476646446367,1.978500787815434,29,28,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,14,True,True,6.404314914891692,6.29127710243572,118,68,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,15,True,True,2.8448578114735126,2.6563296048063485,169,173,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,16,True,True,1.9718089444197635,1.80737577904445,81,81,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,17,False,False,59.435929486923435,56.22595856693864,23,19,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,18,True,True,4.938755826591915,4.75892499567236,93,87,False,False
+Mild→Mild CLAHE,E_mild,E_mild_clahe,19,False,False,11.254366133805522,67.33087460493776,9,9,True,True
+Severe→Severe Gamma,E_severe,E_severe_gamma,0,True,True,3.777760911414631,3.5919373940729376,51,54,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,1,True,False,3.8425549931693896,698.3137465143155,49,18,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,2,True,False,3.695946928173583,9.827456238877252,23,12,False,True
+Severe→Severe Gamma,E_severe,E_severe_gamma,3,True,True,6.564764479187993,6.622176150569256,121,125,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,4,False,False,12.615521808769163,91.70706268314862,11,7,True,True
+Severe→Severe Gamma,E_severe,E_severe_gamma,5,False,False,9.945858597694066,7.095601357856624,11,5,True,True
+Severe→Severe Gamma,E_severe,E_severe_gamma,6,True,True,6.490679048700551,6.255894005040869,120,81,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,7,False,False,58.49559078153109,59.82509225681924,15,10,False,True
+Severe→Severe Gamma,E_severe,E_severe_gamma,8,False,False,33.06871255164795,42.983175182288214,6,5,True,True
+Severe→Severe Gamma,E_severe,E_severe_gamma,9,True,True,6.546589237856677,6.550345286749429,110,95,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,10,False,False,11.122366824669715,11.16341509348954,51,48,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,11,True,True,0.7094499125109596,0.473643659120008,58,55,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,12,True,True,6.74976742210147,7.025762059911942,96,87,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,13,False,True,2.949547238628223,3.228091405678259,13,21,True,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,14,True,True,6.609914273637233,6.3031337255661795,98,86,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,15,True,True,3.0868687456447805,3.0733316951458924,179,201,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,16,True,True,1.8712099088758256,1.8449928967721032,93,90,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,17,False,False,66.71762970032265,55.31357001072647,30,26,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,18,True,True,4.779366925618675,4.480603798156805,84,91,False,False
+Severe→Severe Gamma,E_severe,E_severe_gamma,19,False,False,8.256717345657448,99.2482985327399,8,8,True,True
+Severe→Severe CLAHE,E_severe,E_severe_clahe,0,True,True,3.777760911414631,3.6001334144793398,51,54,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,1,True,True,3.8425549931693896,4.2892536842281785,49,51,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,2,True,False,3.695946928173583,10.285914038080186,23,12,False,True
+Severe→Severe CLAHE,E_severe,E_severe_clahe,3,True,True,6.564764479187993,6.579156098521577,121,110,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,4,False,False,12.615521808769163,10.332011155801817,11,8,True,True
+Severe→Severe CLAHE,E_severe,E_severe_clahe,5,False,False,9.945858597694066,18.327515272836305,11,8,True,True
+Severe→Severe CLAHE,E_severe,E_severe_clahe,6,True,True,6.490679048700551,6.482686368779653,120,101,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,7,False,False,58.49559078153109,58.43159556792756,15,13,False,True
+Severe→Severe CLAHE,E_severe,E_severe_clahe,8,False,False,33.06871255164795,23.625391952582753,6,6,True,True
+Severe→Severe CLAHE,E_severe,E_severe_clahe,9,True,True,6.546589237856677,6.5201882593236915,110,92,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,10,False,False,11.122366824669715,11.256208570033394,51,43,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,11,True,True,0.7094499125109596,0.5597021339120819,58,46,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,12,True,True,6.74976742210147,7.333339908020275,96,67,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,13,False,True,2.949547238628223,5.520016142034321,13,16,True,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,14,True,True,6.609914273637233,6.723447437734117,98,79,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,15,True,True,3.0868687456447805,3.2757423917891177,179,186,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,16,True,True,1.8712099088758256,2.0844251225154333,93,85,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,17,False,False,66.71762970032265,68.39148272199556,30,19,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,18,True,True,4.779366925618675,4.413590335246768,84,92,False,False
+Severe→Severe CLAHE,E_severe,E_severe_clahe,19,False,False,8.256717345657448,75.7977391294992,8,9,True,True
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,0,True,True,3.777760911414631,3.6466932563547596,51,58,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,1,True,True,3.8425549931693896,4.087123461617099,49,53,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,2,True,False,3.695946928173583,7.150701265753856,23,13,False,True
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,3,True,True,6.564764479187993,6.490649908322017,121,108,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,4,False,False,12.615521808769163,23.56210586191241,11,9,True,True
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,5,False,False,9.945858597694066,3.251047983087544,11,8,True,True
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,6,True,True,6.490679048700551,6.420538592692102,120,89,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,7,False,False,58.49559078153109,64.09974584828844,15,12,False,True
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,8,False,False,33.06871255164795,68.92785653937018,6,7,True,True
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,9,True,True,6.546589237856677,6.668531523219879,110,87,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,10,False,False,11.122366824669715,11.290040118869026,51,51,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,11,True,True,0.7094499125109596,0.47286202088972207,58,47,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,12,True,True,6.74976742210147,6.8286248258299125,96,68,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,13,False,True,2.949547238628223,1.2911906900095262,13,16,True,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,14,True,True,6.609914273637233,6.600116624212352,98,73,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,15,True,True,3.0868687456447805,3.041222566455129,179,193,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,16,True,True,1.8712099088758256,2.4737009218618793,93,76,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,17,False,False,66.71762970032265,54.74090588262207,30,19,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,18,True,True,4.779366925618675,4.855258243895651,84,81,False,False
+Severe→Severe Gamma+CLAHE,E_severe,E_severe_gamma_clahe,19,False,False,8.256717345657448,67.15052105748455,8,8,True,True
