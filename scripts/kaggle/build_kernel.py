@@ -48,17 +48,19 @@ else: DATA_DIR = DATA
 print('data', DATA_DIR, sorted(os.listdir(DATA_DIR)), flush=True)
 
 sys.path.insert(0, SRC)
-if SCRIPT == 'run_nav':
-    # 항법: 지도(maps/)가 있는 폴더가 --data, Bearing_UAV_90K가 있는 폴더가 --capstone1
-    DATA_DIR = os.path.dirname(glob.glob(DATA + '/**/maps', recursive=True)[0])
-    CAP = os.path.dirname(glob.glob(DATA + '/**/Bearing_UAV_90K', recursive=True)[0])
-    from scripts.run_nav import main
-    sys.argv = ['run_nav', '--data', DATA_DIR, '--capstone1', CAP, '--out', '/kaggle/working/out'] + ARGS
-    main()
-else:
-    from scripts.run import main
-    main(['--data', DATA_DIR, '--out', '/kaggle/working/out'] + ARGS)
-shutil.rmtree(DATA, ignore_errors=True)  # 출력 용량을 작게
+try:
+    if SCRIPT == 'run_nav':
+        # 항법: 지도(maps/)가 있는 폴더가 --data, Bearing_UAV_90K가 있는 폴더가 --capstone1
+        DATA_DIR = os.path.dirname(glob.glob(DATA + '/**/maps', recursive=True)[0])
+        CAP = os.path.dirname(glob.glob(DATA + '/**/Bearing_UAV_90K', recursive=True)[0])
+        from scripts.run_nav import main
+        sys.argv = ['run_nav', '--data', DATA_DIR, '--capstone1', CAP, '--out', '/kaggle/working/out'] + ARGS
+        main()
+    else:
+        from scripts.run import main
+        main(['--data', DATA_DIR, '--out', '/kaggle/working/out'] + ARGS)
+finally:
+    shutil.rmtree(DATA, ignore_errors=True)  # 출력 용량을 작게. 실패해도 지워야 로그를 받을 수 있다
 '''
 
 
