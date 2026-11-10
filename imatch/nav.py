@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 from scipy.spatial import cKDTree
 
-from .blocks import crop_block
+from .blocks import N_BLOCK, crop_block, neighbors
 from .geometry import PX_PER_UNIT
 from .pipeline import localize
 
@@ -79,14 +79,18 @@ class MatchLoc:
     def __call__(self, crops, headings, blocks):
         out, self.last = [], []
         for crop, (bx, by) in zip(crops, blocks):
-            key = (hashlib.md5(crop.tobytes()).hexdigest(), bx, by)
-            if key not in self.cache:
-                recs, best = localize(self.matcher, crop, crop_block(self.city, bx, by), (0.0, 0.0, 0.0), self.scale, self.angles)
-                self.cache[key] = ((best['px'], best['py']) if best else (0.0, 0.0),
-                                   dict(n_inl=best['n_inl'] if best else 0, found=int(best is not None), sec=sum(r['sec'] for r in recs)))
-            xy, rec = self.cache[key]
+            xy, rec = self.one(crop, bx, by)
             out.append(xy); self.last.append(rec)
         return np.array(out)
+
+    def one(self, crop, bx, by):
+        """블록 하나: (위치(블록 단위), 기록). self.last는 건드리지 않는다 (Research가 nav_run 걸음 중간에 부른다)."""
+        key = (hashlib.md5(crop.tobytes()).hexdigest(), bx, by)
+        if key not in self.cache:
+            recs, best = localize(self.matcher, crop, crop_block(self.city, bx, by), (0.0, 0.0, 0.0), self.scale, self.angles)
+            self.cache[key] = ((best['px'], best['py']) if best else (0.0, 0.0),
+                               dict(n_inl=best['n_inl'] if best else 0, found=int(best is not None), sec=sum(r['sec'] for r in recs)))
+        return self.cache[key]
 
 
 class NoMatch:
@@ -97,6 +101,44 @@ class NoMatch:
     def __call__(self, crops, headings, blocks):
         self.last = [dict(n_inl=0, found=0, sec=0.0) for _ in crops]
         return np.zeros((len(crops), 2))
+
+
+class Research:
+    """R3·R4: "모름"이면 추측 위치 주변 블록을 다시 매칭한다. nav_run의 recover로 넘긴다.
+
+    R3: 추측 위치의 블록과 십자 이웃 4개 (⑥ 블록 선택의 후보 5개, experiments/2026-11-06_block_select).
+    R4 (wide_after > 0): 연속 "모름"이 wide_after걸음 이상이면 3×3 9개.
+    통과 = 그 블록 기준 추정이 ±inside 안 (inside 규칙)이고 inlier >= min_inl. 여러 개면 추측 위치에 가장 가까운 것, 없으면 None.
+    gate_m > 0이면 십자 재탐색의 답도 추측 위치에서 gate_m m 안이어야 한다 (R2와 같은 움직임 검사).
+    넓게 찾기는 추측 위치가 이미 밀렸다고 보고 움직임 검사를 하지 않는다.
+    추측 위치의 블록은 이번 걸음에 이미 매칭했으므로 캐시에서 나온다. 부를 때마다 self.log에 한 줄 남긴다
+    (rec_sec = 이번 걸음에 더 든 매칭 시간, 추측 위치의 블록 제외).
+    """
+    def __init__(self, match, min_inl=15, gate_m=0., wide_after=0, inside=1.1):
+        self.match, self.min_inl, self.gate_m, self.wide_after, self.inside = match, min_inl, gate_m, wide_after, inside
+        self.log = []
+
+    def __call__(self, i, crop, guess, streak):
+        wide = self.wide_after > 0 and streak >= self.wide_after
+        bx = int(np.clip(np.round((guess[0] - 256) / 256), 0, N_BLOCK - 1))
+        by = int(np.clip(np.round((guess[1] - 256) / 256), 0, N_BLOCK - 1))
+        cands = [(dx, dy) for dx, dy in neighbors(bx, by, 1) if wide or abs(dx) + abs(dy) <= 1]
+        best, best_d, n_pass, sec = None, np.inf, 0, 0.
+        for dx, dy in cands:
+            (x, y), rec = self.match.one(crop, bx + dx, by + dy)
+            sec += rec['sec'] if (dx, dy) != (0, 0) else 0.
+            if not rec['found'] or rec['n_inl'] < self.min_inl or max(abs(x), abs(y)) > self.inside:
+                continue
+            p = np.array([(bx + dx) * 256 + 256, (by + dy) * 256 + 256]) + np.array([x, y]) * PX_PER_UNIT
+            d = np.linalg.norm(p - guess) / PX
+            if self.gate_m > 0 and not wide and d > self.gate_m:
+                continue
+            n_pass += 1
+            if d < best_d:
+                best, best_d, pick = p, d, (bx + dx, by + dy, rec['n_inl'])
+        self.log.append(dict(traj=int(i), rec_wide=int(wide), rec_cand=len(cands), rec_pass=n_pass, rec_sec=sec,
+                             **(dict(zip(('rec_bx', 'rec_by', 'rec_n_inl'), pick)) if best is not None else {})))
+        return best
 
 
 ODO = {'none': None, 'vio': dict(bias_deg=3.0, head_deg=2.0, scale=0.05)}
