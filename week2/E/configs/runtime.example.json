@@ -1,0 +1,7 @@
+{
+  "WEEK2_WORKSPACE": "<new-external-workspace>",
+  "loma_source": "<external-official-LoMa-source>",
+  "weights_dir": "<external-three-weights>",
+  "bearing_zip": "<legally-obtained-external-Bearing-UAV-zip>",
+  "note": "Set WEEK2_WORKSPACE in the shell. prepare_workspace.py accepts the other paths as CLI arguments. This example is documentation, not an auto-loaded config."
+}

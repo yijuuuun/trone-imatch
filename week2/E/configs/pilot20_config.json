@@ -1,0 +1,207 @@
+{
+  "conditions": [
+    {
+      "id": "F1",
+      "suite": "F",
+      "precision": "fp16",
+      "headings": 8,
+      "scale": 1.0,
+      "light": "daylight",
+      "enhance": "none"
+    },
+    {
+      "id": "F3",
+      "suite": "F",
+      "precision": "fp16",
+      "headings": 4,
+      "scale": 1.0,
+      "light": "daylight",
+      "enhance": "none"
+    },
+    {
+      "id": "F0",
+      "suite": "F",
+      "precision": "fp32",
+      "headings": 8,
+      "scale": 1.0,
+      "light": "daylight",
+      "enhance": "none"
+    },
+    {
+      "id": "F2",
+      "suite": "F",
+      "precision": "fp32",
+      "headings": 4,
+      "scale": 1.0,
+      "light": "daylight",
+      "enhance": "none"
+    },
+    {
+      "id": "E_mild",
+      "suite": "E",
+      "precision": "fp16",
+      "headings": 8,
+      "scale": 1.0,
+      "light": "mild",
+      "enhance": "none"
+    },
+    {
+      "id": "E_severe",
+      "suite": "E",
+      "precision": "fp16",
+      "headings": 8,
+      "scale": 1.0,
+      "light": "severe",
+      "enhance": "none"
+    },
+    {
+      "id": "E_mild_gamma",
+      "suite": "E",
+      "precision": "fp16",
+      "headings": 8,
+      "scale": 1.0,
+      "light": "mild",
+      "enhance": "gamma"
+    },
+    {
+      "id": "E_mild_clahe",
+      "suite": "E",
+      "precision": "fp16",
+      "headings": 8,
+      "scale": 1.0,
+      "light": "mild",
+      "enhance": "clahe"
+    },
+    {
+      "id": "E_severe_gamma",
+      "suite": "E",
+      "precision": "fp16",
+      "headings": 8,
+      "scale": 1.0,
+      "light": "severe",
+      "enhance": "gamma"
+    },
+    {
+      "id": "E_severe_clahe",
+      "suite": "E",
+      "precision": "fp16",
+      "headings": 8,
+      "scale": 1.0,
+      "light": "severe",
+      "enhance": "clahe"
+    },
+    {
+      "id": "F_scale075",
+      "suite": "F_resolution",
+      "precision": "fp16",
+      "headings": 8,
+      "scale": 0.75,
+      "light": "daylight",
+      "enhance": "none"
+    },
+    {
+      "id": "F_scale050",
+      "suite": "F_resolution",
+      "precision": "fp16",
+      "headings": 8,
+      "scale": 0.5,
+      "light": "daylight",
+      "enhance": "none"
+    }
+  ],
+  "cohort": "development k0..limit-1; max99",
+  "seed_base": 20261110,
+  "map": "Oracle T1",
+  "cache": false,
+  "keypoints": 2048,
+  "matching_threshold": 0.1,
+  "magsac_px": 3.0,
+  "magsac_maxiters": 10000,
+  "magsac_confidence": 0.999,
+  "selection": "valid-H max inlier; ties max matches then first angle",
+  "rotation": "same original canvas, black border, INTER_LINEAR",
+  "resize": "nearest14 antialias bilinear; scale both UAV and satellite tensors; restore original coords before MAGSAC",
+  "synthesis": {
+    "mild": [
+      0.45,
+      1000.0,
+      0.008
+    ],
+    "severe": [
+      0.15,
+      500.0,
+      0.015
+    ]
+  },
+  "synthesis_provenance": "temporary development model; T4R/NAT2021 settings unavailable",
+  "gamma": 0.6,
+  "clahe": {
+    "clip": 2.0,
+    "grid": [
+      8,
+      8
+    ]
+  },
+  "warmup": "10 single-heading pairs per condition; excluded",
+  "success": "independent planar metadata error<10m AND not rejected; denominator all samples; raw success separately",
+  "rejection": "invalid H or selected inliers<15",
+  "large_error": "raw valid-pose error>32m; no-pose error undefined, separately counted",
+  "error_scale": "official source metadata 0.25m/px, normalized GT128px; no clipping or fallback",
+  "gt_used_in_infer": false,
+  "team_pipeline_verified": false,
+  "coordinate_metadata_max_discrepancy_px": 3.1107276754482882e-09,
+  "source_hashes": {
+    "pilot_matrix.py": "c3c0c404fa2691db699a1ff23122fccc91609f05e1222924c9d458d62fa7edf8",
+    "loma_backend.py": "9deb02a907b7dd8e43dfd7374e6e358da7f31b650f45f6756990db6289421fff",
+    "smoke_gpu.py": "6c347e36183e5af028f62e6d90a36ef9391d1e05ad69cd4f67213cd46d5c0764",
+    "lowlight.py": "8f5ada00939d57b04860b224ff5bf88bbcb26d729cd960bcc94c13cc2c93acc7"
+  },
+  "status": "independent GPU Pilot complete; team integration pending",
+  "n": 20,
+  "k_range": [
+    0,
+    19
+  ],
+  "measured_conditions": 13,
+  "unique_uav_count": 20,
+  "scene_count": 19,
+  "model_evaluations": 260,
+  "e_daylight_reuses_F1": true,
+  "core_run": "${WEEK2_WORKSPACE}/runs/pilot20_v1",
+  "extra_run": "${WEEK2_WORKSPACE}/runs/pilot20_gamma_clahe_v1",
+  "extra_reason": "Severe Gamma and CLAHE did not restore daylight operational success; conditional Gamma+CLAHE follow-up",
+  "scope": "Independent metadata metrics, not team official. Synthetic camera model not T4R/NAT2021.",
+  "input_shapes": {
+    "scale1": {
+      "uav": [
+        252,
+        252
+      ],
+      "satellite": [
+        518,
+        518
+      ]
+    },
+    "scale075": {
+      "uav": [
+        196,
+        196
+      ],
+      "satellite": [
+        378,
+        378
+      ]
+    },
+    "scale050": {
+      "uav": [
+        126,
+        126
+      ],
+      "satellite": [
+        252,
+        252
+      ]
+    }
+  },
+  "test_k100_to999_executed": false
+}

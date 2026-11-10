@@ -1,0 +1,3 @@
+case_type,pair_id,inliers,matches,inlier_ratio,geometry_pass,valid_H,overlap_H_proxy
+weakest_observed,N02018_middle,82,785,0.10445859872611465,True,True,0.8517942836077821
+strongest_observed,N02037_first,1064,1532,0.6945169712793734,True,True,0.9963407363628356

@@ -1,0 +1,9 @@
+condition,n,homography_failure_pct,rejection_pct,error_defined_n,no_pose_n,large_error_n,detected_large_error_n,large_error_recall_pct,success_count,success_10m_pct,raw_success_10m_pct
+E_daylight,20,0.0,20.0,20,0,2,1,50.0,13,65.0,70.0
+E_mild,20,0.0,20.0,20,0,2,1,50.0,14,70.0,75.0
+E_severe,20,0.0,25.0,20,0,3,1,33.333333333333336,12,60.0,75.0
+E_mild_gamma,20,0.0,20.0,20,0,3,2,66.66666666666667,14,70.0,75.0
+E_mild_clahe,20,0.0,20.0,20,0,5,4,80.0,14,70.0,70.0
+E_severe_gamma,20,0.0,30.0,20,0,6,4,66.66666666666667,11,55.0,65.0
+E_severe_clahe,20,0.0,30.0,20,0,3,2,66.66666666666667,12,60.0,60.0
+E_severe_gamma_clahe,20,0.0,30.0,20,0,4,3,75.0,12,60.0,70.0

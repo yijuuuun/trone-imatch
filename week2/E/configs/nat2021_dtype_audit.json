@@ -1,0 +1,5 @@
+{
+  "detector:torch.float32": 84,
+  "descriptor:torch.float32": 348,
+  "matcher:torch.float32": 166
+}

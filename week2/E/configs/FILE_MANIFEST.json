@@ -1,0 +1,352 @@
+[
+  {
+    "path": ".gitignore",
+    "bytes": 89,
+    "sha256": "3ce2ef4f5ec0fb0ba4b884e633bf03bf91e0a451b35f5303d7b7e763d8db188c"
+  },
+  {
+    "path": "README.md",
+    "bytes": 6985,
+    "sha256": "d3093fd9542f7c6e82a4b5ac88b64c64b52808061edc4e7a74ed5b0af3b406e1"
+  },
+  {
+    "path": "configs/NAT2021_SAMPLE_MANIFEST.json",
+    "bytes": 16502,
+    "sha256": "0a61105f0947a4db04980fc12b9b4cb8a5cd4b0ea778a4ac38f5ca117fda1cc9"
+  },
+  {
+    "path": "configs/dev100/export_provenance.json",
+    "bytes": 84412,
+    "sha256": "4c9da80f61cfc787fab39ef49fa7923487aa35ac88cb13a22f3166840b51f379"
+  },
+  {
+    "path": "configs/dev100/samples.csv",
+    "bytes": 9325,
+    "sha256": "438432f055967bd2d553e056f66e4af7da28d6449185fe2a230884477379ff58"
+  },
+  {
+    "path": "configs/dev100/source_mapping.csv",
+    "bytes": 35814,
+    "sha256": "7eec2a5a81b21d3abd680e22a9addc07b50dca59d076cfdb1d34d782ac86c710"
+  },
+  {
+    "path": "configs/loma_source_sha256.json",
+    "bytes": 3908,
+    "sha256": "959c1d48810a9bf4d1c96eaba8870ee9f1f7aacd3c49f58b0bae1f562765db9d"
+  },
+  {
+    "path": "configs/nat2021_PAIR_MANIFEST.json",
+    "bytes": 28324,
+    "sha256": "9d1c7685402b6bfaf4dd9b77de4bd2615ae77afecc38b6203b0ef514888bf4a5"
+  },
+  {
+    "path": "configs/nat2021_dtype_audit.json",
+    "bytes": 102,
+    "sha256": "1bf5bf8b89cbce222fcceb86629718be0122c4d85b80742166417f3352e1373b"
+  },
+  {
+    "path": "configs/nat2021_environment.json",
+    "bytes": 1948,
+    "sha256": "ecd804b72576efc9c24db3fd5f9835ba473f061183145dce413071198c1d8ae1"
+  },
+  {
+    "path": "configs/nat2021_model.json",
+    "bytes": 907,
+    "sha256": "d4315aadd1a46f0592a28b50e05b4d1009555879af5b6cd9978be04c10dfa6d0"
+  },
+  {
+    "path": "configs/nat2021_protocol.json",
+    "bytes": 1560,
+    "sha256": "66fb3150eae3b3f6f3e80e76542486b2316b937c241657ccc0b9b9556a514fa6"
+  },
+  {
+    "path": "configs/pilot20_config.json",
+    "bytes": 4938,
+    "sha256": "581444ab6b238e2be02e57d8fa2594f5d04cd2ae104c1f9d32f189ecee09c308"
+  },
+  {
+    "path": "configs/pilot20_environment.json",
+    "bytes": 2137,
+    "sha256": "18c12aa1020549a1fea0bab16e859a107f8c06941d5e3b5dc7f946c836301233"
+  },
+  {
+    "path": "configs/requirements-runtime.txt",
+    "bytes": 80,
+    "sha256": "a1167162960b46a07a39565927584f4ef05402244b1ce2dab0fa89dd01311736"
+  },
+  {
+    "path": "configs/runtime.example.json",
+    "bytes": 381,
+    "sha256": "46ac04c61aae80317c5d7f96adf512d43a527f28442f4651744899b66c8c09ca"
+  },
+  {
+    "path": "configs/source_manifest.json",
+    "bytes": 7174,
+    "sha256": "add8ef92609568cd5e264ef14e9e64106a008cd541a98aaa1041b76ac9e0a82c"
+  },
+  {
+    "path": "configs/weights.expected.json",
+    "bytes": 582,
+    "sha256": "c58962d327ca47c61907eec8f4f39851cf5d2d16a97d0d27637eb911ccf28d20"
+  },
+  {
+    "path": "docs/EXPORT_NOTES.md",
+    "bytes": 2162,
+    "sha256": "31ce6fd731692172efbfb647779318553e3a948db7fc410ed449fc96683476c2"
+  },
+  {
+    "path": "docs/NAT2021_REPORT.md",
+    "bytes": 9143,
+    "sha256": "d6cb1ffffc0ec0e401e89d8d1c5f4b2404e0c288e0d6f614e5a2e10b8f466b01"
+  },
+  {
+    "path": "docs/PILOT20_ORIGINAL_README.md",
+    "bytes": 5362,
+    "sha256": "f9eb1b8ce36095d604fe22ae2c0c3ac5aee52db9a6633eebd2113365e9b69f16"
+  },
+  {
+    "path": "docs/TEAM_INTEGRATION.md",
+    "bytes": 5827,
+    "sha256": "899979bff893756dadac2f49beb9ac432f15f838fcb643f93c20a206067549d4"
+  },
+  {
+    "path": "docs/UPLOAD_INVENTORY.md",
+    "bytes": 1866,
+    "sha256": "f86ce62d205fcb1659b1f23b506f9386828af513ebcfb8a9938e9eea9abf4ac4"
+  },
+  {
+    "path": "docs/VALIDATION.json",
+    "bytes": 2394,
+    "sha256": "9611e02ecee2a2ae13bc4187c447d9e952bd92f94d3a82a614169ad7c0fd8a0f"
+  },
+  {
+    "path": "docs/VALIDATION.md",
+    "bytes": 1400,
+    "sha256": "286663941ded4f689e77b2635a3e01abe30a96a536b62cb2d7311c147cf25cc9"
+  },
+  {
+    "path": "docs/calibration_audit/CALIBRATION_REPORT.md",
+    "bytes": 7701,
+    "sha256": "a5d485e54e161fe3b2c9ac4a4e97c6e34cd78dd953ca40b2aed9182b0b9974c6"
+  },
+  {
+    "path": "docs/calibration_audit/SOURCE_AUDIT.md",
+    "bytes": 5525,
+    "sha256": "7725f541c7c42bfd7d2a8d604a1f865f75b675acc9541e77a23cd75ebc97ab77"
+  },
+  {
+    "path": "docs/calibration_audit/SYNTHESIS_COMPARISON.md",
+    "bytes": 5507,
+    "sha256": "d3ba86ed31109117c038231a9993257d1b9cbb27fbf2854d56f2b40ac44b1e4d"
+  },
+  {
+    "path": "docs/calibration_audit/T4R_IMPLEMENTATION_AUDIT.md",
+    "bytes": 4046,
+    "sha256": "ea5b0dee95f320ef88ea8f49cc013496b0f04f7d2b16e7769539bafd648c353e"
+  },
+  {
+    "path": "results/calibration_audit/LOWLIGHT_PARAMETER_PROVENANCE.csv",
+    "bytes": 5663,
+    "sha256": "a59b68819d9a6a1ee643aa9bb683da39760872c6921f7153ae153d677194256a"
+  },
+  {
+    "path": "results/calibration_audit/NAT2021_NOISE_PROXY_SUPPLEMENT.csv",
+    "bytes": 10386,
+    "sha256": "ea45d8ce4c1bb19631e82b866021fa038f91a9b9d4039cb61ecf45d4fdbebe5c"
+  },
+  {
+    "path": "results/calibration_audit/NAT2021_SEQUENCE_STATISTICS.csv",
+    "bytes": 2429,
+    "sha256": "7488b6d953edeebd385a56d6a34c90a43b140aa56e9d7c0f8fa360fa6a2dda38"
+  },
+  {
+    "path": "results/calibration_audit/NAT2021_STATISTICS.csv",
+    "bytes": 75696,
+    "sha256": "2881f402ea3192e78764cb16b2745673c5024a6f46231bd884d475c415253fa5"
+  },
+  {
+    "path": "results/calibration_audit/SCENE_GROUP_STATISTICS.csv",
+    "bytes": 815,
+    "sha256": "75383a8c652150967e7785a5376950e31ce9ea12a063a2ea2fe800b01967ba40"
+  },
+  {
+    "path": "results/calibration_audit/SCENE_VISUAL_LABELS.csv",
+    "bytes": 4959,
+    "sha256": "3fd2a41bb13f9aa898d85c99220d94bda74559277710a7503a9dbb6c290de043"
+  },
+  {
+    "path": "results/calibration_audit/SYNTHESIS_CLIPPING_AUDIT.csv",
+    "bytes": 5454,
+    "sha256": "80bd4c4a04b28c5a66a69ad74aa68a6537f78527e58a8bd52a0e312d6c9e7473"
+  },
+  {
+    "path": "results/calibration_audit/SYNTHESIS_STATISTICS.csv",
+    "bytes": 65176,
+    "sha256": "6c141912fdb04d6a7e010215513872bb934f4a68d696e61bd3364350e8436923"
+  },
+  {
+    "path": "results/meeting/lowlight_diagnostics.csv",
+    "bytes": 1501,
+    "sha256": "224fd6556dcc881a3f29e5a7a812b6c51c0f94aa02dfd15702be5d80e6881421"
+  },
+  {
+    "path": "results/nat2021/bearing_uav_existing_reference.csv",
+    "bytes": 3214,
+    "sha256": "9851c24e2841ca9bf2473d47baebea12dde82b366736cfb0c15f057b8b1cf838"
+  },
+  {
+    "path": "results/nat2021/brightness_groups.csv",
+    "bytes": 4550,
+    "sha256": "0a470bf296bbb03a2950c2e099d2cb8234c9813c5d66ab00bf1510a72b34f366"
+  },
+  {
+    "path": "results/nat2021/cases.csv",
+    "bytes": 262,
+    "sha256": "ae6230c0c454802b28b4af7266359e57794b709d7ce0193d471db4d9f45994c7"
+  },
+  {
+    "path": "results/nat2021/geometry_failure_cases.csv",
+    "bytes": 22,
+    "sha256": "aba8acd50855d90fb07ba7e662cf6812d0a12d6c84143a76d3484fbd9a562caa"
+  },
+  {
+    "path": "results/nat2021/matching_summary.csv",
+    "bytes": 1681,
+    "sha256": "3f9132d8c113fa9745b7a5968d96340018c52d96bc5286870d5f8cbdde9d1db9"
+  },
+  {
+    "path": "results/nat2021/paired_samples.csv",
+    "bytes": 8145,
+    "sha256": "7ab4d1e143df9e8e01e501f4a662ce331dab498e671d46fca06c4012128049ae"
+  },
+  {
+    "path": "results/nat2021/paired_summary.csv",
+    "bytes": 335,
+    "sha256": "d835e3ed44ca788602356c18a1ff6f5cd127c741e35e05ff5c6f4b1c53bf6360"
+  },
+  {
+    "path": "results/nat2021/samples.csv",
+    "bytes": 39508,
+    "sha256": "839b43f2cb114b566bd55289bf7c62e072a514e8ca75b8a9dc309d1683d640a3"
+  },
+  {
+    "path": "results/nat2021/sequence_summary.csv",
+    "bytes": 1062,
+    "sha256": "ec4c127400bcabc29c94cf1b1ef09e31bd0a91ca8e5e9944f7052738c2789ec9"
+  },
+  {
+    "path": "results/pilot20/enhancement_comparison.csv",
+    "bytes": 3214,
+    "sha256": "9851c24e2841ca9bf2473d47baebea12dde82b366736cfb0c15f057b8b1cf838"
+  },
+  {
+    "path": "results/pilot20/latency_breakdown.csv",
+    "bytes": 3556,
+    "sha256": "cc4e21a934eaca1d45e97a64f046f961d4621637ef409f336bcfbde959d67688"
+  },
+  {
+    "path": "results/pilot20/lowlight_results.csv",
+    "bytes": 54778,
+    "sha256": "728e66f1f9d7a859428a92c8e1705106a5c36c8c1f89f07ffce74aabb57007fe"
+  },
+  {
+    "path": "results/pilot20/paired_comparison.csv",
+    "bytes": 1499,
+    "sha256": "cb13cc636cbb28a3b49bde73e7f7d8e54bac144055b87ef6d5868214adaed604"
+  },
+  {
+    "path": "results/pilot20/rejection_analysis.csv",
+    "bytes": 654,
+    "sha256": "6c133d8543c3f9e77c0d5707f5d2d685be92b93a7b50fb10ee1cea62e8e9fb92"
+  },
+  {
+    "path": "src/analyze_pilot.py",
+    "bytes": 10102,
+    "sha256": "ec5a78620caeac5f238cf4fb3878676e9e72bc9204a974dc15c0b5ee72613035"
+  },
+  {
+    "path": "src/extra_gamma_clahe.py",
+    "bytes": 305,
+    "sha256": "4744de06bc6e3f8bdf7fc0c150df03e022e7d15da92325e6460e068d9cdadca1"
+  },
+  {
+    "path": "src/loma_backend.py",
+    "bytes": 4846,
+    "sha256": "8ce85ed1902ce0534e8275c76c0dc31c2ffce58eabe7f68651e464d5e751b3ec"
+  },
+  {
+    "path": "src/lowlight.py",
+    "bytes": 3485,
+    "sha256": "8f5ada00939d57b04860b224ff5bf88bbcb26d729cd960bcc94c13cc2c93acc7"
+  },
+  {
+    "path": "src/measure_statistics.py",
+    "bytes": 9986,
+    "sha256": "dec9820c21ea66d7fb6285406cbac2dad8d8e19c43c511d36019319301ef096a"
+  },
+  {
+    "path": "src/pilot_matrix.py",
+    "bytes": 11157,
+    "sha256": "cd8063f51932eacf2e1d62b5517af4ec1660ddc152aa3384bb3e8470b1da2217"
+  },
+  {
+    "path": "src/prepare_dev.py",
+    "bytes": 2140,
+    "sha256": "6bc71b7971a323bd387252c6c91aa0375c37c3e3bc38cb4192d8aad3aa48e5c5"
+  },
+  {
+    "path": "src/prepare_nat_pairs.py",
+    "bytes": 4543,
+    "sha256": "e65cc2dc089570e8dd3e6f50fa647ce2ed30ca6fcd511439a162eb4e7a41e6a6"
+  },
+  {
+    "path": "src/prepare_workspace.py",
+    "bytes": 1774,
+    "sha256": "df5b15297e4125987ed7e50494e4fa395a0e03ca6013078ef24382df538fb891"
+  },
+  {
+    "path": "src/read_nat_index.py",
+    "bytes": 2216,
+    "sha256": "f0f59e610086d95a8e1cb477c241894efadd97a64b1bc8e4e7505ebee99594de"
+  },
+  {
+    "path": "src/report_nat_matching.py",
+    "bytes": 18758,
+    "sha256": "6ae02ec1c8aa6fca9317431150ad66d5727c9376a85e3d4ef9b80fb3cd46ab07"
+  },
+  {
+    "path": "src/restore_singapore.py",
+    "bytes": 3593,
+    "sha256": "8c8b05f9948f58108f7b41e199909f32fa74adc13dee7067d16e064bac74a5ad"
+  },
+  {
+    "path": "src/run_nat_matching.py",
+    "bytes": 8090,
+    "sha256": "ef5541c4d45ffaf74419c899d0d979907ee5cfa11a1fec636309ad61ce0c1319"
+  },
+  {
+    "path": "src/runtime_paths.py",
+    "bytes": 382,
+    "sha256": "98c84f193b2edee9ae28354a3f6c12801870400cfeb1db42b8eab65b34b586ed"
+  },
+  {
+    "path": "src/sample_nat.py",
+    "bytes": 3576,
+    "sha256": "7afbc4004fb344bc65ca84bd6f86d33cb377f512e75fd8679a3b08836daf1120"
+  },
+  {
+    "path": "src/smoke_gpu.py",
+    "bytes": 7058,
+    "sha256": "6c347e36183e5af028f62e6d90a36ef9391d1e05ad69cd4f67213cd46d5c0764"
+  },
+  {
+    "path": "src/supplement_statistics.py",
+    "bytes": 3091,
+    "sha256": "c2929e304adda2b56829d13d8cbf8bde016ca510b0a474009b4eaadd31200624"
+  },
+  {
+    "path": "src/verify_export.py",
+    "bytes": 1173,
+    "sha256": "bceb75562a1b1025420c0ca812179438cc86c289bdfa679023b058cf9ea45701"
+  }
+]
