@@ -110,16 +110,19 @@ class Research:
     R4 (wide_after > 0): 연속 "모름"이 wide_after걸음 이상이면 3×3 9개.
     통과 = 그 블록 기준 추정이 ±inside 안 (inside 규칙)이고 inlier >= min_inl. 여러 개면 추측 위치에 가장 가까운 것, 없으면 None.
     gate_m > 0이면 십자 재탐색의 답도 추측 위치에서 gate_m m 안이어야 한다 (R2와 같은 움직임 검사).
-    넓게 찾기는 추측 위치가 이미 밀렸다고 보고 움직임 검사를 하지 않는다.
+    넓게 찾기는 추측 위치가 이미 밀렸다고 보고 움직임 검사를 하지 않는다. 대신 wide_inl > 0이면 넓게 찾기에서만
+    inlier >= wide_inl을 요구한다 (R4 학습 도시에서 틀린 3×3 답은 inlier 중앙값 16, 맞은 답은 26).
     추측 위치의 블록은 이번 걸음에 이미 매칭했으므로 캐시에서 나온다. 부를 때마다 self.log에 한 줄 남긴다
     (rec_sec = 이번 걸음에 더 든 매칭 시간, 추측 위치의 블록 제외).
     """
-    def __init__(self, match, min_inl=15, gate_m=0., wide_after=0, inside=1.1):
+    def __init__(self, match, min_inl=15, gate_m=0., wide_after=0, inside=1.1, wide_inl=0):
         self.match, self.min_inl, self.gate_m, self.wide_after, self.inside = match, min_inl, gate_m, wide_after, inside
+        self.wide_inl = wide_inl
         self.log = []
 
     def __call__(self, i, crop, guess, streak):
         wide = self.wide_after > 0 and streak >= self.wide_after
+        min_inl = max(self.min_inl, self.wide_inl) if wide else self.min_inl
         bx = int(np.clip(np.round((guess[0] - 256) / 256), 0, N_BLOCK - 1))
         by = int(np.clip(np.round((guess[1] - 256) / 256), 0, N_BLOCK - 1))
         cands = [(dx, dy) for dx, dy in neighbors(bx, by, 1) if wide or abs(dx) + abs(dy) <= 1]
@@ -127,7 +130,7 @@ class Research:
         for dx, dy in cands:
             (x, y), rec = self.match.one(crop, bx + dx, by + dy)
             sec += rec['sec'] if (dx, dy) != (0, 0) else 0.
-            if not rec['found'] or rec['n_inl'] < self.min_inl or max(abs(x), abs(y)) > self.inside:
+            if not rec['found'] or rec['n_inl'] < min_inl or max(abs(x), abs(y)) > self.inside:
                 continue
             p = np.array([(bx + dx) * 256 + 256, (by + dy) * 256 + 256]) + np.array([x, y]) * PX_PER_UNIT
             d = np.linalg.norm(p - guess) / PX

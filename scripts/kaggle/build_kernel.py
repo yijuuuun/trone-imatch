@@ -64,6 +64,14 @@ finally:
 '''
 
 
+def source_files():
+    """imatch/*.py와 scripts/run.py, run_nav.py를 {상대 경로: base64}로. Colab 노트북(build_colab.py)도 쓴다."""
+    files = {os.path.relpath(p, ROOT): base64.b64encode(open(p, 'rb').read()).decode()
+             for p in sorted(glob.glob(os.path.join(ROOT, 'imatch', '*.py'))) + [os.path.join(ROOT, 'scripts', f) for f in ('run.py', 'run_nav.py')]}
+    files['scripts/__init__.py'] = ''
+    return files
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--user', required=True); ap.add_argument('--dataset', required=True)
@@ -71,9 +79,7 @@ def main():
     ap.add_argument('--out', default=os.path.join(ROOT, 'kaggle_kernels'))
     ap.add_argument('--script', default='run', choices=['run', 'run_nav'], help='run_nav: 1 km 항법 (데이터셋에 maps/와 Bearing_UAV_90K 필요)')
     a = ap.parse_args()
-    files = {os.path.relpath(p, ROOT): base64.b64encode(open(p, 'rb').read()).decode()
-             for p in sorted(glob.glob(os.path.join(ROOT, 'imatch', '*.py'))) + [os.path.join(ROOT, 'scripts', f) for f in ('run.py', 'run_nav.py')]}
-    files['scripts/__init__.py'] = ''
+    files = source_files()
     d = os.path.join(a.out, a.slug); os.makedirs(d, exist_ok=True)
     with open(os.path.join(d, 'run.py'), 'w', encoding='utf-8') as f:
         f.write(f'FILES = {files!r}\nARGS = {shlex.split(a.args)!r}\nSCRIPT = {a.script!r}\n' + LAUNCHER)
