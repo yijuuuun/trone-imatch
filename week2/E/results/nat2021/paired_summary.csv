@@ -1,0 +1,3 @@
+method,n_pairs,n_sequences,mean_matches_delta,mean_inliers_delta,inliers_delta_sequence_bootstrap_ci95_low,inliers_delta_sequence_bootstrap_ci95_high,inliers_improved_n,inliers_worsened_n,pass_to_fail_n,fail_to_pass_n
+gamma,40,20,-103.55,-155.45,-194.60125,-117.275,1,39,0,0
+clahe,40,20,-90.975,-171.375,-199.7775,-143.949375,0,40,0,0

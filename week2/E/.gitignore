@@ -1,0 +1,13 @@
+.local/
+__pycache__/
+*.pyc
+.env
+.venv*/
+*.pt
+*.pth
+*.ckpt
+*.zip
+*.jpg
+*.jpeg
+*.png
+*.mp4

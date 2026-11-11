@@ -1,0 +1,54 @@
+{
+  "validation_scope": "Export packaging, not a new full benchmark",
+  "syntax": "all exported Python AST parsed",
+  "imports": "PASS all imports 18",
+  "lowlight_parity": "PASS 240 original/export image-transform cases: exact byte parity",
+  "source_files_preserved": 1333,
+  "changed_originals": [],
+  "external_workspace_setup": "passed; official source and all three weight hashes checked",
+  "dev100_restoration": "passed; all original source-image and reconstructed JPEG hashes match; no k>=100 restored",
+  "GPU": {
+    "model_parameters": 341523567,
+    "strict_loading": true,
+    "NAT_original_first_pair": {
+      "matches": 1511,
+      "inliers": 1013,
+      "valid_H": true,
+      "exact_reference_count_parity": true
+    },
+    "F_FP16_4_first_pair": {
+      "matches": 280,
+      "inliers": 53,
+      "exact_reference_count_parity": true
+    },
+    "GT_metadata_max_discrepancy_px": 3.1107276754482882e-09,
+    "note": "Packaging smoke only, not appended to frozen research results; first-call latency not a benchmark."
+  },
+  "CSV_rows": {
+    "configs/dev100/samples.csv": 100,
+    "configs/dev100/source_mapping.csv": 100,
+    "results/calibration_audit/LOWLIGHT_PARAMETER_PROVENANCE.csv": 19,
+    "results/calibration_audit/NAT2021_NOISE_PROXY_SUPPLEMENT.csv": 60,
+    "results/calibration_audit/NAT2021_SEQUENCE_STATISTICS.csv": 20,
+    "results/calibration_audit/NAT2021_STATISTICS.csv": 60,
+    "results/calibration_audit/SCENE_GROUP_STATISTICS.csv": 4,
+    "results/calibration_audit/SCENE_VISUAL_LABELS.csv": 20,
+    "results/calibration_audit/SYNTHESIS_CLIPPING_AUDIT.csv": 40,
+    "results/calibration_audit/SYNTHESIS_STATISTICS.csv": 60,
+    "results/meeting/lowlight_diagnostics.csv": 8,
+    "results/nat2021/bearing_uav_existing_reference.csv": 8,
+    "results/nat2021/brightness_groups.csv": 9,
+    "results/nat2021/cases.csv": 2,
+    "results/nat2021/geometry_failure_cases.csv": 0,
+    "results/nat2021/matching_summary.csv": 3,
+    "results/nat2021/paired_samples.csv": 80,
+    "results/nat2021/paired_summary.csv": 2,
+    "results/nat2021/samples.csv": 120,
+    "results/nat2021/sequence_summary.csv": 20,
+    "results/pilot20/enhancement_comparison.csv": 8,
+    "results/pilot20/latency_breakdown.csv": 40,
+    "results/pilot20/lowlight_results.csv": 160,
+    "results/pilot20/paired_comparison.csv": 7,
+    "results/pilot20/rejection_analysis.csv": 8
+  }
+}

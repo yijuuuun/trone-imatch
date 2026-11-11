@@ -1,0 +1,45 @@
+{
+  "task": "same-sequence native RGB frame matching",
+  "pairs": 40,
+  "sequences": 20,
+  "gap_frames": 5,
+  "nominal_frame_gap_seconds": 0.16666666666666666,
+  "precision": "FP32; TF32 disabled",
+  "headings": [
+    0
+  ],
+  "cache": false,
+  "keypoints": 2048,
+  "matching_threshold": 0.1,
+  "magsac_px": 3.0,
+  "maxiters": 10000,
+  "confidence": 0.999,
+  "resize": "native1280x720\u21921274x714 nearest14 antialias bilinear; restore native coordinates before MAGSAC",
+  "methods": [
+    "none",
+    "gamma",
+    "clahe"
+  ],
+  "gamma": 0.6,
+  "clahe": {
+    "clipLimit": 2.0,
+    "tileGridSize": [
+      8,
+      8
+    ]
+  },
+  "enhancement_scope": "both temporal frames; no synthesis",
+  "warmup": "10 pairs per method; excluded",
+  "valid_H": "finite rank3 H and >=4 inliers",
+  "geometry_pass": "valid H and >=15 inliers; consistency proxy, NOT GT accuracy",
+  "overlap": "H-warped full-frame intersection fraction, post-hoc proxy; no filtering",
+  "latency": "decoded RGB through enhancement,preprocessing,two feature extractions,matching,MAGSAC; exclude decode/load/save and geometry diagnostics",
+  "Success_at_10m": null,
+  "location_GT_available": false,
+  "source_hashes": {
+    "run_nat_matching.py": "d285406b13c5539ae12fcb52f36fe6f8219a762a0ce902c8b1bc9e1ea3870685",
+    "loma_backend.py": "9deb02a907b7dd8e43dfd7374e6e358da7f31b650f45f6756990db6289421fff",
+    "lowlight.py": "8f5ada00939d57b04860b224ff5bf88bbcb26d729cd960bcc94c13cc2c93acc7"
+  },
+  "pair_manifest_sha256": "1d71f37f5fab187fc56b9248e18a1a5b45ce10d60fc5163fa37dafc70f472d86"
+}

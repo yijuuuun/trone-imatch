@@ -1,0 +1,5 @@
+manual_visual_group,sequences,frames,mean_sequence_brightness_255,min_sequence_mean_255,max_sequence_mean_255,official_scene_category,campus_confirmed,interpretation
+road_urban,13,39,29.046588863820997,12.452862315827545,45.44897605779803,False,False,"descriptive convenience grouping, not dataset-wide scene statistics"
+dark_path_uncertain,4,12,8.960852107277198,4.831701356843169,14.20571110228588,False,False,"descriptive convenience grouping, not dataset-wide scene statistics"
+open_paved_or_sports_area,2,6,42.704994800130194,35.922028603009245,49.48796099725115,False,False,"descriptive convenience grouping, not dataset-wide scene statistics"
+distant_urban_skyline,1,3,22.867961841507523,22.867961841507523,22.867961841507523,False,False,"descriptive convenience grouping, not dataset-wide scene statistics"

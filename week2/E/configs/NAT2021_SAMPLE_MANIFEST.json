@@ -1,0 +1,457 @@
+{
+  "source_url": "https://drive.usercontent.google.com/download?id=1L-QdxmXQyfkX2pZPkFc-NnhCkNZdphhN&export=download&confirm=t",
+  "split": "NAT2021-test; external descriptive analysis only, no LoMa tuning",
+  "archive_bytes": 4966716421,
+  "population_sequences": 180,
+  "population_frames": 140815,
+  "sampling": "sort sequence IDs; 20 indices round(i*(N-1)/19); first, floor((n-1)/2), last frame per sequence",
+  "selected_sequences": [
+    "N01001",
+    "N01010",
+    "N02009",
+    "N02018",
+    "N02028",
+    "N02037",
+    "N02047",
+    "N02056",
+    "N03001",
+    "N03011",
+    "N04004",
+    "N04014",
+    "N04023",
+    "N04032",
+    "N04042",
+    "N05005",
+    "N08002",
+    "N08011",
+    "N08021",
+    "N09006"
+  ],
+  "sample_frames": 60,
+  "records": [
+    {
+      "member": "NAT2021/data_seq/N01001/000001.jpg",
+      "relative_path": "nat2021_sample/N01001/000001.jpg",
+      "bytes": 34760,
+      "crc32": "89c40081",
+      "sha256": "ae8a8dfc0e23b30c866d76357c57e66afd8086b6517a0fe7c744a19584393cdd"
+    },
+    {
+      "member": "NAT2021/data_seq/N01001/000503.jpg",
+      "relative_path": "nat2021_sample/N01001/000503.jpg",
+      "bytes": 39772,
+      "crc32": "d8b90f1a",
+      "sha256": "372b97d45ed81ce691640c56252c46f1dc2637ec442c3b6446f847c4a9935abe"
+    },
+    {
+      "member": "NAT2021/data_seq/N01001/001005.jpg",
+      "relative_path": "nat2021_sample/N01001/001005.jpg",
+      "bytes": 60603,
+      "crc32": "d42b63c3",
+      "sha256": "4b32483c7d820790079b53be20163fb9eaea2e4032a51d6f613a1480df6d8db6"
+    },
+    {
+      "member": "NAT2021/data_seq/N01010/000001.jpg",
+      "relative_path": "nat2021_sample/N01010/000001.jpg",
+      "bytes": 41773,
+      "crc32": "3010bfff",
+      "sha256": "31a6ff9a39380ccc4c59b3e911494b406f060b6d4b3b9bee958e5fef14ae37cc"
+    },
+    {
+      "member": "NAT2021/data_seq/N01010/000684.jpg",
+      "relative_path": "nat2021_sample/N01010/000684.jpg",
+      "bytes": 43636,
+      "crc32": "5fcc87b1",
+      "sha256": "067dd7f5c698553627306a5b09118795daf30afba0d7697d4d90b8b4576732a3"
+    },
+    {
+      "member": "NAT2021/data_seq/N01010/001368.jpg",
+      "relative_path": "nat2021_sample/N01010/001368.jpg",
+      "bytes": 50035,
+      "crc32": "46a26c5b",
+      "sha256": "5c7bd20f00fca3282463617c193e93eb66b7bd1d3c3b847b07aef2b0e3940c2e"
+    },
+    {
+      "member": "NAT2021/data_seq/N02009/000001.jpg",
+      "relative_path": "nat2021_sample/N02009/000001.jpg",
+      "bytes": 36837,
+      "crc32": "13420538",
+      "sha256": "8acf76644e2b9a7ee3dfb6d2cd05a717082b772029ed0402cbad01272e61f081"
+    },
+    {
+      "member": "NAT2021/data_seq/N02009/000761.jpg",
+      "relative_path": "nat2021_sample/N02009/000761.jpg",
+      "bytes": 30885,
+      "crc32": "cf0b22a6",
+      "sha256": "8f9bcf9d3a62ed7f18da94f56b301ed843dc4cb7c8caabd211fdb9fa91c150f3"
+    },
+    {
+      "member": "NAT2021/data_seq/N02009/001522.jpg",
+      "relative_path": "nat2021_sample/N02009/001522.jpg",
+      "bytes": 35547,
+      "crc32": "e356d514",
+      "sha256": "390760676b85ed23e2e99fccb214d44a61b704050cdae863b1ed3fcd891508a8"
+    },
+    {
+      "member": "NAT2021/data_seq/N02018/000001.jpg",
+      "relative_path": "nat2021_sample/N02018/000001.jpg",
+      "bytes": 37120,
+      "crc32": "ba1fc270",
+      "sha256": "f9734266010e185fea2ce2a39b53b5e5248b1ab05a1537d63afeb463f04175e9"
+    },
+    {
+      "member": "NAT2021/data_seq/N02018/000339.jpg",
+      "relative_path": "nat2021_sample/N02018/000339.jpg",
+      "bytes": 23446,
+      "crc32": "b1112ded",
+      "sha256": "46c2e5263a574d588d8e2f077e2ba1300299b1d7d38236ab19cdb89660724000"
+    },
+    {
+      "member": "NAT2021/data_seq/N02018/000678.jpg",
+      "relative_path": "nat2021_sample/N02018/000678.jpg",
+      "bytes": 28234,
+      "crc32": "1c0e4466",
+      "sha256": "a4cda462dc37eed882a18252fe45b0b01d7019dfe3533f418cc0a71179455b1d"
+    },
+    {
+      "member": "NAT2021/data_seq/N02028/000001.jpg",
+      "relative_path": "nat2021_sample/N02028/000001.jpg",
+      "bytes": 38264,
+      "crc32": "250d7fe9",
+      "sha256": "e76badb69713cfde315441ca198f407c1a1d82a092257a48f62cc7808bd63f71"
+    },
+    {
+      "member": "NAT2021/data_seq/N02028/000768.jpg",
+      "relative_path": "nat2021_sample/N02028/000768.jpg",
+      "bytes": 35611,
+      "crc32": "a265af47",
+      "sha256": "26699fc6d6753df8c0acc2a41f1badc8304371108157b3143498c6c8fb744069"
+    },
+    {
+      "member": "NAT2021/data_seq/N02028/001536.jpg",
+      "relative_path": "nat2021_sample/N02028/001536.jpg",
+      "bytes": 48847,
+      "crc32": "96b71ae4",
+      "sha256": "7035d10c0dc967e0037c7b3c8ab9ec70ae859522759010e1aac70efdd8c73fe1"
+    },
+    {
+      "member": "NAT2021/data_seq/N02037/000001.jpg",
+      "relative_path": "nat2021_sample/N02037/000001.jpg",
+      "bytes": 48278,
+      "crc32": "1eeac6a1",
+      "sha256": "811d2edc58b3e19629f39a3a5eb88409cebbf7c43ba7b46af9c62c166807ab82"
+    },
+    {
+      "member": "NAT2021/data_seq/N02037/000163.jpg",
+      "relative_path": "nat2021_sample/N02037/000163.jpg",
+      "bytes": 43065,
+      "crc32": "7a913ad4",
+      "sha256": "0e0223624d07555aa8f79f044622dbd646de1c6b2bddc8526169b8fd112fe3bd"
+    },
+    {
+      "member": "NAT2021/data_seq/N02037/000326.jpg",
+      "relative_path": "nat2021_sample/N02037/000326.jpg",
+      "bytes": 39538,
+      "crc32": "c2748f9c",
+      "sha256": "e1381b9f2da70ce34464ce6f24f4316e7111a47d5f1e0fee5093d871474ef55a"
+    },
+    {
+      "member": "NAT2021/data_seq/N02047/000001.jpg",
+      "relative_path": "nat2021_sample/N02047/000001.jpg",
+      "bytes": 32722,
+      "crc32": "d0cc269c",
+      "sha256": "11d1262bce0e91460ae1048097b6d1c6279a5e634c56c04d6adf4d39e4cb2e70"
+    },
+    {
+      "member": "NAT2021/data_seq/N02047/000336.jpg",
+      "relative_path": "nat2021_sample/N02047/000336.jpg",
+      "bytes": 33803,
+      "crc32": "cbec96d8",
+      "sha256": "dd897669171931497ede7a4532d2353ad42c0a01f10fcab17af9b36ed6e5629e"
+    },
+    {
+      "member": "NAT2021/data_seq/N02047/000671.jpg",
+      "relative_path": "nat2021_sample/N02047/000671.jpg",
+      "bytes": 45595,
+      "crc32": "527baabe",
+      "sha256": "4e4324b67d6aff9144febb4f1454b7531edc9e41db5caadfc1ed6a466f54ea69"
+    },
+    {
+      "member": "NAT2021/data_seq/N02056/000001.jpg",
+      "relative_path": "nat2021_sample/N02056/000001.jpg",
+      "bytes": 22787,
+      "crc32": "fddc9286",
+      "sha256": "1bc65e1212afd3ba30f414260079ff3ec1c0afffce17ff3a8163cfbc9b412735"
+    },
+    {
+      "member": "NAT2021/data_seq/N02056/000831.jpg",
+      "relative_path": "nat2021_sample/N02056/000831.jpg",
+      "bytes": 28692,
+      "crc32": "82731c31",
+      "sha256": "20ea4e6d7f74eb5abc8e6b177c4eab9ac82957cea38c150471a20f284f5f5c9a"
+    },
+    {
+      "member": "NAT2021/data_seq/N02056/001661.jpg",
+      "relative_path": "nat2021_sample/N02056/001661.jpg",
+      "bytes": 32140,
+      "crc32": "f6ac15f2",
+      "sha256": "8c1ad5ac22736186104c85e88d58e7296a8c4a79a1d59597dafb700b950480bf"
+    },
+    {
+      "member": "NAT2021/data_seq/N03001/000001.jpg",
+      "relative_path": "nat2021_sample/N03001/000001.jpg",
+      "bytes": 42663,
+      "crc32": "cf629d24",
+      "sha256": "d3bd3eac609eb5e019a4136406ab50ea03ca9edca0bb4afee4864acdbc5a7fc5"
+    },
+    {
+      "member": "NAT2021/data_seq/N03001/000101.jpg",
+      "relative_path": "nat2021_sample/N03001/000101.jpg",
+      "bytes": 37335,
+      "crc32": "18716c6b",
+      "sha256": "a5f9dbbcd22f1d267ec75b8616638a74276014d0363a3623aca0304f150bf180"
+    },
+    {
+      "member": "NAT2021/data_seq/N03001/000201.jpg",
+      "relative_path": "nat2021_sample/N03001/000201.jpg",
+      "bytes": 35086,
+      "crc32": "498a9f3b",
+      "sha256": "a6242e6c277f2f5d1d0ad2589812e7631cb7b938bc1a1deb3a3a3246242199e1"
+    },
+    {
+      "member": "NAT2021/data_seq/N03011/000001.jpg",
+      "relative_path": "nat2021_sample/N03011/000001.jpg",
+      "bytes": 50135,
+      "crc32": "dd5d83c9",
+      "sha256": "b52cb23d1482cd6ddf8403a18ded339cee4e88d174d13e811f9bf43a71ae2685"
+    },
+    {
+      "member": "NAT2021/data_seq/N03011/000311.jpg",
+      "relative_path": "nat2021_sample/N03011/000311.jpg",
+      "bytes": 44710,
+      "crc32": "75ef7fc8",
+      "sha256": "21cf00b7f1c04f53daf2797db204223507624a0e38b435d1babe20915a37ebf3"
+    },
+    {
+      "member": "NAT2021/data_seq/N03011/000622.jpg",
+      "relative_path": "nat2021_sample/N03011/000622.jpg",
+      "bytes": 36619,
+      "crc32": "f9554541",
+      "sha256": "a2326634c250168ff1063ac1f479cf9f037061e5da2d8aa4c593bfc70b6b5e6d"
+    },
+    {
+      "member": "NAT2021/data_seq/N04004/000001.jpg",
+      "relative_path": "nat2021_sample/N04004/000001.jpg",
+      "bytes": 41543,
+      "crc32": "02f86809",
+      "sha256": "c8c3573bb5efe36ff5ea1b35b56e44b07eeb806f17cda49466a3eff85b718e7a"
+    },
+    {
+      "member": "NAT2021/data_seq/N04004/000230.jpg",
+      "relative_path": "nat2021_sample/N04004/000230.jpg",
+      "bytes": 34001,
+      "crc32": "190e5311",
+      "sha256": "d893a988023f7841e6955de069023cf6eba380143cc5f38d92f935591ccaddad"
+    },
+    {
+      "member": "NAT2021/data_seq/N04004/000460.jpg",
+      "relative_path": "nat2021_sample/N04004/000460.jpg",
+      "bytes": 48000,
+      "crc32": "08a0ffd2",
+      "sha256": "c93cb3540729d6e74f5eed8133d90fa7ba9bcb9b6a9508167147fdd983059609"
+    },
+    {
+      "member": "NAT2021/data_seq/N04014/000001.jpg",
+      "relative_path": "nat2021_sample/N04014/000001.jpg",
+      "bytes": 98032,
+      "crc32": "92c81173",
+      "sha256": "79e613d59a1ec2d7be7ba869403bbe776896ed31d568f8f2357a59a8572dc5c4"
+    },
+    {
+      "member": "NAT2021/data_seq/N04014/000614.jpg",
+      "relative_path": "nat2021_sample/N04014/000614.jpg",
+      "bytes": 36367,
+      "crc32": "cb9b77d4",
+      "sha256": "0c186be70cdd3cd56ffcf9f46637d9a6f27c7ec02ac183defedf0bb4017e0af5"
+    },
+    {
+      "member": "NAT2021/data_seq/N04014/001228.jpg",
+      "relative_path": "nat2021_sample/N04014/001228.jpg",
+      "bytes": 30608,
+      "crc32": "93494802",
+      "sha256": "775038541306339988a7fa815e40f9eca572edf2f59f0c77390b56427a2a8043"
+    },
+    {
+      "member": "NAT2021/data_seq/N04023/000001.jpg",
+      "relative_path": "nat2021_sample/N04023/000001.jpg",
+      "bytes": 30230,
+      "crc32": "98a4f4ec",
+      "sha256": "53b285bf8696fc1e256d6c1e9cb56fa5d960ae99ff02739f271bfdb9f8554327"
+    },
+    {
+      "member": "NAT2021/data_seq/N04023/000276.jpg",
+      "relative_path": "nat2021_sample/N04023/000276.jpg",
+      "bytes": 28643,
+      "crc32": "5469fe48",
+      "sha256": "4b16fe165edfb66a87c688000547979d75950659cf298eff4d0834d6d81e4e10"
+    },
+    {
+      "member": "NAT2021/data_seq/N04023/000551.jpg",
+      "relative_path": "nat2021_sample/N04023/000551.jpg",
+      "bytes": 34733,
+      "crc32": "70b3b875",
+      "sha256": "3f7e3336aee88a5997485f2dafab74ccdc880cea106a515eee38a83e75eec0c0"
+    },
+    {
+      "member": "NAT2021/data_seq/N04032/000001.jpg",
+      "relative_path": "nat2021_sample/N04032/000001.jpg",
+      "bytes": 33554,
+      "crc32": "3114b473",
+      "sha256": "f66e01da4373d361f20b6ff7bb13739f77fecf334023eb557696a708f2e1e519"
+    },
+    {
+      "member": "NAT2021/data_seq/N04032/000132.jpg",
+      "relative_path": "nat2021_sample/N04032/000132.jpg",
+      "bytes": 34234,
+      "crc32": "9092c0f2",
+      "sha256": "0dd078333219695001c6056f4fbb7c39d67fd99f5efc71113bb5511cbd70bf6d"
+    },
+    {
+      "member": "NAT2021/data_seq/N04032/000264.jpg",
+      "relative_path": "nat2021_sample/N04032/000264.jpg",
+      "bytes": 33235,
+      "crc32": "780f7503",
+      "sha256": "e8b3b468c58fb75413afde8fb150adf3b9c46a025314d14c349762c088b831a5"
+    },
+    {
+      "member": "NAT2021/data_seq/N04042/000001.jpg",
+      "relative_path": "nat2021_sample/N04042/000001.jpg",
+      "bytes": 86898,
+      "crc32": "0967dbeb",
+      "sha256": "87645bd91df1260fab32e530fe32b405fc8caf83705df650f7188b37a7db0b64"
+    },
+    {
+      "member": "NAT2021/data_seq/N04042/000384.jpg",
+      "relative_path": "nat2021_sample/N04042/000384.jpg",
+      "bytes": 25462,
+      "crc32": "de2c296e",
+      "sha256": "359f49e218fce99ab30053b2656db682b890c9691fe0196e11579baa3946a671"
+    },
+    {
+      "member": "NAT2021/data_seq/N04042/000768.jpg",
+      "relative_path": "nat2021_sample/N04042/000768.jpg",
+      "bytes": 21377,
+      "crc32": "9bd52d85",
+      "sha256": "4674dfda5f0c1aeb3b745951d22678e6dfab1b586da5e12e75565c608bc006c5"
+    },
+    {
+      "member": "NAT2021/data_seq/N05005/000001.jpg",
+      "relative_path": "nat2021_sample/N05005/000001.jpg",
+      "bytes": 26569,
+      "crc32": "b584c2b9",
+      "sha256": "64148d69a42108549c47422001199757888528a1972097562bfad8673cc7eef4"
+    },
+    {
+      "member": "NAT2021/data_seq/N05005/000896.jpg",
+      "relative_path": "nat2021_sample/N05005/000896.jpg",
+      "bytes": 27896,
+      "crc32": "fba0e7b2",
+      "sha256": "c3d8e24f7c34016f9184b83dc5e92079166e35aa0e4e0c3b3aab76d96f43dc39"
+    },
+    {
+      "member": "NAT2021/data_seq/N05005/001792.jpg",
+      "relative_path": "nat2021_sample/N05005/001792.jpg",
+      "bytes": 26937,
+      "crc32": "5b8c36a8",
+      "sha256": "b63d334a8c442f4fc1bce1ab2d9946ee7ad6bedd33e39fb79cb1f2fd9494d1c5"
+    },
+    {
+      "member": "NAT2021/data_seq/N08002/000001.jpg",
+      "relative_path": "nat2021_sample/N08002/000001.jpg",
+      "bytes": 32309,
+      "crc32": "bdecec1a",
+      "sha256": "09ed6bf7b2ad896cffe7de19f8a7120ccec845b44ad86d74cac3197bc5e1524a"
+    },
+    {
+      "member": "NAT2021/data_seq/N08002/000219.jpg",
+      "relative_path": "nat2021_sample/N08002/000219.jpg",
+      "bytes": 29868,
+      "crc32": "1ed27a87",
+      "sha256": "a3564e838c6f338af42c241b5cf904a95b77d1f1de0cdacfc7904ce0f8dd5980"
+    },
+    {
+      "member": "NAT2021/data_seq/N08002/000437.jpg",
+      "relative_path": "nat2021_sample/N08002/000437.jpg",
+      "bytes": 29855,
+      "crc32": "7f25aac2",
+      "sha256": "049602dd9556b494630bf94814aa24c8a1745ad22d56a634742c85c7ff81b396"
+    },
+    {
+      "member": "NAT2021/data_seq/N08011/000001.jpg",
+      "relative_path": "nat2021_sample/N08011/000001.jpg",
+      "bytes": 50913,
+      "crc32": "d4dbd086",
+      "sha256": "e62917466cd0652e8d8ad00217f81024c71a6f3256541b548116e5812c310f22"
+    },
+    {
+      "member": "NAT2021/data_seq/N08011/000500.jpg",
+      "relative_path": "nat2021_sample/N08011/000500.jpg",
+      "bytes": 44778,
+      "crc32": "5c1dda74",
+      "sha256": "fe085a1b4ceb61ba69bd2944f86c1249c725b9552bac7e63e7be690f18304e5c"
+    },
+    {
+      "member": "NAT2021/data_seq/N08011/000999.jpg",
+      "relative_path": "nat2021_sample/N08011/000999.jpg",
+      "bytes": 39032,
+      "crc32": "ebdcc886",
+      "sha256": "e59eddd623cd312f01148d60354b0a58912c8fcaa20e06d127dd2f5831b625b2"
+    },
+    {
+      "member": "NAT2021/data_seq/N08021/000001.jpg",
+      "relative_path": "nat2021_sample/N08021/000001.jpg",
+      "bytes": 39754,
+      "crc32": "ee447f70",
+      "sha256": "078c452cd08954535b3ce661153df08edc4a9e258f98f3653fd24e199e894c1d"
+    },
+    {
+      "member": "NAT2021/data_seq/N08021/000086.jpg",
+      "relative_path": "nat2021_sample/N08021/000086.jpg",
+      "bytes": 37356,
+      "crc32": "4745796a",
+      "sha256": "8dce460af7ae9c2b4bfde413aaa3bfa040031ce5592142abe312994c96b6ecb3"
+    },
+    {
+      "member": "NAT2021/data_seq/N08021/000172.jpg",
+      "relative_path": "nat2021_sample/N08021/000172.jpg",
+      "bytes": 36761,
+      "crc32": "334dbe1b",
+      "sha256": "14f1bd17e891ebfe5371357c7e82d49eae58f373ebe7b74eb8b01282ffcb4d55"
+    },
+    {
+      "member": "NAT2021/data_seq/N09006/000001.jpg",
+      "relative_path": "nat2021_sample/N09006/000001.jpg",
+      "bytes": 21839,
+      "crc32": "7640766a",
+      "sha256": "7b5f74b22a2c77f0042b382fe31350620f1b9e70b1086ae812328516bdd8064f"
+    },
+    {
+      "member": "NAT2021/data_seq/N09006/000631.jpg",
+      "relative_path": "nat2021_sample/N09006/000631.jpg",
+      "bytes": 93530,
+      "crc32": "7e153105",
+      "sha256": "f3a096ae808e47ddca0f21a450f9188ca7aa0bf6e2d1159b8a167c31a2375978"
+    },
+    {
+      "member": "NAT2021/data_seq/N09006/001262.jpg",
+      "relative_path": "nat2021_sample/N09006/001262.jpg",
+      "bytes": 93930,
+      "crc32": "b48fe1f7",
+      "sha256": "95d39487ab5d663bcb1c7d089dbb871f5dcd0fd2eeb50d60428ff17cb76f6586"
+    }
+  ],
+  "license_status": "Author-linked public download; no dataset-specific license text found. No redistribution or code-license transfer asserted.",
+  "official_scene_labels_available": false,
+  "official_LAI_labels_used": false,
+  "parameter_fit": false
+}

@@ -1,0 +1,14 @@
+{
+  "loma_B.pt": {
+    "url": "https://github.com/davnords/storage/releases/download/loma/loma_B.pt",
+    "sha256": "3a38824391e22b33bb3e10377c7736243fd8a2fbf1561446e7e133e497c35758"
+  },
+  "dad.pth": {
+    "url": "https://github.com/Parskatt/dad/releases/download/v0.1.0/dad.pth",
+    "sha256": "7d827844649faf5213ba97e7adb43e16b936dd3d11ab2d0fc0d602c67fae781f"
+  },
+  "dinov2_vitl14_pretrain.pth": {
+    "url": "https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth",
+    "sha256": "d5383ea8f4877b2472eb973e0fd72d557c7da5d3611bd527ceeb1d7162cbf428"
+  }
+}
