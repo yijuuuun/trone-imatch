@@ -1,0 +1,65 @@
+{
+  "status": "prepared_only_not_executed",
+  "execute": false,
+  "split": "team development k0..99",
+  "candidates": [
+    {
+      "id": "F0",
+      "precision": "fp32",
+      "headings": 8,
+      "input_scale": 1.0,
+      "enhance": "none",
+      "lowlight": "none"
+    },
+    {
+      "id": "F2",
+      "precision": "fp32",
+      "headings": 4,
+      "input_scale": 1.0,
+      "enhance": "none",
+      "lowlight": "none"
+    },
+    {
+      "id": "F3",
+      "precision": "fp16",
+      "headings": 4,
+      "input_scale": 1.0,
+      "enhance": "none",
+      "lowlight": "none"
+    }
+  ],
+  "keypoints": 2048,
+  "matching_threshold": 0.1,
+  "magsac_px": 3.0,
+  "cache": false,
+  "batch_size": 1,
+  "angle_sets": {
+    "8": [
+      0,
+      45,
+      90,
+      135,
+      180,
+      225,
+      270,
+      315
+    ],
+    "4": [
+      0,
+      90,
+      180,
+      270
+    ]
+  },
+  "selected_inlier_rejection": "inliers <15",
+  "large_error": "raw position error >32m",
+  "success_definition": "confirm native team rule; preserve all samples in denominator; report rejected separately",
+  "team_parity_required": true,
+  "gt_for_scoring_only": true,
+  "test_k100_to999_locked": true,
+  "no_new_conditions": true,
+  "no_gpu_execution_this_turn": true,
+  "timing": "same native boundaries; CUDA sync and fixed warmup; balance condition order for timing when authorized",
+  "cohort": "fixed same100; audit duplicate UAV/scene IDs; previous20 are included and not independent validation",
+  "output": "new versioned team-dev100 directory; never append team results to independent Pilot CSV"
+}

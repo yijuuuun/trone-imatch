@@ -1,0 +1,4 @@
+condition,n,successes,success_pct,descriptive_wilson95_low_pct,descriptive_wilson95_high_pct,caveat
+F0,20,14,70,48.10271816464765,85.45227551323956,Illustrative binomial interval only; does not adjust 19-scene dependence or model selection
+F2,20,14,70,48.10271816464765,85.45227551323956,Illustrative binomial interval only; does not adjust 19-scene dependence or model selection
+F3,20,13,65,43.285427668523624,81.88081758989179,Illustrative binomial interval only; does not adjust 19-scene dependence or model selection
