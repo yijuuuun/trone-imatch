@@ -1,5 +1,8 @@
 # B1 vs CorrMatchNet 항법 기준선 비교
 
+> **v1과 비교할 수 없음 (김이준, 2026-11-11 추가).** 이 결과는 드론 영상 대신 위성 지도 2D crop을 넣었고 이동 오차가 없다. 우리 v1 항법(`experiments/2026-11-13_nav_recovery`)은 3D 렌더 입력 + 이동 오차(`--odo vio`)이고, 시험 도시 규칙은 seed 2026, 96궤적이다. 지도로 지도를 맞추는 2D 입력은 쉬워서 CorrMatchNet 100%가 나온다. v1과 비교하려면 B1·CorrMatchNet을 `scripts/run_nav.py`에 붙여 `--frames 3d --odo vio --seed 2026 --n-traj 96`으로 다시 돌려야 한다(강지민, 진행 예정).
+
+
 ## 1. 실험 목적
 
 동일한 초기 항법 궤적 조건에서 B1과 CorrMatchNet의 폐루프 항법 성공률을 비교한다.
