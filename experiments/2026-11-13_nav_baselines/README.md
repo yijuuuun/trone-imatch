@@ -2,6 +2,9 @@
 
 B1 and CorrMatchNet closed-loop navigation evaluation results.
 
+> **v1과 비교할 수 없음 (김이준, 2026-11-11 추가).** 이 결과는 드론 영상 대신 위성 지도 2D crop을 넣었고 이동 오차가 없다. 우리 v1 항법(`experiments/2026-11-13_nav_recovery`)은 3D 렌더 입력 + 이동 오차(`--odo vio`)이고, 시험 도시 규칙은 seed 2026, 96궤적이다. 지도로 지도를 맞추는 2D 입력은 쉬워서 CorrMatchNet 100%가 나온다. v1과 비교하려면 B1·CorrMatchNet을 `scripts/run_nav.py`에 붙여 `--frames 3d --odo vio --seed 2026 --n-traj 96`으로 다시 돌려야 한다(강지민, 진행 예정).
+
+
 ## 1. 실험 목적
 
 기존 B1 모델과 CorrMatchNet의 항법 성능을 비교하기 위해 동일한 평가 조건에서 폐루프(Closed-loop) 항법 실험을 수행하였다.
@@ -87,13 +90,9 @@ CorrMatchNet은 Singapore와 SF에서 모두 100%의 항법 성공률을 기록�
 
 다만 본 결과는 seed 7, 도시별 32개 궤적에 대한 평가이므로 모든 환경에서 동일한 성능을 보장하지 않는다. 추가 seed와 더 많은 궤적을 통한 일반화 성능 확인이 필요하다.
 
-## 6. 3D 연속 항법 검증의 한계
+## 6. 3D 입력 항법 (정정)
 
-Bearing_UAV_90K 데이터셋에는 실제 3D UAV 영상과 위치 및 Heading 관련 메타데이터가 존재한다. 그러나 조사한 메타데이터에는 timestamp, trajectory ID, sequence 등 연속 비행 순서를 확인할 수 있는 정보가 포함되어 있지 않았다.
-
-따라서 현재 데이터만으로는 시간 순서가 보장된 실제 3D UAV 영상 기반 폐루프 항법 실험을 구성하고 검증하기 어렵다.
-
-이번 실험에서는 기존 `capstone1 phase0`의 2D 항법 결과를 기준선으로 정리하였다. 따라서 B1 및 CorrMatchNet의 결과를 실제 3D 입력 기반 항법 성능으로 확대 해석하지 않는다.
+처음에는 Bearing_UAV_90K 메타데이터에 비행 순서(timestamp, trajectory ID)가 없어 3D 영상 폐루프 항법을 구성하기 어렵다고 적었다. 이는 맞지 않다. 우리 항법 시뮬레이터(`imatch/nav.py`)는 궤적을 직접 만들고, 매 걸음 실제 위치에서 가장 가까운 3D 렌더를 골라 입력으로 쓴다(`Nearest3D`, 렌더까지 거리 중앙값 약 3 m). 그래서 비행 순서 정보 없이도 3D 입력 항법을 돌릴 수 있고, v1 결과가 이 방식이다. 이 실험(2D crop)은 그 조건이 아니다.
 
 ## 7. 결과 파일 구성
 
