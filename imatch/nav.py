@@ -72,9 +72,11 @@ class MatchLoc:
     추정이 없으면 블록 중심을 답한다 (imatch/metrics.py 규칙과 같음). 나침반은 쓰지 않으므로 headings는 무시한다.
     걸음별 기록은 self.last에 남고, nav_run의 log에 들어간다.
     같은 (영상, 블록)은 다시 매칭하지 않는다 (self.cache). R0~R4를 한 프로세스에서 돌리면 겹치는 걸음을 아낀다.
+    stop_inl > 0이면 각도 탐색을 inlier가 stop_inl 이상인 첫 각도에서 멈춘다 (localize 조기 종료).
     """
-    def __init__(self, matcher, city, scale=1.0, angles=(0.0,)):
+    def __init__(self, matcher, city, scale=1.0, angles=(0.0,), stop_inl=0):
         self.matcher, self.city, self.scale, self.angles, self.last, self.cache = matcher, city, scale, angles, [], {}
+        self.stop_inl = stop_inl
 
     def __call__(self, crops, headings, blocks):
         out, self.last = [], []
@@ -87,9 +89,11 @@ class MatchLoc:
         """블록 하나: (위치(블록 단위), 기록). self.last는 건드리지 않는다 (Research가 nav_run 걸음 중간에 부른다)."""
         key = (hashlib.md5(crop.tobytes()).hexdigest(), bx, by)
         if key not in self.cache:
-            recs, best = localize(self.matcher, crop, crop_block(self.city, bx, by), (0.0, 0.0, 0.0), self.scale, self.angles)
+            recs, best = localize(self.matcher, crop, crop_block(self.city, bx, by), (0.0, 0.0, 0.0), self.scale, self.angles,
+                                  stop_inl=self.stop_inl)
             self.cache[key] = ((best['px'], best['py']) if best else (0.0, 0.0),
-                               dict(n_inl=best['n_inl'] if best else 0, found=int(best is not None), sec=sum(r['sec'] for r in recs)))
+                               dict(n_inl=best['n_inl'] if best else 0, found=int(best is not None), sec=sum(r['sec'] for r in recs),
+                                    n_ang=len(recs)))
         return self.cache[key]
 
 
