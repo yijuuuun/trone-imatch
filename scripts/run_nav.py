@@ -42,6 +42,7 @@ def main():
     ap.add_argument('--angles', type=int, default=1); ap.add_argument('--device', default='cuda')
     ap.add_argument('--n-traj', type=int, default=96); ap.add_argument('--dist', type=float, default=1000)
     ap.add_argument('--seed', type=int, default=2026); ap.add_argument('--oracle', action='store_true')
+    ap.add_argument('--stop-inl', type=int, default=0, help='각도 탐색 조기 종료: inlier가 이 이상인 첫 각도에서 멈춤 (0 = 끔, 15 = 모름 기준과 같게)')
     ap.add_argument('--tag', default='')
     ap.add_argument('--variants', default='', help='예: r0,r1,r2g30,r3g30,r4g30n3,center,dr. 비우면 r0 한 번 (예전과 같음)')
     ap.add_argument('--odo', default='none', choices=list(ODO))
@@ -56,7 +57,7 @@ def main():
         city = cv2.cvtColor(cv2.imread(os.path.join(a.data, 'maps', f'{st}.jpg')), cv2.COLOR_BGR2RGB)
         frames = Nearest3D(a.capstone1, st) if a.frames == '3d' else Crop2D(city)
         starts, goals = make_traj(a.n_traj, a.dist, a.seed)
-        match = MatchLoc(matcher, city, angles=angles)
+        match = MatchLoc(matcher, city, angles=angles, stop_inl=a.stop_inl)
         for v in (a.variants.split(',') if a.variants else ['']):
             m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+)(?:w(\d+))?)?|center|dr|)', v)
             if not m or (m.group(2) == '4') != bool(m.group(4)): sys.exit(f'모르는 variant: {v}')
