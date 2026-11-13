@@ -55,4 +55,25 @@ python scripts/visloc_calib.py outputs/<결과>.csv --data data/visloc/single_ev
 - `x_norm`, `y_norm`은 정답(지금은 GPS 그대로라 `x_norm_raw`, `y_norm_raw`와 같다). `tilted`, `turning`은 어려운 사진 표시(빼지 않음).
 - 10 m 기준은 GPS 어긋남(약 10~16 m)에 민감하므로 20 m, 32 m도 같이 보고한다.
 - `seq_eval`의 `dist_m`은 구간 시작부터 누적 거리. 사진 간격이 60~130 m라 시뮬레이터(15 m)와 다르다.
+- `seq_eval` 항법은 `run_nav.py`(3D 닫힌 루프)가 아니라 재생 항법으로 돌린다. 실제 사진은 드론이 지나간 곳에서만 있어서, 찍힌 순서대로 사진을 주고 "직전 추정 + 이동량(VIO 오차)"으로 다음 블록을 고른다. GPS는 채점과 이동량 시뮬레이션에만 쓴다.
+
+```bash
+# 우리 방법 (R0, R1, R1 + R4, 추측 항법만)
+python scripts/run_visloc_nav.py --data data/visloc/seq_eval --out outputs/visloc_nav --matcher loma --angles 8 \
+    --stop-inl 15 --variants r0,r1,r4g0n5w20,dr --odo vio --seed 2026
+# Kaggle
+python scripts/kaggle/build_kernel.py --user <아이디> --dataset heeyunju/visloc-seq-eval --slug <이름> \
+    --script run_visloc_nav --args "--matcher loma --angles 8 --stop-inl 15 --variants r0,r1,r4g0n5w20,dr"
+```
+
+기준선(B1, CorrMatchNet 등)은 3D 항법에 꽂았던 loc을 그대로 넘긴다. 모델은 고치지 않는다.
+
+```python
+from imatch.replay import run_segments, summarize
+# B1Loc: 3D 항법 때 b1_loc_sg를 만든 클래스 (지도 city만 구간마다 바뀜). reject_inl=0 = R0와 같은 조건
+steps, segs = run_segments(lambda city: B1Loc(model, city), 'data/visloc/seq_eval', odo='vio', seed=2026)
+print(summarize(steps, segs))
+```
+
+같은 `--seed`면 모든 방법이 같은 구간·출발점·이동 오차·블록 고르기 규칙을 쓴다. 지표는 걸음별 10/20/32 m, 마지막 오차, 모름 비율("도착 성공"은 경로가 정해져 있어 쓸 수 없다). `--max-dist 300`이면 구간 앞 300 m까지만 쓴다.
 - 한계: GPS·촬영 시각 정렬은 검증하지 않았다. 드론 축척은 카메라 보정값이 아니라 연속 사진으로 잰 값이다. 드론 사진의 가운데 64 m만 쓴다.
