@@ -36,13 +36,13 @@ for f in os.listdir(src):
     if f.endswith('.zip'): zipfile.ZipFile(p).extractall(os.path.join(DATA, f[:-4]))
     elif os.path.isdir(p): shutil.copytree(p, os.path.join(DATA, f), dirs_exist_ok=True)
     else: shutil.copy(p, DATA)
-for d in glob.glob(DATA + '/*_ho*'):
+for d in [d for d in glob.glob(DATA + '/*') if os.path.isdir(d)]:  # zip이 폴더째 들어 있던 경우 한 단계 올림
     inner = os.path.join(d, os.path.basename(d))
     if os.path.isdir(inner):
         for f in os.listdir(inner): shutil.move(os.path.join(inner, f), d)
 # zip 안에 samples.csv와 도시 폴더가 함께 들어 있던 경우: 그 폴더를 데이터 폴더로 쓴다
 ROOTS = [os.path.dirname(p) for p in glob.glob(DATA + '/**/samples.csv', recursive=True)
-         if glob.glob(os.path.join(os.path.dirname(p), '*_ho*', 'k*_uav.jpg'))]
+         if glob.glob(os.path.join(os.path.dirname(p), '*', 'k*_uav.jpg'))]  # 3D(*_ho*), UAV-VisLoc(visloc_*) 공통
 if ROOTS: DATA_DIR = ROOTS[0]
 else: DATA_DIR = DATA
 print('data', DATA_DIR, sorted(os.listdir(DATA_DIR)), flush=True)
