@@ -49,7 +49,7 @@ python scripts/visloc_calib.py outputs/<결과>.csv --data data/visloc/single_ev
 | --- | --- | --- |
 | `single_calib/` | 비행마다 앞쪽 20% 줄, 3장마다 1장 | 좌표 어긋남 확인에만 씀. 평가에 쓰지 않음 |
 | `single_eval/` | 나머지 줄, 3장마다 1장. set = `visloc_<비행>` | 한 장 비교 (원 Bearing-UAV, LoMa, 다른 모델, 8/4방향) |
-| `seq_eval/` | 평가 줄을 지도 한 장(4096 px = 1,024 m)에 들어가는 구간으로 자름. 사진은 순서대로 전부. `maps/`, `block_index.csv` 포함 | R1, R1 + R4, 거리별 비교, 프레임 간 매칭 |
+| `seq_eval/` | 평가 줄을 지도 한 장(4096 px = 1,024 m)에 들어가는 구간으로 자름. 사진은 순서대로 전부. `maps/`, `block_index.csv` 포함 | 항법 비교 (R1, R1 + R4, 원 Bearing-UAV, 다른 모델), 거리별 비교, 프레임 간 매칭 |
 
 - 블록은 고정 격자에서 자른다 (GPS 중심이 아님). 정답이 블록 안 여기저기에 있다.
 - `x_norm`, `y_norm`은 정답(지금은 GPS 그대로라 `x_norm_raw`, `y_norm_raw`와 같다). `tilted`, `turning`은 어려운 사진 표시(빼지 않음).
