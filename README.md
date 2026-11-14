@@ -10,7 +10,7 @@ Trone 팀 졸업프로젝트 · 작성 김이준 · 2026-10-16
 
 ## 2026-11-14 Kaggle 비교 및 파인튜닝 기록
 
-[새 비교 보고서와 원본 결과](results/kaggle_2026-11-14/README.md): Bearing-UAV·MEAN·Sample4Geo 1,738장 실행 결과, 이전 iMatch 표, LoMa-B 파인튜닝 독립 test를 구분해 기록했다. 이번 RUN의 iMatch는 미완료이며, 검색 모델의 위치 정확도는 좌표 미설정으로 N/A다. 아래 기존 3D 도시별 표와는 별도 실험이다.
+[새 비교 보고서와 원본 결과](results/kaggle_2026-11-14/README.md): Bearing-UAV·MEAN·Sample4Geo 1,738장 실행 결과, 이전 iMatch 표, LoMa-B 파인튜닝 독립 test를 구분해 기록했다. 이번 RUN의 iMatch는 미완료이며, 검색 모델의 원래 N/A 정확도는 [원본 좌표를 이용한 후속 계산](results/kaggle_2026-11-14/meter_accuracy_2026-11-15/README.md)에 별도 기록했다. 아래 기존 3D 도시별 표와는 별도 실험이다.
 
 ## 한눈에
 

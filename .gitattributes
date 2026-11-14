@@ -5,3 +5,6 @@ experiments/2026-11-06_scale_ransac/results/**/*.csv whitespace=blank-at-eol,bla
 # Preserve submitted Kaggle artifacts byte-for-byte for SHA256 verification.
 results/kaggle_2026-11-14/run_20261114T034717155134Z/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 results/kaggle_2026-11-14/previous_imatch_table.txt -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+
+# Preserve original georeferencing CSV bytes; derived CSVs use csv.writer CRLF.
+results/kaggle_2026-11-14/meter_accuracy_2026-11-15/*.csv -text whitespace=cr-at-eol

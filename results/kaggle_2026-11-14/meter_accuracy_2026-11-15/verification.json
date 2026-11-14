@@ -1,0 +1,74 @@
+{
+  "samples_sha256": "de1705e37c06f6c6abf16a21ffe7217c54018609361929b37d4b51ff739e92a5",
+  "manifest_sha256": "9de1ca57a5827d44249651d1d0b1bd49884116eb5d6bf0dcae71ac4f22ca7fff",
+  "samples_matched": 1738,
+  "max_grid_residual_m": 2.9284811489560525e-05,
+  "method": "Grid-consistent flight scales inferred from GPS and raw normalized offsets; independent of retrieved IDs",
+  "units": "128 px/unit * 0.25 m/px = 32 m/unit; 256 px grid stride = 64 m",
+  "corrections": "all along_m/right_m are zero; raw and corrected normalized GT are equal",
+  "checks": {
+    "MEAN": {
+      "planar_vs_geodesic_threshold_disagreements_same_flight": {
+        "10": 0,
+        "20": 0,
+        "32": 0
+      },
+      "min_distance_to_threshold_m": {
+        "10": 0.1748410886290248,
+        "20": 0.16129639804806573,
+        "32": 0.05098907080128612
+      },
+      "prediction_sha256": "9e1132537bb6b59ed1e5e9acd5fea13b7720f1e2d66c9900c0dbef42d73d96f3"
+    },
+    "Sample4Geo": {
+      "planar_vs_geodesic_threshold_disagreements_same_flight": {
+        "10": 0,
+        "20": 0,
+        "32": 0
+      },
+      "min_distance_to_threshold_m": {
+        "10": 0.1748410886290248,
+        "20": 0.14793106801477762,
+        "32": 0.05098907080128612
+      },
+      "prediction_sha256": "1d8a2cefe99669d015c404e636dfc157f0ab2894111b4f0b4372f5c65083a23f"
+    }
+  },
+  "summaries": [
+    {
+      "model": "MEAN",
+      "n": 1738,
+      "prediction": "retrieved gallery block center",
+      "distance": "WGS84 ellipsoidal geodesic",
+      "position_ranking_valid": false,
+      "success_under_10m": 6,
+      "accuracy_10m_pct": 0.34522439585730724,
+      "success_under_20m": 49,
+      "accuracy_20m_pct": 2.819332566168009,
+      "success_under_32m": 132,
+      "accuracy_32m_pct": 7.594936708860759,
+      "mean_error_m": 370386.5814821517,
+      "median_error_m": 18948.063209782835,
+      "same_flight_retrieval_pct": 36.59378596087457,
+      "paired_block_exact_match_pct": 8.860759493670885
+    },
+    {
+      "model": "Sample4Geo",
+      "n": 1738,
+      "prediction": "retrieved gallery block center",
+      "distance": "WGS84 ellipsoidal geodesic",
+      "position_ranking_valid": false,
+      "success_under_10m": 15,
+      "accuracy_10m_pct": 0.8630609896432682,
+      "success_under_20m": 55,
+      "accuracy_20m_pct": 3.1645569620253164,
+      "success_under_32m": 122,
+      "accuracy_32m_pct": 7.019562715765248,
+      "mean_error_m": 441605.04093399545,
+      "median_error_m": 146013.8794361583,
+      "same_flight_retrieval_pct": 34.69505178365938,
+      "paired_block_exact_match_pct": 8.227848101265822
+    }
+  ],
+  "position_ranking_valid": false
+}

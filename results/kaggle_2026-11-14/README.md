@@ -1,5 +1,7 @@
 # Kaggle 비교 결과와 이전 iMatch 평가 기록 — 2026-11-14
 
+> **2026-11-15 후속 계산:** 원본 samples.csv 좌표를 확보해 [MEAN·Sample4Geo 미터 정확도](meter_accuracy_2026-11-15/README.md)를 계산했다. 아래 N/A는 원래 실행 당시 기록이며, 파생 결과는 별도 파일에 보관한다.
+
 이번 실행은 **Bearing-UAV·MEAN·Sample4Geo 3개 모델 완료**, iMatch는 `not_completed`다.
 이전 iMatch 표와 파인튜닝 기록은 아래 별도 표로 보존하며, 이번 실행의 원본 comparison.csv에 합쳐 쓰지 않았다.
 
