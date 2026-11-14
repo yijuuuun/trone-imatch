@@ -1,0 +1,18 @@
+{
+  "name": "MEAN",
+  "repo": "/kaggle/working/four_model_benchmark/pretrained/repo_MEAN",
+  "repo_commit": "18e183c17cdfaf73c2c32c914cc99de28ee1c2b1",
+  "checkpoint": "/kaggle/working/four_model_benchmark/pretrained/MEAN_weights_e2_0.9355.pth",
+  "checkpoint_sha256": "bc0f0798381a7e60166ba7a2a098dfa91182aa873133fa944abcfe26e0492c4a",
+  "queries": "/kaggle/working/four_model_benchmark/run_20261114T034717155134Z/queries.csv",
+  "gallery": "/kaggle/working/four_model_benchmark/run_20261114T034717155134Z/gallery.csv",
+  "query_geo": "",
+  "coordinates_verified": false,
+  "coordinate_provenance": "",
+  "position_ranking_valid": false,
+  "gpu_index": 0,
+  "warmup": 5,
+  "repeats": 3,
+  "smoke": false,
+  "output": "/kaggle/working/four_model_benchmark/run_20261114T034717155134Z/MEAN/full"
+}
