@@ -1,0 +1,52 @@
+{
+  "n": 1738,
+  "models": {
+    "Bearing-UAV": {
+      "rows": 5214,
+      "unique_samples": 1738,
+      "repeats": 3,
+      "summary_and_comparison_match": true,
+      "recomputed": {
+        "mean_ms": 91.97129874012202,
+        "p50_ms": 92.58671249995132,
+        "p95_ms": 94.96200869998574,
+        "fps": 10.872957256215791,
+        "accuracy_10m_pct": 10.414269275028769,
+        "accuracy_20m_pct": 37.57192174913694,
+        "accuracy_32m_pct": 74.5109321058688
+      }
+    },
+    "MEAN": {
+      "rows": 5214,
+      "unique_samples": 1738,
+      "repeats": 3,
+      "summary_and_comparison_match": true,
+      "recomputed": {
+        "mean_ms": 15.497923334677655,
+        "p50_ms": 15.457485000069937,
+        "p95_ms": 16.687586949910838,
+        "fps": 64.52477395874273
+      }
+    },
+    "Sample4Geo": {
+      "rows": 5214,
+      "unique_samples": 1738,
+      "repeats": 3,
+      "summary_and_comparison_match": true,
+      "recomputed": {
+        "mean_ms": 38.37911765324322,
+        "p50_ms": 38.461835500015695,
+        "p95_ms": 40.26851860003262,
+        "fps": 26.055836119919114
+      }
+    }
+  },
+  "source_hash_mismatches": [
+    {
+      "file": "retrieval_worker.py",
+      "recorded": "a19953be73810f4450073cb366fa942f073d0e3207fde64660b06ffded3500ec",
+      "actual": "ee26dec3b0bcc15e569480fcf0c9b5b1571910b17c39c03105bd7af84525f7b4"
+    }
+  ],
+  "imatch_in_this_run": "not_completed"
+}

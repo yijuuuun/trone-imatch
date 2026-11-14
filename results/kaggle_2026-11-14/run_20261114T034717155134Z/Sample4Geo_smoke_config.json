@@ -1,0 +1,18 @@
+{
+  "name": "Sample4Geo",
+  "repo": "/kaggle/working/four_model_benchmark/pretrained/repo_Sample4Geo",
+  "repo_commit": "498c6511478053ddb4a43f24a9f4942fab238f09",
+  "checkpoint": "/kaggle/working/four_model_benchmark/pretrained/Sample4Geo_U1652/weights_e1_0.9515.pth",
+  "checkpoint_sha256": "04f4c8990a8fea73171806dabfe94c405b792b3b5ef87ce2db768daa529e5332",
+  "queries": "/kaggle/working/four_model_benchmark/run_20261114T034717155134Z/queries.csv",
+  "gallery": "/kaggle/working/four_model_benchmark/run_20261114T034717155134Z/gallery.csv",
+  "query_geo": "",
+  "coordinates_verified": false,
+  "coordinate_provenance": "",
+  "position_ranking_valid": false,
+  "gpu_index": 0,
+  "warmup": 5,
+  "repeats": 3,
+  "smoke": true,
+  "output": "/kaggle/working/four_model_benchmark/run_20261114T034717155134Z/Sample4Geo/smoke"
+}
