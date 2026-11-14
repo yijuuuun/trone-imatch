@@ -1,6 +1,6 @@
 # Kaggle 비교 결과와 이전 iMatch 평가 기록 — 2026-11-14
 
-> **2026-11-15 후속 계산:** 원본 samples.csv 좌표를 확보해 [MEAN·Sample4Geo 미터 정확도](meter_accuracy_2026-11-15/README.md)를 계산했다. 아래 N/A는 원래 실행 당시 기록이며, 파생 결과는 별도 파일에 보관한다.
+> **2026-11-15 후속 계산:** 원본 samples.csv 좌표를 확보해 [MEAN·Sample4Geo 미터 정확도](meter_accuracy_2026-11-15/README.md)를 계산했다. 아래 통합표는 기존 실행의 시간·파라미터와 후속 계산한 정확도를 함께 표시한다. 원본 CSV는 그대로 보존한다.
 
 이번 실행은 **Bearing-UAV·MEAN·Sample4Geo 3개 모델 완료**, iMatch는 `not_completed`다.
 이전 iMatch 표와 파인튜닝 기록은 아래 별도 표로 보존하며, 이번 실행의 원본 comparison.csv에 합쳐 쓰지 않았다.
@@ -10,19 +10,19 @@
 출처: [원본 comparison.csv](run_20261114T034717155134Z/comparison.csv), [환경](run_20261114T034717155134Z/environment.json), [데이터 감사](run_20261114T034717155134Z/data_audit.json).
 Tesla T4, PyTorch 2.11.0+cu130, FP32 검사, batch=1, warmup=5, 표본당 반복 3회.
 각 완료 모델은 동일 ID 1,738개, 예측 5,214행을 포함한다.
-정확도는 첫 반복만, 시간은 세 반복 전체로 계산한다.
+정확도는 첫 반복만, 시간은 세 반복 전체로 계산한다. MEAN·Sample4Geo 정확도의 원시 오차와 계산 근거는 [후속 계산 보고서](meter_accuracy_2026-11-15/README.md)에 있다.
 
 | 모델 | 상태 | <10m (%) | <20m (%) | <32m (%) | 평균 ms | p50 ms | p95 ms | FPS | 전체 파라미터 M |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|
 | Bearing-UAV official cross_view | 완료 | 10.4143 | 37.5719 | 74.5109 | 91.971 | 92.587 | 94.962 | 10.873 | 17.1346 |
 | iMatch | 이번 RUN 미완료 | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
-| MEAN | 완료 | N/A | N/A | N/A | 15.498 | 15.457 | 16.688 | 64.525 | 36.4988 |
-| Sample4Geo | 완료 | N/A | N/A | N/A | 38.379 | 38.462 | 40.269 | 26.056 | 87.5665 |
+| MEAN | 완료 | 0.3452 | 2.8193 | 7.5949 | 15.498 | 15.457 | 16.688 | 64.525 | 36.4988 |
+| Sample4Geo | 완료 | 0.8631 | 3.1646 | 7.0196 | 38.379 | 38.462 | 40.269 | 26.056 | 87.5665 |
 
 **정확도 순위와 네 모델의 공정한 속도 순위를 이 표로 확정할 수 없다.**
 
 - 모든 모델의 `position_ranking_valid=False`. 이번 `all_labels_at_center=False`이고 중앙 예측 <10m 기준선은 7.8251%다. 모든 정답이 중앙인 데이터라고 설명하면 안 된다. 진단 모드이며 데이터 생성/학습·시험 중복 검증이 완료되지 않았다.
-- MEAN/Sample4Geo는 전체 1,738개 갤러리의 특징을 미리 계산한 검색이다. 공통 지리 좌표와 독립 relevance label이 없어 미터 정확도 및 Recall@1은 N/A다. `valid_pct=100`은 위치 정확도 100%를 뜻하지 않는다.
+- MEAN/Sample4Geo는 전체 1,738개 갤러리의 특징을 미리 계산한 검색이다. 미터 정확도는 원본 samples.csv로 복원한 검색 블록 중심과 UAV GPS 사이의 WGS84 거리로 사후 계산했다. 독립 relevance label이 없어 Recall@1은 계속 N/A다. `valid_pct=100`은 위치 정확도 100%를 뜻하지 않는다.
 - Bearing-UAV는 주어진 UAV–지도 블록 쌍 처리 시간이다. 검색 모델은 사전 계산한 GPU 갤러리에서 query 전처리·H2D·모델·정규화·Top-1 검색 시간을 측정한다. 각 범위에서 디코딩은 제외한다.
 - 갤러리 사전 계산 wall time: MEAN **32.509초**, Sample4Geo **70.668초**. 각 모델의 `gallery_timing.csv`에 별도 저장돼 있으며 query FPS에는 포함되지 않는다.
 
