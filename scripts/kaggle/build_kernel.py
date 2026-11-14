@@ -9,6 +9,7 @@ imatch/ 패키지와 scripts/run.py를 run.py 안에 base64 문자열로 넣는�
 
 --dataset: data/im_t1_3d_1000.zip을 올린 Kaggle 데이터셋 (data/README.md 참고).
 --script run_nav: 1 km 항법. 데이터셋은 scripts/kaggle/pack_nav.py로 만든다.
+--script run_visloc_nav: UAV-VisLoc 재생 항법. --dataset heeyunju/visloc-seq-eval
 """
 import argparse
 import base64
@@ -36,13 +37,13 @@ for f in os.listdir(src):
     if f.endswith('.zip'): zipfile.ZipFile(p).extractall(os.path.join(DATA, f[:-4]))
     elif os.path.isdir(p): shutil.copytree(p, os.path.join(DATA, f), dirs_exist_ok=True)
     else: shutil.copy(p, DATA)
-for d in glob.glob(DATA + '/*_ho*'):
+for d in [d for d in glob.glob(DATA + '/*') if os.path.isdir(d)]:  # zip이 폴더째 들어 있던 경우 한 단계 올림
     inner = os.path.join(d, os.path.basename(d))
     if os.path.isdir(inner):
         for f in os.listdir(inner): shutil.move(os.path.join(inner, f), d)
 # zip 안에 samples.csv와 도시 폴더가 함께 들어 있던 경우: 그 폴더를 데이터 폴더로 쓴다
 ROOTS = [os.path.dirname(p) for p in glob.glob(DATA + '/**/samples.csv', recursive=True)
-         if glob.glob(os.path.join(os.path.dirname(p), '*_ho*', 'k*_uav.jpg'))]
+         if glob.glob(os.path.join(os.path.dirname(p), '*', 'k*_uav.jpg'))]  # 3D(*_ho*), UAV-VisLoc(visloc_*) 공통
 if ROOTS: DATA_DIR = ROOTS[0]
 else: DATA_DIR = DATA
 print('data', DATA_DIR, sorted(os.listdir(DATA_DIR)), flush=True)
@@ -56,6 +57,11 @@ try:
         from scripts.run_nav import main
         sys.argv = ['run_nav', '--data', DATA_DIR, '--capstone1', CAP, '--out', '/kaggle/working/out'] + ARGS
         main()
+    elif SCRIPT == 'run_visloc_nav':
+        # UAV-VisLoc 재생 항법: maps/와 samples.csv가 있는 폴더(seq_eval)가 --data
+        DATA_DIR = os.path.dirname(glob.glob(DATA + '/**/maps', recursive=True)[0])
+        from scripts.run_visloc_nav import main
+        main(['--data', DATA_DIR, '--out', '/kaggle/working/out'] + ARGS)
     else:
         from scripts.run import main
         main(['--data', DATA_DIR, '--out', '/kaggle/working/out'] + ARGS)
@@ -67,7 +73,7 @@ finally:
 def source_files():
     """imatch/*.py와 scripts/run.py, run_nav.py를 {상대 경로: base64}로. Colab 노트북(build_colab.py)도 쓴다."""
     files = {os.path.relpath(p, ROOT): base64.b64encode(open(p, 'rb').read()).decode()
-             for p in sorted(glob.glob(os.path.join(ROOT, 'imatch', '*.py'))) + [os.path.join(ROOT, 'scripts', f) for f in ('run.py', 'run_nav.py')]}
+             for p in sorted(glob.glob(os.path.join(ROOT, 'imatch', '*.py'))) + [os.path.join(ROOT, 'scripts', f) for f in ('run.py', 'run_nav.py', 'run_visloc_nav.py')]}
     files['scripts/__init__.py'] = ''
     return files
 
@@ -77,7 +83,8 @@ def main():
     ap.add_argument('--user', required=True); ap.add_argument('--dataset', required=True)
     ap.add_argument('--slug', required=True); ap.add_argument('--args', default='--matchers loma --angles 8')
     ap.add_argument('--out', default=os.path.join(ROOT, 'kaggle_kernels'))
-    ap.add_argument('--script', default='run', choices=['run', 'run_nav'], help='run_nav: 1 km 항법 (데이터셋에 maps/와 Bearing_UAV_90K 필요)')
+    ap.add_argument('--script', default='run', choices=['run', 'run_nav', 'run_visloc_nav'],
+                    help='run_nav: 1 km 항법 (데이터셋에 maps/와 Bearing_UAV_90K 필요). run_visloc_nav: UAV-VisLoc 재생 항법 (seq_eval)')
     a = ap.parse_args()
     files = source_files()
     d = os.path.join(a.out, a.slug); os.makedirs(d, exist_ok=True)
