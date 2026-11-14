@@ -1,7 +1,3 @@
 # Preserve the exact measured artifact bytes, including standard csv.writer CRLF.
 experiments/2026-11-06_scale_ransac/results/** -text
 experiments/2026-11-06_scale_ransac/results/**/*.csv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-
-# Preserve submitted Kaggle artifacts byte-for-byte for SHA256 verification.
-results/kaggle_2026-11-14/run_20261114T034717155134Z/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
-results/kaggle_2026-11-14/previous_imatch_table.txt -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
