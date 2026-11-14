@@ -1,0 +1,7 @@
+{
+  "n": 1738,
+  "all_labels_at_center": false,
+  "center_baseline_accuracy_10m_pct": 7.825086306098965,
+  "position_ranking_valid": false,
+  "note": "Nonconstant labels do not prove absence of leakage; audit crop generation and train/test overlap."
+}

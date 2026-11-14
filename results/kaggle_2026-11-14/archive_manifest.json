@@ -1,0 +1,132 @@
+{
+  "archive_name": "run_20261114T034717155134Z.zip",
+  "archive_sha256": "64f681bdf39cceb90506dba51875c655aaee87c6efa3ececcea7769885946e90",
+  "preserved_files": {
+    "comparison.csv": "84627e2504a08d4c7b8634869642c03bdccbffd886a5d5cd88aaf2b7e785c2cf",
+    "manifest.csv": "9de1ca57a5827d44249651d1d0b1bd49884116eb5d6bf0dcae71ac4f22ca7fff",
+    "Bearing-UAV_smoke.log": "3013d2e3d04f13dafd0b8f8f6fa846f13f1fd6d342309550dbe200526cc5b9e8",
+    "Sample4Geo_smoke_config.json": "437c5cd382a0c373d01cfc35c48cab914589ad0cfea619f459615189666847a6",
+    "Sample4Geo_prepared.json": "437c5cd382a0c373d01cfc35c48cab914589ad0cfea619f459615189666847a6",
+    "sample4geo_environment.log": "a54322383abb0cd216c38d0e30c6fbf266cc7becf5c0eafb89c8442ff17adc36",
+    "MEAN_full.log": "2201292c150da2211cc80f979e58f44e710dce3e403201777cce36d5f4e3bae0",
+    "Sample4Geo_full_config.json": "8ab6cde7ba2b6ea3d4ec3dbe18cb82d117d537cd5b92b0d5a2df3b1bcf563434",
+    "Bearing-UAV_smoke_config.json": "4f41276f2987feeb6a89cc53486b78fc3594fdc6fc77137345432f7a0c0a47b4",
+    "mean_environment.log": "8fb34170eda4f3f633d02d1a3ed19271a4715f3e4f6404e130605e21906af12b",
+    "source_hashes.json": "b7c633c69ff5856316a33361327dc2ff1ce9ea4bcc5b89c7e698b16b5896b469",
+    "MEAN_smoke_config.json": "5cbad7ad0f538690ccc4f7a77e9f1497f29430f7d5323df0928c589ad80730ea",
+    "queries.csv": "9de1ca57a5827d44249651d1d0b1bd49884116eb5d6bf0dcae71ac4f22ca7fff",
+    "Bearing-UAV_full.log": "d54d5ef115d1479d0fe2b49f440c6f2f63b308ee1254d16e0a3f477bb6924bfe",
+    "gallery.csv": "3f3fbf9c182d860c276ab8f2e005968fcf7e2beecbcd28fec79c7caf76fedf46",
+    "bearing_pip-freeze.txt": "7cfce4b09f0c0addcfe6b434b580b61d27696b10e16294f4c60f380f0d235efb",
+    "environment.json": "9f3b100c581dec35364bbd0453b67ada4f775a335bd85504cf8994a649f4dc6b",
+    "data_audit.json": "c38a2c2a7cf05d82b32a49d274bf8b9240b1f4597ba190878ad0c5f6b111c2ec",
+    "mean_pip-freeze.txt": "c59ed1aaac00ce16921554043761bf352a42609b9771f9eca0bb2da935d9d4e0",
+    "Sample4Geo_smoke.log": "d3b939d3b30adf7115b5733bb48fc7b832dd87c664bb5f22427a4a746778f350",
+    "MEAN_smoke.log": "15dea60c2916ca7ac795b05b163e9e64d6a15842b5a10f7729cb88e79525bb15",
+    "Sample4Geo_full.log": "4a39c9c3747f306cdfd2cc8a2b7fff56acfeeb42bbb9e43b52530b05fa36c0dc",
+    "bearing_environment.log": "bda634df8243b406423369f947a4207574ae3d22d69d940a6b1b9bc48b2ce177",
+    "Bearing-UAV_prepared.json": "8acfe4131f9b00d243a9a1e9105fb794f81f744c035e2f8c9adf7debb1cb9eb1",
+    "Bearing-UAV_full_config.json": "30c34e51454e9e84e002c641e9ce799a432471b3c57ca9dc6c1e07c62893aa49",
+    "sample4geo_pip-freeze.txt": "c59ed1aaac00ce16921554043761bf352a42609b9771f9eca0bb2da935d9d4e0",
+    "MEAN_full_config.json": "695c43cf42e9195157ff6b1cc8522d7b5711c624b2a9a8d7def10ebb40479dc9",
+    "MEAN_prepared.json": "5cbad7ad0f538690ccc4f7a77e9f1497f29430f7d5323df0928c589ad80730ea",
+    "MEAN/smoke/config.json": "5cbad7ad0f538690ccc4f7a77e9f1497f29430f7d5323df0928c589ad80730ea",
+    "MEAN/smoke/summary.json": "be3ecebe3282d35225cb8f1a6b97ebca246ea924e5d6b7b9c3b75f0eaa684351",
+    "MEAN/smoke/gallery_timing.csv": "cc598069041fb6ea3dd4a6bb836cbac245c1c94bb4a389518733203e098442b7",
+    "MEAN/smoke/predictions.csv": "8362d55663ecced1ff8f5ce01b7976f77cdae1f4e372d02656bf4693ce376e01",
+    "MEAN/smoke/summary.csv": "b9b7337dbb47a1604c70fac98b54f2940147e4cda403d46fc9e147944fc36961",
+    "MEAN/full/config.json": "695c43cf42e9195157ff6b1cc8522d7b5711c624b2a9a8d7def10ebb40479dc9",
+    "MEAN/full/summary.json": "98bd804712cd0a13293776b5b4d11855b255c26efa9c457687a2fcd610ea6b36",
+    "MEAN/full/gallery_timing.csv": "b13019b415d4dd621f6e6f0b7f9272459bd84f10d4aa729516e075a9efe0b7c4",
+    "MEAN/full/predictions.csv": "9e1132537bb6b59ed1e5e9acd5fea13b7720f1e2d66c9900c0dbef42d73d96f3",
+    "MEAN/full/summary.csv": "88f6375b5fcdd28db6599156222da15ebfa1070f100ffa975d451e375f971e59",
+    "Sample4Geo/smoke/config.json": "437c5cd382a0c373d01cfc35c48cab914589ad0cfea619f459615189666847a6",
+    "Sample4Geo/smoke/summary.json": "9a3c44a2e15215a1c568bc1a455954e4571db01806204a46a949ff36a95e2ae3",
+    "Sample4Geo/smoke/gallery_timing.csv": "2bf447fa4abe8da97c9914c3c9d9660030ab9ad7a052b7544859476a38c8dcb2",
+    "Sample4Geo/smoke/predictions.csv": "3a1e59f82db02d68b9d34ca35c899dd4ad619e064251187b8c674b38ec4636ce",
+    "Sample4Geo/smoke/summary.csv": "d926d789e0098b57ac2d68b5b54534823e65648d0f414f1ac0eecca87d741c31",
+    "Sample4Geo/full/config.json": "8ab6cde7ba2b6ea3d4ec3dbe18cb82d117d537cd5b92b0d5a2df3b1bcf563434",
+    "Sample4Geo/full/summary.json": "473603a7903ecece39ba875cfdc1775be281b85dfd9703b31dddcc5eb502fbb0",
+    "Sample4Geo/full/gallery_timing.csv": "42d54461a96b149965257febb994b573e1c3a6ab14eddbce2665dad03c12762c",
+    "Sample4Geo/full/predictions.csv": "1d8a2cefe99669d015c404e636dfc157f0ab2894111b4f0b4372f5c65083a23f",
+    "Sample4Geo/full/summary.csv": "ac1fbca37d915641aadb8ffcc1ced5950821fd123ef0311528ab8d47387d5943",
+    "Bearing-UAV/smoke/per_set.csv": "7b9f3f54789ae3144a2634e16b3b1116b02a00689f3938ab63aae1a43739be82",
+    "Bearing-UAV/smoke/model.json": "befd8d98b6f6a2185a763bbc39baf91e5b3b06c09180eb61f2ef59bd2b102e7e",
+    "Bearing-UAV/smoke/summary.json": "8795464326364068ec000649113a3da8cc4f76db7f005101fc6652c2242f5b96",
+    "Bearing-UAV/smoke/predictions.csv": "d3ee1f32f46f69f8352b30f1e7e059d90d7ba062d6023112deef690e7cd6ddc6",
+    "Bearing-UAV/smoke/summary.csv": "50298c7a29996a8c2c81f07bde33c5df388b0bd89486d8a9f984c044a38d4f13",
+    "Bearing-UAV/full/per_set.csv": "e631912f27f3f62e3c00d7ebf39a6982f8a5b3510e836a00bb62b344164b7b24",
+    "Bearing-UAV/full/model.json": "befd8d98b6f6a2185a763bbc39baf91e5b3b06c09180eb61f2ef59bd2b102e7e",
+    "Bearing-UAV/full/summary.json": "da7aa73751b12d64b1f4d84844619efaa0aea6eede3875f291551866217f220e",
+    "Bearing-UAV/full/predictions.csv": "41ad753c3c71c5bc62509adbf39a8c0ca94457b350410e2e41da0ae29472def7",
+    "Bearing-UAV/full/summary.csv": "d050b5541904a8d0d45917b91f8c86514f470f9bb95822decb87725747bbeb45",
+    "source/retrieval_worker.py": "ee26dec3b0bcc15e569480fcf0c9b5b1571910b17c39c03105bd7af84525f7b4",
+    "source/localization_worker.py": "6577ee44333ab577910058fa7092a92a1a549684a6c8474180a1ff77169764da",
+    "source/retrieval_worker.before_mean_keys.py": "a19953be73810f4450073cb366fa942f073d0e3207fde64660b06ffded3500ec",
+    "source/benchmark_core.py": "b9553632e413514fb588fb8bac298cd552621b54997fee9b6c7218efd5ec836a",
+    "source/imatch/geometry.py": "d47adabb6aeb3970fde119258b5467ca7e2a5e5a15df6414f93730e82b8edceb",
+    "source/imatch/matchers.py": "3aaf7ae7fbd0956a2782f7bda276e08a4d5e9599921f42fa5870e752deb48632",
+    "source/imatch/pipeline.py": "1e4185df0aca4aefd5dd9b2caa4ffbad0c0ae0fcf5044ee1d0707b57a9f58245",
+    "source/imatch/blocks.py": "09b721af84e39d503eed31d3f4b2e8459b9ded5e52670f5c52c1fea604f656af",
+    "source/imatch/metrics.py": "d5d7eb500b220894748b34c49c3a57c9930fdb208f70a0f423952e31ad9198dd",
+    "source/imatch/__init__.py": "78517e921cc31e73048efc39ddc160e3dedff0406d739ee63bb55069c69e220c",
+    "source/imatch/nav.py": "b2f64548fe4a54d9e969f8f78743d297e6aee6e241b4e157938268f01debd32c"
+  },
+  "omitted_files": [
+    {
+      "path": "MEAN/smoke/gallery_features.pt",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "07b21db7e066d0690b2b3b083b6da0c014bee48bbe5eab5ee3dd7913661292c4"
+    },
+    {
+      "path": "MEAN/smoke/predictions.partial.csv",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "8362d55663ecced1ff8f5ce01b7976f77cdae1f4e372d02656bf4693ce376e01"
+    },
+    {
+      "path": "MEAN/full/gallery_features.pt",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "10a29f5737ebe8d7a623d912072e2f7631369c718df3b10a6aafcaf3bd5dedf0"
+    },
+    {
+      "path": "MEAN/full/predictions.partial.csv",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "9e1132537bb6b59ed1e5e9acd5fea13b7720f1e2d66c9900c0dbef42d73d96f3"
+    },
+    {
+      "path": "Sample4Geo/smoke/gallery_features.pt",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "83ddca58352d34cc6fe8d108acd175cde58fc69d4fe47cd093cdaddb6820c4d3"
+    },
+    {
+      "path": "Sample4Geo/smoke/predictions.partial.csv",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "3a1e59f82db02d68b9d34ca35c899dd4ad619e064251187b8c674b38ec4636ce"
+    },
+    {
+      "path": "Sample4Geo/full/gallery_features.pt",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "1e5f775a10620bbfe397031c17f1ec7e909e725fad17671dfd3cc37feb71ca8a"
+    },
+    {
+      "path": "Sample4Geo/full/predictions.partial.csv",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "1d8a2cefe99669d015c404e636dfc157f0ab2894111b4f0b4372f5c65083a23f"
+    },
+    {
+      "path": "Bearing-UAV/smoke/predictions.partial.csv",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "d3ee1f32f46f69f8352b30f1e7e059d90d7ba062d6023112deef690e7cd6ddc6"
+    },
+    {
+      "path": "Bearing-UAV/full/predictions.partial.csv",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "41ad753c3c71c5bc62509adbf39a8c0ca94457b350410e2e41da0ae29472def7"
+    },
+    {
+      "path": "source/__pycache__/benchmark_core.cpython-313.pyc",
+      "reason": "derived binary features, bytecode, or duplicate incremental journal",
+      "sha256": "ca9cd5a70ebe694b540d677a3d93fddbbdd733885612e15f27de03604873a8b9"
+    }
+  ]
+}
