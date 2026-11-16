@@ -1,0 +1,6 @@
+method,segments,steps,w10,w20,w32,med_err_m,final_med_m,final_le40,unknown,outside_block,anchor_median_m,anchor_max_m,initialization
+bearing_r0,92,1020,7.1,22.8,38.8,43.0,62.5,44.6,0.0,58.5,0.0,0.0,known start
+dr,92,1020,27.9,56.9,75.3,17.3,33.1,60.9,100.0,31.3,0.0,0.0,known start
+r0,92,1020,6.2,24.6,41.3,44.4,61.6,42.4,0.0,64.5,32.220686735719525,13361.451852492002,relocalized first frame
+r1,92,1020,16.9,47.0,73.6,21.0,22.0,70.7,47.8,35.7,2.1195560015111745,51.67612703925707,relocalized first frame
+r4g0n5w20,92,1020,15.8,46.4,73.8,21.1,21.0,76.1,48.0,36.1,6.013652178640654,51.67612703925707,relocalized first frame

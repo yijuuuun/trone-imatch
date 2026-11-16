@@ -1,0 +1,2 @@
+set,traj,n_steps,length_m,final_err_m,max_err_m,med_err_m,w10,w20,w32,unknown
+visloc_01_s00,0,2,157.51,9.275998797070779,12.002740059070128,10.639369428070452,0.5,1.0,1.0,0.0
