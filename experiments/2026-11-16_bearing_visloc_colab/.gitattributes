@@ -1,0 +1,3 @@
+* text eol=lf
+run/** -text
+run/*.log -whitespace

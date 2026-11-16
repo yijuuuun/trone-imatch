@@ -1,0 +1,12 @@
+{
+  "repo": "/content/bearing_sequence_nav/pretrained/bearinguav",
+  "repo_commit": "d16e558a14bd0a9142c6901793fe6a6813e4e954",
+  "weights_dir": "/content/bearing_sequence_nav/pretrained/bearing_weights/Bearing_UAV/cross_view",
+  "checkpoint_sha256": "31dc15f9fa48cfcd5e58c22387ea5509ba932bb6f70be0d2dfc3c9bac7c45644",
+  "data": "/root/.cache/kagglehub/datasets/heeyunju/visloc-seq-eval/versions/1",
+  "sets": [],
+  "seed": 2026,
+  "odo": "vio",
+  "smoke": true,
+  "output": "/content/bearing_sequence_nav/run_20261116T101613146787Z/Bearing-UAV/smoke"
+}

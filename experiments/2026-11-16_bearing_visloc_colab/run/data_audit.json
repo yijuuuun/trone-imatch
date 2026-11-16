@@ -1,0 +1,9 @@
+{
+  "data": "/root/.cache/kagglehub/datasets/heeyunju/visloc-seq-eval/versions/1",
+  "samples_sha256": "c826f326167ad9ad4119fc48be0ff799f4689b3abaca4886ac8ecfd0a0e6970e",
+  "segments": 92,
+  "frames": 1112,
+  "sets": [],
+  "seed": 2026,
+  "odo": "vio"
+}

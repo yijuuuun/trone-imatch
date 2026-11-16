@@ -1,0 +1,67 @@
+|TIPS| Now You are loading model PARCASGM_v5a.
+Model Class: <class 'cvphr.models.posaglreg.models.PARCASGM_v5a'>
+Model Kwargs: {'backbone_name': 'vgg16', 'feature_dim': 256, 'coord_enc_dims': [16, 64, 256], 'regressor_dims': [1024, 256, 64], 'reduction_ratio': 1, 'num_clusters': 4, 'freeze_backbone': True, 'partial_unfreeze': False, 'add_patch_coord': True}
+/usr/local/lib/python3.13/dist-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/usr/local/lib/python3.13/dist-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Downloading: "https://download.pytorch.org/models/vgg16-397923af.pth" to /root/.cache/torch/hub/checkpoints/vgg16-397923af.pth
+
+  0%|          | 0.00/528M [00:00<?, ?B/s]
+  2%|▏         | 10.6M/528M [00:00<00:05, 97.5MB/s]
+  6%|▌         | 32.8M/528M [00:00<00:03, 172MB/s] 
+ 10%|█         | 53.4M/528M [00:00<00:02, 191MB/s]
+ 14%|█▎        | 72.4M/528M [00:00<00:02, 194MB/s]
+ 17%|█▋        | 91.1M/528M [00:00<00:02, 179MB/s]
+ 21%|██        | 109M/528M [00:00<00:02, 179MB/s] 
+ 24%|██▍       | 126M/528M [00:00<00:02, 168MB/s]
+ 27%|██▋       | 142M/528M [00:00<00:02, 165MB/s]
+ 30%|██▉       | 158M/528M [00:00<00:02, 166MB/s]
+ 33%|███▎      | 175M/528M [00:01<00:02, 167MB/s]
+ 36%|███▌      | 191M/528M [00:01<00:02, 168MB/s]
+ 39%|███▉      | 207M/528M [00:01<00:01, 168MB/s]
+ 43%|████▎     | 225M/528M [00:01<00:01, 172MB/s]
+ 46%|████▌     | 241M/528M [00:01<00:01, 161MB/s]
+ 49%|████▊     | 257M/528M [00:01<00:01, 163MB/s]
+ 52%|█████▏    | 273M/528M [00:01<00:01, 157MB/s]
+ 55%|█████▍    | 289M/528M [00:01<00:01, 161MB/s]
+ 58%|█████▊    | 308M/528M [00:01<00:01, 170MB/s]
+ 62%|██████▏   | 326M/528M [00:02<00:01, 176MB/s]
+ 65%|██████▌   | 344M/528M [00:02<00:01, 179MB/s]
+ 69%|██████▊   | 363M/528M [00:02<00:00, 184MB/s]
+ 72%|███████▏  | 380M/528M [00:05<00:09, 15.6MB/s]
+ 74%|███████▍  | 393M/528M [00:06<00:07, 19.1MB/s]
+ 78%|███████▊  | 411M/528M [00:06<00:04, 27.1MB/s]
+ 81%|████████▏ | 429M/528M [00:06<00:02, 37.0MB/s]
+ 85%|████████▌ | 451M/528M [00:06<00:01, 52.5MB/s]
+ 89%|████████▊ | 468M/528M [00:06<00:00, 65.2MB/s]
+ 92%|█████████▏| 485M/528M [00:06<00:00, 72.3MB/s]
+ 95%|█████████▍| 499M/528M [00:07<00:00, 62.0MB/s]
+ 97%|█████████▋| 511M/528M [00:07<00:00, 69.1MB/s]
+ 99%|█████████▉| 522M/528M [00:07<00:00, 76.7MB/s]
+100%|██████████| 528M/528M [00:07<00:00, 75.6MB/s]
+1/1 visloc_01_s00: final 9.3 m
+{
+  "segments": 1,
+  "steps": 2,
+  "w10": 50.0,
+  "w20": 100.0,
+  "w32": 100.0,
+  "med_err_m": 10.6,
+  "final_med_m": 9.3,
+  "final_le40": 100.0,
+  "unknown": 0.0,
+  "outside_block": 0.0,
+  "smoke": true,
+  "seed": 2026,
+  "odo": "vio",
+  "known_start": true,
+  "wall_s": 2.3018951329999027,
+  "mean_inference_s": 0.05570676249999451,
+  "latency_scope": "preprocessing + H2D + forward; excludes disk IO; warmup5",
+  "model": "Bearing-UAV",
+  "variant": "r0",
+  "weights": "/content/bearing_sequence_nav/pretrained/bearing_weights/Bearing_UAV/cross_view/best_model.pth",
+  "checkpoint_sha256": "31dc15f9fa48cfcd5e58c22387ea5509ba932bb6f70be0d2dfc3c9bac7c45644",
+  "training_regime": "public-pretrained: training-city overlap must be audited"
+}

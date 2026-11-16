@@ -31,3 +31,8 @@
 ## 김재홍 E3·E4 완료 (방법 B, 2026-11-03)
 
 [Singapore Scale·MAGSAC++ 평가](2026-11-06_scale_ransac/README.md): k=100~999, 조건당 900개, 위치 오차 <10m. 새 Baseline 74.22%, Scale1.5 71.89%, Scale2 69.56%, MAGSAC3 74.22%, MAGSAC8 74.67%. Scale1·MAGSAC3 유지. 재구성 입력의 새 Baseline에 대한 비교이며 과거 72.9%와 직접 비교하지 않는다.
+
+
+## 2026-11-16 Bearing-UAV Colab 시퀀스 항법
+
+[분석과 원시 결과](2026-11-16_bearing_visloc_colab/README.md): 92구간·1,020걸음, 마지막 40 m 이내 44.6%, 걸음 오차 중앙값 43.0 m. 동일 이동 오차의 DR은 60.9%. 기존 LoMa 결과와의 시작점 초기화 차이를 함께 기록했다.
