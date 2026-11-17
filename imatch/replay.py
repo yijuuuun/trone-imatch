@@ -63,6 +63,13 @@ def replay_one(loc, g, data, st, i, odo=None, seed=0, reject_inl=0, gate_m=0., r
             d = _rot(real[k] - real[k - 1], bias + dh[k]) * (1 + ds[k])   # 드론이 아는 이동량 (지도 px, y 아래)
             guess = est + d
             course = float(np.degrees(np.arctan2(-d[1], d[0])))           # nav_run heading과 같은 규칙
+        if k == 0:   # 출발 위치는 GPS로 주어진다: 매칭하지 않는다 (Bearing-UAV 항법 #42와 같은 조건)
+            if log is not None:
+                log.append(dict(set=st, traj=i, k=int(g.k[0]), dist_m=float(g.dist_m[0]), real_x=real[0, 0],
+                                real_y=real[0, 1], guess_x=guess[0], guess_y=guess[1], est_x=est[0], est_y=est[1],
+                                err_m=0.0, raw_err_m=0.0, guess_err_m=0.0, outside_block=0, unknown=0, used='start',
+                                sec=0.0))
+            continue
         ref = real[k] if oracle_block else guess
         bx = int(np.clip(np.round((ref[0] - 256) / 256), 0, n_block - 1))
         by = int(np.clip(np.round((ref[1] - 256) / 256), 0, n_block - 1))
