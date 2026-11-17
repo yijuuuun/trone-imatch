@@ -8,15 +8,15 @@
 
 [UAV-VisLoc](https://github.com/IntelliSensing/UAV-VisLoc) 비행 11개 중 10개(07은 자세 열이 없고 위성 지도가 띠라 뺌). 만드는 법은 [data/README.md](../../data/README.md).
 
-| 폴더 | 내용 | 쓰는 실험 (분담 번호) |
-| --- | --- | --- |
-| `single_eval` | 한 장 1,738장 (비행마다 평가 줄에서 3장에 1장). set = `visloc_<비행>` | 한 장 비교: 원 Bearing-UAV(2), 다른 모델(5), 8/4방향(6), 우리 LoMa |
-| `seq_eval` | 비행 구간 92개, 사진 1,112장. 구간마다 지도 4096 px(1,024 m), 순서대로 전부 | 항법 비교: R1(3), R1 + R4(4), 원 Bearing-UAV(2), 다른 모델(5), 거리별(7) |
+| 폴더 | 역할 | 내용 | 쓰는 실험 (분담 번호) |
+| --- | --- | --- | --- |
+| `single_calib` | **개발용** | 513장 (비행마다 앞쪽 20% 줄, 3장에 1장) | 좌표 어긋남 확인(이 문서 2장), 설정 고르기: 8/4방향·멈추기(6) |
+| `single_eval` | **시험용** | 한 장 1,738장 (비행마다 평가 줄에서 3장에 1장). set = `visloc_<비행>` | 한 장 비교: 원 Bearing-UAV(2), 다른 모델(5), 우리 LoMa |
+| `seq_eval` | **시험용** | 비행 구간 92개, 사진 1,112장. 구간마다 지도 4096 px(1,024 m), 순서대로 전부 | 항법 비교: R1(3), R1 + R4(4), 원 Bearing-UAV(2), 다른 모델(5), 거리별(7) |
 
-docs/07 2.2절대로 모든 방법을 같은 표본에서 돌리므로, 기준선(원 Bearing-UAV, 다른 모델)도 한 장은 `single_eval`, 항법은 `seq_eval`로 우리 방법과 짝지어 비교한다.
-| `single_calib` | 513장 (비행마다 앞쪽 20% 줄). 이 확인에만 썼다 | 평가에 쓰지 않음 |
+설정은 개발용으로만 고르고, 시험용은 설정을 정한 뒤 한 번 돌려 보고한다(규칙은 [data/README.md](../../data/README.md)). docs/07 2.2절대로 모든 방법을 같은 표본에서 돌리므로, 기준선(원 Bearing-UAV, 다른 모델)도 한 장은 `single_eval`, 항법은 `seq_eval`로 우리 방법과 짝지어 비교한다.
 
-Kaggle 비공개 데이터셋: `heeyunju/visloc-single-eval`, `heeyunju/visloc-seq-eval` (팀원은 공동작업자로 추가). 커널 실행 코드가 `samples.csv`를 하나만 찾기 때문에 둘을 따로 올렸다.
+Kaggle 비공개 데이터셋: `heeyunju/visloc-single-calib`, `heeyunju/visloc-single-eval`, `heeyunju/visloc-seq-eval` (팀원은 공동작업자로 추가). 커널 실행 코드가 `samples.csv`를 하나만 찾기 때문에 따로 올렸다.
 
 ```bash
 python scripts/kaggle/build_kernel.py --user <아이디> --dataset heeyunju/visloc-single-eval --slug <이름> --args "--matchers loma --angles 8"
