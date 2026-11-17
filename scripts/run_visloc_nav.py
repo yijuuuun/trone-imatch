@@ -87,9 +87,13 @@ def main(argv=None):
         steps.to_csv(os.path.join(a.out, f'{name}_steps.csv'), index=False)
         segs.to_csv(os.path.join(a.out, f'{name}_segs.csv'), index=False)
         s = summarize(steps, segs)
+        # 걸음당 s: 걸음마다 기록한 매칭 시간(재매칭 포함)의 평균, 출발 제외. 전체 경과 시간은 variant끼리 매칭 캐시를
+        # 같이 써서 뒤에 돈 variant가 짧게 나오므로 쓰지 않는다. 매칭이 없으면(dr) 경과 시간.
+        mv = steps[steps.used != 'start'] if 'used' in steps else steps
+        sec = float(mv.sec.fillna(0).mean()) if 'sec' in mv and mv.sec.notna().any() else (time.time() - t0) / max(len(mv), 1)
         print(f"| {v} | {s['segments']} | {s['steps']} | {s['w10']}% | {s['w20']}% | {s['w32']}% | {s['med_err_m']} m "
               f"| {s['final_med_m']} m | {s['final_le40']}% | {s['unknown']}% | {s['outside_block']}% "
-              f"| {(time.time() - t0) / max(len(steps), 1):.2f} |", flush=True)
+              f"| {sec:.2f} |", flush=True)
 
 
 if __name__ == '__main__':
