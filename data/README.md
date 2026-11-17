@@ -36,7 +36,7 @@ cd capstone1 && python <이 저장소>/scripts/export_from_capstone1.py --n 1000
 
 [UAV-VisLoc](https://github.com/IntelliSensing/UAV-VisLoc) 전체(비행 01~11, 약 23 GB)를 받아 `--root`로 준다. 07은 자세 열이 없고 위성 지도가 띠라 뺀다.
 
-**받기**: Kaggle 비공개 데이터셋 `heeyunju/visloc-single-eval`, `heeyunju/visloc-seq-eval` (공동작업자로 추가받아야 보임). 직접 만들려면:
+**받기**: Kaggle 비공개 데이터셋 `heeyunju/visloc-single-calib`(개발용), `heeyunju/visloc-single-eval`, `heeyunju/visloc-seq-eval`(시험용) (공동작업자로 추가받아야 보임). 직접 만들려면:
 
 ```bash
 python scripts/export_visloc.py --root <UAV-VisLoc> --out data/visloc        # 약 4분, 880 MB
@@ -45,11 +45,20 @@ python scripts/visloc_calib.py outputs/<결과>.csv --data data/visloc/single_ev
 
 정답은 **GPS 그대로**다(위치 보정 없음). 좌표 어긋남을 확인한 결과와 보정을 넣지 않은 이유는 [experiments/2026-11-13_visloc_data/README.md](../experiments/2026-11-13_visloc_data/README.md). 보정을 넣으려면 `visloc_calib.py --out`으로 만든 CSV를 `export_visloc.py --calib`에 준다.
 
-| 폴더 | 내용 | 쓰는 곳 |
+| 폴더 | 역할 | 내용 | 쓰는 곳 |
+| --- | --- | --- | --- |
+| `single_calib/` | **개발용** | 비행마다 앞쪽 20% 줄, 3장마다 1장 (513장) | 설정 고르기(방향 수, 멈추기 기준 등)와 좌표 어긋남 확인. 최종 숫자로 보고하지 않음 |
+| `single_eval/` | **시험용** | 나머지 줄, 3장마다 1장. set = `visloc_<비행>` (1,738장) | 한 장 비교 (원 Bearing-UAV, LoMa, 다른 모델) |
+| `seq_eval/` | **시험용** | 평가 줄을 지도 한 장(4096 px = 1,024 m)에 들어가는 구간으로 자름. 사진은 순서대로 전부. `maps/`, `block_index.csv` 포함 | 항법 비교 (R1, R1 + R4, 원 Bearing-UAV, 다른 모델), 거리별 비교, 프레임 간 매칭 |
+
+**개발용과 시험용**: 설정(방향 수, 멈추기 기준, 복구 방법 등)은 개발용 데이터로만 고른다. 시험용은 설정을 정한 뒤 한 번 돌려 보고하고, 그 결과를 보고 설정을 바꾸지 않는다. 시험용 결과를 보고 고른 설정은 시험용 숫자가 좋게 치우친다.
+
+| | 개발용 | 시험용 |
 | --- | --- | --- |
-| `single_calib/` | 비행마다 앞쪽 20% 줄, 3장마다 1장 | 좌표 어긋남 확인에만 씀. 평가에 쓰지 않음 |
-| `single_eval/` | 나머지 줄, 3장마다 1장. set = `visloc_<비행>` | 한 장 비교 (원 Bearing-UAV, LoMa, 다른 모델, 8/4방향) |
-| `seq_eval/` | 평가 줄을 지도 한 장(4096 px = 1,024 m)에 들어가는 구간으로 자름. 사진은 순서대로 전부. `maps/`, `block_index.csv` 포함 | 항법 비교 (R1, R1 + R4, 원 Bearing-UAV, 다른 모델), 거리별 비교, 프레임 간 매칭 |
+| 3D 시뮬레이터 | 학습 도시 도쿄(`3d_ho34bc`)·타이베이(`3d_ho36bc`), seed 7, 32궤적 | 시험 도시 SF(`3d_ho38bc`)·싱가포르(`3d_ho37bc`), seed 2026, 96궤적 |
+| UAV-VisLoc | `single_calib` | `single_eval`, `seq_eval` |
+
+`seq_eval`은 평가 줄에서만 만들었으므로 VisLoc 항법의 개발용 구간은 없다. 항법 설정은 3D 학습 도시로 고른다.
 
 - 블록은 고정 격자에서 자른다 (GPS 중심이 아님). 정답이 블록 안 여기저기에 있다.
 - `x_norm`, `y_norm`은 정답(지금은 GPS 그대로라 `x_norm_raw`, `y_norm_raw`와 같다). `tilted`, `turning`은 어려운 사진 표시(빼지 않음).
