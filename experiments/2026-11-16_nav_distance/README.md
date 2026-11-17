@@ -73,7 +73,7 @@ python scripts/nav_metrics.py experiments/2026-11-16_nav_distance/Tokyo_3d_loma-
 
 ## 4. 한계
 
-- 학습 도시 결과다. 시험 도시는 v1을 확정한 뒤 한 번만 돌린다는 규칙이 있어 돌리지 않았다.
+- 학습 도시 결과다. 시험 도시(SF, 싱가포르)는 v1을 확정한 뒤 한 번 돌렸고, 결과는 [2026-11-16_nav_distance_test](../2026-11-16_nav_distance_test/README.md)에 있다.
 - 32궤적이라 100·300 m의 성공률 차이(0~1궤적)는 유의하지 않다.
 - UAV-VisLoc(실제 비행)의 거리별 비교는 사진 간격이 60~130 m라 100 m가 1~2장뿐이다. 거리별 걸음 오차는 [PR #36](https://github.com/yijuuuun/trone-imatch/pull/36) README 3장에 있다.
 
