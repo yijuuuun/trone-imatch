@@ -1,0 +1,8 @@
+data,method,n,w10,w20,w32
+개발용 single_calib,블록 가운데,513,0.0546,0.2885,0.7563
+개발용 single_calib,LoMa 항상 답함,513,0.1559,0.4561,0.6823
+개발용 single_calib,LoMa + 모름이면 가운데 (inlier < 15),513,0.1423,0.4678,0.8109
+시험용 single_eval,블록 가운데,1738,0.0783,0.3216,0.8078
+시험용 single_eval,LoMa 항상 답함,1738,0.1404,0.4039,0.6669
+시험용 single_eval,LoMa + 모름이면 가운데 (inlier < 15),1738,0.145,0.4419,0.8262
+시험용 single_eval,Bearing-UAV,1738,0.1047,0.3757,0.7451
