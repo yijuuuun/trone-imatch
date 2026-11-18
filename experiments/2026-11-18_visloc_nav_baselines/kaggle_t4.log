@@ -1,0 +1,102 @@
+[{"stream_name":"stdout","time":31.651640494,"data":"data /kaggle/input/datasets/heeyunju/visloc-seq-eval | cap ['Bearing_UAV', 'cvphr', 'diag', 'results'] | pack ['corr', 'ga_pkg', 'osfpi']\n"}
+,{"stream_name":"stdout","time":40.935085552,"data":"GPU: Tesla T4, 데이터 /kaggle/input/datasets/heeyunju/visloc-seq-eval, 이동 오차 vio, seed 2026\n"}
+,{"stream_name":"stdout","time":40.935123121,"data":"== bearing\n"}
+,{"stream_name":"stdout","time":47.903290328,"data":"|TIPS| Now You are loading model PARCASGM_v5a.\n"}
+,{"stream_name":"stdout","time":47.903323,"data":"Model Class: \u003cclass 'cvphr.models.posaglreg.models.PARCASGM_v5a'\u003e\n"}
+,{"stream_name":"stdout","time":47.903328722,"data":"Model Kwargs: {'backbone_name': 'vgg16', 'feature_dim': 256, 'coord_enc_dims': [16, 64, 256], 'regressor_dims': [1024, 256, 64], 'reduction_ratio': 1, 'num_clusters': 4, 'freeze_backbone': True, 'partial_unfreeze': False, 'add_patch_coord': True}\n"}
+,{"stream_name":"stderr","time":47.90360409,"data":"/usr/local/lib/python3.13/dist-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.\n"}
+,{"stream_name":"stderr","time":47.903614393,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":47.903619427,"data":"/usr/local/lib/python3.13/dist-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.\n"}
+,{"stream_name":"stderr","time":47.903624661,"data":"  warnings.warn(msg)\n"}
+,{"stream_name":"stdout","time":49.055175707,"data":"Downloading: \"https://download.pytorch.org/models/vgg16-397923af.pth\" to /root/.cache/torch/hub/checkpoints/vgg16-397923af.pth\n"}
+,{"stream_name":"stderr","time":52.583162222,"data":"\r  0%|          | 0.00/528M [00:00\u003c?, ?B/s]\r  1%|▏         | 7.12M/528M [00:00\u003c00:07, 74.4MB/s]\r  5%|▍         | 24.2M/528M [00:00\u003c00:03, 136MB/s] \r  8%|▊         | 40.6M/528M [00:00\u003c00:03, 152MB/s]\r 11%|█         | 56.8M/528M [00:00\u003c00:03, 159MB/s]\r 14%|█▍        | 72.9M/528M [00:00\u003c00:02, 162MB/s]\r 17%|█▋        | 89.0M/528M [00:00\u003c00:02, 165MB/s]\r 20%|█▉        | 105M/528M [00:00\u003c00:02, 165MB/s] \r 23%|██▎       | 121M/528M [00:00\u003c00:02, 167MB/s]\r 26%|██▌       | 137M/528M [00:00\u003c00:02, 167MB/s]\r 29%|██▉       | 153M/528M [00:01\u003c00:02, 168MB/s]\r 32%|███▏      | 169M/528M [00:01\u003c00:02, 168MB/s]\r 35%|███▌      | 186M/528M [00:01\u003c00:02, 168MB/s]\r 38%|███▊      | 202M/528M [00:01\u003c00:02, 168MB/s]\r 41%|████▏     | 218M/528M [00:01\u003c00:01, 168MB/s]\r 44%|████▍     | 234M/528M [00:01\u003c00:01, 166MB/s]\r 47%|████▋     | 250M/528M [00:01\u003c00:01, 167MB/s]\r 50%|█████     | 266M/528M [00:01\u003c00:01, 166MB/s]\r 53%|█████▎    | 282M/528M [00:01\u003c00:01, 166MB/s]\r 56%|█████▋    | 298M/528M [00:01\u003c00:01, 160MB/s]\r 59%|█████▉    | 314M/528M [00:02\u003c00:01, 162MB/s]\r 63%|██████▎   | 330M/528M [00:02\u003c00:01, 164MB/s]\r 66%|██████▌   | 346M/528M [00:02\u003c00:01, 165MB/s]\r 69%|██████▊   | 362M/528M [00:02\u003c00:01, 166MB/s]\r 72%|███████▏  | 378M/528M [00:02\u003c00:00, 166MB/s]\r 75%|███████▍  | 394M/528M [00:02\u003c00:00, 167MB/s]\r 78%|███████▊  | 410M/528M [00:02\u003c00:00, 167MB/s]\r 81%|████████  | 426M/528M [00:02\u003c00:00, 167MB/s]\r 84%|████████▍ | 442M/528M [00:02\u003c00:00, 167MB/s]\r 87%|████████▋ | 458M/528M [00:02\u003c00:00, 167MB/s]\r 90%|████████▉ | 474M/528M [00:03\u003c00:00, 167MB/s]\r 93%|█████████▎| 490M/528M [00:03\u003c00:00, 167MB/s]\r 96%|█████████▌| 507M/528M [00:03\u003c00:00, 167MB/s]\r 99%|█████████▉| 523M/528M [00:03\u003c00:00, 168MB/s]\r100%|██████████| 528M/528M [00:03\u003c00:00, 165MB/s]\n"}
+,{"stream_name":"stdout","time":82.131063839,"data":"  10/92 구간\n"}
+,{"stream_name":"stdout","time":105.636596275,"data":"  20/92 구간\n"}
+,{"stream_name":"stdout","time":126.68290711,"data":"  30/92 구간\n"}
+,{"stream_name":"stdout","time":144.919648884,"data":"  40/92 구간\n"}
+,{"stream_name":"stdout","time":178.906571565,"data":"  50/92 구간\n"}
+,{"stream_name":"stdout","time":210.941441167,"data":"  60/92 구간\n"}
+,{"stream_name":"stdout","time":230.667381528,"data":"  70/92 구간\n"}
+,{"stream_name":"stdout","time":253.541221062,"data":"  80/92 구간\n"}
+,{"stream_name":"stdout","time":276.13503956,"data":"  90/92 구간\n"}
+,{"stream_name":"stdout","time":279.775187632,"data":"   92구간, 239 s\n"}
+,{"stream_name":"stdout","time":279.775221182,"data":"| bearing | 19 (20.7%) | 41 (44.6%) | 62.5 m | 43.0 m | 0.090 |\n"}
+,{"stream_name":"stdout","time":279.775228691,"data":"== corr38\n"}
+,{"stream_name":"stderr","time":279.780144156,"data":"/usr/local/lib/python3.13/dist-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.\n"}
+,{"stream_name":"stderr","time":279.780179627,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":279.780185991,"data":"/usr/local/lib/python3.13/dist-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.\n"}
+,{"stream_name":"stderr","time":279.780194518,"data":"  warnings.warn(msg)\n"}
+,{"stream_name":"stdout","time":303.465165055,"data":"  10/92 구간\n"}
+,{"stream_name":"stdout","time":323.879253615,"data":"  20/92 구간\n"}
+,{"stream_name":"stdout","time":341.809159063,"data":"  30/92 구간\n"}
+,{"stream_name":"stdout","time":357.01393952,"data":"  40/92 구간\n"}
+,{"stream_name":"stdout","time":384.724524869,"data":"  50/92 구간\n"}
+,{"stream_name":"stdout","time":410.393049388,"data":"  60/92 구간\n"}
+,{"stream_name":"stdout","time":426.77581846,"data":"  70/92 구간\n"}
+,{"stream_name":"stdout","time":445.586181913,"data":"  80/92 구간\n"}
+,{"stream_name":"stdout","time":462.604283579,"data":"  90/92 구간\n"}
+,{"stream_name":"stdout","time":465.38356546,"data":"   92구간, 186 s\n"}
+,{"stream_name":"stdout","time":465.383604654,"data":"| corr38 | 9 (9.8%) | 27 (29.3%) | 70.8 m | 57.4 m | 0.159 |\n"}
+,{"stream_name":"stdout","time":465.383612215,"data":"== corr37\n"}
+,{"stream_name":"stderr","time":465.384117565,"data":"/usr/local/lib/python3.13/dist-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.\n"}
+,{"stream_name":"stderr","time":465.384133927,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":465.384146824,"data":"/usr/local/lib/python3.13/dist-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.\n"}
+,{"stream_name":"stderr","time":465.384153574,"data":"  warnings.warn(msg)\n"}
+,{"stream_name":"stdout","time":489.078880677,"data":"  10/92 구간\n"}
+,{"stream_name":"stdout","time":509.855236097,"data":"  20/92 구간\n"}
+,{"stream_name":"stdout","time":528.047808162,"data":"  30/92 구간\n"}
+,{"stream_name":"stdout","time":543.290144126,"data":"  40/92 구간\n"}
+,{"stream_name":"stdout","time":570.245489581,"data":"  50/92 구간\n"}
+,{"stream_name":"stdout","time":594.887399174,"data":"  60/92 구간\n"}
+,{"stream_name":"stdout","time":611.377355612,"data":"  70/92 구간\n"}
+,{"stream_name":"stdout","time":630.185641204,"data":"  80/92 구간\n"}
+,{"stream_name":"stdout","time":646.759421819,"data":"  90/92 구간\n"}
+,{"stream_name":"stdout","time":649.535741755,"data":"   92구간, 184 s\n"}
+,{"stream_name":"stdout","time":649.535780279,"data":"| corr37 | 4 (4.3%) | 25 (27.2%) | 94.9 m | 61.2 m | 0.157 |\n"}
+,{"stream_name":"stdout","time":649.53578707,"data":"== osfpi\n"}
+,{"stream_name":"stderr","time":656.080259254,"data":"/usr/local/lib/python3.13/dist-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers\n"}
+,{"stream_name":"stderr","time":656.08029632,"data":"  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.layers\", FutureWarning)\n"}
+,{"stream_name":"stderr","time":656.162106289,"data":"/usr/local/lib/python3.13/dist-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models\n"}
+,{"stream_name":"stderr","time":656.16213622,"data":"  warnings.warn(f\"Importing from {__name__} is deprecated, please import via timm.models\", FutureWarning)\n"}
+,{"stream_name":"stdout","time":656.651834639,"data":"using Transformer_type: os_pcpvt_small as a backbone\n"}
+,{"stream_name":"stdout","time":699.208042702,"data":"  10/92 구간\n"}
+,{"stream_name":"stdout","time":717.099167118,"data":"  20/92 구간\n"}
+,{"stream_name":"stdout","time":732.517209219,"data":"  30/92 구간\n"}
+,{"stream_name":"stdout","time":745.490998602,"data":"  40/92 구간\n"}
+,{"stream_name":"stdout","time":769.921119009,"data":"  50/92 구간\n"}
+,{"stream_name":"stdout","time":793.274583132,"data":"  60/92 구간\n"}
+,{"stream_name":"stdout","time":807.361844084,"data":"  70/92 구간\n"}
+,{"stream_name":"stdout","time":823.577507881,"data":"  80/92 구간\n"}
+,{"stream_name":"stdout","time":839.050314502,"data":"  90/92 구간\n"}
+,{"stream_name":"stdout","time":841.452771721,"data":"   92구간, 192 s\n"}
+,{"stream_name":"stdout","time":841.452820355,"data":"| osfpi | 4 (4.3%) | 10 (10.9%) | 137.7 m | 103.6 m | 0.136 |\n"}
+,{"stream_name":"stdout","time":841.452944868,"data":"== geoanchor\n"}
+,{"stream_name":"stderr","time":844.658951479,"data":"Downloading: \"https://huggingface.co/kornia/loftr/resolve/main/loftr_outdoor.ckpt\" to /root/.cache/torch/hub/checkpoints/loftr_outdoor.ckpt\n"}
+,{"stream_name":"stderr","time":845.487941079,"data":"\r  0%|          | 0.00/44.2M [00:00\u003c?, ?B/s]\r  0%|          | 128k/44.2M [00:00\u003c02:15, 341kB/s]\r 20%|██        | 8.88M/44.2M [00:00\u003c00:01, 25.1MB/s]\r 66%|██████▌   | 29.2M/44.2M [00:00\u003c00:00, 77.6MB/s]\r100%|██████████| 44.2M/44.2M [00:00\u003c00:00, 70.5MB/s]\n"}
+,{"stream_name":"stderr","time":846.139798283,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":1766.865838754,"data":"  10/92 구간\n"}
+,{"stream_name":"stdout","time":2666.825906535,"data":"  20/92 구간\n"}
+,{"stream_name":"stdout","time":3413.536372698,"data":"  30/92 구간\n"}
+,{"stream_name":"stdout","time":3951.290450579,"data":"  40/92 구간\n"}
+,{"stream_name":"stdout","time":5269.354153041,"data":"  50/92 구간\n"}
+,{"stream_name":"stdout","time":6494.310747281,"data":"  60/92 구간\n"}
+,{"stream_name":"stdout","time":7155.566422178,"data":"  70/92 구간\n"}
+,{"stream_name":"stdout","time":7981.384026811,"data":"  80/92 구간\n"}
+,{"stream_name":"stdout","time":8712.611445215,"data":"  90/92 구간\n"}
+,{"stream_name":"stdout","time":8807.834810066,"data":"   92구간, 7966 s\n"}
+,{"stream_name":"stdout","time":8807.834874888,"data":"| geoanchor | 27 (29.3%) | 60 (65.2%) | 29.4 m | 16.9 m | 7.741 |\n"}
+,{"stream_name":"stdout","time":8807.834885816,"data":"\n"}
+,{"stream_name":"stdout","time":8807.834894111,"data":"| 모델 | 마지막 20 m 이내 | 마지막 40 m 이내 | 마지막 오차 중앙값 | 걸음 오차 중앙값 | 걸음당 s |\n"}
+,{"stream_name":"stdout","time":8807.836047414,"data":"| --- | --- | --- | --- | --- | --- |\n"}
+,{"stream_name":"stdout","time":8807.836074419,"data":"| bearing | 19 (20.7%) | 41 (44.6%) | 62.5 m | 43.0 m | 0.090 |\n"}
+,{"stream_name":"stdout","time":8807.836081462,"data":"| corr38 | 9 (9.8%) | 27 (29.3%) | 70.8 m | 57.4 m | 0.159 |\n"}
+,{"stream_name":"stdout","time":8807.836086649,"data":"| corr37 | 4 (4.3%) | 25 (27.2%) | 94.9 m | 61.2 m | 0.157 |\n"}
+,{"stream_name":"stdout","time":8807.836091771,"data":"| osfpi | 4 (4.3%) | 10 (10.9%) | 137.7 m | 103.6 m | 0.136 |\n"}
+,{"stream_name":"stdout","time":8807.836096862,"data":"| geoanchor | 27 (29.3%) | 60 (65.2%) | 29.4 m | 16.9 m | 7.741 |\n"}
+,{"stream_name":"stderr","time":8814.842417644,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":8814.842454324,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":8815.090472989,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":8815.0905043,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":8815.940917717,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":8816.925009157,"data":"[NbConvertApp] Writing 383760 bytes to __results__.html\n"}
+]
