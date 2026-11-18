@@ -43,6 +43,7 @@ def main(argv=None):
     ap.add_argument('--ransac-px', type=float, default=3.0)
     ap.add_argument('--block-radius', type=int, default=0, help='0 = 정답 블록만, 1 = 주변 3x3 후보 블록')
     ap.add_argument('--tag', default='', help='출력 파일 이름 뒤에 붙일 말. 예: --tag=-1dir')
+    ap.add_argument('--stop-inl', type=int, default=0, help='inlier가 이 값 이상인 각도가 나오면 거기서 멈춤 (0 = 전체 탐색)')
     a = ap.parse_args(argv)
     geometry.set_ransac_px(a.ransac_px)
     os.makedirs(a.out, exist_ok=True)
@@ -76,7 +77,7 @@ def main(argv=None):
                     for dx, dy, block in cands:
                         gt = (s.x_norm - UNITS_PER_BLOCK * dx, s.y_norm - UNITS_PER_BLOCK * dy, s.theta)
                         cand_recs, cand_best = localize(matcher, uav, block, gt, scale,
-                                                        [s.theta % 360] if a.oracle_rot else angles)
+                                                        [s.theta % 360] if a.oracle_rot else angles, stop_inl=a.stop_inl)
                         where = dict(dx=dx, dy=dy) if a.block_radius else {}
                         for r in cand_recs: per_angle.append(dict(matcher=mname, scale=scale, set=s.set, k=s.k, **where, **r))
                         if dx == 0 and dy == 0: recs, best = cand_recs, cand_best
