@@ -1,0 +1,84 @@
+#!/usr/bin/env python
+"""UAV-VisLoc seq_eval 92구간에서 기존 모델 항법 (R0: 모든 답을 믿음). baselines.py의 어댑터를 imatch.replay에 꽂는다.
+
+  python experiments/2026-11-18_visloc_nav_baselines/run_baselines.py --data data/visloc/seq_eval --out <폴더> \
+      --models bearing,osfpi,corr38,corr37,geoanchor --cap ~/capstone/bearinguav \
+      --osfpi ~/capstone/ext/OS-FPI --geoanchor <geoanchor 패키지가 든 폴더>
+
+models
+  bearing    원 Bearing-UAV 공개 가중치 (--cap 아래 Bearing_UAV/cross_view). #42 재현 확인과 T4 시간용
+  osfpi      OS-FPI net_040.pth, 4방향
+  corr38     CorrMatchNet p2bv4 (SF 뺀 학습), 4방향      corr37   같은 구조 (싱가포르 뺀 학습)
+  geoanchor  GeoAnchor 방식 (LoFTR + 파티클 필터), 우리 조건
+출력: visloc_<model>-r0_{steps,segs}.csv. 같은 seed면 run_visloc_nav.py(LoMa, dr)와 같은 구간·출발점·이동 오차.
+표: 마지막 20 m 이내(Bearing-UAV 논문 SR@20) / 40 m 이내, 마지막 오차 중앙값, 걸음 오차 중앙값(출발 제외), 걸음당 s.
+"""
+import argparse
+import os
+import sys
+import time
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
+sys.path.insert(0, ROOT); sys.path.insert(0, HERE)
+import numpy as np  # noqa: E402
+
+from imatch.replay import run_segments  # noqa: E402
+
+
+def table_row(name, steps, segs):
+    s = steps[steps.used != 'start']
+    f = segs.final_err_m
+    return (f"| {name} | {int((f <= 20).sum())} ({(f <= 20).mean() * 100:.1f}%) | {int((f <= 40).sum())} "
+            f"({(f <= 40).mean() * 100:.1f}%) | {f.median():.1f} m | {s.err_m.median():.1f} m | {s.sec.mean():.3f} |")
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument('--data', default='data/visloc/seq_eval'); ap.add_argument('--out', required=True)
+    ap.add_argument('--models', default='bearing,osfpi,corr38,corr37,geoanchor')
+    ap.add_argument('--cap', default=os.path.expanduser('~/capstone/bearinguav'))
+    ap.add_argument('--osfpi', default=os.path.expanduser('~/capstone/ext/OS-FPI'))
+    ap.add_argument('--geoanchor', default='', help='geoanchor/ 패키지(GeoAnchor 저장소 src/)가 든 폴더')
+    ap.add_argument('--odo', default='vio'); ap.add_argument('--seed', type=int, default=2026)
+    ap.add_argument('--sets', default='', help='구간 이름 쉼표 목록 (비우면 92구간 전부)')
+    ap.add_argument('--device', default='cuda')
+    a = ap.parse_args(argv)
+    os.makedirs(a.out, exist_ok=True)
+    sets = a.sets.split(',') if a.sets else None
+    import torch
+    print(f'GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu"}, 데이터 {a.data}, '
+          f'이동 오차 {a.odo}, seed {a.seed}', flush=True)
+    rows = []
+    for name in a.models.split(','):
+        t0 = time.time()
+        print(f'== {name}', flush=True)
+        if name == 'geoanchor':
+            from baselines import run_geoanchor
+            steps, segs = run_geoanchor(a.geoanchor, a.data, odo=a.odo, seed=a.seed, device=a.device, sets=sets)
+        else:
+            import baselines as B
+            if name == 'bearing':
+                loc = B.BearingLoc(a.cap, device=a.device)
+            elif name == 'osfpi':
+                # 드론 크롭 가운데 192 px: 개발용 single_calib에서 고름 (calib_osfpi.py, 중앙값 52.2 m vs 256 px 56.0 m)
+                loc = B.OSFPILoc(a.osfpi, device=a.device, uav_crop=192)
+            elif name in ('corr38', 'corr37'):
+                d = {'corr38': 'results/corr/p2bv4_3d_ho38bc_20261013_135730',
+                     'corr37': 'results/corr/p2bv4_3d_ho37bc_20261013_173659'}[name]
+                loc = B.CorrLoc(a.cap, d, device=a.device)
+            else:
+                sys.exit(f'모르는 모델: {name}')
+            steps, segs = run_segments(loc.bind, a.data, sets=sets, odo=a.odo, seed=a.seed)
+        steps.to_csv(os.path.join(a.out, f'visloc_{name}-r0_steps.csv'), index=False)
+        segs.to_csv(os.path.join(a.out, f'visloc_{name}-r0_segs.csv'), index=False)
+        rows.append(table_row(name, steps, segs))
+        print(f'   {len(segs)}구간, {time.time() - t0:.0f} s', flush=True)
+        print(rows[-1], flush=True)
+    print('\n| 모델 | 마지막 20 m 이내 | 마지막 40 m 이내 | 마지막 오차 중앙값 | 걸음 오차 중앙값 | 걸음당 s |')
+    print('| --- ' * 6 + '|')
+    print('\n'.join(rows))
+
+
+if __name__ == '__main__':
+    main()
