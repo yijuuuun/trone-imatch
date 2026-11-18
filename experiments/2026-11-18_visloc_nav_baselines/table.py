@@ -22,6 +22,9 @@ ROWS = [  # (이름, 폴더, 파일 앞부분, 설명)
     ('OS-FPI', HERE, 'visloc_osfpi-r0', 'R0, 4방향 중 heatmap 최고, 드론 가운데 192 px'),
     # GeoAnchor 방식(visloc_geoanchor-r0_*)은 표에서 뺀다: 입력·이동량·방향·보정을 우리가 바꿔 원본 성능이 아니고,
     # 매칭 통과 기준(inlier 40)이 64 m 크롭에 맞지 않아 걸음의 3.9%만 측정됐다 (README 4장).
+    ('Sample4Geo (검색형)', HERE, 'visloc_sample4geo-r0', 'R0, 블록 안 타일 검색, 위치 = 타일 중심'),
+    ('MEAN (검색형)', HERE, 'visloc_mean-r0', 'R0, 블록 안 타일 검색, 위치 = 타일 중심'),
+    ('Game4Loc (검색형)', HERE, 'visloc_game4loc-r0', 'R0, 블록 안 타일 검색, 위치 = 타일 중심'),
     ('LoMa R0', V1, 'visloc_loma-r0', '매칭을 항상 믿음'),
     ('R1', V1, 'visloc_loma-r1', 'inlier < 15면 모름'),
     ('v1 (R1 + R4)', V1, 'visloc_loma-r4g0n5w20', '확정 v1'),

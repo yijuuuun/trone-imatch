@@ -26,6 +26,13 @@ import numpy as np  # noqa: E402
 from imatch.replay import run_segments  # noqa: E402
 
 
+# 검색형: (저장소 폴더, 가중치 파일). 가중치 SHA-256 앞자리: MEAN bc0f0798 (#33과 같음), Sample4Geo 04f4c899 (#33과 같음,
+# 공식 pretrained.zip의 university/), Game4Loc 12ec61d1 (HF Yux1ang/gta_uav_pretrained_models, GTA-UAV cross-area 학습)
+RET = {'mean': ('MEAN', 'MEAN_weights_e2_0.9355.pth'),
+       'sample4geo': ('Sample4Geo', 's4g_u1652_weights_e1_0.9515.pth'),
+       'game4loc': ('GTA-UAV/Game4Loc', 'vit_base_eva_gta_cross_area.pth')}
+
+
 def table_row(name, steps, segs):
     s = steps[steps.used != 'start']
     f = segs.final_err_m
@@ -40,6 +47,8 @@ def main(argv=None):
     ap.add_argument('--cap', default=os.path.expanduser('~/capstone/bearinguav'))
     ap.add_argument('--osfpi', default=os.path.expanduser('~/capstone/ext/OS-FPI'))
     ap.add_argument('--geoanchor', default='', help='geoanchor/ 패키지(GeoAnchor 저장소 src/)가 든 폴더')
+    ap.add_argument('--ret', default=os.path.expanduser('~/capstone/ext'),
+                    help='검색형: MEAN/, Sample4Geo/, GTA-UAV/Game4Loc/ 저장소와 weights/가 든 폴더')
     ap.add_argument('--odo', default='vio'); ap.add_argument('--seed', type=int, default=2026)
     ap.add_argument('--sets', default='', help='구간 이름 쉼표 목록 (비우면 92구간 전부)')
     ap.add_argument('--device', default='cuda')
@@ -67,6 +76,9 @@ def main(argv=None):
                 d = {'corr38': 'results/corr/p2bv4_3d_ho38bc_20261013_135730',
                      'corr37': 'results/corr/p2bv4_3d_ho37bc_20261013_173659'}[name]
                 loc = B.CorrLoc(a.cap, d, device=a.device)
+            elif name in RET:
+                repo, w = RET[name]
+                loc = B.RetrievalLoc(name, os.path.join(a.ret, repo), os.path.join(a.ret, 'weights', w), device=a.device)
             else:
                 sys.exit(f'모르는 모델: {name}')
             steps, segs = run_segments(loc.bind, a.data, sets=sets, odo=a.odo, seed=a.seed)
