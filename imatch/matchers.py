@@ -16,11 +16,14 @@ class VisMatch:
     """vismatch 라이브러리의 공개 매처 (loma, romav2, sift-lightglue 등). GPU 권장.
 
     LoMa 변형: 'loma'(= LoMa-B, 주력), 'loma-b128'(경량), 'loma-l', 'loma-g', 'loma-r'.
+    이름 끝에 '-cache'를 붙이면 지도 블록 특징을 캐시한다 (예: 'loma-cache').
     """
 
     def __init__(self, name, device='cuda'):
         import torch
-        self.name, self.torch = name, torch
+        cache = name.endswith('-cache')   # 'loma-cache': 지도 블록 특징 캐시 (결과는 'loma'와 같고 시간만 줄어든다)
+        name = name[:-len('-cache')] if cache else name
+        self.name, self.torch = name + ('-cache' if cache else ''), torch
         if name in LOMA_ARCH:
             from vismatch.im_models import loma
             self.m = loma.LoMaMatcher(device, 2048, arch=LOMA_ARCH[name])
@@ -32,6 +35,10 @@ class VisMatch:
             # T4 결과(fp16)와 조금 다를 수 있으니 보고용 숫자는 T4 기본 설정으로 낸다
             from vismatch.utils import force_float32
             force_float32(self.m.matcher)
+        if cache:
+            if not name.startswith('loma'):
+                raise ValueError('-cache는 LoMa만 지원')
+            self._cache_block_features(max_items=int(os.environ.get('LOMA_CACHE_ITEMS', 512)))
         if name == 'romav2':
             # 기본 'precise' 설정은 T4(bf16 없음)에서 메모리 부족으로 멈췄다. 우리 영상은 256 / 512 px라
             # 'base' 설정(640 px, 단방향, fp32)을 쓴다.
@@ -39,6 +46,34 @@ class VisMatch:
             rv2._disable_autocast()
             self.m.romav2_model.apply_setting(os.environ.get('ROMAV2_SETTING', 'base'))
             self.name = f"romav2-{os.environ.get('ROMAV2_SETTING', 'base')}"
+
+    def _cache_block_features(self, max_items=512, min_side=400):
+        """지도 블록의 LoMa 키포인트·디스크립터를 한 번만 계산한다 (교수님 피드백: 지도 특징 캐시).
+
+        같은 블록은 방향(최대 4개)마다, 항법에서는 걸음·재탐색마다 다시 들어온다. 드론 사진만 돌리므로 블록 쪽
+        detect_and_describe 결과는 매번 같다(DaD 키포인트는 top-k라 결정적). 그래서 블록(한 변 >= min_side px)만
+        내용 해시로 캐시하고, 드론 사진(256 px)은 그대로 계산한다. 결과는 캐시 없을 때와 같다.
+        """
+        import hashlib
+        from collections import OrderedDict
+        lm = self.m.matcher
+        orig, store = lm.detect_and_describe, OrderedDict()
+        self.cache_hits = self.cache_misses = 0
+
+        def cached(image, num_keypoints=None):
+            if isinstance(image, str) or min(image.shape[-2:]) < min_side:
+                return orig(image, num_keypoints)
+            key = (hashlib.md5(image.detach().cpu().numpy().tobytes()).hexdigest(), tuple(image.shape), num_keypoints)
+            if key in store:
+                store.move_to_end(key); self.cache_hits += 1
+                return store[key]
+            self.cache_misses += 1
+            out = store[key] = orig(image, num_keypoints)
+            if len(store) > max_items:
+                store.popitem(last=False)
+            return out
+
+        lm.detect_and_describe = cached
 
     def __call__(self, im0, im1):
         t = lambda im: self.torch.from_numpy(im).permute(2, 0, 1).float() / 255.
