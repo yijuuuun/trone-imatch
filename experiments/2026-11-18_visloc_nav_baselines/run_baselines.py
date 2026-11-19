@@ -10,7 +10,9 @@ models
   osfpi      OS-FPI net_040.pth, 4방향
   corr38     CorrMatchNet p2bv4 (SF 뺀 학습), 4방향      corr37   같은 구조 (싱가포르 뺀 학습)
   geoanchor  GeoAnchor 방식 (LoFTR + 파티클 필터), 우리 조건
-출력: visloc_<model>-r0_{steps,segs}.csv. 같은 seed면 run_visloc_nav.py(LoMa, dr)와 같은 구간·출발점·이동 오차.
+  sample4geo, mean, game4loc   검색형, 블록 안 타일 검색 (baselines.RetrievalLoc)
+  <model>-r1 모델 점수 < T면 "모름" → 추측 위치 (v1의 R1과 같은 처리). T는 calib_gate.py가 개발용에서 고른 gate.json
+출력: visloc_<model>-r0_{steps,segs}.csv (R1이면 -r1). 같은 seed면 run_visloc_nav.py(LoMa, dr)와 같은 구간·출발점·이동 오차.
 표: 마지막 20 m 이내(Bearing-UAV 논문 SR@20) / 40 m 이내, 마지막 오차 중앙값, 걸음 오차 중앙값(출발 제외), 걸음당 s.
 """
 import argparse
@@ -62,28 +64,38 @@ def main(argv=None):
     for name in a.models.split(','):
         t0 = time.time()
         print(f'== {name}', flush=True)
+        base, r1 = (name[:-3], True) if name.endswith('-r1') else (name, False)
+        if r1:   # R1: 개발용에서 고른 점수 기준 (calib_gate.py → gate.json). 출력 visloc_<model>-r1_*
+            import json
+            g = json.load(open(os.path.join(HERE, 'gate.json')))[base]
+            print(f'   점수 {g["score"]} < {g["T"]}면 모름 (개발용 거절 {g["reject_pct"]}%)', flush=True)
         if name == 'geoanchor':
             from baselines import run_geoanchor
             steps, segs = run_geoanchor(a.geoanchor, a.data, odo=a.odo, seed=a.seed, device=a.device, sets=sets)
         else:
             import baselines as B
-            if name == 'bearing':
+            if base == 'bearing':
                 loc = B.BearingLoc(a.cap, device=a.device)
-            elif name == 'osfpi':
+            elif base == 'osfpi':
                 # 드론 크롭 가운데 192 px: 개발용 single_calib에서 고름 (calib_osfpi.py, 중앙값 52.2 m vs 256 px 56.0 m)
                 loc = B.OSFPILoc(a.osfpi, device=a.device, uav_crop=192)
-            elif name in ('corr38', 'corr37'):
+            elif base in ('corr38', 'corr37'):
                 d = {'corr38': 'results/corr/p2bv4_3d_ho38bc_20261013_135730',
-                     'corr37': 'results/corr/p2bv4_3d_ho37bc_20261013_173659'}[name]
+                     'corr37': 'results/corr/p2bv4_3d_ho37bc_20261013_173659'}[base]
                 loc = B.CorrLoc(a.cap, d, device=a.device)
-            elif name in RET:
-                repo, w = RET[name]
-                loc = B.RetrievalLoc(name, os.path.join(a.ret, repo), os.path.join(a.ret, 'weights', w), device=a.device)
+            elif base in RET:
+                repo, w = RET[base]
+                loc = B.RetrievalLoc(base, os.path.join(a.ret, repo), os.path.join(a.ret, 'weights', w), device=a.device)
             else:
                 sys.exit(f'모르는 모델: {name}')
-            steps, segs = run_segments(loc.bind, a.data, sets=sets, odo=a.odo, seed=a.seed)
-        steps.to_csv(os.path.join(a.out, f'visloc_{name}-r0_steps.csv'), index=False)
-        segs.to_csv(os.path.join(a.out, f'visloc_{name}-r0_segs.csv'), index=False)
+            T = 0.
+            if r1 and g['T'] is not None:
+                loc, T = B.Gated(loc, g['score']), float(g['T'])
+                assert T > 0, 'replay는 reject_inl > 0일 때만 거른다'
+            steps, segs = run_segments(loc.bind, a.data, sets=sets, odo=a.odo, seed=a.seed, reject_inl=T)
+        tag = f'{base}-r1' if r1 else f'{name}-r0'
+        steps.to_csv(os.path.join(a.out, f'visloc_{tag}_steps.csv'), index=False)
+        segs.to_csv(os.path.join(a.out, f'visloc_{tag}_segs.csv'), index=False)
         rows.append(table_row(name, steps, segs))
         print(f'   {len(segs)}구간, {time.time() - t0:.0f} s', flush=True)
         print(rows[-1], flush=True)
