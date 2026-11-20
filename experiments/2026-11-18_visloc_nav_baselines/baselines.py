@@ -207,6 +207,24 @@ class CorrLoc:
         return np.array(out)
 
 
+# ------------------------------------------------------------------------------------------------ R1: 모델 점수로 "모름"
+class Gated:
+    """기존 모델의 점수(key)를 replay의 n_inl 자리에 넣는다. run_segments(reject_inl=T)면 점수 < T일 때 "모름" →
+    추측 위치. v1의 R1(LoMa inlier < 15)과 같은 처리이고, T는 개발용 single_calib에서 고른다(calib_gate.py, gate.json)."""
+
+    def __init__(self, loc, key):
+        self.loc, self.key, self.last = loc, key, []
+
+    def bind(self, city):
+        self.loc.bind(city)
+        return self
+
+    def __call__(self, crops, headings, blocks):
+        out = self.loc(crops, headings, blocks)
+        self.last = [dict(d, n_inl=d[self.key]) for d in self.loc.last]
+        return out
+
+
 # ------------------------------------------------------------------------------------------------ 검색형 (MEAN, Sample4Geo, Game4Loc)
 def _purge(prefix):
     """MEAN과 Sample4Geo 저장소가 같은 패키지 이름(sample4geo)을 써서, 다른 쪽을 불러오기 전에 지운다."""

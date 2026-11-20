@@ -1,0 +1,56 @@
+{
+ "corr38": {
+  "score": "conf",
+  "T": 0.884257709980011,
+  "reject_pct": 70,
+  "le20": 29.4,
+  "le20_always": 24.8,
+  "le20_centre": 28.8,
+  "med_always": 33.1
+ },
+ "corr37": {
+  "score": "conf",
+  "T": 0.922861135005951,
+  "reject_pct": 80,
+  "le20": 28.3,
+  "le20_always": 24.4,
+  "le20_centre": 28.8,
+  "med_always": 35.3
+ },
+ "osfpi": {
+  "score": "conf",
+  "T": 0.9238927483558654,
+  "reject_pct": 85,
+  "le20": 28.5,
+  "le20_always": 12.1,
+  "le20_centre": 28.8,
+  "med_always": 53.1
+ },
+ "sample4geo": {
+  "score": "sim",
+  "T": 0.8709030389785766,
+  "reject_pct": 95,
+  "le20": 27.3,
+  "le20_always": 19.9,
+  "le20_centre": 28.8,
+  "med_always": 34.7
+ },
+ "game4loc": {
+  "score": "sim",
+  "T": 0.7410447835922241,
+  "reject_pct": 95,
+  "le20": 28.1,
+  "le20_always": 18.5,
+  "le20_centre": 28.8,
+  "med_always": 36.8
+ },
+ "mean": {
+  "score": "sim",
+  "T": 0.8808934450149536,
+  "reject_pct": 95,
+  "le20": 29.2,
+  "le20_always": 19.3,
+  "le20_centre": 28.8,
+  "med_always": 36.7
+ }
+}
