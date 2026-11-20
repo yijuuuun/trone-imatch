@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 from scipy.spatial import cKDTree
 
-from .blocks import N_BLOCK, crop_block, neighbors
+from .blocks import N_BLOCK, crop_block, grid_size, neighbors
 from .geometry import PX_PER_UNIT, turn
 from .pipeline import localize
 
@@ -145,9 +145,11 @@ class Research:
             # 기억한 뒤 기체가 돈 만큼(자세 센서·VIO의 회전량, 추측 항법이 쓰는 것과 같은 정보) 더한다
             hint = float((hint + self.hint_yaw) % 360)
         min_inl = max(self.min_inl, self.wide_inl) if wide else self.min_inl
-        bx = int(np.clip(np.round((guess[0] - 256) / 256), 0, N_BLOCK - 1))
-        by = int(np.clip(np.round((guess[1] - 256) / 256), 0, N_BLOCK - 1))
-        cands = [(dx, dy) for dx, dy in neighbors(bx, by, 1) if wide or abs(dx) + abs(dy) <= 1]
+        city = getattr(self.match, 'city', None)
+        nx, ny = grid_size(city) if city is not None else (N_BLOCK, N_BLOCK)   # 4096 px 지도면 (15, 15), 예전과 같다
+        bx = int(np.clip(np.round((guess[0] - 256) / 256), 0, nx - 1))
+        by = int(np.clip(np.round((guess[1] - 256) / 256), 0, ny - 1))
+        cands = [(dx, dy) for dx, dy in neighbors(bx, by, 1, (nx, ny)) if wide or abs(dx) + abs(dy) <= 1]
         best, best_d, n_pass, sec = None, np.inf, 0, 0.
         for dx, dy in cands:
             # 추측 위치의 블록은 이번 걸음 본 매칭(전체 각도)이 캐시에 있다. 이웃 블록만 기억한 각도 하나로

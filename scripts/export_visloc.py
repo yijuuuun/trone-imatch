@@ -15,6 +15,9 @@ docs/07_교수님_피드백_1113.md 분담 1번. 원 Bearing-UAV, R1, R1 + R4, �
                                  set = visloc_<비행>_s##, k = 비행 순서, dist_m = 구간 시작부터 누적 거리
   seq_calib/                     같은 형식, 보정 줄(single_calib과 같은 줄)만. set = visloc_<비행>_c##
                                  항법 설정은 여기서만 고르고 seq_eval은 확정 뒤 한 번만 돌린다
+  seq_eval_full/, seq_calib_full/  --full일 때만. 같은 나눔의 줄 전체를 끊지 않고 한 구간으로 (유턴 포함, 녹화가 멈춘
+                                 500 m 넘는 빈 곳에서만 끊음). set = visloc_<비행>_fs## / _fc##. 지도는 maps/<set>/ 타일
+                                 python scripts/export_visloc.py --root <UAV-VisLoc> --out data/visloc --full
   frames.csv                     모든 사진의 판정(status), 표시(tilted, turning), 줄(line), 나눔(split)
   flights.csv                    비행별 축척(gsd)·heading 보정·위치 보정과 그 출처
 
@@ -36,6 +39,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import math
 import os
 import sys
@@ -143,8 +147,11 @@ class Mosaic:
                         cov[dy:dy + gy1 - gy0, dx:dx + gx1 - gx0] = 1
         return out, cov
 
-    def render(self, X0, Y0, w, h):
-        """평면 [X0, X0+w) × [Y0, Y0+h)를 0.25 m/px RGB로. 지도가 다 덮지 못하면 None."""
+    def render(self, X0, Y0, w, h, partial=False):
+        """평면 [X0, X0+w) × [Y0, Y0+h)를 0.25 m/px RGB로. 지도가 다 덮지 못하면 None.
+
+        partial=True면 덮지 못한 곳을 검게 두고 (영상, 덮인 비율)을 돌려준다 (긴 구간 지도 타일용).
+        """
         a, b = self.a, self.b
         if X0 < 0 or Y0 < 0 or X0 + w > self.Wf or Y0 + h > self.Hf:
             return None
@@ -157,6 +164,9 @@ class Mosaic:
                              borderMode=cv2.BORDER_CONSTANT, borderValue=0)
         c = cv2.warpAffine(cov, M, (w, h), flags=cv2.INTER_NEAREST | cv2.WARP_INVERSE_MAP,
                            borderMode=cv2.BORDER_CONSTANT, borderValue=0)
+        if partial:
+            img[c == 0] = 0
+            return img, float((c > 0).mean())
         return img if c.min() > 0 else None
 
 
@@ -263,9 +273,11 @@ def gt_positions(mos, df, head_off, along, right):
 
 
 def block_of(X, Y, n_block=None):
+    """정답을 담은 고정 격자 블록. n_block: 정수(가로·세로 같음) 또는 (가로, 세로) 블록 수로 자른다."""
     bx, by = np.round((np.asarray(X) - BLOCK_CENTER) / STRIDE), np.round((np.asarray(Y) - BLOCK_CENTER) / STRIDE)
     if n_block is not None:
-        bx, by = np.clip(bx, 0, n_block - 1), np.clip(by, 0, n_block - 1)
+        nx, ny = (n_block, n_block) if np.isscalar(n_block) else n_block
+        bx, by = np.clip(bx, 0, nx - 1), np.clip(by, 0, ny - 1)
     return bx.astype(int), by.astype(int)
 
 
@@ -396,6 +408,83 @@ def export_seq(out, flight, mos, drone_dir, df, cal, segs, quality, rows, idx_ro
     return made
 
 
+# ---------------------------------------------------------------- 긴 구간 (--full)
+
+FULL_PREFIX = {'eval': 'fs', 'calib': 'fc'}   # visloc_<비행>_fs## (시험용) / _fc## (개발용)
+
+
+def find_full_stretches(df, split, gap_m, min_m):
+    """split 줄에서 사진이 이어지는 부분 전체 [(시작, 끝, 길이 m) iloc]. 사진 사이가 gap_m보다 멀 때만 끊는다.
+
+    1 km 구간(find_segments)은 df.gap(보통 간격 × 2.5, 유턴마다 생김)에서 끊는다. 긴 구간은 유턴을 넘어야 하므로
+    녹화가 멈춘 곳(1.4 km 이상)만 끊는다. 빈 곳 81군데 중 78군데가 400 m 이하, 나머지 3군데가 1,385 m 이상이라
+    400~1,385 m 사이 어디에 기준을 두어도 같다. df.gap(줄 나눔, calib/eval 나눔에 쓰임)은 건드리지 않는다.
+    """
+    ok = ((df.status == 'ok') & (df.split == split)).to_numpy()
+    step = df.step_m.to_numpy()
+    out, i, n = [], 0, len(df)
+    while i < n:
+        if not ok[i]:
+            i += 1; continue
+        j = i
+        while j + 1 < n and ok[j + 1] and not step[j + 1] > gap_m:
+            j += 1
+        length = float(np.nansum(step[i + 1:j + 1]))
+        if length >= min_m:
+            out.append((i, j, length))
+        i = j + 1
+    return out
+
+
+def export_full(out, flight, mos, drone_dir, df, cal, stretches, quality, rows, idx_rows, seg_rows, split, pad_px, tile):
+    """긴 구간: 지도는 구간 범위 + pad_px를 tile px 타일로 (maps/<set>/r###_c###.jpg + map.json, imatch.blocks.TiledMap).
+    사진은 k###_uav.jpg만 (정답 블록 영상은 항법에 쓰지 않아 만들지 않는다)."""
+    for s_i, (i, j, length) in enumerate(stretches):
+        sub = df.iloc[i:j + 1]
+        if len(sub) > 1000:
+            raise RuntimeError(f'{flight}: 사진 {len(sub)}장 > 1000 (파일 이름 k###)')
+        X0 = int(math.floor(max(sub.X.min() - pad_px, 0))); Y0 = int(math.floor(max(sub.Y.min() - pad_px, 0)))
+        X1 = int(math.ceil(min(sub.X.max() + pad_px, mos.Wf - 1))); Y1 = int(math.ceil(min(sub.Y.max() + pad_px, mos.Hf - 1)))
+        W, H = X1 - X0, Y1 - Y0
+        set_name = f'visloc_{flight}_{FULL_PREFIX[split]}{s_i:02d}'
+        d, dm = out / f'seq_{split}_full' / set_name, out / f'seq_{split}_full' / 'maps' / set_name
+        d.mkdir(parents=True, exist_ok=True); dm.mkdir(parents=True, exist_ok=True)
+        covered, n_tile = 0.0, 0
+        for r in range(math.ceil(H / tile)):
+            for c in range(math.ceil(W / tile)):
+                tw, th = min(tile, W - c * tile), min(tile, H - r * tile)
+                img, cov = mos.render(X0 + c * tile, Y0 + r * tile, tw, th, partial=True)
+                save_jpg(img, dm / f'r{r:03d}_c{c:03d}.jpg', quality)
+                covered += cov * tw * th; n_tile += 1
+        cov_frac = covered / (W * H)
+        (dm / 'map.json').write_text(json.dumps(dict(width=W, height=H, tile=tile, X0=X0, Y0=Y0, covered=round(cov_frac, 5))))
+        grid = (W // STRIDE - 1, H // STRIDE - 1)
+        dist, prev = 0.0, None
+        for k, fr in enumerate(sub.itertuples()):
+            Xs, Ys = fr.X - X0, fr.Y - Y0
+            if prev is not None:
+                dist += math.hypot(fr.X - prev[0], fr.Y - prev[1]) / PX_PER_M
+            prev = (fr.X, fr.Y)
+            bx, by = block_of(Xs, Ys, grid)
+            ccx, ccy = bx * STRIDE + BLOCK_CENTER, by * STRIDE + BLOCK_CENTER
+            uav, crop = uav_crop(drone_dir / fr.filename, cal['gsd'])
+            save_jpg(uav, d / f'k{k:03d}_uav.jpg', quality)
+            rows.append(sample_row(set_name, k, fr, (Xs - ccx) / PX_PER_UNIT, (Ys - ccy) / PX_PER_UNIT,
+                                   (fr.Xr - X0 - ccx) / PX_PER_UNIT, (fr.Yr - Y0 - ccy) / PX_PER_UNIT, fr.theta, cal,
+                                   crop, dict(dist_m=round(dist, 2), map_x=round(float(Xs), 2), map_y=round(float(Ys), 2),
+                                              map_x_raw=round(float(fr.Xr - X0), 2),
+                                              map_y_raw=round(float(fr.Yr - Y0), 2), seg_len_m=round(length, 1))))
+            idx_rows.append(dict(set=set_name, k=k, block_x=int(bx), block_y=int(by)))
+        seg_rows.append(dict(set=set_name, flight=flight, split=split, n_photos=len(sub), length_m=round(length, 1),
+                             first_row=int(sub.row.iloc[0]), last_row=int(sub.row.iloc[-1]),
+                             max_step_m=round(float(np.nanmax(sub.step_m.iloc[1:])) if len(sub) > 1 else 0.0, 1),
+                             n_turn_gap=int(sub.gap.iloc[1:].sum()), map_w=W, map_h=H, blocks_x=grid[0], blocks_y=grid[1],
+                             tiles=n_tile, map_covered=round(cov_frac, 5)))
+        print(f'  {set_name}: {len(sub)}장, {length / 1000:.1f} km, 지도 {W} x {H} px ({n_tile}타일, 덮임 {cov_frac:.4f}), '
+              f'유턴 빈 곳 {int(sub.gap.iloc[1:].sum())}', flush=True)
+    return len(stretches)
+
+
 def num(v, default):
     """calib 칸 값 → float. 비었거나 NaN이면 default."""
     try:
@@ -431,6 +520,12 @@ def main():
     ap.add_argument('--gsd-pairs', type=int, default=20)
     ap.add_argument('--no-seq', action='store_true', help='비행 구간 세트를 만들지 않음')
     ap.add_argument('--quality', type=int, default=95)
+    ap.add_argument('--full', action='store_true',
+                    help='긴 구간만 만든다: seq_eval_full/, seq_calib_full/ (줄 전체를 끊지 않고). 다른 출력은 쓰지 않는다')
+    ap.add_argument('--full-gap-m', type=float, default=500, help='--full: 사진 사이가 이보다 멀면 끊음 (m)')
+    ap.add_argument('--full-min-m', type=float, default=1000, help='--full: 이보다 짧은 구간은 버림 (m)')
+    ap.add_argument('--full-pad-m', type=float, default=128, help='--full: 지도를 구간 범위 밖으로 이만큼 더 (m)')
+    ap.add_argument('--full-tile', type=int, default=2048, help='--full: 지도 타일 크기 (px)')
     a = ap.parse_args()
 
     root, out = Path(a.root), Path(a.out)
@@ -440,6 +535,7 @@ def main():
     single_rows = {'calib': [], 'eval': []}
     seq_rows, idx_rows = {'calib': [], 'eval': []}, {'calib': [], 'eval': []}
     frame_tabs, flight_rows = [], []
+    full_rows, full_idx, full_segs, full_gsd = {'calib': [], 'eval': []}, {'calib': [], 'eval': []}, [], []
 
     for flight in [f.strip().zfill(2) for f in a.flights.split(',') if f.strip()]:
         fdir = root / flight
@@ -469,6 +565,14 @@ def main():
         print(f'[{flight}] {len(df)}장, ok {int((df.status == "ok").sum())}, 줄 {df.line.nunique()}, '
               f'gsd {gsd:.4f} ({gsd_src}), 원 지도 m/px {mos.src_m[0]:.3f} x {mos.src_m[1]:.3f}', flush=True)
 
+        if a.full:
+            for split in ('eval', 'calib'):
+                st = find_full_stretches(df, split, a.full_gap_m, a.full_min_m)
+                export_full(out, flight, mos, fdir / 'drone', df, cal, st, a.quality, full_rows[split], full_idx[split],
+                            full_segs, split, a.full_pad_m * PX_PER_M, a.full_tile)
+            full_gsd.append(dict(flight=flight, gsd=gsd, gsd_source=gsd_src))
+            continue
+
         n_edge = export_single(out, flight, mos, fdir / 'drone', df, cal, a.every, a.quality, single_rows)
         n_seg = {'eval': 0, 'calib': 0}
         if not a.no_seq:
@@ -490,6 +594,27 @@ def main():
                                 src_m_e=round(mos.src_m[0], 4), src_m_n=round(mos.src_m[1], 4),
                                 n_frames=len(df), n_ok=int((df.status == 'ok').sum()), n_lines=int(df.line.nunique()),
                                 n_seg=n_seg['eval'], n_seg_calib=n_seg['calib']))
+
+    if a.full:
+        for split in ('eval', 'calib'):
+            d = out / f'seq_{split}_full'
+            if not full_rows[split]:
+                continue
+            pd.DataFrame(full_rows[split]).to_csv(d / 'samples.csv', index=False)
+            pd.DataFrame(full_idx[split]).to_csv(d / 'block_index.csv', index=False)
+            pd.DataFrame([r for r in full_segs if r['split'] == split]).to_csv(d / 'segments.csv', index=False)
+            pd.DataFrame(full_gsd).to_csv(d / 'gsd.csv', index=False)
+            (d / 'README.txt').write_text(
+                'UAV-VisLoc long segments (scripts/export_visloc.py --full)\n'
+                f'split={split} gap_m={a.full_gap_m} min_m={a.full_min_m} pad_m={a.full_pad_m} tile={a.full_tile} '
+                f'calib_frac={a.calib_frac} calib file: {a.calib or "(none)"}\n\n'
+                'One segment = one whole run of consecutive photos in this split, cut only where photos are more than\n'
+                'gap_m apart (recording stopped), so U-turns stay inside. maps/<set>/ = tiles (imatch.blocks.TiledMap),\n'
+                'same 0.25 m/px north-up plane and 256 px block grid as seq_eval. segments.csv lists length and map size.\n'
+                f'{"Development split: pipeline checks only." if split == "calib" else "Test split: run once with fixed settings."}\n',
+                encoding='utf-8')
+        print('done:', out.resolve())
+        return
 
     for split, rows in single_rows.items():
         if rows:
