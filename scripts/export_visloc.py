@@ -13,6 +13,8 @@ docs/07_교수님_피드백_1113.md 분담 1번. 원 Bearing-UAV, R1, R1 + R4, �
                                  보정값은 single_calib에서만 정하고 평가는 single_eval로만 한다
   seq_eval/                      비행 구간 세트 (평가 줄만). samples.csv, block_index.csv, maps/<set>.jpg
                                  set = visloc_<비행>_s##, k = 비행 순서, dist_m = 구간 시작부터 누적 거리
+  seq_calib/                     같은 형식, 보정 줄(single_calib과 같은 줄)만. set = visloc_<비행>_c##
+                                 항법 설정은 여기서만 고르고 seq_eval은 확정 뒤 한 번만 돌린다
   frames.csv                     모든 사진의 판정(status), 표시(tilted, turning), 줄(line), 나눔(split)
   flights.csv                    비행별 축척(gsd)·heading 보정·위치 보정과 그 출처
 
@@ -326,10 +328,10 @@ def export_single(out, flight, mos, drone_dir, df, cal, every, quality, rows_by_
     return n_skip
 
 
-def find_segments(df, seg_len, seg_min, margin_px):
-    """평가 줄의 연속 사진을 앞에서부터 겹치지 않게 자른 구간 [(시작, 끝) iloc]. 구간은 지도 한 장에 들어가야 한다."""
+def find_segments(df, seg_len, seg_min, margin_px, split='eval'):
+    """split 줄의 연속 사진을 앞에서부터 겹치지 않게 자른 구간 [(시작, 끝) iloc]. 구간은 지도 한 장에 들어가야 한다."""
     usable = MAP_PX - 2 * margin_px
-    ok = ((df.status == 'ok') & (df.split == 'eval')).to_numpy()
+    ok = ((df.status == 'ok') & (df.split == split)).to_numpy()
     gap = df.gap.to_numpy()
     X, Y = df.X.to_numpy(), df.Y.to_numpy()
     segs, i, n = [], 0, len(df)
@@ -349,8 +351,11 @@ def find_segments(df, seg_len, seg_min, margin_px):
     return segs
 
 
-def export_seq(out, flight, mos, drone_dir, df, cal, segs, quality, rows, idx_rows, margin_px):
-    d_maps = out / 'seq_eval' / 'maps'
+SEQ_PREFIX = {'eval': 's', 'calib': 'c'}   # 구간 이름 visloc_<비행>_s## (시험용) / _c## (개발용)
+
+
+def export_seq(out, flight, mos, drone_dir, df, cal, segs, quality, rows, idx_rows, margin_px, split='eval'):
+    d_maps = out / f'seq_{split}' / 'maps'
     d_maps.mkdir(parents=True, exist_ok=True)
     made = 0
     for s_i, (i, j, length) in enumerate(segs):
@@ -365,8 +370,8 @@ def export_seq(out, flight, mos, drone_dir, df, cal, segs, quality, rows, idx_ro
         city = mos.render(X0, Y0, MAP_PX, MAP_PX)
         if city is None:
             continue
-        set_name = f'visloc_{flight}_s{s_i:02d}'
-        d = out / 'seq_eval' / set_name
+        set_name = f'visloc_{flight}_{SEQ_PREFIX[split]}{s_i:02d}'
+        d = out / f'seq_{split}' / set_name
         d.mkdir(parents=True, exist_ok=True)
         save_jpg(city, d_maps / f'{set_name}.jpg', quality)
         dist = 0.0
@@ -433,7 +438,8 @@ def main():
     calib = read_calib(a.calib)
     margin_px = a.margin_m * PX_PER_M
     single_rows = {'calib': [], 'eval': []}
-    seq_rows, idx_rows, frame_tabs, flight_rows = [], [], [], []
+    seq_rows, idx_rows = {'calib': [], 'eval': []}, {'calib': [], 'eval': []}
+    frame_tabs, flight_rows = [], []
 
     for flight in [f.strip().zfill(2) for f in a.flights.split(',') if f.strip()]:
         fdir = root / flight
@@ -464,15 +470,18 @@ def main():
               f'gsd {gsd:.4f} ({gsd_src}), 원 지도 m/px {mos.src_m[0]:.3f} x {mos.src_m[1]:.3f}', flush=True)
 
         n_edge = export_single(out, flight, mos, fdir / 'drone', df, cal, a.every, a.quality, single_rows)
-        n_seg = 0
+        n_seg = {'eval': 0, 'calib': 0}
         if not a.no_seq:
-            segs = find_segments(df, a.seg_len, a.seg_min, margin_px)
-            if a.seg_per_flight and len(segs) > a.seg_per_flight:
-                pick = np.unique(np.linspace(0, len(segs) - 1, a.seg_per_flight).round().astype(int))
-                segs = [segs[p] for p in pick]
-            n_seg = export_seq(out, flight, mos, fdir / 'drone', df, cal, segs, a.quality, seq_rows, idx_rows, margin_px)
+            for split in ('eval', 'calib'):
+                segs = find_segments(df, a.seg_len, a.seg_min, margin_px, split)
+                if a.seg_per_flight and len(segs) > a.seg_per_flight:
+                    pick = np.unique(np.linspace(0, len(segs) - 1, a.seg_per_flight).round().astype(int))
+                    segs = [segs[p] for p in pick]
+                n_seg[split] = export_seq(out, flight, mos, fdir / 'drone', df, cal, segs, a.quality, seq_rows[split],
+                                          idx_rows[split], margin_px, split)
         print(f'[{flight}] 한 장 calib {sum(r["flight"] == flight for r in single_rows["calib"])}, '
-              f'eval {sum(r["flight"] == flight for r in single_rows["eval"])}, 가장자리 제외 {n_edge}, 구간 {n_seg}', flush=True)
+              f'eval {sum(r["flight"] == flight for r in single_rows["eval"])}, 가장자리 제외 {n_edge}, '
+              f'구간 eval {n_seg["eval"]}, calib {n_seg["calib"]}', flush=True)
 
         df['flight'] = flight
         frame_tabs.append(df[['flight', 'row', 'filename', 'lat', 'lon', 'height', 'Phi1', 'Phi2', 'tilt_deg', 'tilted',
@@ -480,14 +489,15 @@ def main():
         flight_rows.append(dict(**cal, gsd_source=gsd_src, height_med=h_med, step_med_m=round(med_step, 1),
                                 src_m_e=round(mos.src_m[0], 4), src_m_n=round(mos.src_m[1], 4),
                                 n_frames=len(df), n_ok=int((df.status == 'ok').sum()), n_lines=int(df.line.nunique()),
-                                n_seg=n_seg))
+                                n_seg=n_seg['eval'], n_seg_calib=n_seg['calib']))
 
     for split, rows in single_rows.items():
         if rows:
             pd.DataFrame(rows).to_csv(out / f'single_{split}' / 'samples.csv', index=False)
-    if seq_rows:
-        pd.DataFrame(seq_rows).to_csv(out / 'seq_eval' / 'samples.csv', index=False)
-        pd.DataFrame(idx_rows).to_csv(out / 'seq_eval' / 'block_index.csv', index=False)
+    for split, rows in seq_rows.items():
+        if rows:
+            pd.DataFrame(rows).to_csv(out / f'seq_{split}' / 'samples.csv', index=False)
+            pd.DataFrame(idx_rows[split]).to_csv(out / f'seq_{split}' / 'block_index.csv', index=False)
     if frame_tabs:
         pd.concat(frame_tabs).to_csv(out / 'frames.csv', index=False)
     pd.DataFrame(flight_rows).to_csv(out / 'flights.csv', index=False)
@@ -498,6 +508,7 @@ def main():
         f'seg_per_flight={a.seg_per_flight} margin_m={a.margin_m}\n\n'
         'single_calib/: decide calibration here only.  single_eval/: report numbers here only.\n'
         'seq_eval/: ordered frames per segment, maps/<set>.jpg is 4096 px = 1,024 m (imatch/blocks.py grid).\n'
+        'seq_calib/: same format from the calib lines; choose navigation settings here only.\n'
         'x_norm/y_norm = corrected label, x_norm_raw/y_norm_raw = raw GPS.\n'
         'Limits: GPS/shutter timing not validated; UAV gsd from frame pairs, not camera calibration;\n'
         '        only the central 64 m of each drone photo is used.\n', encoding='utf-8')
