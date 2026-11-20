@@ -63,7 +63,7 @@ def main(argv=None):
     print('| --- ' * 12 + '|')
     cache = {}  # 구간 지도별 MatchLoc. variant끼리 같은 (사진, 블록) 매칭을 다시 하지 않는다
     for v in variants:
-        m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+)(?:w(\d+))?)?|center|dr)', v)
+        m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+)(?:w(\d+))?(a)?(y)?(?:c(\d+))?)?|center|dr)', v)
         if not m or (m.group(2) == '4') != bool(m.group(4)):
             sys.exit(f'모르는 variant: {v}')
         gate = float(m.group(3) or 0)
@@ -77,7 +77,8 @@ def main(argv=None):
             return cache[key]
 
         make_rec = ((lambda loc, m=m, gate=gate: Research(loc, gate_m=gate, wide_after=int(m.group(4) or 0),
-                                                          wide_inl=int(m.group(5) or 0)))
+                                                          wide_inl=int(m.group(5) or 0), angle_memory=bool(m.group(6)),
+                                                          wide_cool=int(m.group(8) or 0), yaw_correct=bool(m.group(7))))
                     if m.group(2) in ('3', '4') else None)
         t0 = time.time()
         steps, segs = run_segments(make_loc, a.data, sets=sets, odo=a.odo, seed=a.seed,
