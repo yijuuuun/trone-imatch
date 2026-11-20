@@ -1,0 +1,126 @@
+{
+  "original_parameters": 341523567,
+  "parameters": 291167343,
+  "layers": [
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.0.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.1.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.2.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.3.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.4.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.5.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.6.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.7.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.8.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.9.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.10.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.11.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.12.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.13.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.14.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.15.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.16.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.17.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.18.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.19.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.20.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.21.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.22.mlp",
+      "original": 4096,
+      "retained": 3072
+    },
+    {
+      "layer": "_descriptor.encoder.frozen_dinov2.dinov2_vitl14.blocks.23.mlp",
+      "original": 4096,
+      "retained": 3072
+    }
+  ]
+}
