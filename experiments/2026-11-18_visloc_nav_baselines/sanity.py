@@ -32,6 +32,10 @@ def main():
             loc = B.OSFPILoc(a.osfpi)
         elif name == 'bearing':
             loc = B.BearingLoc(a.cap)
+        elif name in ('mean', 'sample4geo', 'game4loc'):
+            from run_baselines import RET
+            ext = os.path.expanduser('~/capstone/ext')
+            loc = B.RetrievalLoc(name, os.path.join(ext, RET[name][0]), os.path.join(ext, 'weights', RET[name][1]))
         else:
             loc = B.CorrLoc(a.cap, {'corr38': 'results/corr/p2bv4_3d_ho38bc_20261013_135730',
                                     'corr37': 'results/corr/p2bv4_3d_ho37bc_20261013_173659'}[name])

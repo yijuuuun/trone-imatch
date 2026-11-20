@@ -24,6 +24,10 @@ LAUNCHER = r'''# 자동 생성 (experiments/2026-11-18_visloc_nav_baselines/buil
 import base64, glob, importlib, os, shutil, subprocess, sys
 if importlib.util.find_spec('kornia') is None:
     subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', 'kornia'], check=True)
+_r = glob.glob('/kaggle/input/**/weights/MEAN_weights_e2_0.9355.pth', recursive=True)
+RET = os.path.dirname(os.path.dirname(_r[0])) if _r else ''
+if RET:  # 검색형: 로컬 확인과 같은 timm (Game4Loc의 rope ViT, MEAN의 convnext 등록)
+    subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', 'timm==1.0.30'], check=True)
 SRC = '/kaggle/working/src'
 for rel, text in FILES.items():
     p = os.path.join(SRC, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
@@ -45,8 +49,29 @@ sys.path.insert(0, SRC); sys.path.insert(0, os.path.join(SRC, 'experiments/2026-
 os.chdir(SRC)
 from run_baselines import main
 main(['--data', DATA, '--out', '/kaggle/working/out', '--cap', CAP, '--osfpi', os.path.join(PK, 'osfpi'),
-      '--geoanchor', os.path.join(PK, 'ga_pkg')] + ARGS)
+      '--geoanchor', os.path.join(PK, 'ga_pkg')] + (['--ret', RET] if RET else []) + ARGS)
 '''
+
+RET_W = ['MEAN_weights_e2_0.9355.pth', 's4g_u1652_weights_e1_0.9515.pth', 'vit_base_eva_gta_cross_area.pth']
+
+
+def pack_ret(out, ext):
+    """검색형 데이터셋 폴더(heeyunju/visloc-retrieval): 세 저장소의 패키지 코드(+LICENSE)와 가중치."""
+    if os.path.exists(out):
+        shutil.rmtree(out)
+    ig = shutil.ignore_patterns('__pycache__', '*.pyc')
+    for repo, pkg in (('MEAN', 'sample4geo'), ('Sample4Geo', 'sample4geo'), ('GTA-UAV/Game4Loc', 'game4loc')):
+        shutil.copytree(os.path.join(ext, repo, pkg), os.path.join(out, repo, pkg), ignore=ig)
+        top = repo.split('/')[0]
+        for lic in ('LICENSE', 'LICENSE.md'):
+            if os.path.exists(os.path.join(ext, top, lic)):
+                shutil.copy(os.path.join(ext, top, lic), os.path.join(out, repo, lic))
+    os.makedirs(os.path.join(out, 'weights'))
+    for w in RET_W:
+        shutil.copy(os.path.join(ext, 'weights', w), os.path.join(out, 'weights', w))
+    json.dump({'title': 'visloc-retrieval', 'id': 'heeyunju/visloc-retrieval', 'licenses': [{'name': 'other'}],
+               'isPrivate': True}, open(os.path.join(out, 'dataset-metadata.json'), 'w'))
+    print('검색형 데이터셋 폴더:', out)
 
 
 def pack(out, cap, osfpi, geoanchor):
@@ -74,9 +99,13 @@ def main():
     ap.add_argument('--geoanchor', default=os.path.expanduser('~/capstone/ext/GeoAnchor'))
     ap.add_argument('--slug', default='visloc-nav-baselines'); ap.add_argument('--user', default='heeyunju')
     ap.add_argument('--args', default='--models bearing,corr38,corr37,osfpi,geoanchor')
+    ap.add_argument('--ret-pack', default='', help='검색형 데이터셋 폴더를 만들 곳 (MEAN/Sample4Geo/Game4Loc)')
+    ap.add_argument('--ext', default=os.path.expanduser('~/capstone/ext'))
     a = ap.parse_args()
     if a.pack:
         pack(a.pack, a.cap, a.osfpi, a.geoanchor)
+    if a.ret_pack:
+        pack_ret(a.ret_pack, a.ext)
     files = {os.path.relpath(p, ROOT): base64.b64encode(open(p, 'rb').read()).decode()
              for p in sorted(glob.glob(os.path.join(ROOT, 'imatch', '*.py')) + glob.glob(os.path.join(HERE, '*.py')))}
     d = os.path.join(ROOT, 'kaggle_kernels', a.slug); os.makedirs(d, exist_ok=True)
@@ -84,7 +113,8 @@ def main():
         f.write(f'FILES = {files!r}\nARGS = {shlex.split(a.args)!r}\nCORR = {CORR!r}\n' + LAUNCHER)
     json.dump({'id': f'{a.user}/{a.slug}', 'title': a.slug, 'code_file': 'run.py', 'language': 'python',
                'kernel_type': 'script', 'is_private': True, 'enable_gpu': True, 'enable_internet': True,
-               'dataset_sources': ['heeyunju/visloc-seq-eval', 'heeyunju/bearing-ckpt', 'heeyunju/visloc-baselines'],
+               'dataset_sources': ['heeyunju/visloc-seq-eval', 'heeyunju/bearing-ckpt', 'heeyunju/visloc-baselines',
+                                   'heeyunju/visloc-retrieval'],
                'competition_sources': [], 'kernel_sources': []}, open(os.path.join(d, 'kernel-metadata.json'), 'w'), indent=1)
     print('커널:', d)
 

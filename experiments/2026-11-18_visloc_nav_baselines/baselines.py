@@ -207,6 +207,122 @@ class CorrLoc:
         return np.array(out)
 
 
+# ------------------------------------------------------------------------------------------------ 검색형 (MEAN, Sample4Geo, Game4Loc)
+def _purge(prefix):
+    """MEAN과 Sample4Geo 저장소가 같은 패키지 이름(sample4geo)을 써서, 다른 쪽을 불러오기 전에 지운다."""
+    for k in [k for k in sys.modules if k == prefix or k.startswith(prefix + '.')]:
+        del sys.modules[k]
+
+
+class RetrievalLoc:
+    """검색형 모델을 항법에 꽂는다: 블록 안 후보 위치마다 그 점을 중심으로 512 px(128 m) 위성 타일을 잘라
+    드론 사진과 코사인 유사도가 가장 높은 타일의 중심을 위치로 쓴다 (모델은 그대로, 위치 = 고른 타일 중심).
+
+    후보: 블록 중심 ±128 px를 64 px(16 m) 간격 5×5로 보고, 가장 높은 점 주변 ±32 px(8 m 간격 3×3)로 한 번 더 좁힌다.
+    드론 사진은 4방향(0/90/180/270°) 중 유사도 최고. 불러오기·전처리는 재홍 #33(results/kaggle_2026-11-14 source/
+    retrieval_worker.py)과 같다: 공식 val 변환(384 px INTER_LINEAR_EXACT + Normalize), fp32, MEAN은 출력[-2](전역 특징).
+    Game4Loc은 공식 eval_gta.py와 같다 (DesModel, img_size 384, 같은 가중치로 드론·위성).
+    """
+    STEP1, STEP2 = 64, 32
+
+    def __init__(self, name, repo, ckpt, device='cuda', batch=32):
+        self.name, self.dev, self.batch = name, device, batch
+        _purge('sample4geo'); _purge('game4loc')
+        sys.path.insert(0, repo)
+        state = torch.load(ckpt, map_location='cpu', weights_only=False)
+        for key in ('state_dict', 'model_state_dict', 'model'):
+            if isinstance(state, dict) and key in state and isinstance(state[key], dict):
+                state = state[key]
+                break
+        if all(k.startswith('module.') for k in state):
+            state = {k[7:]: v for k, v in state.items()}
+        if name == 'sample4geo':
+            # MEAN 코드는 import될 때 timm의 convnext 등록을 자기 구현으로 바꾼다. 그 뒤에 만들면 다른 구조가 된다.
+            if getattr(RetrievalLoc, '_mean_loaded', False):
+                raise RuntimeError('Sample4Geo는 MEAN보다 먼저 불러와야 한다 (--models 순서)')
+            from sample4geo.model import TimmModel
+            m = TimmModel('convnext_base.fb_in22k_ft_in1k_384', pretrained=False, img_size=384)
+            cfg = m.get_config()
+        elif name == 'mean':
+            RetrievalLoc._mean_loaded = True
+            import importlib
+            from sample4geo.hand_convnext.model import make_model
+            mod = importlib.import_module('sample4geo.hand_convnext.ConvNext.make_model')
+            orig = mod.create_model
+            mod.create_model = lambda *a, **k: orig(*a, **{**k, 'pretrained': False})
+            try:
+                m = make_model(types.SimpleNamespace(views=2, nclasses=701, block=2, triplet_loss=.3, resnet=False))
+            finally:
+                mod.create_model = orig
+            exp = m.state_dict()   # 재홍 #33과 같은 키 이름 변환 (model_1.MSE.* → model_1.DEG.*, 다섯 개)
+            for s in ('FC11.weight', 'FC12.weight', 'FC13.weight', 'FC1.weight', 'FC1.bias'):
+                if 'model_1.MSE.' + s in state and 'model_1.DEG.' + s in exp:
+                    state['model_1.DEG.' + s] = state.pop('model_1.MSE.' + s)
+            cfg = dict(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
+        elif name == 'game4loc':
+            if 'thop' not in sys.modules:   # model.py가 import만 함 (FLOPs 측정용)
+                sys.modules['thop'] = types.ModuleType('thop'); sys.modules['thop'].profile = None
+            from game4loc.models.model import DesModel
+            m = DesModel('vit_base_patch16_rope_reg1_gap_256.sbb_in1k', pretrained=False, img_size=384, share_weights=True)
+            cfg = m.get_config()
+        else:
+            raise ValueError(name)
+        m.load_state_dict(state, strict=True)
+        self.m = m.float().to(device).eval()
+        self.mean = np.array(cfg['mean'], np.float32); self.std = np.array(cfg['std'], np.float32)
+        self.city, self.cache, self.last = None, {}, []
+
+    def bind(self, city):
+        self.city = cv2.copyMakeBorder(city, 512, 512, 512, 512, cv2.BORDER_REFLECT)   # 가장자리 타일용
+        self.cache = {}
+        return self
+
+    @torch.no_grad()
+    def embed(self, imgs):
+        out = []
+        for i in range(0, len(imgs), self.batch):
+            x = np.stack([(cv2.resize(im, (384, 384), interpolation=cv2.INTER_LINEAR_EXACT).astype(np.float32) / 255.
+                           - self.mean) / self.std for im in imgs[i:i + self.batch]])
+            x = torch.from_numpy(x.transpose(0, 3, 1, 2).copy()).to(self.dev)
+            with torch.autocast('cuda', enabled=False):
+                y = self.m(x)
+            if self.name == 'mean':
+                y = y[-2]
+            out.append(torch.nn.functional.normalize(y.float(), dim=-1))
+        return torch.cat(out)
+
+    def tiles(self, pts):
+        """지도 px 점들 → 각 점 중심 512 px 타일 임베딩 (구간 안 캐시). 새로 계산한 시간을 돌려준다."""
+        new = [p for p in pts if p not in self.cache]
+        t0 = time.time()
+        if new:
+            e = self.embed([self.city[y + 256:y + 768, x + 256:x + 768] for x, y in new])
+            for p, v in zip(new, e):
+                self.cache[p] = v
+        _sync(self.dev)
+        return torch.stack([self.cache[p] for p in pts]), time.time() - t0
+
+    def __call__(self, crops, headings, blocks):
+        out, self.last = [], []
+        for crop, (bx, by) in zip(crops, blocks):
+            t0 = time.time()
+            q = self.embed([np.ascontiguousarray(np.rot90(crop, r)) for r in range(4)])   # [4, d]
+            cx, cy = bx * 256 + 256, by * 256 + 256
+            p1 = [(cx + dx, cy + dy) for dy in range(-128, 129, self.STEP1) for dx in range(-128, 129, self.STEP1)]
+            t1, s1 = self.tiles(p1)
+            sim1 = (q @ t1.T).max(0).values
+            bx1, by1 = p1[int(sim1.argmax())]
+            p2 = [(bx1 + dx, by1 + dy) for dy in (-self.STEP2, 0, self.STEP2) for dx in (-self.STEP2, 0, self.STEP2)]
+            t2, s2 = self.tiles(p2)
+            sim2 = (q @ t2.T).max(0).values
+            i = int(sim2.argmax())
+            _sync(self.dev)
+            sec = time.time() - t0
+            out.append([(p2[i][0] - cx) / 128., (p2[i][1] - cy) / 128.])
+            self.last.append(dict(sec=sec, sec_query=sec - s1 - s2, sim=float(sim2[i])))
+        return np.array(out)
+
+
 # ------------------------------------------------------------------------------------------------ GeoAnchor 방식
 def run_geoanchor(ga_dir, data, odo='vio', seed=2026, device='cuda', sets=None, verbose=True):
     """GeoAnchor SequentialLocalizer.step()의 규칙을 우리 재생 항법 조건으로 옮긴 것.
