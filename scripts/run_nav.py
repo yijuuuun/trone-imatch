@@ -46,6 +46,7 @@ def main():
     ap.add_argument('--tag', default='')
     ap.add_argument('--variants', default='', help='예: r0,r1,r2g30,r3g30,r4g30n3,center,dr. 비우면 r0 한 번 (예전과 같음)')
     ap.add_argument('--odo', default='none', choices=list(ODO))
+    ap.add_argument('--turns', type=int, default=0, help='1이면 급선회 시험: 궤적마다 두 번 ±90° 돈 것처럼 영상을 돌림 (nav_run turns)')
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     matcher = get_matcher(a.matcher, a.device)
@@ -59,15 +60,17 @@ def main():
         starts, goals = make_traj(a.n_traj, a.dist, a.seed)
         match = MatchLoc(matcher, city, angles=angles, stop_inl=a.stop_inl)
         for v in (a.variants.split(',') if a.variants else ['']):
-            m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+)(?:w(\d+))?)?|center|dr|)', v)
+            m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+)(?:w(\d+))?(a)?(y)?(?:c(\d+))?)?|center|dr|)', v)
             if not m or (m.group(2) == '4') != bool(m.group(4)): sys.exit(f'모르는 variant: {v}')
             loc = NoMatch() if v in ('center', 'dr') else match
             kw = dict(reject_inl=15 if v.startswith(('r1', 'r2', 'r3', 'r4')) or v == 'dr' else 0, gate_m=float(m.group(3) or 0))
-            rec = (Research(match, gate_m=kw['gate_m'], wide_after=int(m.group(4) or 0), wide_inl=int(m.group(5) or 0))
+            rec = (Research(match, gate_m=kw['gate_m'], wide_after=int(m.group(4) or 0), wide_inl=int(m.group(5) or 0),
+                            angle_memory=bool(m.group(6)), wide_cool=int(m.group(8) or 0),
+                            yaw_correct=bool(m.group(7)))
                    if m.group(2) in ('3', '4') else None)
             log, t0, n0 = [], time.time(), len(match.cache)
             ok, reason, med = nav_run(loc, frames, starts, goals, oracle_block=a.oracle, log=log,
-                                      odo=ODO[a.odo], seed=a.seed, recover=rec, **kw)
+                                      odo=ODO[a.odo], seed=a.seed, recover=rec, turns=a.turns, **kw)
             L = pd.DataFrame(log)
             if rec and rec.log:  # recover는 "모름" 걸음마다 그 순서대로 한 번 불린다
                 R = pd.DataFrame(rec.log, index=L.index[L.unknown == 1])

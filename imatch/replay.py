@@ -56,6 +56,7 @@ def replay_one(loc, g, data, st, i, odo=None, seed=0, reject_inl=0, gate_m=0., r
     dh = rng.normal(0, odo['head_deg'], n) if odo else np.zeros(n)
     ds = rng.normal(0, odo['scale'], n) if odo else np.zeros(n)
     est, streak = real[0].copy(), 0
+    good_angle = np.nan  # 마지막으로 믿은 매칭의 각도 (Research angle_memory가 씀)
     for k in range(n):
         if k == 0:
             guess, course = real[0].copy(), 0.0
@@ -81,8 +82,12 @@ def replay_one(loc, g, data, st, i, odo=None, seed=0, reject_inl=0, gate_m=0., r
         n_inl = last.get('n_inl', np.inf)
         unknown = (reject_inl > 0 and n_inl < reject_inl) or (gate_m > 0 and np.linalg.norm(raw - guess) / PX > gate_m)
         streak = streak + 1 if unknown else 0
+        if not unknown and np.isfinite(last.get('angle', np.nan)):
+            good_angle = last['angle']
         p, how = raw, 'match'
         if unknown:
+            if recover is not None:
+                recover.hint_angle = good_angle
             q = recover(i, crop, guess, streak) if recover else None
             p, how = (np.asarray(q, float), 'recover') if q is not None else (guess, 'guess')
             if q is not None:

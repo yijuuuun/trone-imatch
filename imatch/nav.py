@@ -16,7 +16,7 @@ import pandas as pd
 from scipy.spatial import cKDTree
 
 from .blocks import N_BLOCK, crop_block, neighbors
-from .geometry import PX_PER_UNIT
+from .geometry import PX_PER_UNIT, turn
 from .pipeline import localize
 
 PX = 4.0  # px per metre (0.25 m/px)
@@ -85,15 +85,19 @@ class MatchLoc:
             out.append(xy); self.last.append(rec)
         return np.array(out)
 
-    def one(self, crop, bx, by):
-        """블록 하나: (위치(블록 단위), 기록). self.last는 건드리지 않는다 (Research가 nav_run 걸음 중간에 부른다)."""
-        key = (hashlib.md5(crop.tobytes()).hexdigest(), bx, by)
+    def one(self, crop, bx, by, angles=None):
+        """블록 하나: (위치(블록 단위), 기록). self.last는 건드리지 않는다 (Research가 nav_run 걸음 중간에 부른다).
+
+        angles: 이번만 쓸 각도 목록 (None = self.angles). 기록의 angle = 고른 각도 (없으면 NaN).
+        """
+        angles = self.angles if angles is None else list(angles)
+        key = (hashlib.md5(crop.tobytes()).hexdigest(), bx, by) + (() if angles is self.angles else tuple(angles))
         if key not in self.cache:
-            recs, best = localize(self.matcher, crop, crop_block(self.city, bx, by), (0.0, 0.0, 0.0), self.scale, self.angles,
+            recs, best = localize(self.matcher, crop, crop_block(self.city, bx, by), (0.0, 0.0, 0.0), self.scale, angles,
                                   stop_inl=self.stop_inl)
             self.cache[key] = ((best['px'], best['py']) if best else (0.0, 0.0),
                                dict(n_inl=best['n_inl'] if best else 0, found=int(best is not None), sec=sum(r['sec'] for r in recs),
-                                    n_ang=len(recs)))
+                                    n_ang=len(recs), angle=float(best['angle']) if best else np.nan))
         return self.cache[key]
 
 
@@ -118,21 +122,37 @@ class Research:
     inlier >= wide_inl을 요구한다 (R4 학습 도시에서 틀린 3×3 답은 inlier 중앙값 16, 맞은 답은 26).
     추측 위치의 블록은 이번 걸음에 이미 매칭했으므로 캐시에서 나온다. 부를 때마다 self.log에 한 줄 남긴다
     (rec_sec = 이번 걸음에 더 든 매칭 시간, 추측 위치의 블록 제외).
+
+    경량화 (2026-11-18):
+    - angle_memory: 이웃 블록은 각도를 다 돌리지 않고, 이 궤적에서 마지막으로 믿은 매칭의 각도 하나만 시도한다.
+      그 각도는 nav_run / replay_one이 궤적마다 기억해서 self.hint_angle에 넣어 준다 (없으면 전체 각도).
+      드론 방향은 걸음 사이에 거의 바뀌지 않는다는 가정. 추가 센서 없이 우리 매칭 결과만 쓴다.
+    - wide_cool: 넓게 찾기(3×3)가 실패하면 wide_cool걸음 동안 십자만 하고 다시 3×3 (0 = 매 걸음 3×3, 예전과 같음).
+    - yaw_correct: 기억한 각도에 그 뒤 기체가 돈 각도(self.hint_yaw, nav_run이 넣어 줌)를 더한다. 급선회 대비.
     """
-    def __init__(self, match, min_inl=15, gate_m=0., wide_after=0, inside=1.1, wide_inl=0):
+    def __init__(self, match, min_inl=15, gate_m=0., wide_after=0, inside=1.1, wide_inl=0, angle_memory=False, wide_cool=0,
+                 yaw_correct=False):
         self.match, self.min_inl, self.gate_m, self.wide_after, self.inside = match, min_inl, gate_m, wide_after, inside
-        self.wide_inl = wide_inl
+        self.wide_inl, self.angle_memory, self.wide_cool, self.yaw_correct = wide_inl, angle_memory, wide_cool, yaw_correct
+        self.hint_angle, self.hint_yaw = None, 0.0
         self.log = []
 
     def __call__(self, i, crop, guess, streak):
-        wide = self.wide_after > 0 and streak >= self.wide_after
+        wide = self.wide_after > 0 and streak >= self.wide_after and \
+            (self.wide_cool == 0 or (streak - self.wide_after) % (self.wide_cool + 1) == 0)
+        hint = self.hint_angle if self.angle_memory and self.hint_angle is not None and np.isfinite(self.hint_angle) else None
+        if hint is not None and self.yaw_correct:
+            # 기억한 뒤 기체가 돈 만큼(자세 센서·VIO의 회전량, 추측 항법이 쓰는 것과 같은 정보) 더한다
+            hint = float((hint + self.hint_yaw) % 360)
         min_inl = max(self.min_inl, self.wide_inl) if wide else self.min_inl
         bx = int(np.clip(np.round((guess[0] - 256) / 256), 0, N_BLOCK - 1))
         by = int(np.clip(np.round((guess[1] - 256) / 256), 0, N_BLOCK - 1))
         cands = [(dx, dy) for dx, dy in neighbors(bx, by, 1) if wide or abs(dx) + abs(dy) <= 1]
         best, best_d, n_pass, sec = None, np.inf, 0, 0.
         for dx, dy in cands:
-            (x, y), rec = self.match.one(crop, bx + dx, by + dy)
+            # 추측 위치의 블록은 이번 걸음 본 매칭(전체 각도)이 캐시에 있다. 이웃 블록만 기억한 각도 하나로
+            (x, y), rec = self.match.one(crop, bx + dx, by + dy,
+                                         angles=[hint] if hint is not None and (dx, dy) != (0, 0) else None)
             sec += rec['sec'] if (dx, dy) != (0, 0) else 0.
             if not rec['found'] or rec['n_inl'] < min_inl or max(abs(x), abs(y)) > self.inside:
                 continue
@@ -144,6 +164,7 @@ class Research:
             if d < best_d:
                 best, best_d, pick = p, d, (bx + dx, by + dy, rec['n_inl'])
         self.log.append(dict(traj=int(i), rec_wide=int(wide), rec_cand=len(cands), rec_pass=n_pass, rec_sec=sec,
+                             rec_hint=hint if hint is not None else np.nan,
                              **(dict(zip(('rec_bx', 'rec_by', 'rec_n_inl'), pick)) if best is not None else {})))
         return best
 
@@ -158,13 +179,16 @@ ODO = {'none': None, 'vio': dict(bias_deg=3.0, head_deg=2.0, scale=0.05)}
 
 
 def nav_run(loc, frames, starts, goals, decode_px=128, oracle_block=False, step_m=15., arrive_m=20., n_block=15, log=None,
-            odo=None, seed=0, reject_inl=0, gate_m=0., recover=None):
+            odo=None, seed=0, reject_inl=0, gate_m=0., recover=None, turns=0):
     """(성공 여부, 종료 이유, 궤적별 걸음 오차 중앙값 m). log: 걸음마다 기록을 덧붙일 목록.
 
     복구 (docs/04 R0~R4). 기본값이면 R0이고 예전 결과와 같다.
     odo: ODO의 값. 실제 이동에 오차를 넣는다. 같은 seed면 모든 R에서 같은 오차가 나온다.
     reject_inl: 고른 답의 inlier가 이보다 작으면 "모름" (R1, 15).
     gate_m: 추정이 추측 위치(직전 위치 + 명령 이동량)에서 이보다 멀면 "모름" (R2).
+    turns: > 0이면 급선회 시험. 궤적마다 경로의 1/3, 2/3 지점 근처(같은 seed면 같은 걸음)에서 기체가 ±90° 돈 것처럼
+           드론 영상을 돌린다(누적). 기체의 회전량(yaw)은 자세 센서로 안다고 보고 recover.hint_yaw로 넘긴다.
+           위치·이동은 바꾸지 않는다. 0이면 예전과 같다.
     recover: "모름"일 때 부르는 함수 recover(i, crop, guess_px, streak) → 지도 px 위치 또는 None (R3, R4 자리).
              None을 돌려주거나 recover가 없으면 추측 위치를 쓴다. streak = 이 궤적의 연속 "모름" 걸음 수 (이번 걸음 포함).
     """
@@ -172,7 +196,16 @@ def nav_run(loc, frames, starts, goals, decode_px=128, oracle_block=False, step_
     r = starts.copy(); nom = r.copy()
     alive = np.ones(n, bool); success = np.zeros(n, bool); reason = np.array(['timeout'] * n, dtype=object)
     heading = np.full(n, 90.0); err = [[] for _ in range(n)]; streak = np.zeros(n, int)
+    good_angle = np.full(n, np.nan)  # 궤적마다 마지막으로 믿은 매칭의 각도 (Research angle_memory가 씀)
     T = int(3 * dist_m / step_m)
+    good_yaw = np.zeros(n)  # 그때의 기체 회전량
+    yaw = np.zeros((n, T + 1))
+    if turns:
+        trng = np.random.default_rng([seed, 9091])
+        for i in range(n):
+            for frac in (1 / 3, 2 / 3):  # 곧게 날면 dist_m / step_m 걸음에 도착한다. 그 1/3, 2/3 지점 + 0~5걸음
+                t0 = int(frac * dist_m / step_m) + int(trng.integers(0, 6))
+                yaw[i, t0:] += trng.choice([-90.0, 90.0])
     rng = np.random.default_rng(seed + 1)
     bias = rng.normal(0, odo['bias_deg'], n) if odo else np.zeros(n)
     dh = rng.normal(0, odo['head_deg'], (n, T)) if odo else np.zeros((n, T))
@@ -188,6 +221,8 @@ def nav_run(loc, frames, starts, goals, decode_px=128, oracle_block=False, step_
             by = int(np.clip(np.round((ref[1] - 256) / 256), 0, n_block - 1))
             blocks.append((bx, by)); cen.append(np.array([bx * 256 + 256, by * 256 + 256]))
             crop, fx, fy = frames(r[i, 0], r[i, 1], heading[i])
+            if yaw[i, t]:
+                crop = turn(crop, -yaw[i, t])  # 기체가 yaw만큼 돈 영상 (매칭에 필요한 각도가 yaw만큼 바뀐다)
             crops.append(crop); real.append(np.array([fx, fy]))
         pos = loc(crops, heading[idx], blocks)
         last = getattr(loc, 'last', None) or [{} for _ in idx]
@@ -198,7 +233,11 @@ def nav_run(loc, frames, starts, goals, decode_px=128, oracle_block=False, step_
             unknown = (reject_inl > 0 and n_inl < reject_inl) or (gate_m > 0 and np.linalg.norm(raw - guess) / PX > gate_m)
             streak[i] = streak[i] + 1 if unknown else 0
             p, how = raw, 'match'
+            if not unknown and np.isfinite(last[j].get('angle', np.nan)):
+                good_angle[i], good_yaw[i] = last[j]['angle'], yaw[i, t]
             if unknown:
+                if recover is not None:
+                    recover.hint_angle, recover.hint_yaw = good_angle[i], yaw[i, t] - good_yaw[i]
                 q = recover(i, crops[j], guess, streak[i]) if recover else None
                 p, how = (np.asarray(q, float), 'recover') if q is not None else (guess, 'guess')
                 if q is not None: streak[i] = 0
@@ -208,7 +247,7 @@ def nav_run(loc, frames, starts, goals, decode_px=128, oracle_block=False, step_
                                 est_y=float(p[1]), block_x=blocks[j][0], block_y=blocks[j][1], err_m=err[i][-1],
                                 outside_block=int(np.abs(real[j] - cen[j]).max() > 128),
                                 raw_err_m=float(np.linalg.norm(raw - real[j]) / PX), unknown=int(unknown), used=how,
-                                **last[j]))
+                                yaw=float(yaw[i, t]), **last[j]))
             d = goals[i] - p; u = d / max(np.linalg.norm(d), 1e-6)
             heading[i] = np.degrees(np.arctan2(-u[1], u[0]))
             a = np.radians(bias[i] + dh[i, t]); c, s_ = np.cos(a), np.sin(a)
