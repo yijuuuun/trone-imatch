@@ -1,0 +1,3 @@
+variant,angles_deg,map_extractions,cache_hits,segments,steps,w10,w20,w32,med_err_m,final_med_m,final_le40,unknown,outside_block,wall_seconds,seconds_per_frame,mean_angles,speedup_vs_r1,seconds_saved
+r1,"[0, 90, 180, 270]",2883,0,92,1020,17.9,48.7,75.4,20.6,21.2,73.9,49.9,34.9,951.8690415570002,0.8559973395296764,2.592156862745098,1.0,0.0
+map_cache,"[0, 90, 180, 270]",1112,1771,92,1020,17.9,48.7,75.4,20.6,21.2,73.9,49.9,34.9,660.1120788809999,0.5936259702167265,2.592156862745098,1.4419809484028485,291.7569626760003

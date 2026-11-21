@@ -1,0 +1,24 @@
+{
+  "variant": "map_cache",
+  "angles_deg": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "map_extractions": 1112,
+  "cache_hits": 1771,
+  "segments": 92,
+  "steps": 1020,
+  "w10": 17.9,
+  "w20": 48.7,
+  "w32": 75.4,
+  "med_err_m": 20.6,
+  "final_med_m": 21.2,
+  "final_le40": 73.9,
+  "unknown": 49.9,
+  "outside_block": 34.9,
+  "wall_seconds": 660.1120788809999,
+  "seconds_per_step": 0.5936259702167265,
+  "mean_angles": 2.592156862745098
+}
