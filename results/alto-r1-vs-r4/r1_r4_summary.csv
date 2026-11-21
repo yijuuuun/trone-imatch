@@ -1,0 +1,3 @@
+r4_recoveries,wide_steps,mode,protocol,segments,steps,wall_s,r4_calls,median_m,final_m,map_coverage
+0,8,r1_r4,short,5,80,124.52277835399991,20,12.910580258442291,11.72284889509995,1.0
+0,8,r1_r4,continuous,1,89,128.51609674199995,20,12.384903008590241,5.5019225686900395,1.0
