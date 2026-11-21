@@ -36,14 +36,19 @@ def _rot(v, deg):
     return np.array([c * v[0] - s * v[1], s * v[0] + c * v[1]])
 
 
-def load_segments(data, sets=None, max_dist=None):
-    """seq_eval/samples.csv → {set: 걸음 표(k 순서)}. max_dist(m)면 구간 시작부터 그 거리까지의 사진만."""
+def load_segments(data, sets=None, max_dist=None, every=1):
+    """seq_eval/samples.csv → {set: 걸음 표(k 순서)}. max_dist(m)면 구간 시작부터 그 거리까지의 사진만.
+    every > 1이면 구간마다 사진을 every장에 한 장만 쓴다(사진 간격을 넓혀 매칭 사이 추측 위치가 더 밀리게)."""
     S = pd.read_csv(os.path.join(data, 'samples.csv'))
     if sets:
         S = S[S.set.isin(sets)]
     if max_dist is not None:
         S = S[S.dist_m <= max_dist + 1e-6]
-    return {st: g.sort_values('k').reset_index(drop=True) for st, g in S.groupby('set', sort=True)}
+    out = {st: g.sort_values('k').reset_index(drop=True) for st, g in S.groupby('set', sort=True)}
+    if every > 1:
+        out = {st: g.iloc[::every].reset_index(drop=True) for st, g in out.items()}
+        out = {st: g for st, g in out.items() if len(g) >= 2}
+    return out
 
 
 def replay_one(loc, g, data, st, i, odo=None, seed=0, reject_inl=0, gate_m=0., recover=None, oracle_block=False,
@@ -105,13 +110,13 @@ def replay_one(loc, g, data, st, i, odo=None, seed=0, reject_inl=0, gate_m=0., r
 
 
 def run_segments(make_loc, data, sets=None, odo='vio', seed=2026, reject_inl=0, gate_m=0., make_recover=None,
-                 oracle_block=False, max_dist=None, verbose=True):
+                 oracle_block=False, max_dist=None, verbose=True, every=1):
     """모든 구간을 재생한다. make_loc(city) → loc, make_recover(loc) → recover 또는 None.
 
     반환: (걸음 표, 구간 표). 구간 표: 걸음 수, 길이, 마지막 오차, 걸음별 10/20/32 m 비율, 모름 비율.
     """
     odo = ODO[odo] if isinstance(odo, str) else odo
-    segs = load_segments(data, sets, max_dist)
+    segs = load_segments(data, sets, max_dist, every)
     steps, rows = [], []
     for i, (st, g) in enumerate(segs.items()):
         city = cv2.cvtColor(cv2.imread(os.path.join(data, 'maps', f'{st}.jpg')), cv2.COLOR_BGR2RGB)

@@ -43,11 +43,12 @@ def main(argv=None):
     ap.add_argument('--matcher', default='loma'); ap.add_argument('--angles', type=int, default=8)
     ap.add_argument('--stop-inl', type=int, default=0, help='각도 탐색 조기 종료 (0 = 끔, 15 = 모름 기준과 같게)')
     ap.add_argument('--variants', default='r0,r1,r4g0n5w20')
-    ap.add_argument('--odo', default='vio', choices=['none', 'vio'])
+    ap.add_argument('--odo', default='vio', choices=['none', 'vio', 'vio2', 'vio4'])
     ap.add_argument('--seed', type=int, default=2026)
     ap.add_argument('--sets', default='', help='구간 이름 쉼표 목록 (비우면 전부)')
     ap.add_argument('--max-dist', type=float, default=None, help='구간 시작부터 이 거리(m)까지만')
     ap.add_argument('--oracle', action='store_true', help='블록을 정답 위치로 고른다 (블록 고르기 오류 제외)')
+    ap.add_argument('--every', type=int, default=1, help='구간마다 사진 every장에 한 장 (사진 간격 넓히기)')
     ap.add_argument('--device', default='cuda'); ap.add_argument('--tag', default='')
     a = ap.parse_args(argv)
     os.makedirs(a.out, exist_ok=True)
@@ -63,7 +64,7 @@ def main(argv=None):
     print('| --- ' * 12 + '|')
     cache = {}  # 구간 지도별 MatchLoc. variant끼리 같은 (사진, 블록) 매칭을 다시 하지 않는다
     for v in variants:
-        m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+)(?:w(\d+))?(a)?(y)?(?:c(\d+))?)?|center|dr)', v)
+        m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+)(?:w(\d+))?)?(a)?(y)?(?:c(\d+))?|center|dr)', v)
         if not m or (m.group(2) == '4') != bool(m.group(4)):
             sys.exit(f'모르는 variant: {v}')
         gate = float(m.group(3) or 0)
@@ -83,7 +84,7 @@ def main(argv=None):
         t0 = time.time()
         steps, segs = run_segments(make_loc, a.data, sets=sets, odo=a.odo, seed=a.seed,
                                    reject_inl=15 if v.startswith(('r1', 'r2', 'r3', 'r4')) or v == 'dr' else 0,
-                                   gate_m=gate, make_recover=make_rec, oracle_block=a.oracle, max_dist=a.max_dist)
+                                   gate_m=gate, make_recover=make_rec, oracle_block=a.oracle, max_dist=a.max_dist, every=a.every)
         name = f"visloc_{a.matcher}{a.tag}{'-oracle' if a.oracle else ''}-{v}"
         steps.to_csv(os.path.join(a.out, f'{name}_steps.csv'), index=False)
         segs.to_csv(os.path.join(a.out, f'{name}_segs.csv'), index=False)
