@@ -24,9 +24,9 @@
    - 아니면 "11구간으로는 차이가 확인되지 않음"으로 보고한다.
    - 지점별 McNemar는 구간이 11개라 힘이 약해 주 판정으로 쓰지 않는다(#64 2절 5번과 같은 이유).
 3. **함께 적는 것** (판정에 쓰지 않음, 모두 적음): 5 / 10 / 20 / 50 km와 구간 끝 40 m 이내(McNemar 참고), 전체 40 m·20 m 이내 걸음, 길 잃음 → 되찾음, 끝까지 못 돌아온 구간, 걸음당 시간, 실시간 넘는 걸음. 추측 항법만(`dr`, `vio4`)은 CPU로 따로 돌려 참고로 적는다.
-4. **매칭 캐시**: #64 Colab 실행의 `match_cache.pkl`로 시작한다(`build_colab.py --cache-from visloc-nav-full`).
-   - 캐시 키는 (사진, 블록, 각도)뿐이라 이동 오차가 달라도 같은 (사진, 블록)의 매칭 답은 같다. 새 (사진, 블록)만 새로 매칭한다.
-   - 걸음 시간은 캐시에 처음 잰 값이 들어 있다(#64와 같은 Colab GPU). 시간은 이 실행 안의 R1과 R1 + R4끼리만 비교한다.
+4. **실행 환경**: Kaggle T4에서 R1과 R1 + R4를 한 커널로 돌린다(처음에는 #64의 Colab 매칭 캐시를 이어 쓰려 했으나, 실행 전에 Kaggle GPU가 다시 생겨 바꿈. 결과를 보기 전의 변경).
+   - 매칭은 처음부터 한다. 같은 커널 안에서 R1이 매칭한 (사진, 블록)은 R1 + R4가 다시 매칭하지 않는다(#64와 같음).
+   - 시간은 이 실행 안의 R1과 R1 + R4끼리만 비교한다(#64 Colab 숫자와 나란히 놓지 않는다).
 5. **예상** (틀려도 고치지 않음): R1은 #64보다 길을 더 자주 잃고, 끝까지 못 돌아오는 구간이 는다. R1 + R4는 그중 일부를 되찾아 40 m 이내 걸음 비율이 R1보다 높다. `visloc_09`는 매칭 문제라 두 조건 모두 실패한다.
 6. **#64 결과는 바꾸지 않는다.** 이 실험은 #64의 `vio` 결론에 조건("이동 오차가 클 때")을 더할 뿐이다.
 
@@ -36,9 +36,11 @@
 # 추측 항법만 (CPU, 참고)
 python scripts/run_visloc_nav.py --data data/visloc/seq_eval_full --out experiments/2026-11-22_visloc_nav_full_vio4/run/test \
     --matcher loma-cache --variants dr --odo vio4 --seed 2026
-# R1, R1 + R4: Colab T4 (Kaggle GPU 쿼터 없음)
-python scripts/kaggle/build_colab.py --slug visloc-nav-full-vio4 --dataset heeyunju/visloc-seq-eval-full --script run_visloc_nav \
-    --cache-from visloc-nav-full --args "--matcher loma-cache --angles 4 --stop-inl 15 --variants r1,r4g0n5w20ac4 --odo vio4 --seed 2026"
+# R1, R1 + R4: Kaggle T4
+python scripts/kaggle/build_kernel.py --user heeyunju --dataset heeyunju/visloc-seq-eval-full --slug visloc-nav-full-vio4 \
+    --script run_visloc_nav --args "--matcher loma-cache --angles 4 --stop-inl 15 --variants r1,r4g0n5w20ac4 --odo vio4 --seed 2026"
+kaggle kernels push -p kaggle_kernels/visloc-nav-full-vio4 --accelerator NvidiaTeslaT4
+kaggle kernels output heeyunju/visloc-nav-full-vio4 -p experiments/2026-11-22_visloc_nav_full_vio4/run/test --file-pattern 'out/.*'
 # 표
 python experiments/2026-11-20_visloc_nav_full/analyze.py --run experiments/2026-11-22_visloc_nav_full_vio4/run/test
 ```
