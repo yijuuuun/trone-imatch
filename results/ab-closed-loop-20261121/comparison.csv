@@ -1,0 +1,3 @@
+mode,trials,arrivals,success_pct,false_stops,timeouts,out_of_map,terminal_median_m,total_distance_m,wall_s,recoveries
+r1,8,8,100.0,0,0,0,3.060875667314628,6393.643793477906,83.28842636500005,0
+r1_r4,8,8,100.0,0,0,0,3.060875667314628,6393.643793477906,85.40871561600005,0
