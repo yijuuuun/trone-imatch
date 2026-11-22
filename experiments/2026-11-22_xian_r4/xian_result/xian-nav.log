@@ -1,0 +1,144 @@
+[{"stream_name":"stdout","time":484.7218948,"data":"data /kaggle/working/data ['README.txt', 'block_index.csv', 'maps', 'samples.csv', 'xian_01_o000_s000', 'xian_01_o000_s001', 'xian_01_o000_s002', 'xian_01_o000_s003', 'xian_01_o020_s004', 'xian_01_o020_s005', 'xian_01_o020_s006', 'xian_01_o020_s007', 'xian_01_o040_s008', 'xian_01_o040_s009', 'xian_01_o040_s010', 'xian_01_o040_s011', 'xian_01_o060_s012', 'xian_01_o060_s013', 'xian_01_o060_s014', 'xian_01_o060_s015', 'xian_02_o000_s016', 'xian_02_o000_s017', 'xian_02_o000_s018', 'xian_02_o000_s019', 'xian_02_o000_s020', 'xian_02_o020_s021', 'xian_02_o020_s022', 'xian_02_o020_s023', 'xian_02_o020_s024', 'xian_02_o020_s025', 'xian_02_o040_s026', 'xian_02_o040_s027', 'xian_02_o040_s028', 'xian_02_o040_s029', 'xian_02_o040_s030', 'xian_02_o060_s031', 'xian_02_o060_s032', 'xian_02_o060_s033', 'xian_02_o060_s034', 'xian_02_o060_s035', 'xian_03_o000_s036', 'xian_03_o000_s037', 'xian_03_o000_s038', 'xian_03_o020_s039', 'xian_03_o020_s040', 'xian_03_o020_s041', 'xian_03_o040_s042', 'xian_03_o040_s043', 'xian_03_o040_s044', 'xian_03_o060_s045', 'xian_03_o060_s046', 'xian_03_o060_s047']\n"}
+,{"stream_name":"stdout","time":486.416596689,"data":"XIAN 재생 항법: /kaggle/working/data, 매처 loma-cache 4방향, 조기 종료 15\n"}
+,{"stream_name":"stdout","time":486.41665126,"data":"| 조건 | seed | variant | 구간 | 마지막 오차 중앙값 | 마지막 40 m 이내 | 모름 | 블록 밖 | 걸음당 | 경과 |\n"}
+,{"stream_name":"stdout","time":486.416657988,"data":"| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"}
+,{"stream_name":"stderr","time":495.379697424,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":496.190820897,"data":"Downloading: \"https://github.com/Parskatt/dad/releases/download/v0.1.0/dad.pth\" to /root/.cache/torch/hub/checkpoints/dad.pth\n"}
+,{"stream_name":"stderr","time":496.660711372,"data":"\r  0%|          | 0.00/24.9M [00:00\u003c?, ?B/s]\r 47%|████▋     | 11.6M/24.9M [00:00\u003c00:00, 122MB/s]\r100%|██████████| 24.9M/24.9M [00:00\u003c00:00, 176MB/s]\n"}
+,{"stream_name":"stdout","time":500.72680295,"data":"Downloading: \"https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth\" to /root/.cache/torch/hub/checkpoints/dinov2_vitl14_pretrain.pth\n"}
+,{"stream_name":"stderr","time":503.788943966,"data":"\r  0%|          | 0.00/1.13G [00:00\u003c?, ?B/s]\r  0%|          | 4.88M/1.13G [00:00\u003c00:23, 50.6MB/s]\r  1%|          | 10.4M/1.13G [00:00\u003c00:22, 54.7MB/s]\r  4%|▍         | 49.1M/1.13G [00:00\u003c00:05, 215MB/s] \r  8%|▊         | 92.2M/1.13G [00:00\u003c00:03, 308MB/s]\r 11%|█▏        | 133M/1.13G [00:00\u003c00:03, 349MB/s] \r 15%|█▍        | 172M/1.13G [00:00\u003c00:02, 373MB/s]\r 19%|█▊        | 216M/1.13G [00:00\u003c00:02, 400MB/s]\r 22%|██▏       | 260M/1.13G [00:00\u003c00:02, 418MB/s]\r 26%|██▌       | 302M/1.13G [00:00\u003c00:02, 424MB/s]\r 29%|██▉       | 342M/1.13G [00:01\u003c00:02, 410MB/s]\r 33%|███▎      | 382M/1.13G [00:01\u003c00:01, 412MB/s]\r 37%|███▋      | 426M/1.13G [00:01\u003c00:01, 426MB/s]\r 40%|████      | 468M/1.13G [00:01\u003c00:01, 432MB/s]\r 44%|████▍     | 511M/1.13G [00:01\u003c00:01, 437MB/s]\r 48%|████▊     | 555M/1.13G [00:01\u003c00:01, 445MB/s]\r 52%|█████▏    | 599M/1.13G [00:01\u003c00:01, 449MB/s]\r 55%|█████▌    | 642M/1.13G [00:01\u003c00:01, 447MB/s]\r 59%|█████▉    | 685M/1.13G [00:01\u003c00:01, 446MB/s]\r 63%|██████▎   | 727M/1.13G [00:01\u003c00:01, 439MB/s]\r 66%|██████▌   | 769M/1.13G [00:02\u003c00:00, 436MB/s]\r 70%|██████▉   | 811M/1.13G [00:02\u003c00:00, 437MB/s]\r 74%|███████▎  | 854M/1.13G [00:02\u003c00:00, 441MB/s]\r 77%|███████▋  | 896M/1.13G [00:02\u003c00:00, 441MB/s]\r 81%|████████  | 938M/1.13G [00:02\u003c00:00, 440MB/s]\r 84%|████████▍ | 981M/1.13G [00:02\u003c00:00, 442MB/s]\r 88%|████████▊ | 1.00G/1.13G [00:02\u003c00:00, 447MB/s]\r 92%|█████████▏| 1.04G/1.13G [00:02\u003c00:00, 448MB/s]\r 96%|█████████▌| 1.08G/1.13G [00:02\u003c00:00, 446MB/s]\r 99%|█████████▉| 1.13G/1.13G [00:02\u003c00:00, 440MB/s]\r100%|██████████| 1.13G/1.13G [00:02\u003c00:00, 414MB/s]\n"}
+,{"stream_name":"stdout","time":509.765652996,"data":"Downloading: \"https://github.com/davnords/storage/releases/download/loma/loma_B.pt\" to /root/.cache/torch/hub/checkpoints/loma_B.pt\n"}
+,{"stream_name":"stderr","time":513.163307197,"data":"\r  0%|          | 0.00/723M [00:00\u003c?, ?B/s]\r  1%|          | 8.38M/723M [00:00\u003c00:09, 80.9MB/s]\r  6%|▌         | 43.4M/723M [00:00\u003c00:02, 243MB/s] \r 11%|█         | 76.2M/723M [00:00\u003c00:02, 281MB/s]\r 16%|█▌        | 113M/723M [00:00\u003c00:01, 320MB/s] \r 21%|██        | 149M/723M [00:00\u003c00:01, 340MB/s]\r 25%|██▌       | 182M/723M [00:00\u003c00:01, 340MB/s]\r 30%|██▉       | 214M/723M [00:00\u003c00:01, 328MB/s]\r 34%|███▍      | 246M/723M [00:00\u003c00:01, 307MB/s]\r 38%|███▊      | 275M/723M [00:00\u003c00:01, 297MB/s]\r 42%|████▏     | 304M/723M [00:01\u003c00:01, 293MB/s]\r 46%|████▌     | 332M/723M [00:01\u003c00:01, 286MB/s]\r 50%|████▉     | 360M/723M [00:01\u003c00:01, 285MB/s]\r 54%|█████▎    | 387M/723M [00:01\u003c00:01, 282MB/s]\r 57%|█████▋    | 414M/723M [00:01\u003c00:01, 282MB/s]\r 61%|██████    | 441M/723M [00:01\u003c00:01, 280MB/s]\r 65%|██████▌   | 470M/723M [00:01\u003c00:00, 289MB/s]\r 69%|██████▉   | 498M/723M [00:01\u003c00:00, 288MB/s]\r 73%|███████▎  | 526M/723M [00:01\u003c00:00, 290MB/s]\r 77%|███████▋  | 554M/723M [00:01\u003c00:00, 290MB/s]\r 81%|████████  | 583M/723M [00:02\u003c00:00, 293MB/s]\r 85%|████████▍ | 611M/723M [00:02\u003c00:00, 284MB/s]\r 88%|████████▊ | 638M/723M [00:02\u003c00:00, 244MB/s]\r 92%|█████████▏| 662M/723M [00:02\u003c00:00, 208MB/s]\r 95%|█████████▍| 684M/723M [00:02\u003c00:00, 178MB/s]\r 97%|█████████▋| 702M/723M [00:02\u003c00:00, 153MB/s]\r 99%|█████████▉| 718M/723M [00:03\u003c00:00, 139MB/s]\r100%|██████████| 723M/723M [00:03\u003c00:00, 245MB/s]\n"}
+,{"stream_name":"stdout","time":516.769104338,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":518.573639526,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":520.383084111,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":522.22569857,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":523.68208988,"data":"| normal | 2026 | dr | 48 | 26.6 m | 68.8% | 100.0% | 38.6% | 0.00 s | 10 s |\n"}
+,{"stream_name":"stdout","time":572.162257502,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":616.227815841,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":663.852750318,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":713.633261836,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":746.626194248,"data":"| normal | 2026 | r1 | 48 | 41.0 m | 43.8% | 16.5% | 57.5% | 0.38 s | 223 s |\n"}
+,{"stream_name":"stdout","time":785.604322303,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":814.91677504,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":837.253509169,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":868.722066709,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":881.959264778,"data":"| normal | 2026 | r4g0n5w20ac4 | 48 | 41.4 m | 41.7% | 16.5% | 59.3% | 0.58 s | 135 s |\n"}
+,{"stream_name":"stdout","time":883.7385738,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":885.531211289,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":887.311421764,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":889.277063007,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":890.742369786,"data":"| large | 2027 | dr | 48 | 119.3 m | 6.2% | 100.0% | 79.5% | 0.00 s | 9 s |\n"}
+,{"stream_name":"stdout","time":916.867974801,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":937.694751368,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":967.097877716,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1005.609852078,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1025.265226793,"data":"| large | 2027 | r1 | 48 | 49.0 m | 41.7% | 27.5% | 68.1% | 0.42 s | 135 s |\n"}
+,{"stream_name":"stdout","time":1048.454066439,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":1064.05060192,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":1089.831618912,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1119.218981863,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1131.849589448,"data":"| large | 2027 | r4g0n5w20ac4 | 48 | 46.8 m | 43.8% | 23.3% | 66.7% | 0.69 s | 107 s |\n"}
+,{"stream_name":"stdout","time":1133.58893152,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":1135.350897308,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":1137.113993994,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1138.868315165,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1140.282430766,"data":"| large | 2028 | dr | 48 | 126.6 m | 12.5% | 100.0% | 81.7% | 0.00 s | 8 s |\n"}
+,{"stream_name":"stdout","time":1163.083488972,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":1182.190061515,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":1219.958514872,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1239.658422673,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1255.250106643,"data":"| large | 2028 | r1 | 48 | 47.6 m | 33.3% | 24.9% | 71.8% | 0.41 s | 115 s |\n"}
+,{"stream_name":"stdout","time":1277.028608586,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":1308.563523279,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":1368.70564627,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1383.35273463,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1393.963582041,"data":"| large | 2028 | r4g0n5w20ac4 | 48 | 47.5 m | 35.4% | 23.3% | 70.7% | 0.75 s | 139 s |\n"}
+,{"stream_name":"stdout","time":1395.703213262,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":1397.438585023,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":1399.198807495,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1400.974393439,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1402.405489281,"data":"| large | 2029 | dr | 48 | 131.9 m | 8.3% | 100.0% | 76.0% | 0.00 s | 8 s |\n"}
+,{"stream_name":"stdout","time":1429.514057943,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":1457.579744317,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":1482.196952623,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1519.572051012,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1539.475234128,"data":"| large | 2029 | r1 | 48 | 52.7 m | 37.5% | 34.2% | 67.2% | 0.46 s | 137 s |\n"}
+,{"stream_name":"stdout","time":1575.287090358,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":1602.829278903,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":1616.403045098,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1673.627902109,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1685.56914235,"data":"| large | 2029 | r4g0n5w20ac4 | 48 | 48.4 m | 39.6% | 26.6% | 65.2% | 0.81 s | 146 s |\n"}
+,{"stream_name":"stdout","time":1687.307094837,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":1689.040747316,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":1690.7864622,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1692.533461236,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1693.929492523,"data":"| large | 2030 | dr | 48 | 125.1 m | 18.8% | 100.0% | 78.8% | 0.00 s | 8 s |\n"}
+,{"stream_name":"stdout","time":1705.976074908,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":1724.104703881,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":1741.342406384,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1766.79127794,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1780.250126046,"data":"| large | 2030 | r1 | 48 | 46.8 m | 39.6% | 22.2% | 69.2% | 0.40 s | 86 s |\n"}
+,{"stream_name":"stdout","time":1787.611722838,"data":"  10/48 구간\n"}
+,{"stream_name":"stdout","time":1802.891611969,"data":"  20/48 구간\n"}
+,{"stream_name":"stdout","time":1814.0644002,"data":"  30/48 구간\n"}
+,{"stream_name":"stdout","time":1833.070258441,"data":"  40/48 구간\n"}
+,{"stream_name":"stdout","time":1840.497229672,"data":"| large | 2030 | r4g0n5w20ac4 | 48 | 46.3 m | 41.7% | 20.0% | 69.4% | 0.64 s | 60 s |\n"}
+,{"stream_name":"stdout","time":1840.59604114,"data":"# XIAN-VisLoc R1 vs R1 + R4 판정\n"}
+,{"stream_name":"stdout","time":1840.59607683,"data":"\n"}
+,{"stream_name":"stdout","time":1840.596083037,"data":"## 표 (마지막 오차 기준 도착 수)\n"}
+,{"stream_name":"stdout","time":1840.59608797,"data":"\n"}
+,{"stream_name":"stdout","time":1840.59609265,"data":"| 조건 | seed | variant | 구간 | 20 m | 40 m | 100 m | 마지막 오차 중앙값 |\n"}
+,{"stream_name":"stdout","time":1840.596098225,"data":"| --- | --- | --- | --- | --- | --- | --- | --- |\n"}
+,{"stream_name":"stdout","time":1840.5961031,"data":"| normal | 2026 | dr | 48 | 17 | 33 | 47 | 26.6 m |\n"}
+,{"stream_name":"stdout","time":1840.596107362,"data":"| normal | 2026 | r1 | 48 | 4 | 21 | 48 | 41.0 m |\n"}
+,{"stream_name":"stdout","time":1840.596111215,"data":"| normal | 2026 | r4g0n5w20ac4 | 48 | 4 | 20 | 48 | 41.4 m |\n"}
+,{"stream_name":"stdout","time":1840.596115842,"data":"| large | 2027 | dr | 48 | 2 | 3 | 15 | 119.3 m |\n"}
+,{"stream_name":"stdout","time":1840.596119989,"data":"| large | 2027 | r1 | 48 | 5 | 20 | 42 | 49.0 m |\n"}
+,{"stream_name":"stdout","time":1840.596124521,"data":"| large | 2027 | r4g0n5w20ac4 | 48 | 5 | 21 | 44 | 46.8 m |\n"}
+,{"stream_name":"stdout","time":1840.596129552,"data":"| large | 2028 | dr | 48 | 3 | 6 | 18 | 126.6 m |\n"}
+,{"stream_name":"stdout","time":1840.596134387,"data":"| large | 2028 | r1 | 48 | 3 | 16 | 41 | 47.6 m |\n"}
+,{"stream_name":"stdout","time":1840.596139994,"data":"| large | 2028 | r4g0n5w20ac4 | 48 | 3 | 17 | 44 | 47.5 m |\n"}
+,{"stream_name":"stdout","time":1840.596144643,"data":"| large | 2029 | dr | 48 | 1 | 4 | 20 | 131.9 m |\n"}
+,{"stream_name":"stdout","time":1840.596148613,"data":"| large | 2029 | r1 | 48 | 4 | 18 | 37 | 52.7 m |\n"}
+,{"stream_name":"stdout","time":1840.596152451,"data":"| large | 2029 | r4g0n5w20ac4 | 48 | 3 | 19 | 44 | 48.4 m |\n"}
+,{"stream_name":"stdout","time":1840.596156392,"data":"| large | 2030 | dr | 48 | 3 | 9 | 20 | 125.1 m |\n"}
+,{"stream_name":"stdout","time":1840.59617012,"data":"| large | 2030 | r1 | 48 | 3 | 19 | 44 | 46.8 m |\n"}
+,{"stream_name":"stdout","time":1840.596174642,"data":"| large | 2030 | r4g0n5w20ac4 | 48 | 4 | 20 | 45 | 46.3 m |\n"}
+,{"stream_name":"stdout","time":1840.596177808,"data":"\n"}
+,{"stream_name":"stdout","time":1840.596180957,"data":"## 판정 (McNemar 정확 이항, \"한쪽만 성공\" 수)\n"}
+,{"stream_name":"stdout","time":1840.59618518,"data":"\n"}
+,{"stream_name":"stdout","time":1840.59618843,"data":"**A. normal: r1 vs dr**\n"}
+,{"stream_name":"stdout","time":1840.596191776,"data":"- 20 m: r1 4/48, dr 17/48, 한쪽만 1 vs 14, p = 0.0009766\n"}
+,{"stream_name":"stdout","time":1840.596195356,"data":"- 40 m: r1 21/48, dr 33/48, 한쪽만 5 vs 17, p = 0.0169\n"}
+,{"stream_name":"stdout","time":1840.596198911,"data":"- 100 m: r1 48/48, dr 47/48, 한쪽만 1 vs 0, p = 1\n"}
+,{"stream_name":"stdout","time":1840.596202491,"data":"\n"}
+,{"stream_name":"stdout","time":1840.596205948,"data":"**B. normal: r4 vs r1**\n"}
+,{"stream_name":"stdout","time":1840.596209393,"data":"- 20 m: r4g0n5w20ac4 4/48, r1 4/48, 한쪽만 0 vs 0, p = 1\n"}
+,{"stream_name":"stdout","time":1840.596213113,"data":"- 40 m: r4g0n5w20ac4 20/48, r1 21/48, 한쪽만 0 vs 1, p = 1\n"}
+,{"stream_name":"stdout","time":1840.596217001,"data":"- 100 m: r4g0n5w20ac4 48/48, r1 48/48, 한쪽만 0 vs 0, p = 1\n"}
+,{"stream_name":"stdout","time":1840.596220531,"data":"\n"}
+,{"stream_name":"stdout","time":1840.59622393,"data":"**C. (주) large 4 seed 합침: r4 vs r1**\n"}
+,{"stream_name":"stdout","time":1840.596227348,"data":"- 20 m: r4g0n5w20ac4 15/192, r1 15/192, 한쪽만 1 vs 1, p = 1\n"}
+,{"stream_name":"stdout","time":1840.596230896,"data":"- 40 m: r4g0n5w20ac4 77/192, r1 73/192, 한쪽만 6 vs 2, p = 0.2891\n"}
+,{"stream_name":"stdout","time":1840.596234308,"data":"- 100 m: r4g0n5w20ac4 177/192, r1 164/192, 한쪽만 14 vs 1, p = 0.0009766\n"}
+,{"stream_name":"stdout","time":1840.596237886,"data":"\n"}
+,{"stream_name":"stdout","time":1840.596241275,"data":"**주 판정 C (40 m): 6 vs 2, p = 0.2891 → 기준 미달: XIAN에서는 이동 오차가 클 때도 R4의 유의한 도착 증가가 확인되지 않음**\n"}
+,{"stream_name":"stdout","time":1840.596245381,"data":"\n"}
+,{"stream_name":"stdout","time":1840.596248718,"data":"- 구간 단위 부호 검정 (large, 40 m, 구간마다 도착 seed 수): R4가 나은 구간 5, 나쁜 구간 2, 같은 구간 41, p = 0.4531\n"}
+,{"stream_name":"stdout","time":1840.596254118,"data":"- seed 2027: 한쪽만 2 vs 1\n"}
+,{"stream_name":"stdout","time":1840.596257591,"data":"- seed 2028: 한쪽만 1 vs 0\n"}
+,{"stream_name":"stdout","time":1840.596260966,"data":"- seed 2029: 한쪽만 2 vs 1\n"}
+,{"stream_name":"stdout","time":1840.596264354,"data":"- seed 2030: 한쪽만 1 vs 0\n"}
+,{"stream_name":"stdout","time":1840.596267795,"data":"- 비행 01 (large): 40 m 도착 r1 19/64, r4 20/64, 마지막 오차 중앙값 r1 49.6 m, r4 48.4 m\n"}
+,{"stream_name":"stdout","time":1840.596272086,"data":"- 비행 02 (large): 40 m 도착 r1 37/80, r4 38/80, 마지막 오차 중앙값 r1 43.6 m, r4 40.8 m\n"}
+,{"stream_name":"stdout","time":1840.596275978,"data":"- 비행 03 (large): 40 m 도착 r1 17/48, r4 19/48, 마지막 오차 중앙값 r1 64.4 m, r4 51.2 m\n"}
+,{"stream_name":"stdout","time":1840.596279597,"data":"\n"}
+,{"stream_name":"stdout","time":1840.596283786,"data":"한계: 구간들은 같은 비행에서 출발점만 민 것이라 서로 독립이 아니다(비행 3개, 한 도시). large seed들은 같은 구간을 잡음만 바꿔 반복한 것이다. 정답 GPS와 사진 가운데가 수십 m 어긋날 수 있다(가공 README).\n"}
+,{"stream_name":"stderr","time":1845.366019672,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1845.366083407,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1845.571829892,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1845.571861384,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1846.378904127,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1847.262084933,"data":"[NbConvertApp] Writing 402793 bytes to __results__.html\n"}
+]
