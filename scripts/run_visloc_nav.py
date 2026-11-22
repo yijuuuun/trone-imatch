@@ -45,7 +45,7 @@ def main(argv=None):
     ap.add_argument('--matcher', default='loma'); ap.add_argument('--angles', type=int, default=8)
     ap.add_argument('--stop-inl', type=int, default=0, help='각도 탐색 조기 종료 (0 = 끔, 15 = 모름 기준과 같게)')
     ap.add_argument('--variants', default='r0,r1,r4g0n5w20')
-    ap.add_argument('--odo', default='vio', choices=['none', 'vio'])
+    ap.add_argument('--odo', default='vio', choices=['none', 'vio', 'vio2', 'vio4'])
     ap.add_argument('--seed', type=int, default=2026)
     ap.add_argument('--sets', default='', help='구간 이름 쉼표 목록 (비우면 전부)')
     ap.add_argument('--max-dist', type=float, default=None, help='구간 시작부터 이 거리(m)까지만')

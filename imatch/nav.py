@@ -171,7 +171,9 @@ class Research:
         return best
 
 
-ODO = {'none': None, 'vio': dict(bias_deg=3.0, head_deg=2.0, scale=0.05)}
+ODO = {'none': None, 'vio': dict(bias_deg=3.0, head_deg=2.0, scale=0.05),
+       # 민감도 분석용 (2026-11-21): vio의 모든 오차를 2배, 4배. 성능이 나쁜 VIO·센 바람 가정
+       'vio2': dict(bias_deg=6.0, head_deg=4.0, scale=0.10), 'vio4': dict(bias_deg=12.0, head_deg=8.0, scale=0.20)}
 """이동 오차 (추측 항법이 공짜로 맞지 않게).
 
 시뮬레이션의 드론은 명령한 대로 정확히 움직이므로, 오차가 없으면 영상을 안 쓰고 추측 항법만 해도 100% 도착한다.

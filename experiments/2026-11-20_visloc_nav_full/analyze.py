@@ -17,6 +17,7 @@ from math import comb
 
 import numpy as np
 import pandas as pd
+from scipy.stats import wilcoxon
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CHECK_KM = [5, 10, 20, 50]
@@ -101,6 +102,12 @@ def main():
             b, c = int((m.ok_x & ~m.ok_y).sum()), int((~m.ok_x & m.ok_y).sum())
             print(f'| {label(d)} | {int((m.ok_x & m.ok_y).sum())} | {b} | {c} | {int((~m.ok_x & ~m.ok_y).sum())} '
                   f'| {mcnemar(b, c):.2g} |')
+        # 구간별 40 m 이내 걸음 비율의 짝 비교 (2026-11-22_visloc_nav_full_vio4의 주 판정). 차이 0인 구간은 뺀다(zero_method='wilcox').
+        w1, w4 = (seg[v].set_index('set').within40 for v in ('r1', 'r4g0n5w20ac4'))
+        dd = (w4 - w1.reindex(w4.index)).dropna()
+        p = wilcoxon(dd[dd != 0], zero_method='wilcox').pvalue if (dd != 0).sum() else 1.0
+        print(f'\n구간별 40 m 이내 걸음 비율 (R1 + R4 − R1): 높음 {int((dd > 0).sum())}, 낮음 {int((dd < 0).sum())}, '
+              f'같음 {int((dd == 0).sum())}, 차이 중앙값(같음 뺌) {dd[dd != 0].median() * 100:+.1f}%p, Wilcoxon 양측 p = {p:.2g}')
 
     print('\n### 구간별 (40 m 이내 걸음 비율, 길 잃음 → 되찾음, 끝까지 못 돌아온 거리)\n')
     sets = seg[next(iter(seg))][['set', 'length_km', 'steps']]
