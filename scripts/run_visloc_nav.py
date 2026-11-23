@@ -19,6 +19,8 @@ variants (run_nav.py와 같은 이름)
     모름 걸음, 정답이 고른 블록 밖인 걸음.
 
 --max-dist 300이면 구간 앞 300 m까지만 (거리별 비교, 분담 7번).
+--data data/visloc/seq_eval_full이면 시험용 줄 전체를 끊지 않고 난다 (구간 11개, 2.4~82.7 km, 지도는 타일).
+  experiments/2026-11-20_visloc_nav_full/README.md 참고.
 기준선(B1 등)은 이 스크립트 대신 imatch.replay.run_segments에 자기 loc을 넘긴다 (replay.py 맨 위 설명).
 """
 import argparse
@@ -72,7 +74,8 @@ def main(argv=None):
         def make_loc(city, v=v):
             if v in ('center', 'dr'):
                 return NoMatch()
-            key = hashlib.md5(city.tobytes()).hexdigest()
+            # 긴 구간 지도(TiledMap)는 폴더 경로로 구분한다. 통째로 해시하면 수 GB를 읽어야 한다
+            key = getattr(city, 'key', None) or hashlib.md5(city.tobytes()).hexdigest()
             if key not in cache:
                 cache[key] = MatchLoc(matcher, city, angles=angles, stop_inl=a.stop_inl)
             return cache[key]

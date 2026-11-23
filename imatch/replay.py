@@ -26,7 +26,7 @@ import cv2
 import numpy as np
 import pandas as pd
 
-from .blocks import N_BLOCK
+from .blocks import N_BLOCK, grid_size, load_map
 from .geometry import PX_PER_UNIT
 from .nav import ODO, PX
 
@@ -53,7 +53,11 @@ def load_segments(data, sets=None, max_dist=None, every=1):
 
 def replay_one(loc, g, data, st, i, odo=None, seed=0, reject_inl=0, gate_m=0., recover=None, oracle_block=False,
                n_block=N_BLOCK, log=None):
-    """구간 하나. i = 구간 번호 (이동 오차 난수를 구간마다 고정하는 데 씀). 걸음마다 log에 dict를 덧붙인다."""
+    """구간 하나. i = 구간 번호 (이동 오차 난수를 구간마다 고정하는 데 씀). 걸음마다 log에 dict를 덧붙인다.
+
+    n_block: 블록 수. 정수면 가로·세로 같음(4096 px 지도 = 15), (가로, 세로)면 긴 구간 지도(blocks.grid_size).
+    """
+    nx, ny = (n_block, n_block) if np.isscalar(n_block) else n_block
     real = g[['map_x', 'map_y']].to_numpy(float)
     rng = np.random.default_rng([seed + 1, i])
     n = len(g)
@@ -77,8 +81,8 @@ def replay_one(loc, g, data, st, i, odo=None, seed=0, reject_inl=0, gate_m=0., r
                                 sec=0.0))
             continue
         ref = real[k] if oracle_block else guess
-        bx = int(np.clip(np.round((ref[0] - 256) / 256), 0, n_block - 1))
-        by = int(np.clip(np.round((ref[1] - 256) / 256), 0, n_block - 1))
+        bx = int(np.clip(np.round((ref[0] - 256) / 256), 0, nx - 1))
+        by = int(np.clip(np.round((ref[1] - 256) / 256), 0, ny - 1))
         cen = np.array([bx * 256 + 256, by * 256 + 256], float)
         crop = cv2.cvtColor(cv2.imread(os.path.join(data, st, f'k{int(g.k[k]):03d}_uav.jpg')), cv2.COLOR_BGR2RGB)
         pos = np.asarray(loc([crop], np.array([course]), [(bx, by)]), float)[0]
@@ -119,12 +123,12 @@ def run_segments(make_loc, data, sets=None, odo='vio', seed=2026, reject_inl=0, 
     segs = load_segments(data, sets, max_dist, every)
     steps, rows = [], []
     for i, (st, g) in enumerate(segs.items()):
-        city = cv2.cvtColor(cv2.imread(os.path.join(data, 'maps', f'{st}.jpg')), cv2.COLOR_BGR2RGB)
+        city = load_map(data, st)
         loc = make_loc(city)
         rec = make_recover(loc) if make_recover else None
         log = []
         replay_one(loc, g, data, st, i, odo=odo, seed=seed, reject_inl=reject_inl, gate_m=gate_m, recover=rec,
-                   oracle_block=oracle_block, log=log)
+                   oracle_block=oracle_block, n_block=grid_size(city), log=log)
         if rec is not None and getattr(rec, 'log', None):
             L = pd.DataFrame(log)
             R = pd.DataFrame(rec.log, index=L.index[L.unknown == 1])
