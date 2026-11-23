@@ -1,0 +1,63 @@
+[{"stream_name":"stdout","time":544.155292433,"data":"data /kaggle/working/data ['README.txt', 'avl_00_o000_s000', 'avl_00_o050_s001', 'avl_00_o100_s002', 'avl_00_o150_s003', 'avl_01_o000_s004', 'avl_01_o050_s005', 'avl_01_o100_s006', 'avl_01_o150_s007', 'avl_02_o000_s008', 'avl_02_o000_s009', 'avl_02_o050_s010', 'avl_02_o050_s011', 'avl_02_o100_s012', 'avl_02_o100_s013', 'avl_02_o150_s014', 'avl_02_o150_s015', 'avl_03_o000_s016', 'avl_03_o000_s017', 'avl_03_o050_s018', 'avl_03_o050_s019', 'avl_03_o100_s020', 'avl_03_o100_s021', 'avl_03_o150_s022', 'avl_04_o000_s023', 'avl_04_o000_s024', 'avl_04_o050_s025', 'avl_04_o050_s026', 'avl_04_o100_s027', 'avl_04_o100_s028', 'avl_04_o150_s029', 'avl_04_o150_s030', 'avl_05_o000_s031', 'avl_05_o000_s032', 'avl_05_o000_s033', 'avl_05_o050_s034', 'avl_05_o050_s035', 'avl_05_o050_s036', 'avl_05_o100_s037', 'avl_05_o100_s038', 'avl_05_o100_s039', 'avl_05_o150_s040', 'avl_05_o150_s041', 'avl_05_o150_s042', 'avl_06_o000_s043', 'avl_06_o000_s044', 'avl_06_o000_s045', 'avl_06_o050_s046', 'avl_06_o050_s047', 'avl_06_o050_s048', 'avl_06_o100_s049', 'avl_06_o100_s050', 'avl_06_o150_s051', 'avl_06_o150_s052', 'avl_07_o000_s053', 'avl_07_o000_s054', 'avl_07_o000_s055', 'avl_07_o000_s056', 'avl_07_o050_s057', 'avl_07_o050_s058', 'avl_07_o050_s059', 'avl_07_o050_s060', 'avl_07_o100_s061', 'avl_07_o100_s062', 'avl_07_o100_s063', 'avl_07_o100_s064', 'avl_07_o150_s065', 'avl_07_o150_s066', 'avl_07_o150_s067', 'avl_07_o150_s068', 'avl_08_o000_s069', 'avl_08_o050_s070', 'avl_08_o100_s071', 'avl_08_o150_s072', 'avl_09_o000_s073', 'avl_09_o000_s074', 'avl_09_o050_s075', 'avl_09_o050_s076', 'avl_09_o100_s077', 'avl_09_o100_s078', 'avl_09_o150_s079', 'avl_09_o150_s080', 'avl_10_o000_s081', 'avl_10_o050_s082', 'avl_10_o100_s083', 'avl_10_o150_s084', 'block_index.csv', 'maps', 'samples.csv']\n"}
+,{"stream_name":"stderr","time":555.905296076,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":556.730024519,"data":"Downloading: \"https://github.com/Parskatt/dad/releases/download/v0.1.0/dad.pth\" to /root/.cache/torch/hub/checkpoints/dad.pth\n"}
+,{"stream_name":"stderr","time":557.39389799,"data":"\r  0%|          | 0.00/24.9M [00:00\u003c?, ?B/s]\r 41%|████      | 10.1M/24.9M [00:00\u003c00:00, 87.2MB/s]\r 96%|█████████▌| 23.9M/24.9M [00:00\u003c00:00, 118MB/s] \r100%|██████████| 24.9M/24.9M [00:00\u003c00:00, 116MB/s]\n"}
+,{"stream_name":"stdout","time":561.847805104,"data":"Downloading: \"https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth\" to /root/.cache/torch/hub/checkpoints/dinov2_vitl14_pretrain.pth\n"}
+,{"stream_name":"stderr","time":566.052260813,"data":"\r  0%|          | 0.00/1.13G [00:00\u003c?, ?B/s]\r  1%|          | 14.1M/1.13G [00:00\u003c00:08, 148MB/s]\r  5%|▍         | 57.8M/1.13G [00:00\u003c00:03, 330MB/s]\r  9%|▉         | 102M/1.13G [00:00\u003c00:02, 390MB/s] \r 13%|█▎        | 153M/1.13G [00:00\u003c00:02, 426MB/s]\r 18%|█▊        | 206M/1.13G [00:00\u003c00:02, 468MB/s]\r 22%|██▏       | 255M/1.13G [00:00\u003c00:01, 484MB/s]\r 26%|██▌       | 303M/1.13G [00:00\u003c00:01, 488MB/s]\r 30%|███       | 350M/1.13G [00:00\u003c00:01, 489MB/s]\r 35%|███▍      | 401M/1.13G [00:00\u003c00:01, 495MB/s]\r 39%|███▊      | 448M/1.13G [00:01\u003c00:01, 496MB/s]\r 43%|████▎     | 496M/1.13G [00:01\u003c00:01, 496MB/s]\r 47%|████▋     | 543M/1.13G [00:01\u003c00:01, 490MB/s]\r 51%|█████▏    | 595M/1.13G [00:01\u003c00:01, 506MB/s]\r 55%|█████▌    | 644M/1.13G [00:01\u003c00:01, 507MB/s]\r 60%|█████▉    | 692M/1.13G [00:02\u003c00:04, 122MB/s]\r 63%|██████▎   | 727M/1.13G [00:03\u003c00:04, 111MB/s]\r 65%|██████▍   | 754M/1.13G [00:03\u003c00:03, 118MB/s]\r 67%|██████▋   | 778M/1.13G [00:03\u003c00:03, 127MB/s]\r 71%|███████   | 822M/1.13G [00:03\u003c00:02, 171MB/s]\r 75%|███████▍  | 868M/1.13G [00:03\u003c00:01, 221MB/s]\r 79%|███████▉  | 922M/1.13G [00:03\u003c00:00, 281MB/s]\r 83%|████████▎ | 969M/1.13G [00:03\u003c00:00, 325MB/s]\r 88%|████████▊ | 1.00G/1.13G [00:03\u003c00:00, 370MB/s]\r 92%|█████████▏| 1.05G/1.13G [00:03\u003c00:00, 410MB/s]\r 97%|█████████▋| 1.09G/1.13G [00:04\u003c00:00, 431MB/s]\r100%|██████████| 1.13G/1.13G [00:04\u003c00:00, 296MB/s]\n"}
+,{"stream_name":"stdout","time":572.826379607,"data":"Downloading: \"https://github.com/davnords/storage/releases/download/loma/loma_B.pt\" to /root/.cache/torch/hub/checkpoints/loma_B.pt\n"}
+,{"stream_name":"stderr","time":575.62120076,"data":"\r  0%|          | 0.00/723M [00:00\u003c?, ?B/s]\r  3%|▎         | 20.0M/723M [00:00\u003c00:03, 209MB/s]\r  8%|▊         | 56.9M/723M [00:00\u003c00:02, 313MB/s]\r 13%|█▎        | 93.4M/723M [00:00\u003c00:01, 345MB/s]\r 18%|█▊        | 130M/723M [00:00\u003c00:01, 359MB/s] \r 23%|██▎       | 166M/723M [00:00\u003c00:01, 368MB/s]\r 28%|██▊       | 201M/723M [00:00\u003c00:01, 368MB/s]\r 33%|███▎      | 239M/723M [00:00\u003c00:01, 375MB/s]\r 38%|███▊      | 276M/723M [00:00\u003c00:01, 380MB/s]\r 43%|████▎     | 313M/723M [00:00\u003c00:01, 383MB/s]\r 49%|████▊     | 351M/723M [00:01\u003c00:01, 387MB/s]\r 54%|█████▍    | 389M/723M [00:01\u003c00:00, 389MB/s]\r 59%|█████▉    | 426M/723M [00:01\u003c00:00, 385MB/s]\r 64%|██████▍   | 463M/723M [00:01\u003c00:00, 345MB/s]\r 69%|██████▊   | 496M/723M [00:01\u003c00:00, 326MB/s]\r 73%|███████▎  | 528M/723M [00:01\u003c00:00, 314MB/s]\r 77%|███████▋  | 559M/723M [00:01\u003c00:00, 306MB/s]\r 81%|████████▏ | 588M/723M [00:01\u003c00:00, 292MB/s]\r 85%|████████▌ | 616M/723M [00:02\u003c00:00, 230MB/s]\r 89%|████████▊ | 640M/723M [00:02\u003c00:00, 223MB/s]\r 92%|█████████▏| 663M/723M [00:02\u003c00:00, 218MB/s]\r 95%|█████████▍| 684M/723M [00:02\u003c00:00, 217MB/s]\r 98%|█████████▊| 706M/723M [00:02\u003c00:00, 215MB/s]\r100%|██████████| 723M/723M [00:02\u003c00:00, 297MB/s]\n"}
+,{"stream_name":"stdout","time":576.216309059,"data":"재생 항법: /kaggle/working/data, 매처 loma-cache 4방향, 이동 오차 vio, 시드 2026\n"}
+,{"stream_name":"stdout","time":576.216377489,"data":"| variant | 구간 | 걸음 | 10 m | 20 m | 32 m | 걸음 오차 중앙값 | 마지막 오차 중앙값 | 마지막 40 m 이내 | 모름 | 블록 밖 | 걸음당 s |\n"}
+,{"stream_name":"stdout","time":576.216386568,"data":"| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"}
+,{"stream_name":"stdout","time":580.318317788,"data":"  10/85 구간\n"}
+,{"stream_name":"stdout","time":582.062155035,"data":"  20/85 구간\n"}
+,{"stream_name":"stdout","time":583.743645398,"data":"  30/85 구간\n"}
+,{"stream_name":"stdout","time":585.440198639,"data":"  40/85 구간\n"}
+,{"stream_name":"stdout","time":587.104516885,"data":"  50/85 구간\n"}
+,{"stream_name":"stdout","time":588.767078968,"data":"  60/85 구간\n"}
+,{"stream_name":"stdout","time":590.415403908,"data":"  70/85 구간\n"}
+,{"stream_name":"stdout","time":592.12355221,"data":"  80/85 구간\n"}
+,{"stream_name":"stdout","time":593.032616226,"data":"| dr | 85 | 957 | 34.7% | 65.1% | 80.6% | 14.2 m | 22.5 m | 68.2% | 100.0% | 35.2% | 0.00 |\n"}
+,{"stream_name":"stdout","time":635.39120987,"data":"  10/85 구간\n"}
+,{"stream_name":"stdout","time":679.902718161,"data":"  20/85 구간\n"}
+,{"stream_name":"stdout","time":727.088548777,"data":"  30/85 구간\n"}
+,{"stream_name":"stdout","time":782.509694454,"data":"  40/85 구간\n"}
+,{"stream_name":"stdout","time":835.220071658,"data":"  50/85 구간\n"}
+,{"stream_name":"stdout","time":892.577156136,"data":"  60/85 구간\n"}
+,{"stream_name":"stdout","time":953.760465134,"data":"  70/85 구간\n"}
+,{"stream_name":"stdout","time":999.347695319,"data":"  80/85 구간\n"}
+,{"stream_name":"stdout","time":1016.236487007,"data":"| r1 | 85 | 957 | 75.1% | 93.2% | 93.8% | 6.8 m | 7.2 m | 89.4% | 9.7% | 21.6% | 0.41 |\n"}
+,{"stream_name":"stdout","time":1034.237204559,"data":"  10/85 구간\n"}
+,{"stream_name":"stdout","time":1048.126654505,"data":"  20/85 구간\n"}
+,{"stream_name":"stdout","time":1061.000338899,"data":"  30/85 구간\n"}
+,{"stream_name":"stdout","time":1076.536066359,"data":"  40/85 구간\n"}
+,{"stream_name":"stdout","time":1099.950293098,"data":"  50/85 구간\n"}
+,{"stream_name":"stdout","time":1122.552124333,"data":"  60/85 구간\n"}
+,{"stream_name":"stdout","time":1156.869677664,"data":"  70/85 구간\n"}
+,{"stream_name":"stdout","time":1164.563907308,"data":"  80/85 구간\n"}
+,{"stream_name":"stdout","time":1166.175373536,"data":"| r4g0n5w20ac4 | 85 | 957 | 75.3% | 93.4% | 94.1% | 6.8 m | 7.2 m | 90.6% | 9.5% | 21.3% | 0.54 |\n"}
+,{"stream_name":"stdout","time":1169.37019288,"data":"  10/85 구간\n"}
+,{"stream_name":"stdout","time":1172.588229698,"data":"  20/85 구간\n"}
+,{"stream_name":"stdout","time":1175.844187712,"data":"  30/85 구간\n"}
+,{"stream_name":"stdout","time":1179.065267455,"data":"  40/85 구간\n"}
+,{"stream_name":"stdout","time":1182.334342902,"data":"  50/85 구간\n"}
+,{"stream_name":"stdout","time":1185.557574524,"data":"  60/85 구간\n"}
+,{"stream_name":"stdout","time":1188.731465599,"data":"  70/85 구간\n"}
+,{"stream_name":"stdout","time":1191.872924055,"data":"  80/85 구간\n"}
+,{"stream_name":"stdout","time":1193.465825102,"data":"| r3g0a | 85 | 957 | 75.3% | 93.4% | 94.1% | 6.8 m | 7.2 m | 90.6% | 9.5% | 21.3% | 0.54 |\n"}
+,{"stream_name":"stdout","time":1229.661217968,"data":"  10/85 구간\n"}
+,{"stream_name":"stdout","time":1252.972273554,"data":"  20/85 구간\n"}
+,{"stream_name":"stdout","time":1276.676840459,"data":"  30/85 구간\n"}
+,{"stream_name":"stdout","time":1301.128246513,"data":"  40/85 구간\n"}
+,{"stream_name":"stdout","time":1329.293654226,"data":"  50/85 구간\n"}
+,{"stream_name":"stdout","time":1378.653263633,"data":"  60/85 구간\n"}
+,{"stream_name":"stdout","time":1435.593124527,"data":"  70/85 구간\n"}
+,{"stream_name":"stdout","time":1449.1474235,"data":"  80/85 구간\n"}
+,{"stream_name":"stdout","time":1450.773359632,"data":"| r4g0n5w20 | 85 | 957 | 75.3% | 93.1% | 93.7% | 6.8 m | 7.2 m | 91.8% | 9.9% | 21.8% | 0.66 |\n"}
+,{"stream_name":"stderr","time":1456.739834297,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1456.739893149,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1456.950634248,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1456.950662858,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1457.877149268,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1458.852793167,"data":"[NbConvertApp] Writing 388104 bytes to __results__.html\n"}
+]

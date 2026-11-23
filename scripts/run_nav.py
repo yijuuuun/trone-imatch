@@ -60,7 +60,7 @@ def main():
         starts, goals = make_traj(a.n_traj, a.dist, a.seed)
         match = MatchLoc(matcher, city, angles=angles, stop_inl=a.stop_inl)
         for v in (a.variants.split(',') if a.variants else ['']):
-            m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+)(?:w(\d+))?(a)?(y)?(?:c(\d+))?)?|center|dr|)', v)
+            m = re.fullmatch(r'(r0|r1|r([234])g(\d+)(?:n(\d+)(?:w(\d+))?)?(a)?(y)?(?:c(\d+))?|center|dr|)', v)
             if not m or (m.group(2) == '4') != bool(m.group(4)): sys.exit(f'모르는 variant: {v}')
             loc = NoMatch() if v in ('center', 'dr') else match
             kw = dict(reject_inl=15 if v.startswith(('r1', 'r2', 'r3', 'r4')) or v == 'dr' else 0, gate_m=float(m.group(3) or 0))
