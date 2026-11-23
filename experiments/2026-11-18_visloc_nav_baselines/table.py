@@ -25,6 +25,13 @@ ROWS = [  # (이름, 폴더, 파일 앞부분, 설명)
     ('Sample4Geo (검색형)', HERE, 'visloc_sample4geo-r0', 'R0, 블록 안 타일 검색, 위치 = 타일 중심'),
     ('MEAN (검색형)', HERE, 'visloc_mean-r0', 'R0, 블록 안 타일 검색, 위치 = 타일 중심'),
     ('Game4Loc (검색형)', HERE, 'visloc_game4loc-r0', 'R0, 블록 안 타일 검색, 위치 = 타일 중심'),
+    # R1판: 각 모델 점수 < T면 "모름" → 추측 위치. T는 개발용 single_calib에서 고름 (calib_gate.py, gate.json)
+    ('CorrMatchNet (SF 뺀 학습) + R1', HERE, 'visloc_corr38-r1', 'conf < T면 모름'),
+    ('CorrMatchNet (싱가포르 뺀 학습) + R1', HERE, 'visloc_corr37-r1', 'conf < T면 모름'),
+    ('OS-FPI + R1', HERE, 'visloc_osfpi-r1', 'heatmap 최고값 < T면 모름'),
+    ('Sample4Geo + R1', HERE, 'visloc_sample4geo-r1', '유사도 < T면 모름'),
+    ('MEAN + R1', HERE, 'visloc_mean-r1', '유사도 < T면 모름'),
+    ('Game4Loc + R1', HERE, 'visloc_game4loc-r1', '유사도 < T면 모름'),
     ('LoMa R0', V1, 'visloc_loma-r0', '매칭을 항상 믿음'),
     ('R1', V1, 'visloc_loma-r1', 'inlier < 15면 모름'),
     ('v1 (R1 + R4)', V1, 'visloc_loma-r4g0n5w20', '확정 v1'),
@@ -44,10 +51,11 @@ def main():
         sp, st = os.path.join(d, f + '_segs.csv'), os.path.join(d, f + '_steps.csv')
         if os.path.exists(sp):
             data[name] = (pd.read_csv(sp).sort_values('set').reset_index(drop=True), pd.read_csv(st))
-    ref = data['v1 (R1 + R4)'][0]
+    ref, ref1 = data['v1 (R1 + R4)'][0], data['R1'][0]
     out = []
-    print('| 방법 | 마지막 20 m 이내 | 마지막 40 m 이내 | 마지막 오차 중앙값 | 걸음 오차 중앙값 | 걸음당 s | v1 대비 20 m (v1만 / 상대만) | v1 대비 40 m |')
-    print('| --- ' * 8 + '|')
+    print('| 방법 | 마지막 20 m 이내 | 마지막 40 m 이내 | 마지막 오차 중앙값 | 걸음 오차 중앙값 | 모름 비율 | 걸음당 s '
+          '| v1 대비 20 m (v1만 / 상대만) | v1 대비 40 m | LoMa R1 대비 20 m (R1만 / 상대만) |')
+    print('| --- ' * 10 + '|')
     for name, d, f, note in ROWS:
         if name not in data:
             print(f'| {name} | (결과 없음) |'); continue
@@ -56,6 +64,9 @@ def main():
         fe = segs.final_err_m.values
         s = steps[steps.used != 'start'] if 'used' in steps else steps
         sec = float(s.sec.mean()) if 'sec' in s and s.sec.notna().any() else 0.0
+        if f.endswith('-r1') and d == HERE:   # R1판은 로컬 GTX 1650에서 돌림. 걸음마다 모델 계산은 R0와 같으므로 T4 R0 시간을 씀
+            s0 = pd.read_csv(os.path.join(d, f[:-3] + '-r0_steps.csv'))
+            sec = float(s0[s0.used != 'start'].sec.mean())
         cs = ''
         if name in SEC_CACHE and os.path.exists(os.path.join(CACHE, SEC_CACHE[name] + '_steps.csv')):
             c = pd.read_csv(os.path.join(CACHE, SEC_CACHE[name] + '_steps.csv'))
@@ -70,10 +81,17 @@ def main():
                 n1, n2, p = mcnemar(ref.final_err_m.values <= t, fe <= t)
                 cmp[t] = f'{n1} / {n2}, p = {p:.2g}'
                 r[f'vs_v1_le{t}'] = cmp[t]
+        if name == 'R1':
+            c1 = '—'
+        else:
+            n1, n2, p = mcnemar(ref1.final_err_m.values <= 20, fe <= 20)
+            c1 = r['vs_r1_le20'] = f'{n1} / {n2}, p = {p:.2g}'
+        unk = float(s.unknown.mean() * 100) if 'unknown' in s else 0.0
+        r['unknown_pct'] = round(unk, 1)
         out.append(r)
         n = len(fe)
         print(f"| {name} | {r['final_le20']} ({r['final_le20'] / n * 100:.1f}%) | {r['final_le40']} ({r['final_le40'] / n * 100:.1f}%) "
-              f"| {r['final_med_m']} m | {r['step_med_m']} m | {sec:.2f}{cs} | {cmp[20]} | {cmp[40]} |")
+              f"| {r['final_med_m']} m | {r['step_med_m']} m | {unk:.0f}% | {sec:.2f}{cs} | {cmp[20]} | {cmp[40]} | {c1} |")
     pd.DataFrame(out).to_csv(os.path.join(HERE, 'table.csv'), index=False)
 
 
