@@ -5,6 +5,8 @@
       --args "--sets 3d_ho34bc --frames 3d --matcher loma --angles 8 --n-traj 32 --seed 7 --odo vio --tag=-vio --variants r2g30,r4g30n5w20"
   python scripts/kaggle/build_colab.py --slug visloc-nav-full --dataset gmldbs3104/visloc-seq-eval-full --script run_visloc_nav \
       --args "--matcher loma-cache --angles 4 --stop-inl 15 --variants r1,r4g0n5w20ac4 --odo vio --seed 2026"
+  python scripts/kaggle/build_colab.py --slug visloc-nav-full-vio4 --dataset heeyunju/visloc-seq-eval-full --script run_visloc_nav \
+      --cache-from visloc-nav-full --args "--matcher loma-cache --angles 4 --stop-inl 15 --variants r1,r4g0n5w20ac4 --odo vio4 --seed 2026"
 
 Colab에서: 파일 > 노트북 업로드 → 런타임 유형 T4 GPU → 보안 비밀(열쇠 아이콘)에 KAGGLE_API_TOKEN
 (또는 KAGGLE_USERNAME, KAGGLE_KEY) → 모두 실행. 출력은 Google Drive의 MyDrive/trone-nav/<slug>/.
@@ -35,7 +37,8 @@ INTRO = """# {slug}: {script} ({variants})
 CONFIG = """SCRIPT = {script!r}
 DATASET = {dataset!r}
 ARGS = {args!r}
-OUT = '/content/drive/MyDrive/trone-nav/{slug}'"""
+OUT = '/content/drive/MyDrive/trone-nav/{slug}'
+CACHE_FROM = {cache_from!r}  # 처음 돌릴 때 이 매칭 캐시로 시작 (같은 데이터, 같은 매처·각도의 이전 실행)"""
 
 GPU = """import subprocess
 gpu = subprocess.run(['nvidia-smi', '--query-gpu=name', '--format=csv,noheader'], capture_output=True, text=True).stdout.strip()
@@ -98,6 +101,10 @@ print('남은 variant:', todo or '없음')
 import imatch.nav as nav
 CACHE, LIVE = OUT + '/match_cache.pkl', {}
 SAVED = pickle.load(open(CACHE, 'rb')) if os.path.exists(CACHE) else {}
+if not SAVED and CACHE_FROM:
+    # 캐시 키는 (사진, 블록, 각도)뿐이라 이동 오차·variant가 달라도 같은 매칭 답이다. 시간(sec)도 처음 잰 값.
+    assert os.path.exists(CACHE_FROM), f'{CACHE_FROM}이 없다. 이전 실행의 match_cache.pkl을 그 자리에 두거나 CACHE_FROM = None'
+    SAVED = pickle.load(open(CACHE_FROM, 'rb')); print('이전 실행 매칭 캐시로 시작:', CACHE_FROM)
 if SAVED and not all(isinstance(v, dict) for v in SAVED.values()):
     SAVED = {'': SAVED}   # 예전 형식(지도 하나)
 _init = nav.MatchLoc.__init__
@@ -151,8 +158,11 @@ def main():
     ap.add_argument('--args', required=True, help='run_nav / run_visloc_nav 인자. --variants가 있어야 한다 (끝난 것 건너뛰기에 쓴다)')
     ap.add_argument('--script', default='run_nav', choices=['run_nav', 'run_visloc_nav'],
                     help='run_visloc_nav: UAV-VisLoc 재생 항법 (데이터셋에 maps/와 samples.csv)')
+    ap.add_argument('--cache-from', default=None,
+                    help='이전 Colab 실행의 slug. 그 Drive 폴더의 match_cache.pkl로 시작한다 (데이터·매처·각도가 같을 때만)')
     ap.add_argument('--out', default=os.path.join(ROOT, 'outputs', 'colab'))
     a = ap.parse_args()
+    cache_from = f'/content/drive/MyDrive/trone-nav/{a.cache_from}/match_cache.pkl' if a.cache_from else None
     args = shlex.split(a.args)
     assert '--variants' in args, '--variants가 필요하다'
     variants = args[args.index('--variants') + 1]
@@ -163,7 +173,7 @@ def main():
                         'kernelspec': {'name': 'python3', 'display_name': 'Python 3'}},
               cells=[cell('markdown', INTRO.format(slug=a.slug, variants=variants, dataset=a.dataset, script=a.script,
                                                    done='_traj.csv' if a.script == 'run_nav' else '_segs.csv')),
-                     cell('code', CONFIG.format(script=a.script, dataset=a.dataset, args=args, slug=a.slug)),
+                     cell('code', CONFIG.format(script=a.script, dataset=a.dataset, args=args, slug=a.slug, cache_from=cache_from)),
                      cell('code', GPU), cell('code', SETUP), files, cell('code', RUN)])
     os.makedirs(a.out, exist_ok=True)
     p = os.path.join(a.out, f'{a.slug}.ipynb')
