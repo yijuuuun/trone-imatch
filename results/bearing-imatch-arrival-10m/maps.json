@@ -1,0 +1,14 @@
+{
+  "reference": {
+    "path": "/kaggle/working/ab_bearing_10m/maps/fefa787df94d170ad7626a52ae46a2e1dfb3dec0bbee162d573e1badfafd00a0.jpg",
+    "layer": "fsa2017",
+    "url": "https://imageserver.gisdata.mn.gov/cgi-bin/wms?service=WMS&version=1.1.1&request=GetMap&layers=fsa2017&styles=&srs=EPSG%3A26915&bbox=478000%2C4976000%2C480048%2C4978048&width=2048&height=2048&format=image%2Fjpeg",
+    "sha256": "fefa787df94d170ad7626a52ae46a2e1dfb3dec0bbee162d573e1badfafd00a0"
+  },
+  "camera": {
+    "path": "/kaggle/working/ab_bearing_10m/maps/79f4f5d64513cb49a31a8a7375a11b56dc78c7e1bf3bdec9e3e4418b2304c9de.jpg",
+    "layer": "fsa2023",
+    "url": "https://imageserver.gisdata.mn.gov/cgi-bin/wms?service=WMS&version=1.1.1&request=GetMap&layers=fsa2023&styles=&srs=EPSG%3A26915&bbox=478000%2C4976000%2C480048%2C4978048&width=2048&height=2048&format=image%2Fjpeg",
+    "sha256": "79f4f5d64513cb49a31a8a7375a11b56dc78c7e1bf3bdec9e3e4418b2304c9de"
+  }
+}
